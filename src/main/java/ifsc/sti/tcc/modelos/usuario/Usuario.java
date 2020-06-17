@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.modelos;
+package ifsc.sti.tcc.modelos.usuario;
 
 import java.util.Date;
 

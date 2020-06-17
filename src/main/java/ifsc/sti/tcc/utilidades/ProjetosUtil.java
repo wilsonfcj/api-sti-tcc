@@ -1,18 +1,8 @@
 package ifsc.sti.tcc.utilidades;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import ifsc.sti.tcc.modelos.DashboardInfos;
-import ifsc.sti.tcc.modelos.Projeto;
-import ifsc.sti.tcc.modelos.ProjetosPorSituacao;
-import ifsc.sti.tcc.modelos.rest.RequestSituacao;
-import ifsc.sti.tcc.props.Situacao;
-
 public class ProjetosUtil {
 
-	public static List<Projeto> criarProjetos() {
+	/*public static List<Projeto> criarProjetos() {
 		List<Projeto> listProjetos = new ArrayList<>();
 
 		Projeto lProjeto = new Projeto();
@@ -586,5 +576,5 @@ public class ProjetosUtil {
 		}
 		lDashboardInfos.setProjetosPorSituacaos(list);
 		return lDashboardInfos;
-	}
+	}*/
 }

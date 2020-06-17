@@ -1,25 +1,10 @@
 package ifsc.sti.tcc.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ifsc.sti.tcc.modelos.DashboardInfos;
-import ifsc.sti.tcc.modelos.Projeto;
-import ifsc.sti.tcc.modelos.rest.RequestSituacao;
-import ifsc.sti.tcc.modelos.rest.ResponseBase;
-import ifsc.sti.tcc.utilidades.ProjetosUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 
 @CrossOrigin(origins = "*")
@@ -29,7 +14,7 @@ import io.swagger.annotations.ApiOperation;
 public class ProjetosApi {
 	
 	
-	@ApiOperation(value = "Consulta todos os projetos de pesquisa do Campus-Lages")
+	/*@ApiOperation(value = "Consulta todos os projetos de pesquisa do Campus-Lages")
 	@RequestMapping(value = "/projetos", method = RequestMethod.GET)
 	public ResponseEntity<ResponseBase<List<Projeto>>> projetos() {
 		List<Projeto> listProjetos = new ArrayList<Projeto>();
@@ -70,7 +55,7 @@ public class ProjetosApi {
 			baseResponse = new ResponseBase<>(false, "Não foi possível carregar as informações", listProjetos);
 		}
 		return new ResponseEntity<ResponseBase<List<Projeto>>>(baseResponse, HttpStatus.OK);
-	}
+	}*/
 	
 	
 

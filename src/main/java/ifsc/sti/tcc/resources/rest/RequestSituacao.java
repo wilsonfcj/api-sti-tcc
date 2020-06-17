@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.modelos.rest;
+package ifsc.sti.tcc.resources.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
