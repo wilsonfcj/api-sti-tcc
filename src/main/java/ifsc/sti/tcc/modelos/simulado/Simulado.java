@@ -4,20 +4,25 @@ import java.util.Date;
 import java.util.List;
 
 import ifsc.sti.tcc.modelos.questao.Questao;
-import ifsc.sti.tcc.modelos.usuario.Usuario;
-import ifsc.sti.tcc.props.TipoSimulado;
+import ifsc.sti.tcc.props.ETipoSimulado;
 
 public class Simulado {
 
+//	Identificação
 	private Integer id;
 	private String nome;
-	private Date dataFim;
+	private String descricao;
+	
+//	Tempos e Configurações
 	private Date dataInicio;
 	private Date dataCriacao;
-	private Usuario criador;
-	private String descricao;
+	private Date dataFimSimulado;
+	
+	private Long tempoMaximo;
+	private Long idProfessor;
+	private Integer quantidadeQuestoes;
+	private ETipoSimulado tipoSimulado;
 	private List<Questao> questoes;
-	private TipoSimulado tipoSimulado;
 	
 	public Integer getId() {
 		return id;
@@ -35,12 +40,12 @@ public class Simulado {
 		this.nome = nome;
 	}
 	
-	public Date getDataFim() {
-		return dataFim;
+	public String getDescricao() {
+		return descricao;
 	}
 	
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	public Date getDataInicio() {
@@ -59,20 +64,44 @@ public class Simulado {
 		this.dataCriacao = dataCriacao;
 	}
 	
-	public Usuario getCriador() {
-		return criador;
+	public Date getDataFimSimulado() {
+		return dataFimSimulado;
 	}
 	
-	public void setCriador(Usuario criador) {
-		this.criador = criador;
+	public void setDataFimSimulado(Date dataFimSimulado) {
+		this.dataFimSimulado = dataFimSimulado;
 	}
 	
-	public String getDescricao() {
-		return descricao;
+	public Long getTempoMaximo() {
+		return tempoMaximo;
 	}
 	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setTempoMaximo(Long tempoMaximo) {
+		this.tempoMaximo = tempoMaximo;
+	}
+	
+	public Long getIdProfessor() {
+		return idProfessor;
+	}
+	
+	public void setIdProfessor(Long idProfessor) {
+		this.idProfessor = idProfessor;
+	}
+	
+	public Integer getQuantidadeQuestoes() {
+		return quantidadeQuestoes;
+	}
+	
+	public void setQuantidadeQuestoes(Integer quantidadeQuestoes) {
+		this.quantidadeQuestoes = quantidadeQuestoes;
+	}
+	
+	public ETipoSimulado getTipoSimulado() {
+		return tipoSimulado;
+	}
+	
+	public void setTipoSimulado(ETipoSimulado tipoSimulado) {
+		this.tipoSimulado = tipoSimulado;
 	}
 	
 	public List<Questao> getQuestoes() {
@@ -82,15 +111,6 @@ public class Simulado {
 	public void setQuestoes(List<Questao> questoes) {
 		this.questoes = questoes;
 	}
-	
-	public TipoSimulado getTipoSimulado() {
-		return tipoSimulado;
-	}
-	
-	public void setTipoSimulado(TipoSimulado tipoSimulado) {
-		this.tipoSimulado = tipoSimulado;
-	}
-	
 	
 	
 	

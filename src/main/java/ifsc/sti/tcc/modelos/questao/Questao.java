@@ -1,23 +1,29 @@
 package ifsc.sti.tcc.modelos.questao;
 
-import java.util.List;
+import ifsc.sti.tcc.props.EArea;
+import ifsc.sti.tcc.props.EAssunto;
+import ifsc.sti.tcc.props.EDificuldade;
+import ifsc.sti.tcc.props.EDisciplina;
+import ifsc.sti.tcc.props.ETipoQuestao;
 
-import ifsc.sti.tcc.props.Area;
-import ifsc.sti.tcc.props.Assunto;
-import ifsc.sti.tcc.props.Disciplina;
-import ifsc.sti.tcc.props.TipoQuestao;
-
-public class Questao {
+public abstract class Questao {
 	
+//	Identificação
 	private Long id;
-	private Area area;
-	private String correta;
-	private Assunto assunto;
+	private Integer ano;
 	private String descricao;
-	private Disciplina disciplina;
-	private TipoQuestao tipoQuestao;
-	private List<String> alternativas;
 	
+//	Configuração prova
+	private EArea area;
+	private EAssunto assunto;
+	private ETipoQuestao prova;
+	private EDisciplina disciplina;
+	private EDificuldade dificuldade;
+	
+	public Questao() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -26,28 +32,12 @@ public class Questao {
 		this.id = id;
 	}
 	
-	public Area getArea() {
-		return area;
+	public Integer getAno() {
+		return ano;
 	}
 	
-	public void setArea(Area area) {
-		this.area = area;
-	}
-	
-	public String getCorreta() {
-		return correta;
-	}
-	
-	public void setCorreta(String correta) {
-		this.correta = correta;
-	}
-	
-	public Assunto getAssunto() {
-		return assunto;
-	}
-	
-	public void setAssunto(Assunto assunto) {
-		this.assunto = assunto;
+	public void setAno(Integer ano) {
+		this.ano = ano;
 	}
 	
 	public String getDescricao() {
@@ -58,30 +48,44 @@ public class Questao {
 		this.descricao = descricao;
 	}
 	
-	public Disciplina getDisciplina() {
+	public EArea getArea() {
+		return area;
+	}
+	
+	public void setArea(EArea area) {
+		this.area = area;
+	}
+	
+	public EAssunto getAssunto() {
+		return assunto;
+	}
+	
+	public void setAssunto(EAssunto assunto) {
+		this.assunto = assunto;
+	}
+	
+	public ETipoQuestao getProva() {
+		return prova;
+	}
+	
+	public void setProva(ETipoQuestao prova) {
+		this.prova = prova;
+	}
+	
+	public EDisciplina getDisciplina() {
 		return disciplina;
 	}
 	
-	public void setDisciplina(Disciplina disciplina) {
+	public void setDisciplina(EDisciplina disciplina) {
 		this.disciplina = disciplina;
 	}
 	
-	public TipoQuestao getTipoQuestao() {
-		return tipoQuestao;
+	public EDificuldade getDificuldade() {
+		return dificuldade;
 	}
-	
-	public void setTipoQuestao(TipoQuestao tipoQuestao) {
-		this.tipoQuestao = tipoQuestao;
+
+	public void setDificuldade(EDificuldade dificuldade) {
+		this.dificuldade = dificuldade;
 	}
-	
-	public List<String> getAlternativas() {
-		return alternativas;
-	}
-	
-	public void setAlternativas(List<String> alternativas) {
-		this.alternativas = alternativas;
-	}
-	
-	
-	
+
 }

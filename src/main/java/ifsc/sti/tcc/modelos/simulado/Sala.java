@@ -1,10 +1,6 @@
 package ifsc.sti.tcc.modelos.simulado;
 
 import java.util.Date;
-import java.util.List;
-
-import ifsc.sti.tcc.modelos.usuario.Aluno;
-import ifsc.sti.tcc.modelos.usuario.Professor;
 
 public class Sala {
 	
@@ -13,16 +9,15 @@ public class Sala {
 	private String descricao;
 	private String senha;
 	private Date dataCriacao;
-	private Simulado simulado;
-	private Professor criador;
+	private Date dataTermino;
+	private Integer IdSimulado;
+	private Integer idProfessor;
 	private Integer qtdParticipantes;
-	private List<Aluno> participantes;
 	private String urlCompartilhamento;
 	
 	public Long getId() {
 		return id;
 	}
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -30,10 +25,10 @@ public class Sala {
 	public String getNome() {
 		return nome;
 	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	
 	public String getDescricao() {
 		return descricao;
@@ -59,20 +54,28 @@ public class Sala {
 		this.dataCriacao = dataCriacao;
 	}
 	
-	public Simulado getSimulado() {
-		return simulado;
+	public Date getDataTermino() {
+		return dataTermino;
 	}
 	
-	public void setSimulado(Simulado simulado) {
-		this.simulado = simulado;
+	public void setDataTermino(Date dataTermino) {
+		this.dataTermino = dataTermino;
 	}
 	
-	public Professor getCriador() {
-		return criador;
+	public Integer getIdSimulado() {
+		return IdSimulado;
 	}
 	
-	public void setCriador(Professor criador) {
-		this.criador = criador;
+	public void setIdSimulado(Integer idSimulado) {
+		IdSimulado = idSimulado;
+	}
+	
+	public Integer getIdProfessor() {
+		return idProfessor;
+	}
+	
+	public void setIdProfessor(Integer idProfessor) {
+		this.idProfessor = idProfessor;
 	}
 	
 	public Integer getQtdParticipantes() {
@@ -83,14 +86,6 @@ public class Sala {
 		this.qtdParticipantes = qtdParticipantes;
 	}
 	
-	public List<Aluno> getParticipantes() {
-		return participantes;
-	}
-	
-	public void setParticipantes(List<Aluno> participantes) {
-		this.participantes = participantes;
-	}
-	
 	public String getUrlCompartilhamento() {
 		return urlCompartilhamento;
 	}
@@ -98,7 +93,6 @@ public class Sala {
 	public void setUrlCompartilhamento(String urlCompartilhamento) {
 		this.urlCompartilhamento = urlCompartilhamento;
 	}
-
 	
 	
 }
