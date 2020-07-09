@@ -6,8 +6,11 @@ import ifsc.sti.tcc.props.EDisciplina;
 
 public class Professor extends Usuario {
 
-	private Long idProfessor;
 	private List<EDisciplina> disciplinas;
+	
+	public Professor() {
+		super();
+	}
 
 	public Professor(List<EDisciplina> disciplinas) {
 		super();
@@ -20,13 +23,5 @@ public class Professor extends Usuario {
 
 	public void setDisciplinas(List<EDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
-	}
-
-	public Long getIdProfessor() {
-		return idProfessor;
-	}
-
-	public void setIdProfessor(Long idProfessor) {
-		this.idProfessor = idProfessor;
 	}
 }

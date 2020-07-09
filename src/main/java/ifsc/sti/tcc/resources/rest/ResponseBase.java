@@ -21,21 +21,27 @@ public class ResponseBase<E> {
 		this.mensagem = mensagem;
 		this.data = data;
 	}
+	
 	public boolean isSucesso() {
 		return sucesso;
 	}
+	
 	public void setSucesso(boolean sucesso) {
 		this.sucesso = sucesso;
 	}
+	
 	public String getMensagem() {
 		return mensagem;
 	}
+	
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
+	
 	public E getData() {
 		return data;
 	}
+	
 	public void setData(E data) {
 		this.data = data;
 	}

@@ -1,20 +1,39 @@
-package ifsc.sti.tcc.modelos.usuario;
+package ifsc.sti.tcc.resources.rest.models.login.response;
 
 import java.util.Date;
 
-import ifsc.sti.tcc.utilidades.UserUtil;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Usuario {
+import ifsc.sti.tcc.modelos.usuario.Imagem;
 
+public abstract class UsuarioBaseResponse {
+	
+	@JsonProperty(value="IdUsuario")
 	private Long id;
+	
+	@JsonProperty(value="CPF")
 	private String cpf;
+	
+	@JsonProperty(value="Nascimento")
 	private Date nascimento;
+	
+	@JsonProperty(value="Nome")
 	private String nome;
+	
+	@JsonProperty(value="Email")
 	private String email;
-	private String fone;	
-	private String senha;
+	
+	@JsonProperty(value="Telefone")
+	private String fone;
+	
+	@JsonProperty(value="Instituicao")
 	private String instituicao;
+	
+	@JsonProperty(value="ImagemUsuario")
 	private Imagem imagemPerfil;
+	
+	@JsonProperty(value="TipoUsuario")
+	private Integer perfilUsuario;
 	
 	public Long getId() {
 		return id;
@@ -64,14 +83,6 @@ public class Usuario {
 		this.fone = fone;
 	}
 	
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	public String getInstituicao() {
 		return instituicao;
 	}
@@ -87,12 +98,12 @@ public class Usuario {
 	public void setImagemPerfil(Imagem imagemPerfil) {
 		this.imagemPerfil = imagemPerfil;
 	}
-	
-	public static Usuario buscarUsuarioCPF(String cpf) {
-		return UserUtil.buscarUsuarioCPF(cpf); // Provisorios pois pegaremos essas informações do banco
+
+	public Integer getPerfilUsuario() {
+		return perfilUsuario;
 	}
-	
-	public static boolean autenticarUsuario(Usuario usuario, String senha) {
-		return usuario.getSenha().equals(senha);
+
+	public void setPerfilUsuario(Integer perfilUsuario) {
+		this.perfilUsuario = perfilUsuario;
 	}
 }

@@ -43,11 +43,11 @@ public enum EDisciplina {
 
 	EDisciplina(int aCodigo, String aSituacao) {
 		this.codigo = aCodigo;
-		this.situacao = aSituacao;
+		this.descricao = aSituacao;
 	}
 	
 	public int codigo;
-	public String situacao;
+	public String descricao;
 	
 	public EDisciplina getSituacao(int aCod) {
 		for (EDisciplina lSituacao :  EDisciplina.values()) {
@@ -60,7 +60,7 @@ public enum EDisciplina {
 	
 	public EDisciplina getSituacao(String aSituacao) {
 		for (EDisciplina lSituacao :  EDisciplina.values()) {
-			if(lSituacao.situacao.equalsIgnoreCase(aSituacao)) {
+			if(lSituacao.descricao.equalsIgnoreCase(aSituacao)) {
 				return lSituacao;
 			}
 		}
