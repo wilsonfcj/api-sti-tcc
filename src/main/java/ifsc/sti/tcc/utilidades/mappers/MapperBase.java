@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.mapers;
+package ifsc.sti.tcc.utilidades.mappers;
 
 /**
  * Created by wilson.fernandes on 08/11/2017.

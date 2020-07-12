@@ -1,9 +1,9 @@
-package ifsc.sti.tcc.resources.rest.models.login.response.mappers;
+package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.props.EPerfilUsuario;
-import ifsc.sti.tcc.resources.rest.mapers.MapperUtil;
-import ifsc.sti.tcc.resources.rest.models.login.response.AlunoResponse;
+import ifsc.sti.tcc.resources.rest.models.usuario.login.response.AlunoResponse;
+import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class AlunoMapper extends MapperUtil<Aluno, AlunoResponse> {
 

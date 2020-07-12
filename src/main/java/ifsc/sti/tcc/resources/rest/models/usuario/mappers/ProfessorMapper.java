@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.login.response.mappers;
+package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.props.EPerfilUsuario;
-import ifsc.sti.tcc.resources.rest.mapers.MapperUtil;
-import ifsc.sti.tcc.resources.rest.models.login.response.DisciplinaResponse;
-import ifsc.sti.tcc.resources.rest.models.login.response.ProfessorResponse;
+import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
+import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ProfessorResponse;
+import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class ProfessorMapper extends MapperUtil<Professor, ProfessorResponse> {
 

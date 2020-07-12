@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.login.response;
+package ifsc.sti.tcc.resources.rest.models.usuario.login.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

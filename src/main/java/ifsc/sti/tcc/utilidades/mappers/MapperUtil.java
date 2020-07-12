@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.mapers;
+package ifsc.sti.tcc.utilidades.mappers;
 
 import java.util.ArrayList;
 import java.util.List;
