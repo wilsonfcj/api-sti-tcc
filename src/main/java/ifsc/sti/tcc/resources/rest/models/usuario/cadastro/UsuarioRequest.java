@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.props.EPerfilUsuario;
-import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
 import ifsc.sti.tcc.utilidades.ValidateUtil;
 import ifsc.sti.tcc.utilidades.ValidatedField;
 

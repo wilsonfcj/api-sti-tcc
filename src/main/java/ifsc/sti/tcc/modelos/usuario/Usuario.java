@@ -4,6 +4,7 @@ import java.util.Date;
 
 import ifsc.sti.tcc.utilidades.UserUtil;
 
+
 public class Usuario {
 
 	private Long id;

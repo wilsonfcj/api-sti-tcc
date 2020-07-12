@@ -89,18 +89,16 @@ public class UsuarioApi {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		ValidatedField validatedField = usuarioRequest.validarCampos();
 		if(validatedField.getSuccess()) {
-			// Salvar
 			Usuario usuario = Usuario.buscarUsuarioCPF("09518747997");
 			if(usuario instanceof Aluno) {
 				AlunoMapper mappper = new AlunoMapper();
 				AlunoResponse response = mappper.transform((Aluno) usuario);
-				baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
+				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", response);
 			} else  {
 				ProfessorMapper mappper = new ProfessorMapper();
 				ProfessorResponse response = mappper.transform((Professor) usuario);
-				baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
+				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", response);
 			}
-			baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuário cadastrado com sucesso", null);
 		} else {
 			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, validatedField.getMsm(), null);
 		}
