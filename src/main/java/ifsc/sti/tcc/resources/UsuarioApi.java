@@ -32,33 +32,33 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "API REST STI")
 public class UsuarioApi {
 	
+//	@ApiOperation(value = "Realiza a autenticação dos usuários")
+//	@RequestMapping(value = "/Login", method = RequestMethod.POST)
+//	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> login(@RequestBody @Valid LoginRequest loginRequest) {
+//		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
+//		Usuario usuario = Usuario.buscarUsuarioCPF(loginRequest.getCpf());
+//		if(usuario != null) {
+//			if(Usuario.autenticarUsuario(usuario, loginRequest.getSenha())) {
+//				if(usuario instanceof Aluno) {
+//					AlunoMapper mappper = new AlunoMapper();
+//					AlunoResponse response = mappper.transform((Aluno) usuario);
+//					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
+//				} else  {
+//					ProfessorMapper mappper = new ProfessorMapper();
+//					ProfessorResponse response = mappper.transform((Professor) usuario);
+//					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
+//				}
+//			} else {
+//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//			}
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
+//	}
+//	
 	@ApiOperation(value = "Realiza a autenticação dos usuários")
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> login(@RequestBody @Valid LoginRequest loginRequest) {
-		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
-		Usuario usuario = Usuario.buscarUsuarioCPF(loginRequest.getCpf());
-		if(usuario != null) {
-			if(Usuario.autenticarUsuario(usuario, loginRequest.getSenha())) {
-				if(usuario instanceof Aluno) {
-					AlunoMapper mappper = new AlunoMapper();
-					AlunoResponse response = mappper.transform((Aluno) usuario);
-					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-				} else  {
-					ProfessorMapper mappper = new ProfessorMapper();
-					ProfessorResponse response = mappper.transform((Professor) usuario);
-					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-				}
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
-	}
-	
-	@ApiOperation(value = "Realiza a autenticação dos usuários")
-	@RequestMapping(value = "/LoginMob", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> loginMob(@RequestBody @Valid LoginRequest loginRequest) {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		Usuario usuario = Usuario.buscarUsuarioCPF(loginRequest.getCpf());
