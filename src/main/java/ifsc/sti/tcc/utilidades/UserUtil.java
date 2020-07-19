@@ -55,10 +55,10 @@ public class UserUtil {
 		List<EDisciplina> disciplinas = new ArrayList<>();
 		disciplinas.add(EDisciplina.COMPILADORES);
 		disciplinas.add(EDisciplina.ESTRUTURAS_DE_DADOS);
-		disciplinas.add(EDisciplina.INTELIGÊNCIA_ARTIFICIAL);
-		disciplinas.add(EDisciplina.INTRODUÇÃO_A_PROGRAMAÇÃO);
-		disciplinas.add(EDisciplina.MODELAGEM_E_SIMULAÇÃO);
-		professor.setDisciplinas(disciplinas);
+		disciplinas.add(EDisciplina.INTELIGENCIA_ARTIFICIAL);
+		disciplinas.add(EDisciplina.INTRODUCAO_A_PROGRAMACAO);
+		disciplinas.add(EDisciplina.MODELAGEM_E_SIMULACAO);
+//		professor.setDisciplinas(disciplinas);
 		
 		usuarios.add(aluno1);
 		usuarios.add(aluno2);

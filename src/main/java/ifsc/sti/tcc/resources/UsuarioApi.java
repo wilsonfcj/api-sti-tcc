@@ -1,25 +1,35 @@
 package ifsc.sti.tcc.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ifsc.sti.tcc.modelos.disciplina.DisciplinaInteresse;
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
+import ifsc.sti.tcc.repository.DisciplinaRepository;
+import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
-import ifsc.sti.tcc.resources.rest.models.usuario.login.response.AlunoResponse;
+import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ProfessorResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.UsuarioBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.mappers.AlunoMapper;
+import ifsc.sti.tcc.resources.rest.models.usuario.mappers.DisciplinaMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.mappers.ProfessorMapper;
 import ifsc.sti.tcc.utilidades.ValidatedField;
 import io.swagger.annotations.Api;
@@ -32,47 +42,64 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "API REST STI")
 public class UsuarioApi {
 	
-//	@ApiOperation(value = "Realiza a autenticação dos usuários")
-//	@RequestMapping(value = "/Login", method = RequestMethod.POST)
-//	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> login(@RequestBody @Valid LoginRequest loginRequest) {
-//		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
-//		Usuario usuario = Usuario.buscarUsuarioCPF(loginRequest.getCpf());
-//		if(usuario != null) {
-//			if(Usuario.autenticarUsuario(usuario, loginRequest.getSenha())) {
-//				if(usuario instanceof Aluno) {
-//					AlunoMapper mappper = new AlunoMapper();
-//					AlunoResponse response = mappper.transform((Aluno) usuario);
-//					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-//				} else  {
-//					ProfessorMapper mappper = new ProfessorMapper();
-//					ProfessorResponse response = mappper.transform((Professor) usuario);
-//					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-//				}
-//			} else {
-//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//			}
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
-//	}
-//	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private DisciplinaRepository disciplinaRepository;
+	
+	@ApiOperation(value = "Busca a lista de usuários cadastrados")
+	@GetMapping("/BuscarUsuarios")
+	public ResponseEntity<ResponseBase<List<UsuarioBaseResponse>>> getAlunosUsers() {
+		ResponseBase<List<UsuarioBaseResponse>> baseResponse = new ResponseBase<>();
+		List<Usuario> usuarios = usuarioRepository.findAll();
+		List<UsuarioBaseResponse> usuarioBaseResponses = new ArrayList<UsuarioBaseResponse>();
+		for(Usuario usuario : usuarios) {
+			usuarioBaseResponses.add(converterUsuario(usuario));
+		}
+		baseResponse = new ResponseBase<>(usuarioBaseResponses.size() > 0,
+				usuarioBaseResponses.size() > 0 ? 
+						"Informações carredas com sucesso" : 
+						"Nenhum usuário cadastrado",
+				usuarioBaseResponses);
+		
+		return new ResponseEntity<ResponseBase<List<UsuarioBaseResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "Busca um usuários por seu Identificador")
+	@GetMapping("/BuscarUsuarioId")
+	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> buscarUsuarioPorId(@RequestParam Long id) {
+		Usuario usuario = usuarioRepository.findById((long) id);
+		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
+		if(usuario != null) {
+			baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", converterUsuario(usuario));
+		} else {
+			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario não encontrado", null);
+		}
+		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
+	}
+	
+	
+	@ApiOperation(value = "Busca um usuário por seu cpf")
+	@GetMapping("/BuscarUsuarioCPF")
+	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> buscarUsuarioPorCPF(@RequestParam  String cpf) {
+		Usuario usuario = usuarioRepository.findByCpf(cpf);
+		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
+		if(usuario != null) {
+			baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", converterUsuario(usuario));
+		} else {
+			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario não encontrado", null);
+		}
+		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
+	}
+	
 	@ApiOperation(value = "Realiza a autenticação dos usuários")
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> loginMob(@RequestBody @Valid LoginRequest loginRequest) {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
-		Usuario usuario = Usuario.buscarUsuarioCPF(loginRequest.getCpf());
+		Usuario usuario = usuarioRepository.findByCpf(loginRequest.getCpf());
 		if(usuario != null) {
 			if(Usuario.autenticarUsuario(usuario, loginRequest.getSenha())) {
-				if(usuario instanceof Aluno) {
-					AlunoMapper mappper = new AlunoMapper();
-					AlunoResponse response = mappper.transform((Aluno) usuario);
-					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-				} else  {
-					ProfessorMapper mappper = new ProfessorMapper();
-					ProfessorResponse response = mappper.transform((Professor) usuario);
-					baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", response);
-				}
+				baseResponse = new ResponseBase<>(true, "Informações carredas com sucesso", converterUsuario(usuario));
 			} else {
 				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuário ou Senha inválida", null);
 			}
@@ -89,20 +116,37 @@ public class UsuarioApi {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		ValidatedField validatedField = usuarioRequest.validarCampos();
 		if(validatedField.getSuccess()) {
-			Usuario usuario = Usuario.buscarUsuarioCPF("09518747997");
-			if(usuario instanceof Aluno) {
-				AlunoMapper mappper = new AlunoMapper();
-				AlunoResponse response = mappper.transform((Aluno) usuario);
-				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", response);
-			} else  {
-				ProfessorMapper mappper = new ProfessorMapper();
-				ProfessorResponse response = mappper.transform((Professor) usuario);
-				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", response);
+			if(usuarioRepository.findByCpf(usuarioRequest.getCpf()) == null) {
+//				usuarioRepository.save(entity)
+//				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", converterUsuario(usuario));
+			} else {
+				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario já cadastrado", null);
 			}
 		} else {
 			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, validatedField.getMsm(), null);
 		}
 		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
 	}
+	
+	private UsuarioBaseResponse converterUsuario(Usuario usuario) {
+		if(usuario instanceof Aluno) {
+			AlunoMapper mappper = new AlunoMapper();
+			return mappper.transform((Aluno) usuario);
+		} else {
+			ProfessorMapper mappper = new ProfessorMapper();
+			ProfessorResponse professorResponse = mappper.transform((Professor) usuario);
+			professorResponse.setDisciplinas(consultarDisplinas(usuario.getId()));
+			return professorResponse;
+		}
+	}
+	
+	private List<DisciplinaResponse> consultarDisplinas(Long idUsuario) {
+		List<DisciplinaInteresse> disciplinaInteresses = disciplinaRepository.findByIdUsuario((long)idUsuario);
+		return new DisciplinaMapper().transform(disciplinaInteresses);
+	}
+	
+//	private saveUsuario() {
+//		
+//	}
 
 }

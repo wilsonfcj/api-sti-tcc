@@ -1,27 +1,35 @@
 package ifsc.sti.tcc.modelos.usuario;
 
-import java.util.List;
+import java.io.Serializable;
 
-import ifsc.sti.tcc.props.EDisciplina;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-public class Professor extends Usuario {
+@Entity
+@DiscriminatorValue(value = "P")
+public class Professor extends Usuario implements Serializable {
 
-	private List<EDisciplina> disciplinas;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+//	private List<Disciplina> disciplinas;
 	
 	public Professor() {
 		super();
 	}
 
-	public Professor(List<EDisciplina> disciplinas) {
-		super();
-		this.disciplinas = disciplinas;
-	}
-
-	public List<EDisciplina> getDisciplinas() {
-		return disciplinas;
-	}
-
-	public void setDisciplinas(List<EDisciplina> disciplinas) {
-		this.disciplinas = disciplinas;
-	}
+//	public Professor(List<Disciplina> disciplinas) {
+//		super();
+//		this.disciplinas = disciplinas;
+//	}
+//
+//	public List<Disciplina> getDisciplinas() {
+//		return disciplinas;
+//	}
+//
+//	public void setDisciplinas(List<Disciplina> disciplinas) {
+//		this.disciplinas = disciplinas;
+//	}
 }

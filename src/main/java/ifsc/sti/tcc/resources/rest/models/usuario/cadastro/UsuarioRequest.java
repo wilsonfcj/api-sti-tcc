@@ -178,13 +178,6 @@ public class UsuarioRequest {
 			return new ValidatedField("Informe um nome válido", false);
 		}
 
-		switch (nomeValido()) {
-		case ValidateUtil.STRING_LONGA:
-			return new ValidatedField("Nome deve conter no máximo 200 caracteres", false);
-		case ValidateUtil.STRING_VAZIA:
-			return new ValidatedField("Informe o nome", false);
-		}
-
 		switch (foneValido()) {
 		case ValidateUtil.STRING_LONGA:
 			return new ValidatedField("O telefone deve conter no máximo 14 caracteres", false);

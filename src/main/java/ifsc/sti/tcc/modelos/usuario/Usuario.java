@@ -1,12 +1,29 @@
 package ifsc.sti.tcc.modelos.usuario;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import ifsc.sti.tcc.utilidades.UserUtil;
 
+@Entity
+@Table(name = "usuario")
+public class Usuario implements Serializable {
 
-public class Usuario {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8406291256835657000L;
+	
+	@Id
+	@Column(name = "id_usuario")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String cpf;
 	private Date nascimento;

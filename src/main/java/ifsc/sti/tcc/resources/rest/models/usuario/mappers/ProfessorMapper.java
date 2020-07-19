@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ifsc.sti.tcc.modelos.usuario.Professor;
-import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ProfessorResponse;
@@ -24,9 +23,9 @@ public class ProfessorMapper extends MapperUtil<Professor, ProfessorResponse> {
 		professorResponse.setNome(aObject.getNome());
 		
 		List<DisciplinaResponse> disciplinas = new ArrayList<DisciplinaResponse>();
-		for (EDisciplina disciplina : aObject.getDisciplinas()) {
-			disciplinas.add(new DisciplinaResponse(disciplina.codigo, disciplina.descricao));
-		}
+//		for (EDisciplina disciplina : aObject.getDisciplinas()) {
+//			disciplinas.add(new DisciplinaResponse(disciplina.codigo, disciplina.descricao));
+//		}
 		professorResponse.setDisciplinas(disciplinas);
 		professorResponse.setPerfilUsuario(EPerfilUsuario.PROFESSOR.codigo);
 		return professorResponse;
