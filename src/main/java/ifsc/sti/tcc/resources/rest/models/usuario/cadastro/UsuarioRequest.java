@@ -31,7 +31,7 @@ public class UsuarioRequest {
 	private String instituicao;
 
 	@JsonProperty(value = "ImagemUsuario")
-	private Imagem imagemPerfil;
+	private String imagemPerfil;
 
 	@JsonProperty(value = "TipoUsuario")
 	private Integer perfilUsuario;
@@ -96,11 +96,11 @@ public class UsuarioRequest {
 		this.instituicao = instituicao;
 	}
 
-	public Imagem getImagemPerfil() {
+	public String getImagemPerfil() {
 		return imagemPerfil;
 	}
 
-	public void setImagemPerfil(Imagem imagemPerfil) {
+	public void setImagemPerfil(String imagemPerfil) {
 		this.imagemPerfil = imagemPerfil;
 	}
 
@@ -181,8 +181,6 @@ public class UsuarioRequest {
 		switch (foneValido()) {
 		case ValidateUtil.STRING_LONGA:
 			return new ValidatedField("O telefone deve conter no máximo 14 caracteres", false);
-		case ValidateUtil.STRING_VAZIA:
-			return new ValidatedField("Informe o telefone", false);
 		case ValidateUtil.STRING_INVALIDA:
 			return new ValidatedField("Número de celular inválido", false);
 		}

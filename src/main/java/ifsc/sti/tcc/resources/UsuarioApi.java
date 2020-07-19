@@ -20,15 +20,19 @@ import ifsc.sti.tcc.modelos.disciplina.DisciplinaInteresse;
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
+import ifsc.sti.tcc.props.EDisciplina;
+import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.repository.DisciplinaRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.DeletarRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ProfessorResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.UsuarioBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.mappers.AlunoMapper;
+import ifsc.sti.tcc.resources.rest.models.usuario.mappers.CadastroMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.mappers.DisciplinaMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.mappers.ProfessorMapper;
 import ifsc.sti.tcc.utilidades.ValidatedField;
@@ -116,9 +120,17 @@ public class UsuarioApi {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		ValidatedField validatedField = usuarioRequest.validarCampos();
 		if(validatedField.getSuccess()) {
-			if(usuarioRepository.findByCpf(usuarioRequest.getCpf()) == null) {
-//				usuarioRepository.save(entity)
-//				baseResponse = new ResponseBase<>(true, "Usuário cadastrado com sucesso", converterUsuario(usuario));
+			if(usuarioRepository.findByCpf(usuarioRequest.getCpf()) == null) { 
+				Usuario usuario = salvarUsuario(usuarioRequest);
+				if(usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
+					salvarDisciplinas(usuario, usuarioRequest.getDisciplinas());
+				}
+				if(usuario != null) {
+					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario cadastrado com sucesso", converterUsuario(usuario));
+				} else {
+					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Não foi possível cadastrar o usuário, tente novamente mais tarde",
+							converterUsuario(usuario));
+				}
 			} else {
 				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario já cadastrado", null);
 			}
@@ -127,6 +139,29 @@ public class UsuarioApi {
 		}
 		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
 	}
+	
+	
+//	@ApiOperation(value = "Realiza o cadastro dos usuários")
+//	@RequestMapping(value = "/DeletarUsuario", method = RequestMethod.POST)
+//	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> deletar(@RequestBody @Valid DeletarRequest deletarRequest) {
+//		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
+//		Usuario usuario = usuarioRepository.findByCpf(deletarRequest.getCpf());
+//		if(usuario != null) {
+//			if(Usuario.autenticarUsuario(usuario, deletarRequest.getSenha())) {
+//				Usuario usuarioRemovido = usuarioRepository.deleteByCpf(deletarRequest.getCpf());
+//				if(usuarioRemovido != null) {
+//					baseResponse = new ResponseBase<>(true, "Usuário removido do sistema com sucesso", converterUsuario(usuarioRemovido));
+//				} else {
+//					baseResponse = new ResponseBase<>(true, "Não foi possível remover o usuário, tente novamente mais tarde", converterUsuario(usuarioRemovido));
+//				}
+//			} else {
+//				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuário ou Senha inválida", null);
+//			}
+//		} else {
+//			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Não foi possível remover o usuário, tente novamente mais tarde", null);
+//		}
+//		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
+//	}
 	
 	private UsuarioBaseResponse converterUsuario(Usuario usuario) {
 		if(usuario instanceof Aluno) {
@@ -145,8 +180,16 @@ public class UsuarioApi {
 		return new DisciplinaMapper().transform(disciplinaInteresses);
 	}
 	
-//	private saveUsuario() {
-//		
-//	}
+	private Usuario salvarUsuario(UsuarioRequest usuarioRequest) {
+		Usuario usuarioCadastro = new CadastroMapper().transform(usuarioRequest);
+		Usuario usuario = usuarioRepository.save(usuarioCadastro);
+		return usuario;
+	}
+	
+	private void salvarDisciplinas(Usuario usuario, List<Integer> disciplinas) {
+		for(Integer cod : disciplinas) {
+			disciplinaRepository.save(new DisciplinaInteresse(cod, usuario.getId(), EDisciplina.getEnum(cod).descricao));
+		}
+	}
 
 }

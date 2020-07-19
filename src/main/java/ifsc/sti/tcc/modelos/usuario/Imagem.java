@@ -23,6 +23,15 @@ public class Imagem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String perfil;
+	
+	public Imagem() {
+		super();
+	}
+
+	public Imagem(String perfil) {
+		super();
+		this.perfil = perfil;
+	}
 
 	public String getPerfil() {
 		return perfil;

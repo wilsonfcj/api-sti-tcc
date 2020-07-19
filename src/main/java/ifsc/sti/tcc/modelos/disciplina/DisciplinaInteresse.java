@@ -3,7 +3,6 @@ package ifsc.sti.tcc.modelos.disciplina;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +25,23 @@ public class DisciplinaInteresse implements Serializable{
 	private Integer cod;
 	private Long idUsuario;
 	private String descricao;
+	
+	
+
+	public DisciplinaInteresse() {
+		super();
+	}
+	
+	
+
+	public DisciplinaInteresse(Integer cod, Long idUsuario, String descricao) {
+		super();
+		this.cod = cod;
+		this.idUsuario = idUsuario;
+		this.descricao = descricao;
+	}
+
+
 
 	public String getDescricao() {
 		return descricao;

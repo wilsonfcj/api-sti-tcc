@@ -19,7 +19,7 @@ public enum EDisciplina {
 //	FASE 3
 	ESTRUTURAS_DE_DADOS (8,"ESTRUTURAS DE DADOS"),
 	SISTEMAS_OPERACIONAIS (9,"SISTEMAS OPERACIONAIS"),
-	DESENVOLVIMENTO_DE_APLICAÇÕES_ORIENTADAS_A_OBJETOS (10,"DESENVOLVIMENTO DE APLICAÇÕES ORIENTADAS A OBJETOS	"),
+	DESENVOLVIMENTO_DE_APLICAÇÕES_ORIENTADAS_A_OBJETOS (10,"DESENVOLVIMENTO DE APLICAÇÕES ORIENTADAS A OBJETOS"),
 	REDES_DE_COMPUTADORES (11,"REDES DE COMPUTADORES"),
 	CALCULO (12,"CÁLCULO"),
 	
@@ -49,7 +49,7 @@ public enum EDisciplina {
 	public int codigo;
 	public String descricao;
 	
-	public EDisciplina getSituacao(int aCod) {
+	public static EDisciplina getEnum(int aCod) {
 		for (EDisciplina lSituacao :  EDisciplina.values()) {
 			if(lSituacao.codigo == aCod) {
 				return lSituacao;
@@ -58,7 +58,7 @@ public enum EDisciplina {
 		return DEFAULT;
 	}
 	
-	public EDisciplina getSituacao(String aSituacao) {
+	public static EDisciplina getEnum(String aSituacao) {
 		for (EDisciplina lSituacao :  EDisciplina.values()) {
 			if(lSituacao.descricao.equalsIgnoreCase(aSituacao)) {
 				return lSituacao;
@@ -66,4 +66,5 @@ public enum EDisciplina {
 		}
 		return DEFAULT;
 	}
+	
 }
