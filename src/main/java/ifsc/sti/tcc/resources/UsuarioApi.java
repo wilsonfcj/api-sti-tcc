@@ -25,7 +25,6 @@ import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.repository.DisciplinaRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.DeletarRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;

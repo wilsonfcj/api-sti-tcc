@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.utilidades.ValidateUtil;
 import ifsc.sti.tcc.utilidades.ValidatedField;
