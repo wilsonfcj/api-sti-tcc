@@ -140,28 +140,6 @@ public class UsuarioApi {
 	}
 	
 	
-//	@ApiOperation(value = "Realiza o cadastro dos usuários")
-//	@RequestMapping(value = "/DeletarUsuario", method = RequestMethod.POST)
-//	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> deletar(@RequestBody @Valid DeletarRequest deletarRequest) {
-//		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
-//		Usuario usuario = usuarioRepository.findByCpf(deletarRequest.getCpf());
-//		if(usuario != null) {
-//			if(Usuario.autenticarUsuario(usuario, deletarRequest.getSenha())) {
-//				Usuario usuarioRemovido = usuarioRepository.deleteByCpf(deletarRequest.getCpf());
-//				if(usuarioRemovido != null) {
-//					baseResponse = new ResponseBase<>(true, "Usuário removido do sistema com sucesso", converterUsuario(usuarioRemovido));
-//				} else {
-//					baseResponse = new ResponseBase<>(true, "Não foi possível remover o usuário, tente novamente mais tarde", converterUsuario(usuarioRemovido));
-//				}
-//			} else {
-//				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuário ou Senha inválida", null);
-//			}
-//		} else {
-//			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Não foi possível remover o usuário, tente novamente mais tarde", null);
-//		}
-//		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
-//	}
-	
 	private UsuarioBaseResponse converterUsuario(Usuario usuario) {
 		if(usuario instanceof Aluno) {
 			AlunoMapper mappper = new AlunoMapper();
@@ -185,9 +163,9 @@ public class UsuarioApi {
 		return usuario;
 	}
 	
-	private void salvarDisciplinas(Usuario usuario, List<Integer> disciplinas) {
-		for(Integer cod : disciplinas) {
-			disciplinaRepository.save(new DisciplinaInteresse(cod, usuario.getId(), EDisciplina.getEnum(cod).descricao));
+	private void salvarDisciplinas(Usuario usuario, List<String> disciplinas) {
+		for(String cod : disciplinas) {
+			disciplinaRepository.save(new DisciplinaInteresse(EDisciplina.getEnum(cod.trim()).codigo, usuario.getId(), EDisciplina.getEnum(cod.trim()).descricao));
 		}
 	}
 

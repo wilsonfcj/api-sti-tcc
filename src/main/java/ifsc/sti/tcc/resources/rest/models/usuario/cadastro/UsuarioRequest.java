@@ -42,7 +42,7 @@ public class UsuarioRequest {
 	private Integer anoIngresso;
 	
 	@JsonProperty(value="DisciplinasInteressadas")
-	private List<Integer> disciplinas;
+	private List<String> disciplinas;
 	
 	@JsonProperty(value = "Senha")
 	private String senha;
@@ -127,11 +127,11 @@ public class UsuarioRequest {
 		this.anoIngresso = anoIngresso;
 	}
 
-	public List<Integer> getDisciplinas() {
+	public List<String> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Integer> disciplinas) {
+	public void setDisciplinas(List<String> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 
