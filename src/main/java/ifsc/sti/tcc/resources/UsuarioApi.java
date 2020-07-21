@@ -23,8 +23,10 @@ import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.repository.DisciplinaRepository;
+import ifsc.sti.tcc.repository.ImagemRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.DeletarRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
@@ -49,6 +51,8 @@ public class UsuarioApi {
 	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private DisciplinaRepository disciplinaRepository;
+	@Autowired
+	private ImagemRepository imagemRepository;
 	
 	@ApiOperation(value = "Busca a lista de usuários cadastrados")
 	@GetMapping("/BuscarUsuarios")
@@ -125,7 +129,7 @@ public class UsuarioApi {
 					salvarDisciplinas(usuario, usuarioRequest.getDisciplinas());
 				}
 				if(usuario != null) {
-					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario cadastrado com sucesso", converterUsuario(usuario));
+					baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario cadastrado com sucesso", converterUsuario(usuario));
 				} else {
 					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Não foi possível cadastrar o usuário, tente novamente mais tarde",
 							converterUsuario(usuario));
@@ -139,6 +143,24 @@ public class UsuarioApi {
 		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	
+//	@ApiOperation(value = "Deleta o usuário conforme seu CPF e Senha")
+//	@RequestMapping(value = "/DeletePorCPF", method = RequestMethod.POST)
+//	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> removerUsuario(@RequestBody @Valid LoginRequest loginRequest) {
+//		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
+//		Usuario usuario = usuarioRepository.findByCpf(loginRequest.getCpf());
+//		if(usuario != null) {
+//			if(Usuario.autenticarUsuario(usuario, loginRequest.getSenha())) {
+////				usuarioRepository.delete(usuario);
+//				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuário removido com sucesso", null);
+//			} else {
+//				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuário ou Senha inválida", null);
+//			}
+//		} else {
+//			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Não foi possível carregar as informações", null);
+//		}
+//		return new ResponseEntity<ResponseBase<UsuarioBaseResponse>>(baseResponse, HttpStatus.OK);
+//	}
 	
 	private UsuarioBaseResponse converterUsuario(Usuario usuario) {
 		if(usuario instanceof Aluno) {
