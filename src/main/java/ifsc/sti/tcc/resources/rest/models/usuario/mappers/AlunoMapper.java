@@ -15,7 +15,6 @@ public class AlunoMapper extends MapperUtil<Aluno, AlunoResponse> {
 		alunoResponse.setEmail(aObject.getEmail());
 		alunoResponse.setAnoIngresso(aObject.getAnoIngresso());
 		alunoResponse.setFone(aObject.getFone());
-		alunoResponse.setImagemPerfil(aObject.getImagemPerfil());
 		alunoResponse.setNascimento(aObject.getNascimento());
 		alunoResponse.setMatricula(aObject.getMatricula());
 		alunoResponse.setNome(aObject.getNome());

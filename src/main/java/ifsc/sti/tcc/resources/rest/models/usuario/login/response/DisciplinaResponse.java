@@ -1,6 +1,11 @@
 package ifsc.sti.tcc.resources.rest.models.usuario.login.response;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ifsc.sti.tcc.modelos.disciplina.DisciplinaInteresse;
+import ifsc.sti.tcc.resources.rest.models.usuario.mappers.DisciplinaMapper;
 
 public class DisciplinaResponse {
 
@@ -37,5 +42,7 @@ public class DisciplinaResponse {
 	}
 
 	
-	
+	public static List<DisciplinaResponse> convertDisciplinas(final List<DisciplinaInteresse> disciplinaInteresses) {
+		return new DisciplinaMapper().transform(disciplinaInteresses);
+	}
 }

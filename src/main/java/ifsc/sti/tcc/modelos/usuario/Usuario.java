@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 	private String fone;	
 	private String senha;
 	private String instituicao;
-	private Imagem imagemPerfil;
+//	private Imagem imagemPerfil;
 	
 	public Long getId() {
 		return id;
@@ -96,14 +96,6 @@ public class Usuario implements Serializable {
 	
 	public void setInstituicao(String instituicao) {
 		this.instituicao = instituicao;
-	}
-	
-	public Imagem getImagemPerfil() {
-		return imagemPerfil;
-	}
-	
-	public void setImagemPerfil(Imagem imagemPerfil) {
-		this.imagemPerfil = imagemPerfil;
 	}
 	
 	public static Usuario buscarUsuarioCPF(String cpf) {

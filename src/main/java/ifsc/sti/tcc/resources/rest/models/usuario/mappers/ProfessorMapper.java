@@ -18,14 +18,11 @@ public class ProfessorMapper extends MapperUtil<Professor, ProfessorResponse> {
 		professorResponse.setCpf(aObject.getCpf());
 		professorResponse.setEmail(aObject.getEmail());
 		professorResponse.setFone(aObject.getFone());
-		professorResponse.setImagemPerfil(aObject.getImagemPerfil());
 		professorResponse.setNascimento(aObject.getNascimento());
 		professorResponse.setNome(aObject.getNome());
+		professorResponse.setInstituicao(aObject.getInstituicao());
 		
 		List<DisciplinaResponse> disciplinas = new ArrayList<DisciplinaResponse>();
-//		for (EDisciplina disciplina : aObject.getDisciplinas()) {
-//			disciplinas.add(new DisciplinaResponse(disciplina.codigo, disciplina.descricao));
-//		}
 		professorResponse.setDisciplinas(disciplinas);
 		professorResponse.setPerfilUsuario(EPerfilUsuario.PROFESSOR.codigo);
 		return professorResponse;

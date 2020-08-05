@@ -4,8 +4,6 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import ifsc.sti.tcc.modelos.usuario.Imagem;
-
 public abstract class UsuarioBaseResponse {
 	
 	@JsonProperty(value="IdUsuario")
@@ -30,7 +28,7 @@ public abstract class UsuarioBaseResponse {
 	private String instituicao;
 	
 	@JsonProperty(value="ImagemUsuario")
-	private Imagem imagemPerfil;
+	private String imagemPerfil;
 	
 	@JsonProperty(value="TipoUsuario")
 	private Integer perfilUsuario;
@@ -91,11 +89,11 @@ public abstract class UsuarioBaseResponse {
 		this.instituicao = instituicao;
 	}
 	
-	public Imagem getImagemPerfil() {
+	public String getImagemPerfil() {
 		return imagemPerfil;
 	}
 	
-	public void setImagemPerfil(Imagem imagemPerfil) {
+	public void setImagemPerfil(String imagemPerfil) {
 		this.imagemPerfil = imagemPerfil;
 	}
 

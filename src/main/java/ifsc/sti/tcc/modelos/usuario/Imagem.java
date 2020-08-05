@@ -22,6 +22,9 @@ public class Imagem implements Serializable {
 	@Column(name = "id_imagem")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	private Long idUsuario;
+	
+	@Column(columnDefinition="TEXT")
 	private String perfil;
 	
 	public Imagem() {
@@ -32,6 +35,17 @@ public class Imagem implements Serializable {
 		super();
 		this.perfil = perfil;
 	}
+	
+	public Imagem(Long idUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+	}
+	
+	public Imagem(Long idUsuario, String perfil) {
+		super();
+		this.idUsuario = idUsuario;
+		this.perfil = perfil;
+	}
 
 	public String getPerfil() {
 		return perfil;
@@ -40,5 +54,22 @@ public class Imagem implements Serializable {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 }
