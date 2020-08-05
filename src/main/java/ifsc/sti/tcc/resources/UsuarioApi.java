@@ -228,7 +228,7 @@ public class UsuarioApi {
 	
 	private Imagem alterarImagem(Long idUsuario, String usuarioImagem) {
 		Imagem imagem = imagemRepository.findByIdUsuario(idUsuario);
-		if(imagem != null) {
+		if(imagem == null) {
 			imagem = new Imagem(idUsuario); 
 		}
 		imagem.setPerfil(usuarioImagem);
