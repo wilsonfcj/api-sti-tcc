@@ -12,7 +12,6 @@ public interface DisciplinaRepository extends JpaRepository<DisciplinaInteresse,
   List<DisciplinaInteresse> findByDescricao(String descricao);
   List<DisciplinaInteresse> findByIdUsuario(long idUsuario);
   
-  
   @Query(value = "DELETE FROM disciplina_interesse WHERE id_usuario = ?1", nativeQuery = true)
   List<DisciplinaInteresse> deleteByIdUsuario(long idUsuario);
   
