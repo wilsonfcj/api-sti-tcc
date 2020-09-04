@@ -22,7 +22,7 @@ public class UserUtil {
 		aluno1.setEmail("wilsonfernandes382@gmail.com");
 		aluno1.setNome("Wilson Fernandes Cordova Junior");
 		aluno1.setNascimento(DateUtil.criarData(23, 10, 1995));
-		aluno1.setInstituicao("Instituto Federal De Santa Catarina");;
+//		aluno1.setInstituicao("Instituto Federal De Santa Catarina");;
 		aluno1.setSenha("123456");
 		aluno1.setId(1l);
 		
@@ -36,7 +36,7 @@ public class UserUtil {
 		aluno2.setEmail("correiaribeirotiago@gmail.com");
 		aluno2.setNome("Tiago Correia Ribeiro");
 		aluno2.setNascimento(DateUtil.criarData(11, 01, 1999));
-		aluno2.setInstituicao("Instituto Federal De Santa Catarina");;
+//		aluno2.setInstituicao("Instituto Federal De Santa Catarina");;
 		aluno2.setSenha("123456");
 		aluno2.setId(2l);
 		
@@ -48,7 +48,7 @@ public class UserUtil {
 		professor.setEmail("professorteste@gmail.com");
 		professor.setNome("Professor Teste WebService");
 		professor.setNascimento(DateUtil.criarData(11, 01, 1999));
-		professor.setInstituicao("Instituto Federal De Santa Catarina");;
+//		professor.setInstituicao("Instituto Federal De Santa Catarina");;
 		professor.setSenha("1234567");
 		professor.setId(3l);
 		

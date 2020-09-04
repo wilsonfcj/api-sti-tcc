@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
+package ifsc.sti.tcc.resources.rest.models.mappers;
 
 import ifsc.sti.tcc.modelos.disciplina.DisciplinaInteresse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
@@ -13,4 +13,5 @@ public class DisciplinaMapper extends MapperUtil<DisciplinaInteresse, Disciplina
 		objeto.setNome(aObject.getDescricao());
 		return objeto;
 	}
+
 }

@@ -31,7 +31,8 @@ public class Usuario implements Serializable {
 	private String email;
 	private String fone;	
 	private String senha;
-	private String instituicao;
+	private Long instituicao;
+	private Boolean ativo;
 //	private Imagem imagemPerfil;
 	
 	public Long getId() {
@@ -90,14 +91,22 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 	
-	public String getInstituicao() {
+	public Long getInstituicao() {
 		return instituicao;
 	}
 	
-	public void setInstituicao(String instituicao) {
+	public void setInstituicao(Long instituicao) {
 		this.instituicao = instituicao;
 	}
 	
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	public static Usuario buscarUsuarioCPF(String cpf) {
 		return UserUtil.buscarUsuarioCPF(cpf); // Provisorios pois pegaremos essas informações do banco
 	}

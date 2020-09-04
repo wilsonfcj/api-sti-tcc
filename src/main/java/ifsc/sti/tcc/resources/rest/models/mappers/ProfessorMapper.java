@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
+package ifsc.sti.tcc.resources.rest.models.mappers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,12 @@ public class ProfessorMapper extends MapperUtil<Professor, ProfessorResponse> {
 		professorResponse.setFone(aObject.getFone());
 		professorResponse.setNascimento(aObject.getNascimento());
 		professorResponse.setNome(aObject.getNome());
-		professorResponse.setInstituicao(aObject.getInstituicao());
+//		professorResponse.setInstituicao(aObject.getInstituicao());
 		
 		List<DisciplinaResponse> disciplinas = new ArrayList<DisciplinaResponse>();
 		professorResponse.setDisciplinas(disciplinas);
 		professorResponse.setPerfilUsuario(EPerfilUsuario.PROFESSOR.codigo);
 		return professorResponse;
 	}
+
 }

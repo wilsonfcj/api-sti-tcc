@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
+package ifsc.sti.tcc.resources.rest.models.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.props.EPerfilUsuario;
@@ -18,8 +18,9 @@ public class AlunoMapper extends MapperUtil<Aluno, AlunoResponse> {
 		alunoResponse.setNascimento(aObject.getNascimento());
 		alunoResponse.setMatricula(aObject.getMatricula());
 		alunoResponse.setNome(aObject.getNome());
-		alunoResponse.setInstituicao(aObject.getInstituicao());
+//		alunoResponse.setInstituicao(aObject.getInstituicao());
 		alunoResponse.setPerfilUsuario(EPerfilUsuario.ALUNO.codigo);
 		return alunoResponse;
 	}
+
 }

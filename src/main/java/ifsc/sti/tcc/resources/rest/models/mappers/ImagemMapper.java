@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
+package ifsc.sti.tcc.resources.rest.models.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ImagemResponse;
@@ -10,4 +10,5 @@ public class ImagemMapper extends MapperUtil<Imagem, ImagemResponse> {
 	public ImagemResponse transform(Imagem aObject) {
 		return new ImagemResponse(aObject.getId(), aObject.getPerfil());
 	}
+
 }

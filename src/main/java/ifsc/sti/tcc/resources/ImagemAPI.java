@@ -58,7 +58,7 @@ public class ImagemAPI {
 	}
 	
 	@ApiOperation(value = "Alterar imagem por ID usuário")
-	@RequestMapping(value = "/AlterarImagemPorId", method = RequestMethod.POST)
+	@RequestMapping(value = "/AlterarImagemPorId", method = RequestMethod.PUT)
 	public ResponseEntity<ResponseBase<ImagemResponse>> alterarImagemId(@RequestBody @Valid ImageUpdateRequest idUsuario) {
 		ImagemService lUsuarioService = new ImagemService.Instance(imagemRepository).build();
 		return lUsuarioService.alterar(idUsuario);

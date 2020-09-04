@@ -40,14 +40,14 @@ public class DisciplinaAPI {
 	}
 	
 	@ApiOperation(value = "Deleta a disciplina por código e id do usuário")
-	@RequestMapping(value = "/DeletarDisciplinaPorCod", method = RequestMethod.POST)
+	@RequestMapping(value = "/DeletarDisciplinaPorCod", method = RequestMethod.DELETE)
 	public ResponseEntity<ResponseBase<List<DisciplinaResponse>>> deletarDisciplina(@RequestBody @Valid DisciplinaCodRequest request) {
 		DisciplinaService disciplinaService = new DisciplinaService.Instance(jpaRepository).build();
 		return disciplinaService.deletar(request);
 	}
 	
 	@ApiOperation(value = "Deleta a disciplina por descrição e id do usuário")
-	@RequestMapping(value = "/DeletarDisciplinaPorDescricao", method = RequestMethod.POST)
+	@RequestMapping(value = "/DeletarDisciplinaPorDescricao", method = RequestMethod.DELETE)
 	public ResponseEntity<ResponseBase<List<DisciplinaResponse>>> deletarDisciplina(@RequestBody @Valid DisciplinaDescricaoRequest request) {
 		DisciplinaService disciplinaService = new DisciplinaService.Instance(jpaRepository).build();
 		return disciplinaService.deletar(request);

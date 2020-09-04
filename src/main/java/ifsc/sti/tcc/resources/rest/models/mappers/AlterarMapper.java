@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.usuario.mappers;
+package ifsc.sti.tcc.resources.rest.models.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Professor;
@@ -22,7 +22,7 @@ public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 		usuario.setCpf(aObject.getCpf());
 		usuario.setEmail(aObject.getEmail());
 		usuario.setFone(aObject.getFone());
-		usuario.setInstituicao(aObject.getInstituicao());
+//		usuario.setInstituicao(aObject.getInstituicao());
 		usuario.setNascimento(aObject.getNascimento());
 		usuario.setNome(aObject.getNome());
 		usuario.setSenha(aObject.getSenha());
@@ -34,7 +34,7 @@ public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 		aObject.setNome(aObject2.getNome());
 		aObject.setEmail(aObject2.getEmail());
 		aObject.setFone(aObject2.getFone());
-		aObject.setInstituicao(aObject2.getInstituicao());
+//		aObject.setInstituicao(aObject2.getInstituicao());
 		aObject.setNascimento(aObject2.getNascimento());
 		aObject.setSenha(aObject2.getSenha());
 		

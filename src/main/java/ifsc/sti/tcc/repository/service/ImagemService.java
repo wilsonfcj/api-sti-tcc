@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.repository.ImagemRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.mappers.ImagemMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.ImageUpdateRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ImagemResponse;
-import ifsc.sti.tcc.resources.rest.models.usuario.mappers.ImagemMapper;
 
 public class ImagemService {
 	

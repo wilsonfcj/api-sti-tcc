@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import ifsc.sti.tcc.modelos.intituicao.Instituicao;
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.modelos.usuario.Professor;
@@ -15,17 +16,18 @@ import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.repository.DisciplinaRepository;
 import ifsc.sti.tcc.repository.ImagemRepository;
+import ifsc.sti.tcc.repository.InstituicaoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.mappers.AlterarMapper;
+import ifsc.sti.tcc.resources.rest.models.mappers.AlunoMapper;
+import ifsc.sti.tcc.resources.rest.models.mappers.CadastroMapper;
+import ifsc.sti.tcc.resources.rest.models.mappers.ProfessorMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.AlunoResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ProfessorResponse;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.UsuarioBaseResponse;
-import ifsc.sti.tcc.resources.rest.models.usuario.mappers.AlterarMapper;
-import ifsc.sti.tcc.resources.rest.models.usuario.mappers.AlunoMapper;
-import ifsc.sti.tcc.resources.rest.models.usuario.mappers.CadastroMapper;
-import ifsc.sti.tcc.resources.rest.models.usuario.mappers.ProfessorMapper;
 import ifsc.sti.tcc.utilidades.ValidatedField;
 
 public class UsuarioService {
@@ -36,6 +38,7 @@ public class UsuarioService {
 	private ImagemService imagemService;
 	private DisciplinaService disciplinaService;
 	private UsuarioRepository jpaRepository;
+	private InstituicaoService instituicaoService;
 
 	public static class Instance extends BaseService<UsuarioRepository> implements BaseService.BaseObject<UsuarioService> {
 
@@ -45,7 +48,8 @@ public class UsuarioService {
 
 		private ImagemRepository imagemRepository;
 		private DisciplinaRepository disciplinaRepository;
-
+		private InstituicaoRepository instituicaoRepository;
+		
 		public Instance withImagemRepository(ImagemRepository repository) {
 			this.imagemRepository = repository;
 			return this;
@@ -55,19 +59,27 @@ public class UsuarioService {
 			this.disciplinaRepository = repository;
 			return this;
 		}
+		
+		public Instance withInstituicaoRepository(InstituicaoRepository repository) {
+			this.instituicaoRepository = repository;
+			return this;
+		}
 
 		@Override
 		public UsuarioService build() {
 			UsuarioService service = new UsuarioService();
 			service.setDisciplinaService(new DisciplinaService.Instance(disciplinaRepository).build());
 			service.setImagemService(new ImagemService.Instance(imagemRepository).build());
+			service.setInstituicaoService(new InstituicaoService.Instance(instituicaoRepository).build());
 			service.setJpaRepository(jpaRepository);
 			return service;
 		}
 	}
 
 	private Usuario salvarUsuario(UsuarioRequest usuarioRequest) {
+		Instituicao instituicao = instituicaoService.getInstituicaoByName(usuarioRequest.getInstituicao());	
 		Usuario usuarioCadastro = new CadastroMapper().transform(usuarioRequest);
+		usuarioCadastro.setInstituicao(instituicao.getId());
 		Usuario usuario = jpaRepository.save(usuarioCadastro);
 		return usuario;
 	}
@@ -79,6 +91,7 @@ public class UsuarioService {
 
 	private UsuarioBaseResponse converterUsuario(Usuario usuario) {
 		Imagem imagem = imagemService.buscarImagem(usuario.getId());
+		
 		UsuarioBaseResponse usuarioBaseResponse = null;
 		if (usuario instanceof Aluno) {
 			AlunoMapper mappper = new AlunoMapper();
@@ -89,6 +102,11 @@ public class UsuarioService {
 			ProfessorResponse professorResponse = mappper.transform((Professor) usuario);
 			professorResponse.setDisciplinas(disciplinaService.consultarDisplinas(usuario.getId()));
 			usuarioBaseResponse = professorResponse;
+		}
+		
+		if(usuario.getInstituicao() != null) {
+			Instituicao instituicao = instituicaoService.getInstituicaoById(usuario.getInstituicao());
+			usuarioBaseResponse.setInstituicao(instituicao.getNome());
 		}
 
 		if (imagem != null) {
@@ -164,7 +182,7 @@ public class UsuarioService {
 					disciplinaService.salvarDisciplinas(usuario,
 							usuarioRequest.getDisciplinas());
 				}
-
+				
 				if (usuario != null) {
 					baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario cadastrado com sucesso",
 							converterUsuario(usuario));
@@ -218,6 +236,10 @@ public class UsuarioService {
 
 	public void setImagemService(ImagemService imagemService) {
 		this.imagemService = imagemService;
+	}
+	
+	public void setInstituicaoService(InstituicaoService instituicaoService) {
+		this.instituicaoService = instituicaoService;
 	}
 
 	public DisciplinaService getDisciplinaService() {
