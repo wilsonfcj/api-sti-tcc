@@ -77,9 +77,7 @@ public class UsuarioService {
 	}
 
 	private Usuario salvarUsuario(UsuarioRequest usuarioRequest) {
-		Instituicao instituicao = instituicaoService.getInstituicaoByName(usuarioRequest.getInstituicao());	
 		Usuario usuarioCadastro = new CadastroMapper().transform(usuarioRequest);
-		usuarioCadastro.setInstituicao(instituicao.getId());
 		Usuario usuario = jpaRepository.save(usuarioCadastro);
 		return usuario;
 	}
@@ -171,29 +169,33 @@ public class UsuarioService {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		ValidatedField validatedField = usuarioRequest.validarCampos();
 		if (validatedField.getSuccess()) {
-			if (jpaRepository.findByCpf(usuarioRequest.getCpf()) == null) {
-				Usuario usuario = salvarUsuario(usuarioRequest);
-
-				if (usuarioRequest.getImagemPerfil() != null) {
-					imagemService.saveImage(usuario.getId(), usuarioRequest.getImagemPerfil());
-				}
-
-				if (usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
-					disciplinaService.salvarDisciplinas(usuario,
-							usuarioRequest.getDisciplinas());
-				}
-				
-				if (usuario != null) {
-					baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario cadastrado com sucesso",
-							converterUsuario(usuario));
+			if(instituicaoService.getInstituicaoById(usuarioRequest.getInstituicao()) != null) {
+				if (jpaRepository.findByCpf(usuarioRequest.getCpf()) == null) {
+					Usuario usuario = salvarUsuario(usuarioRequest);
+	
+					if (usuarioRequest.getImagemPerfil() != null) {
+						imagemService.saveImage(usuario.getId(), usuarioRequest.getImagemPerfil());
+					}
+	
+					if (usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
+						disciplinaService.salvarDisciplinas(usuario,
+								usuarioRequest.getDisciplinas());
+					}
+					
+					if (usuario != null) {
+						baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario cadastrado com sucesso",
+								converterUsuario(usuario));
+					} else {
+						baseResponse = new ResponseBase<UsuarioBaseResponse>(false,
+								"Não foi possível cadastrar o usuário, tente novamente mais tarde",
+								converterUsuario(usuario));
+					}
+	
 				} else {
-					baseResponse = new ResponseBase<UsuarioBaseResponse>(false,
-							"Não foi possível cadastrar o usuário, tente novamente mais tarde",
-							converterUsuario(usuario));
+					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario já cadastrado", null);
 				}
-
 			} else {
-				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario já cadastrado", null);
+				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Instituição não encontrada", null);
 			}
 		} else {
 			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, validatedField.getMsm(), null);
@@ -205,24 +207,28 @@ public class UsuarioService {
 		ResponseBase<UsuarioBaseResponse> baseResponse = new ResponseBase<>();
 		ValidatedField validatedField = usuarioRequest.validarCampos();
 		if (validatedField.getSuccess()) {
-			Usuario usuario = jpaRepository.findByCpf(usuarioRequest.getCpf());
-			if (usuario != null) {
-				Usuario usuarioAlterado = alterarUsuario(usuario, usuarioRequest);
-				imagemService.alterarImagem(usuario.getId(), usuarioRequest.getImagemPerfil());
-				if (usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
-					disciplinaService.alterarDisciplinas(usuario,
-							usuarioRequest.getDisciplinas());
-				}
-				if (usuarioAlterado != null) {
-					baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario Alterado com sucesso",
-							converterUsuario(usuarioAlterado));
+			if(instituicaoService.getInstituicaoById(usuarioRequest.getInstituicao()) != null) {
+				Usuario usuario = jpaRepository.findByCpf(usuarioRequest.getCpf());
+				if (usuario != null) {
+					Usuario usuarioAlterado = alterarUsuario(usuario, usuarioRequest);
+					imagemService.alterarImagem(usuario.getId(), usuarioRequest.getImagemPerfil());
+					if (usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
+						disciplinaService.alterarDisciplinas(usuario,
+								usuarioRequest.getDisciplinas());
+					}
+					if (usuarioAlterado != null) {
+						baseResponse = new ResponseBase<UsuarioBaseResponse>(true, "Usuario Alterado com sucesso",
+								converterUsuario(usuarioAlterado));
+					} else {
+						baseResponse = new ResponseBase<UsuarioBaseResponse>(false,
+								"Não foi possível alterar o usuário, tente novamente mais tarde",
+								converterUsuario(usuario));
+					}
 				} else {
-					baseResponse = new ResponseBase<UsuarioBaseResponse>(false,
-							"Não foi possível alterar o usuário, tente novamente mais tarde",
-							converterUsuario(usuario));
+					baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario não encontrado", null);
 				}
 			} else {
-				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Usuario não encontrado", null);
+				baseResponse = new ResponseBase<UsuarioBaseResponse>(false, "Instituição não encontrada", null);
 			}
 		} else {
 			baseResponse = new ResponseBase<UsuarioBaseResponse>(false, validatedField.getMsm(), null);

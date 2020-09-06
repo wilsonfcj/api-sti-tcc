@@ -27,7 +27,7 @@ public class UsuarioRequest {
 	private String fone;
 
 	@JsonProperty(value = "Instituicao")
-	private String instituicao;
+	private Long instituicao;
 
 	@JsonProperty(value = "ImagemUsuario")
 	private String imagemPerfil;
@@ -87,11 +87,11 @@ public class UsuarioRequest {
 		this.fone = fone;
 	}
 
-	public String getInstituicao() {
+	public Long getInstituicao() {
 		return instituicao;
 	}
 
-	public void setInstituicao(String instituicao) {
+	public void setInstituicao(Long instituicao) {
 		this.instituicao = instituicao;
 	}
 
@@ -159,10 +159,6 @@ public class UsuarioRequest {
 		return ValidateUtil.validateCelular(fone);
 	}
 
-	public int instituicaoValida() {
-		return ValidateUtil.validateString(instituicao, 200);
-	}
-
 	public ValidatedField validarCampos() {
 		ValidatedField validatedField;
 		if (!cpfValido()) {
@@ -184,13 +180,7 @@ public class UsuarioRequest {
 			return new ValidatedField("Número de celular inválido", false);
 		}
 		
-		switch (instituicaoValida()) {
-		case ValidateUtil.STRING_LONGA:
-			return new ValidatedField("O nome da instituição deve conter no máximo 200 caracteres", false);
-		case ValidateUtil.STRING_VAZIA:
-			return new ValidatedField("Informe o nome da instituição", false);
-		}
-		
+	
 		if(EPerfilUsuario.ALUNO.codigo == perfilUsuario) {
 			if(matricula == null) {
 				return new ValidatedField("Informe a matricula", false);
