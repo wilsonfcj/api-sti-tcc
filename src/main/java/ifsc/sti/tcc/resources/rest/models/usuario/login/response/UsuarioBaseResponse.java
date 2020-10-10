@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoUserResponse;
+
 public abstract class UsuarioBaseResponse {
 	
 	@JsonProperty(value="IdUsuario")
@@ -25,7 +27,7 @@ public abstract class UsuarioBaseResponse {
 	private String fone;
 	
 	@JsonProperty(value="Instituicao")
-	private String instituicao;
+	private InstituicaoUserResponse instituicao;
 	
 	@JsonProperty(value="ImagemUsuario")
 	private String imagemPerfil;
@@ -81,11 +83,11 @@ public abstract class UsuarioBaseResponse {
 		this.fone = fone;
 	}
 	
-	public String getInstituicao() {
+	public InstituicaoUserResponse getInstituicao() {
 		return instituicao;
 	}
 	
-	public void setInstituicao(String instituicao) {
+	public void setInstituicao(InstituicaoUserResponse instituicao) {
 		this.instituicao = instituicao;
 	}
 	

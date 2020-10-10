@@ -19,6 +19,7 @@ import ifsc.sti.tcc.repository.ImagemRepository;
 import ifsc.sti.tcc.repository.InstituicaoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoUserResponse;
 import ifsc.sti.tcc.resources.rest.models.mappers.AlterarMapper;
 import ifsc.sti.tcc.resources.rest.models.mappers.AlunoMapper;
 import ifsc.sti.tcc.resources.rest.models.mappers.CadastroMapper;
@@ -104,7 +105,7 @@ public class UsuarioService {
 		
 		if(usuario.getInstituicao() != null) {
 			Instituicao instituicao = instituicaoService.getInstituicaoById(usuario.getInstituicao());
-			usuarioBaseResponse.setInstituicao(instituicao.getNome());
+			usuarioBaseResponse.setInstituicao(new InstituicaoUserResponse(instituicao.getId(), instituicao.getNome()));
 		}
 
 		if (imagem != null) {
