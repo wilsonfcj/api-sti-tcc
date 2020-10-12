@@ -211,6 +211,9 @@ public class UsuarioService {
 			if(instituicaoService.getInstituicaoById(usuarioRequest.getInstituicao()) != null) {
 				Usuario usuario = jpaRepository.findByCpf(usuarioRequest.getCpf());
 				if (usuario != null) {
+					if(usuarioRequest.getSenha() == null) {
+						usuarioRequest.setSenha(usuario.getSenha());
+					}
 					Usuario usuarioAlterado = alterarUsuario(usuario, usuarioRequest);
 					imagemService.alterarImagem(usuario.getId(), usuarioRequest.getImagemPerfil());
 					if (usuarioRequest.getPerfilUsuario() == EPerfilUsuario.PROFESSOR.codigo) {
