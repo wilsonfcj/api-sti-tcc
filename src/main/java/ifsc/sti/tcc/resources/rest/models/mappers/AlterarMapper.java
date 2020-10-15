@@ -36,7 +36,7 @@ public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 		aObject.setFone(aObject2.getFone());
 		aObject.setNascimento(aObject2.getNascimento());
 		aObject.setSenha(aObject2.getSenha());
-		aObject.setInstituicao(aObject.getInstituicao());
+		aObject.setInstituicao(aObject2.getInstituicao());
 		if(aObject instanceof Aluno) {
 			((Aluno) aObject).setMatricula(aObject2.getMatricula());
 			((Aluno) aObject).setAnoIngresso(aObject2.getAnoIngresso());
