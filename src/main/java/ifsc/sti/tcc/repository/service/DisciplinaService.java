@@ -76,7 +76,7 @@ public class DisciplinaService   {
 		try {
 			List<DisciplinaInteresse> disciplinaInteresses = jpaRepository.deleteByIdUsuario((long) id);
 			if(disciplinaInteresses != null) {
-				baseResponse = new ResponseBase<>(true, "Disciplnas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
+				baseResponse = new ResponseBase<>(true, "Disciplinas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
 			} else {
 				baseResponse = new ResponseBase<>(false, "Nenhuma disciplina encontrada para este usuário", null);
 			}
@@ -91,7 +91,7 @@ public class DisciplinaService   {
 		try {
 			List<DisciplinaInteresse> disciplinaInteresses = jpaRepository.deleteByParans(request.getIdUsuario(), request.getCod());
 			if(disciplinaInteresses != null) {
-				baseResponse = new ResponseBase<>(true, "Disciplnas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
+				baseResponse = new ResponseBase<>(true, "Disciplinas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
 			} else {
 				baseResponse = new ResponseBase<>(false, "Nenhuma disciplina encontrada para este usuário", null);
 			}
@@ -106,7 +106,7 @@ public class DisciplinaService   {
 		try {
 			List<DisciplinaInteresse> disciplinaInteresses = jpaRepository.deleteByParans(request.getIdUsuario(), request.getDescricao());
 			if(disciplinaInteresses != null) {
-				baseResponse = new ResponseBase<>(true, "Disciplnas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
+				baseResponse = new ResponseBase<>(true, "Disciplinas deletadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
 			} else {
 				baseResponse = new ResponseBase<>(false, "Nenhuma disciplina encontrada para este usuário", null);
 			}
@@ -121,7 +121,7 @@ public class DisciplinaService   {
 		List<DisciplinaInteresse> disciplinaInteresses = jpaRepository.findByIdUsuario((long) idUsuario);
 		ResponseBase<List<DisciplinaResponse>> baseResponse = new ResponseBase<>();
 		if(disciplinaInteresses != null && disciplinaInteresses.size() > 0) {
-			baseResponse = new ResponseBase<>(true, "Disciplnas consultadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
+			baseResponse = new ResponseBase<>(true, "Disciplinas consultadas com sucesso",  DisciplinaResponse.convertDisciplinas(disciplinaInteresses));
 		} else {
 			baseResponse = new ResponseBase<>(false, "Nenhuma disciplina encontrada para este usuário", null);
 		}
