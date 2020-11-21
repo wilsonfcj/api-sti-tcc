@@ -1,24 +1,39 @@
 package ifsc.sti.tcc.modelos.questao;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import ifsc.sti.tcc.props.EArea;
-import ifsc.sti.tcc.props.EAssunto;
-import ifsc.sti.tcc.props.EDificuldade;
 import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.props.ETipoQuestao;
 
-public abstract class Questao {
-	
-//	Identificação
+@Entity
+@Table(name = "questao")
+public abstract class Questao implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6327854349745422560L;
+
+	@Id
+	@Column(name = "id_questao")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Integer ano;
+	@Column(columnDefinition="TEXT")
 	private String descricao;
 	
 //	Configuração prova
-	private EArea area;
-	private EAssunto assunto;
-	private ETipoQuestao prova;
-	private EDisciplina disciplina;
-	private EDificuldade dificuldade;
+	private Integer area;
+	private Integer prova;
+	private Integer disciplina;
 	
 	public Questao() {
 		super();
@@ -49,43 +64,26 @@ public abstract class Questao {
 	}
 	
 	public EArea getArea() {
-		return area;
+		return EArea.getArea(area);
 	}
 	
 	public void setArea(EArea area) {
-		this.area = area;
+		this.area = area.codigo;
 	}
-	
-	public EAssunto getAssunto() {
-		return assunto;
-	}
-	
-	public void setAssunto(EAssunto assunto) {
-		this.assunto = assunto;
-	}
-	
+
 	public ETipoQuestao getProva() {
-		return prova;
+		return ETipoQuestao.getQuestao(prova);
 	}
 	
 	public void setProva(ETipoQuestao prova) {
-		this.prova = prova;
+		this.prova = prova.codigo;
 	}
 	
 	public EDisciplina getDisciplina() {
-		return disciplina;
+		return EDisciplina.getEnum(disciplina);
 	}
 	
 	public void setDisciplina(EDisciplina disciplina) {
-		this.disciplina = disciplina;
+		this.disciplina = disciplina.codigo;
 	}
-	
-	public EDificuldade getDificuldade() {
-		return dificuldade;
-	}
-
-	public void setDificuldade(EDificuldade dificuldade) {
-		this.dificuldade = dificuldade;
-	}
-
 }

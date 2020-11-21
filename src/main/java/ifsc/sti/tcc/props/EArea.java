@@ -15,7 +15,7 @@ public enum EArea {
 	public int codigo;
 	public String situacao;
 	
-	public EArea getSituacao(int aCod) {
+	public static EArea getArea(int aCod) {
 		for (EArea lSituacao :  EArea.values()) {
 			if(lSituacao.codigo == aCod) {
 				return lSituacao;
@@ -24,7 +24,7 @@ public enum EArea {
 		return DEFAULT;
 	}
 	
-	public EArea getSituacao(String descricao) {
+	public static EArea getArea(String descricao) {
 		for (EArea lSituacao :  EArea.values()) {
 			if(lSituacao.situacao.equalsIgnoreCase(descricao)) {
 				return lSituacao;
