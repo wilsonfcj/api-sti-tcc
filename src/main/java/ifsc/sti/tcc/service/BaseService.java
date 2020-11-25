@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.repository.service;
+package ifsc.sti.tcc.service;
 
 public class BaseService <E> {
 	

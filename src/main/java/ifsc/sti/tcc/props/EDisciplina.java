@@ -4,7 +4,7 @@ public enum EDisciplina {
 	
 	DEFAULT (-1, "Sem disciplina", "Sem disciplina"),
 	
-	INTRODUCAO_A_PROGRAMACAO(0, "PROGRAMAÇÃO", "Programação"),
+	PROGRAMACAO(0, "PROGRAMAÇÃO", "Programação"),
     ELETRONICA_DIGITAL(1, "ELETRÔNICA DIGITAL", "Eletrônica digital"),
     MATEMÁTICA_DISCRETA(2, "MATEMÁTICA DISCRETA", "Matemática discreta"),
 
@@ -33,12 +33,18 @@ public enum EDisciplina {
     COMPUTACAO_GRAFICA(18, "COMPUTAÇÃO GRÁFICA", "Computação Gráfica"),
     SEGURANÇA_COMPUTACIONAL(19, "SEGURANÇA COMPUTACIONAL", "Segurança computacional"),
     INTELIGENCIA_ARTIFICIAL(20, "INTELIGÊNCIAARTIFICIAL", "I.A"),
-    SISTEMAS_DISTRIBUÍDOS(21, "SISTEMAS DISTRIBUÍDOS", "Sistemas Distribuídos"),
+    SISTEMAS_DISTRIBUIDOS(21, "SISTEMAS DISTRIBUÍDOS", "Sistemas Distribuídos"),
 
     //	Fase 7
     MODELAGEM_E_SIMULACAO(22, "MODELAGEM E SIMULAÇÃO", "Modelagem e simulação"),
-    GERENCIA_DE_PROJETOS(23, "GERÊNCIA DE PROJETOS", "Gerência de projetos");
-
+    GERENCIA_DE_PROJETOS(23, "GERÊNCIA DE PROJETOS", "Gerência de projetos"),
+    
+    
+    TEORIA_DA_COMPUTACAO(24, "TEORIA DA COMPUTAÇÃO", "Teoria da computação"),
+	INFORMATICA_E_SOCIEDADE(25, "INFORMÁTICA E SOCIEDADE", "Informática e sociedade"),
+	GRAFOS(26, "GRAFOS", "Grafos");
+	
+	
 
 	EDisciplina(int aCodigo, String aDescricao, String aNome) {
 		this.codigo = aCodigo;

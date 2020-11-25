@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ifsc.sti.tcc.repository.InstituicaoRepository;
-import ifsc.sti.tcc.repository.service.InstituicaoService;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.instituicao.request.InstituicaoRequest;
 import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoResponse;
+import ifsc.sti.tcc.service.InstituicaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

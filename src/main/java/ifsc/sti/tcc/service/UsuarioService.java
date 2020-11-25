@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.repository.service;
+package ifsc.sti.tcc.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ import ifsc.sti.tcc.repository.DisciplinaRepository;
 import ifsc.sti.tcc.repository.ImagemRepository;
 import ifsc.sti.tcc.repository.InstituicaoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
+import ifsc.sti.tcc.resources.mappers.AlterarMapper;
+import ifsc.sti.tcc.resources.mappers.AlunoMapper;
+import ifsc.sti.tcc.resources.mappers.CadastroMapper;
+import ifsc.sti.tcc.resources.mappers.ProfessorMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoUserResponse;
-import ifsc.sti.tcc.resources.rest.models.mappers.AlterarMapper;
-import ifsc.sti.tcc.resources.rest.models.mappers.AlunoMapper;
-import ifsc.sti.tcc.resources.rest.models.mappers.CadastroMapper;
-import ifsc.sti.tcc.resources.rest.models.mappers.ProfessorMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.AlunoResponse;

@@ -25,6 +25,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	private String alternativasD;
 	@Column(columnDefinition="TEXT")
 	private String alternativasE;
+	
 	private String alternativaCorreta;
 	
 	public QuestaoAlternativa() {

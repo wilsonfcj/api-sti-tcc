@@ -56,7 +56,7 @@ public class UserUtil {
 		disciplinas.add(EDisciplina.COMPILADORES);
 		disciplinas.add(EDisciplina.ESTRUTURAS_DE_DADOS);
 		disciplinas.add(EDisciplina.INTELIGENCIA_ARTIFICIAL);
-		disciplinas.add(EDisciplina.INTRODUCAO_A_PROGRAMACAO);
+		disciplinas.add(EDisciplina.PROGRAMACAO);
 		disciplinas.add(EDisciplina.MODELAGEM_E_SIMULACAO);
 //		professor.setDisciplinas(disciplinas);
 		

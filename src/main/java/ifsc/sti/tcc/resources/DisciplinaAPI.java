@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ifsc.sti.tcc.repository.DisciplinaRepository;
-import ifsc.sti.tcc.repository.service.DisciplinaService;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.DisciplinaCodRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.DisciplinaDescricaoRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.DisciplinaResponse;
+import ifsc.sti.tcc.service.DisciplinaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

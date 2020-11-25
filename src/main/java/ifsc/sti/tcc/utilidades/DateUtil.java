@@ -12,4 +12,10 @@ public class DateUtil {
 		lCalendar.set(Calendar.DAY_OF_MONTH, dia);
 		return lCalendar.getTime();
 	}
+	
+	public static Date adicionarDiasNoAtual(int dias) {
+		Calendar lCalendar = Calendar.getInstance();
+		lCalendar.add(Calendar.DAY_OF_MONTH, dias);
+		return lCalendar.getTime();
+	}
 }

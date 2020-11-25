@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import ifsc.sti.tcc.modelos.disciplina.DisciplinaInteresse;
-import ifsc.sti.tcc.resources.rest.models.mappers.DisciplinaMapper;
+import ifsc.sti.tcc.resources.mappers.DisciplinaMapper;
 
 public class DisciplinaResponse {
 

@@ -14,18 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
 import ifsc.sti.tcc.repository.DisciplinaRepository;
 import ifsc.sti.tcc.repository.ImagemRepository;
 import ifsc.sti.tcc.repository.InstituicaoRepository;
-import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
-import ifsc.sti.tcc.repository.service.UsuarioService;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.UsuarioBaseResponse;
-import ifsc.sti.tcc.utilidades.QuestionUtil;
+import ifsc.sti.tcc.service.UsuarioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -44,22 +41,9 @@ public class UsuarioApi {
 	@Autowired
 	private InstituicaoRepository instituicaoRepository;
 	
-	@Autowired
-	QuestaoRepository jpaRepository;
-	
-    public void saveQuestions() {
-        List<QuestaoAlternativa> questoes = QuestionUtil.registerPoscomp2002();
-        for(QuestaoAlternativa questao : questoes) {
-        	jpaRepository.save(questao);
-        }
-    }
-	
 	@ApiOperation(value = "Busca a lista de usuários cadastrados")
 	@GetMapping("/BuscarTodos")
 	public ResponseEntity<ResponseBase<List<UsuarioBaseResponse>>> getAlunosUsers() {
-		
-		saveQuestions();
-		
 		UsuarioService lUsuarioService = new UsuarioService.Instance(usuarioRepository)
 				.withDisciplinaRepository(disciplinaRepository)
 				.withImagemRepository(imagemRepository)

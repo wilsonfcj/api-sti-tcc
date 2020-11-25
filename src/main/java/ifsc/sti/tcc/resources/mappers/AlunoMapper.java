@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.mappers;
+package ifsc.sti.tcc.resources.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.props.EPerfilUsuario;

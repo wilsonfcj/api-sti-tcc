@@ -1,14 +1,13 @@
-package ifsc.sti.tcc.resources.rest.models.mappers;
+package ifsc.sti.tcc.resources.mappers;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EPerfilUsuario;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
-import ifsc.sti.tcc.utilidades.ValidateUtil;
-import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
+import ifsc.sti.tcc.utilidades.mappers.MapperUpdateUtil;
 
-public class CadastroMapper extends MapperUtil<UsuarioRequest, Usuario> {
+public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 
 	@Override
 	public Usuario transform(UsuarioRequest aObject) {
@@ -20,15 +19,29 @@ public class CadastroMapper extends MapperUtil<UsuarioRequest, Usuario> {
 		} else {
 			usuario = new Professor();
 		}
-		usuario.setCpf(ValidateUtil.unmask(aObject.getCpf()));
+		usuario.setCpf(aObject.getCpf());
 		usuario.setEmail(aObject.getEmail());
-		usuario.setFone(ValidateUtil.unmask(aObject.getFone()));
-//		usuario.setInstituicao(aObject.getInstituicao());
+		usuario.setFone(aObject.getFone());
 		usuario.setNascimento(aObject.getNascimento());
 		usuario.setNome(aObject.getNome());
 		usuario.setSenha(aObject.getSenha());
 		usuario.setInstituicao(aObject.getInstituicao());
 		return usuario;
+	}
+
+	@Override
+	public Usuario transform(Usuario aObject, UsuarioRequest aObject2) {
+		aObject.setNome(aObject2.getNome());
+		aObject.setEmail(aObject2.getEmail());
+		aObject.setFone(aObject2.getFone());
+		aObject.setNascimento(aObject2.getNascimento());
+		aObject.setSenha(aObject2.getSenha());
+		aObject.setInstituicao(aObject2.getInstituicao());
+		if(aObject instanceof Aluno) {
+			((Aluno) aObject).setMatricula(aObject2.getMatricula());
+			((Aluno) aObject).setAnoIngresso(aObject2.getAnoIngresso());
+		} 
+		return aObject;
 	}
 
 

@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,7 +22,7 @@ public abstract class Questao implements Serializable {
 
 	@Id
 	@Column(name = "id_questao")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Integer ano;
 	@Column(columnDefinition="TEXT")
@@ -34,6 +32,8 @@ public abstract class Questao implements Serializable {
 	private Integer area;
 	private Integer prova;
 	private Integer disciplina;
+
+	private Boolean imagem = false;
 	
 	public Questao() {
 		super();
@@ -85,5 +85,16 @@ public abstract class Questao implements Serializable {
 	
 	public void setDisciplina(EDisciplina disciplina) {
 		this.disciplina = disciplina.codigo;
+	}
+
+	public Boolean getImagem() {
+		if(imagem == null) {
+			return false;
+		}
+		return imagem;
+	}
+
+	public void setImagem(Boolean imagem) {
+		this.imagem = imagem;
 	}
 }

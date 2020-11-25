@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ifsc.sti.tcc.repository.ImagemRepository;
-import ifsc.sti.tcc.repository.service.ImagemService;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.ImageUpdateRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ImagemResponse;
+import ifsc.sti.tcc.service.ImagemService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

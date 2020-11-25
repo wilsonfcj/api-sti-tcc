@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.repository.service;
+package ifsc.sti.tcc.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.repository.ImagemRepository;
+import ifsc.sti.tcc.resources.mappers.ImagemMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.mappers.ImagemMapper;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.ImageUpdateRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ImagemResponse;
 
