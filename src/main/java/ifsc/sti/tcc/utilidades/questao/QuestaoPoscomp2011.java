@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.utilidades;
+package ifsc.sti.tcc.utilidades.questao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.props.ETipoQuestao;
 
-public class QuestionUtil {
+public class QuestaoPoscomp2011 {
 	
 	public static List<QuestaoAlternativa> registerPoscomp2002() {
 		QuestaoAlternativa questaoAlternativa1 = new QuestaoAlternativa();

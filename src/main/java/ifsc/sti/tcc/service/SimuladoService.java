@@ -18,7 +18,7 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoResponse;
 import ifsc.sti.tcc.utilidades.DateUtil;
-import ifsc.sti.tcc.utilidades.QuestionUtil;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2002;
 
 public class SimuladoService {
 
@@ -42,7 +42,7 @@ public class SimuladoService {
 	}
 	
 	public List<QuestaoAlternativa> saveQuestions() {
-	   List<QuestaoAlternativa> questoes = QuestionUtil.registerPoscomp2002();
+	   List<QuestaoAlternativa> questoes = QuestaoPoscomp2002.registerPoscomp2002();
 	   jpaRepository.saveAll(questoes);
 	   return questoes;
 	}
