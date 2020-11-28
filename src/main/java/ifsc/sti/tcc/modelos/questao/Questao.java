@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EDisciplina;
-import ifsc.sti.tcc.props.ETipoQuestao;
+import ifsc.sti.tcc.props.ETipoQuestaoProva;
 
 @Entity
 @Table(name = "questao")
@@ -22,18 +22,20 @@ public abstract class Questao implements Serializable {
 
 	@Id
 	@Column(name = "id_questao")
-//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Integer ano;
+	
 	@Column(columnDefinition="TEXT")
 	private String descricao;
 	
-//	Configuração prova
 	private Integer area;
 	private Integer prova;
 	private Integer disciplina;
-
 	private Boolean imagem = false;
+	
+	@Column(columnDefinition="TEXT")
+	private String imagemQuestao;
+	private Integer numeroQuestao;
 	
 	public Questao() {
 		super();
@@ -71,11 +73,11 @@ public abstract class Questao implements Serializable {
 		this.area = area.codigo;
 	}
 
-	public ETipoQuestao getProva() {
-		return ETipoQuestao.getQuestao(prova);
+	public ETipoQuestaoProva getProva() {
+		return ETipoQuestaoProva.getQuestao(prova);
 	}
 	
-	public void setProva(ETipoQuestao prova) {
+	public void setProva(ETipoQuestaoProva prova) {
 		this.prova = prova.codigo;
 	}
 	
@@ -96,5 +98,21 @@ public abstract class Questao implements Serializable {
 
 	public void setImagem(Boolean imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getImagemQuestao() {
+		return imagemQuestao;
+	}
+
+	public void setImagemQuestao(String imagemQuestao) {
+		this.imagemQuestao = imagemQuestao;
+	}
+
+	public Integer getNumeroQuestao() {
+		return numeroQuestao;
+	}
+
+	public void setNumeroQuestao(Integer numeroQuestao) {
+		this.numeroQuestao = numeroQuestao;
 	}
 }

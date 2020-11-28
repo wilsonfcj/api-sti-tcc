@@ -1,22 +1,38 @@
 package ifsc.sti.tcc.resources.rest.models.question;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class QuestaoResponse {
 	
+	@JsonProperty(value="Id")
 	private Long id;
+	
+	@JsonProperty(value="Ano")
 	private Integer ano;
+	
+	@JsonProperty(value="Descricao")
 	private String descricao;
 
+	@JsonProperty(value="Area")
 	private Integer area;
+	
+	@JsonProperty(value="Prova")
 	private Integer prova;
+	
+	@JsonProperty(value="Disciplina")
 	private Integer disciplina;
 
+	@JsonProperty(value="ComImagem")
 	private Boolean imagem = false;
 	
-	private String alternativasA;
-	private String alternativasB;
-	private String alternativasC;
-	private String alternativasD;
-	private String alternativasE;
+	@JsonProperty(value="ImagemQuestao")
+	private String imagemQuestao;
+	
+	@JsonProperty(value="NumeroQuestao")
+	private Integer numeroQuestao;
+	
+	@JsonProperty(value="TipoQuestao")
+	private Integer tipoQuestao;
 	
 	public Long getId() {
 		return id;
@@ -73,45 +89,28 @@ public class QuestaoResponse {
 	public void setImagem(Boolean imagem) {
 		this.imagem = imagem;
 	}
-	public String getAlternativasA() {
-		return alternativasA;
+
+	public String getImagemQuestao() {
+		return imagemQuestao;
 	}
-	
-	public void setAlternativasA(String alternativasA) {
-		this.alternativasA = alternativasA;
+
+	public void setImagemQuestao(String imagemQuestao) {
+		this.imagemQuestao = imagemQuestao;
 	}
-	
-	public String getAlternativasB() {
-		return alternativasB;
+
+	public Integer getNumeroQuestao() {
+		return numeroQuestao;
 	}
-	
-	public void setAlternativasB(String alternativasB) {
-		this.alternativasB = alternativasB;
+
+	public void setNumeroQuestao(Integer numeroQuestao) {
+		this.numeroQuestao = numeroQuestao;
 	}
-	
-	public String getAlternativasC() {
-		return alternativasC;
+
+	public Integer getTipoQuestao() {
+		return tipoQuestao;
 	}
-	
-	public void setAlternativasC(String alternativasC) {
-		this.alternativasC = alternativasC;
+
+	public void setTipoQuestao(Integer tipoQuestao) {
+		this.tipoQuestao = tipoQuestao;
 	}
-	
-	public String getAlternativasD() {
-		return alternativasD;
-	}
-	
-	public void setAlternativasD(String alternativasD) {
-		this.alternativasD = alternativasD;
-	}
-	
-	public String getAlternativasE() {
-		return alternativasE;
-	}
-	
-	public void setAlternativasE(String alternativasE) {
-		this.alternativasE = alternativasE;
-	}
-	
-	
 }

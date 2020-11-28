@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.mappers;
+package ifsc.sti.tcc.resources.mappers.domaintoview;
 
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.props.EPerfilUsuario;

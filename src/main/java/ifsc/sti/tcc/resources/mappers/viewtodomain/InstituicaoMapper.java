@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.mappers;
+package ifsc.sti.tcc.resources.mappers.viewtodomain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,32 +3,59 @@ package ifsc.sti.tcc.modelos.simulado;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import ifsc.sti.tcc.modelos.questao.Questao;
+import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.ETipoSimulado;
 
+@Entity
+@Table(name = "simulado")
 public class Simulado {
 
-//	Identificação
-	private Integer id;
+	@Id
+	@Column(name = "id_simulado")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String nome;
-	private String descricao;
 	
-//	Tempos e Configurações
 	private Date dataInicio;
 	private Date dataCriacao;
 	private Date dataFimSimulado;
 	
 	private Long tempoMaximo;
-	private Long idProfessor;
 	private Integer quantidadeQuestoes;
-	private ETipoSimulado tipoSimulado;
+	private Integer tipoSimulado;
+	
+	@Column(columnDefinition="TEXT")
+	private String descricao;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario")
+	private Usuario idUsuario;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_simulado")
 	private List<Questao> questoes;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -80,12 +107,12 @@ public class Simulado {
 		this.tempoMaximo = tempoMaximo;
 	}
 	
-	public Long getIdProfessor() {
-		return idProfessor;
+	public Usuario getIdUsuario() {
+		return idUsuario;
 	}
 	
-	public void setIdProfessor(Long idProfessor) {
-		this.idProfessor = idProfessor;
+	public void setIdUsuario(Usuario idProfessor) {
+		this.idUsuario = idProfessor;
 	}
 	
 	public Integer getQuantidadeQuestoes() {
@@ -97,11 +124,11 @@ public class Simulado {
 	}
 	
 	public ETipoSimulado getTipoSimulado() {
-		return tipoSimulado;
+		return ETipoSimulado.getEnun(tipoSimulado);
 	}
 	
 	public void setTipoSimulado(ETipoSimulado tipoSimulado) {
-		this.tipoSimulado = tipoSimulado;
+		this.tipoSimulado = tipoSimulado.codigo;
 	}
 	
 	public List<Questao> getQuestoes() {

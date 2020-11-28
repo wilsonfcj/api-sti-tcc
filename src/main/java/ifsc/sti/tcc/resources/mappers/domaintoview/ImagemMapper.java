@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.mappers;
+package ifsc.sti.tcc.resources.mappers.domaintoview;
 
 import ifsc.sti.tcc.modelos.usuario.Imagem;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.ImagemResponse;

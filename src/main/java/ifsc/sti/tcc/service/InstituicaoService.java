@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 import ifsc.sti.tcc.modelos.intituicao.Instituicao;
 import ifsc.sti.tcc.repository.InstituicaoRepository;
-import ifsc.sti.tcc.resources.mappers.InstituicaoMapper;
+import ifsc.sti.tcc.resources.mappers.viewtodomain.InstituicaoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.instituicao.request.InstituicaoRequest;
 import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoResponse;

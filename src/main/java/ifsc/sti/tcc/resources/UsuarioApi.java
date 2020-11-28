@@ -54,7 +54,7 @@ public class UsuarioApi {
 	
 	@ApiOperation(value = "Busca um usuários por seu Identificador")
 	@GetMapping("/BuscarUsuarioId")
-	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> buscarUsuarioPorId(@RequestParam Long id) {
+	public ResponseEntity<ResponseBase<UsuarioBaseResponse>> buscarUsuarioPorId(@RequestParam Integer id) {
 		UsuarioService lUsuarioService = new UsuarioService.Instance(usuarioRepository)
 				.withDisciplinaRepository(disciplinaRepository)
 				.withImagemRepository(imagemRepository)

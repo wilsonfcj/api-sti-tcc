@@ -2,9 +2,8 @@ package ifsc.sti.tcc.props;
 
 public enum ETipoQuestao {
 	
-	DEFAULT(0, "Não Informado"),
-	ENADE(1, "ENADE"),
-	POSCOMP(2, "POSCOMP");
+	ALTERNATIVA(1, "Alternativa"),
+	DISCURSIVA(2, "Discursiva");
 
 	ETipoQuestao(int aCodigo, String descricao) {
 		this.codigo = aCodigo;
@@ -20,7 +19,7 @@ public enum ETipoQuestao {
 				return lSituacao;
 			}
 		}
-		return DEFAULT;
+		return ALTERNATIVA;
 	}
 	
 	public static ETipoQuestao getQuestao(String adescricao) {
@@ -29,6 +28,6 @@ public enum ETipoQuestao {
 				return lSituacao;
 			}
 		}
-		return DEFAULT;
+		return ALTERNATIVA;
 	}
 }

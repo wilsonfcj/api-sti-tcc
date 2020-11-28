@@ -14,7 +14,7 @@ public enum ETipoSimulado {
 	public int codigo;
 	public String situacao;
 	
-	public ETipoSimulado getSituacao(int aCod) {
+	public static ETipoSimulado getEnun(int aCod) {
 		for (ETipoSimulado lSituacao :  ETipoSimulado.values()) {
 			if(lSituacao.codigo == aCod) {
 				return lSituacao;
@@ -23,7 +23,7 @@ public enum ETipoSimulado {
 		return DEFAULT;
 	}
 	
-	public ETipoSimulado getSituacao(String descricao) {
+	public static ETipoSimulado getEnun(String descricao) {
 		for (ETipoSimulado lSituacao :  ETipoSimulado.values()) {
 			if(lSituacao.situacao.equalsIgnoreCase(descricao)) {
 				return lSituacao;

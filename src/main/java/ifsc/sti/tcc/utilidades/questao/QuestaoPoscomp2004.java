@@ -6,7 +6,7 @@ import java.util.List;
 import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
 import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EDisciplina;
-import ifsc.sti.tcc.props.ETipoQuestao;
+import ifsc.sti.tcc.props.ETipoQuestaoProva;
 
 public class QuestaoPoscomp2004 {
 	
@@ -16,7 +16,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa1.setAno(2002);
 		questaoAlternativa1.setDescricao("Pode-se afirmar que o gráfico da função $y = 2 + \\frac{1}{x - 1}$ é o gráfico da função $y = \\frac{1}{x}$");
 		questaoAlternativa1.setArea(EArea.MATEMATICA);
-		questaoAlternativa1.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa1.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa1.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa1.setAlternativaCorreta("a");
 		
@@ -33,7 +33,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa2.setAno(2002);
 		questaoAlternativa2.setDescricao("A derivada da função $f(x) = x^x$ é igual a");
 		questaoAlternativa2.setArea(EArea.MATEMATICA);
-		questaoAlternativa2.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa2.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa2.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa2.setAlternativaCorreta("d");
 		
@@ -55,7 +55,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"onde $\\left[k\\right]$ é o maior inteiro menor ou igual a $k$. O valor de $f(25)$ é igual a\r\n");
 		questaoAlternativa3.setArea(EArea.MATEMATICA);
-		questaoAlternativa3.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa3.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa3.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa3.setAlternativaCorreta("b");
 		
@@ -73,7 +73,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa4.setDescricao("Para cada $n ∈ N$ seja $Dn = \\left(0, 1/n\\right)$, onde $\\left(0, 1/n\\right)$ representa o intervalo aberto de\r\n" + 
 				"extremos $0 e 1/n$. O conjunto diferença $D_3 − D_{20}$ é igual a:");
 		questaoAlternativa4.setArea(EArea.MATEMATICA);
-		questaoAlternativa4.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa4.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa4.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa4.setAlternativaCorreta("d");
 		
@@ -91,7 +91,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa5.setAno(2002);
 		questaoAlternativa5.setDescricao("Todos os convidados presentes num jantar tomam chá ou café. Treze convidados bebem café, dez bebem chá e 4 bebem chá e café. Quantas pessoas tem nesse jantar.");
 		questaoAlternativa5.setArea(EArea.MATEMATICA);
-		questaoAlternativa5.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa5.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa5.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa5.setAlternativaCorreta("a");
 		
@@ -112,7 +112,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"onde a é um número real maior do que 1. Se $\\lim_{n \\rightarrow ∞} x_n = L$ podemos afirmar que\r\n");
 		questaoAlternativa6.setArea(EArea.MATEMATICA);
-		questaoAlternativa6.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa6.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa6.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa6.setAlternativaCorreta("e");
 		
@@ -129,7 +129,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa7.setAno(2002);
 		questaoAlternativa7.setDescricao("Seja $f : R → R$ derivável. Se existem $a, b ∈ R$ tal que $f(a)f(b) < 0$ e $f'(x) <> 0$ para todo $x ∈ (a, b)$, podemos afirmar que no intervalo $(a, b)$ a equação $f(x) = 0$ tem");
 		questaoAlternativa7.setArea(EArea.MATEMATICA);
-		questaoAlternativa7.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa7.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa7.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa7.setAlternativaCorreta("c");
 		
@@ -151,7 +151,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"Se $\\lim_{n \\rightarrow ∞} x_n = L$ podemos afirmar que\r\n");
 		questaoAlternativa8.setArea(EArea.MATEMATICA);
-		questaoAlternativa8.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa8.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa8.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa8.setAlternativaCorreta("a");
 		
@@ -169,7 +169,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa9.setAno(2002);
 		questaoAlternativa9.setDescricao("Assinale a proposição verdadeira");
 		questaoAlternativa9.setArea(EArea.MATEMATICA);
-		questaoAlternativa9.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa9.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa9.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa9.setAlternativaCorreta("d");
 		
@@ -187,7 +187,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa10.setAno(2002);
 		questaoAlternativa10.setDescricao("Assinale o argumento válido, onde $S_1$, $S_2$ indicam premissas e $S$ a conclusão:");
 		questaoAlternativa10.setArea(EArea.MATEMATICA);
-		questaoAlternativa10.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa10.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa10.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa10.setAlternativaCorreta("b");
 		
@@ -214,7 +214,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa11.setDescricao("Uma prova de vestibular foi elaborada com 25 questões de múltipla escolha com 5 alternativas. O número de candidatos presentes à prova foi 63127. Considere a afirmação:\r\n" + 
 				"Pelo menos 2 candidatos responderam de modo idêntico as $k$ primeiras questões da prova. Qual é o maior valor de k para o qual podemos garantir que a afirmação é verdadeira.");
 		questaoAlternativa11.setArea(EArea.MATEMATICA);
-		questaoAlternativa11.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa11.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa11.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa11.setAlternativaCorreta("e");
 		
@@ -231,7 +231,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa12.setAno(2002);
 		questaoAlternativa12.setDescricao("Dado um vetor $u ∈ R^2$, $u = \\left (−3, 4\\right )$, vamos denotar por $v$ o vetor de $R^2$ que tem tamanho 1 e é ortogonal à $u$. Então $v$ pode ser dado por");
 		questaoAlternativa12.setArea(EArea.MATEMATICA);
-		questaoAlternativa12.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa12.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa12.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa12.setAlternativaCorreta("c");
 		
@@ -249,7 +249,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa13.setAno(2002);
 		questaoAlternativa13.setDescricao("<IMAGEM = 13> Se O = $\\left (0, 0, 0\\right )$ ; A = $\\left (2, 4, 1\\right )$ ; B = $\\left (3, 1, 1\\right )$ e C = $\\left (1, 3, 5\\right )$ então o volume do sólido acima é");
 		questaoAlternativa13.setArea(EArea.MATEMATICA);
-		questaoAlternativa13.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa13.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa13.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa13.setAlternativaCorreta("d");
 		questaoAlternativa13.setImagem(true);
@@ -271,7 +271,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"O espaço percorrido desde o instante que o ponto comecçou a se mover até a sua parada total é");
 		questaoAlternativa14.setArea(EArea.MATEMATICA);
-		questaoAlternativa14.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa14.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa14.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa14.setAlternativaCorreta("a");
 		
@@ -288,7 +288,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa15.setAno(2002);
 		questaoAlternativa15.setDescricao("$\\lim_{n \\rightarrow ∞}\\left(\\frac{1}{n^2} + \\frac{2}{n^2} + ... +\\frac{n − 1}{n^2} \\right) = L$ então");
 		questaoAlternativa15.setArea(EArea.MATEMATICA);
-		questaoAlternativa15.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa15.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa15.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa15.setAlternativaCorreta("c");
 		
@@ -305,7 +305,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa16.setAno(2002);
 		questaoAlternativa16.setDescricao("O número de strings binárias de comprimento 7 e contendo um par de zeros consecutivos é");
 		questaoAlternativa16.setArea(EArea.MATEMATICA);
-		questaoAlternativa16.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa16.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa16.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa16.setAlternativaCorreta("c");
 		
@@ -323,7 +323,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa17.setAno(2002);
 		questaoAlternativa17.setDescricao("A média aritmética de uma lista de 50 números é 50. Se dois desses números, 51 e 97, forem suprimidos dessa lista a média dos restantes será");
 		questaoAlternativa17.setArea(EArea.MATEMATICA);
-		questaoAlternativa17.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa17.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa17.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
 		questaoAlternativa17.setAlternativaCorreta("b");
 		
@@ -348,7 +348,7 @@ public class QuestaoPoscomp2004 {
 				"\\begin{array}{c}1 \\ 0 \\ 0 \\ 0 \\ 0\\end{array} \r\n" + 
 				"\\right)$\r\n");
 		questaoAlternativa18.setArea(EArea.MATEMATICA);
-		questaoAlternativa18.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa18.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa18.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa18.setAlternativaCorreta("a");
 		
@@ -366,7 +366,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa19.setAno(2002);
 		questaoAlternativa19.setDescricao("Numa prova de múltipla escolha com 10 questões e 4 alternativas qual a chance (probabilidade) de um aluno apenas “chutando as respostas” conseguir “gabaritar” a provar (acertar todas as questões).\r\n");
 		questaoAlternativa19.setArea(EArea.MATEMATICA);
-		questaoAlternativa19.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa19.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa19.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
 		questaoAlternativa19.setAlternativaCorreta("c");
 		
@@ -389,7 +389,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"podemos afirmar que a corrida tem");
 		questaoAlternativa20.setArea(EArea.MATEMATICA);
-		questaoAlternativa20.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa20.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa20.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa20.setAlternativaCorreta("c");
 		
@@ -407,7 +407,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa21.setAno(2002);
 		questaoAlternativa21.setDescricao("Uma característica de uma arquitetura RISC é:");
 		questaoAlternativa21.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa21.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa21.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa21.setDisciplina(EDisciplina.ARQUITETURA_E_ORGANIZACAO_DE_COMPUTADORES);
 		questaoAlternativa21.setAlternativaCorreta("d");
 		
@@ -424,7 +424,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa22.setAno(2002);
 		questaoAlternativa22.setDescricao("Na Algebra Booleana");
 		questaoAlternativa22.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa22.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa22.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa22.setDisciplina(EDisciplina.ARQUITETURA_E_ORGANIZACAO_DE_COMPUTADORES);
 		questaoAlternativa22.setAlternativaCorreta("b");
 		
@@ -445,7 +445,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"Qual das seguintes portas equivale a este circuito?");
 		questaoAlternativa23.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa23.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa23.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa23.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
 		questaoAlternativa23.setAlternativaCorreta("c");
 		questaoAlternativa23.setImagem(true);
@@ -462,7 +462,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa24.setAno(2002);
 		questaoAlternativa24.setDescricao("Assinale quantas sequências de caracteres a seguir são reconhecidas pelo autômato finito abaixo. As quatro sequências de caracteres (separadas por vírgulas) são: 0, +567, -89.5, -3e3. <IMAGEM = 25>");
 		questaoAlternativa24.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa24.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa24.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa24.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa24.setAlternativaCorreta("c");
 		questaoAlternativa24.setImagem(true);
@@ -479,7 +479,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa25.setAno(2002);
 		questaoAlternativa25.setDescricao("Sobre a hierarquia de Chomsky podemos afirmar que:");
 		questaoAlternativa25.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa25.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa25.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa25.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa25.setAlternativaCorreta("e");
 		questaoAlternativa25.setAlternativasA("Uma linguagem que é recusirvamente enumerável não pode ser uma linguagem regular");
@@ -495,7 +495,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa26.setAno(2002);
 		questaoAlternativa26.setDescricao("Suponha que T seja uma árvore AVL inicialmente vazia, e considere a inserção dos elementos 10,20,30,5,15,2 em T, nesta ordem. Qual das sequências abaixo corresponde a um percurso de T em pré-ordem:");
 		questaoAlternativa26.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa26.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa26.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa26.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa26.setAlternativaCorreta("a");
 		questaoAlternativa26.setAlternativasA("10,5,2,20,15,30");
@@ -512,7 +512,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa27.setAno(2002);
 		questaoAlternativa27.setDescricao("Considere uma tabela de espalhamento (tabela hash) com quatro posições numeradas 0, 1, 2 e 3. Se a sequencia de quadrados perfeitos $1, 4, 9, ....., i^2, ...$  for armazenada nessa tabela segundo a função $f(x) = x mod 4$, como se dará a distribuição dos elementos pelas posições da tabela, à medida que o número de entradas cresce?");
 		questaoAlternativa27.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa27.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa27.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa27.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa27.setAlternativaCorreta("e");
 		questaoAlternativa27.setAlternativasA("Cada posição da tabela receberá aproximadamente o mesmo número de elementos");
@@ -528,7 +528,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa28.setAno(2002);
 		questaoAlternativa28.setDescricao("Considere uma tabela de espalhamento (tabela hash) com quatro posições numeradas 0, 1, 2 e 3. Se a sequencia de quadrados perfeitos $1, 4, 9, ....., i^2, ...$  for armazenada nessa tabela segundo a função $f(x) = x mod 4$, como se dará a distribuição dos elementos pelas posições da tabela, à medida que o número de entradas cresce?");
 		questaoAlternativa28.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa28.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa28.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa28.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa28.setAlternativaCorreta("e");
 		questaoAlternativa28.setAlternativasA("Cada posição da tabela receberá aproximadamente o mesmo número de elementos");
@@ -545,7 +545,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa29.setAno(2002);
 		questaoAlternativa29.setDescricao("Qual das seguintes afirmaçoes sobre crescimento assintótico de funções não é verdadeira:");
 		questaoAlternativa29.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa29.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa29.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa29.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa29.setAlternativaCorreta("b");
 		questaoAlternativa29.setAlternativasA("$2n^2 + 3n + 1 = O(n^2)$");
@@ -566,7 +566,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"Além disso, é dada uma mochila que suporta até 30 unidades de peso, para transportar os objetos. O objetivo do problema é preencher a mochila de tal forma que o valor total dos objetos a serem transportados seja o maior possível, mas sem exceder o limite de peso suportado pela mochila. Assuma que é permitido colocar fração de um objeto na mochila. Qual das seguintes alternativas corresponde ao valor máximo obtido no preenchimento da mochila:");
 		questaoAlternativa30.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa30.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa30.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa30.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa30.setAlternativaCorreta("d");
 		questaoAlternativa30.setAlternativasA("12.2");
@@ -583,7 +583,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa31.setAno(2002);
 		questaoAlternativa31.setDescricao("Considere o algoritmo da busca sequencial de um elemento em um conjunto com $n$ elementos. A expressão que representa o tempo médio de execução desse algoritmo para uma busca bem sucedida é:");
 		questaoAlternativa31.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa31.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa31.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa31.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa31.setAlternativaCorreta("d");
 		questaoAlternativa31.setAlternativasA("$n^2$");
@@ -599,7 +599,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa32.setAno(2002);
 		questaoAlternativa32.setDescricao("Considere o algoritmo da busca sequencial de um elemento em um conjunto com $n$ elementos. A expressão que representa o tempo médio de execução desse algoritmo para uma busca bem sucedida é:");
 		questaoAlternativa32.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa32.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa32.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa32.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa32.setAlternativaCorreta("e");
 		questaoAlternativa32.setAlternativasA("Bubble sort e Quick sort");
@@ -615,7 +615,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa33.setAno(2002);
 		questaoAlternativa33.setDescricao("Considere o algoritmo da busca sequencial de um elemento em um conjunto com $n$ elementos. A expressão que representa o tempo médio de execução desse algoritmo para uma busca bem sucedida é:");
 		questaoAlternativa33.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa33.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa33.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa33.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa33.setAlternativaCorreta("e");
 		questaoAlternativa33.setAlternativasA("Bubble sort e Quick sort");
@@ -632,7 +632,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa34.setAno(2002);
 		questaoAlternativa34.setDescricao("Professor Mac Sperto propôs o seguinte algoritmo de ordenação, chamado de Super Merge, similar ao merge sort: divida o vetor em 4 partes do mesmo tamanho (ao invés de 2, como é feito no merge sort). Ordene recursivamente cada uma das partes e depois intercale-as por um procedimento semelhante ao procedimento de intercalaçao do merge sort. Qual das alternativas abaixo é verdadeira?");
 		questaoAlternativa34.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa34.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa34.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa34.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa34.setAlternativaCorreta("b");
 		questaoAlternativa34.setAlternativasA("Super Merge não está correto. Não é possível ordenar quebrado o vetor em 4 partes");
@@ -652,7 +652,7 @@ public class QuestaoPoscomp2004 {
 				"II - A arquitetura de micro-núcleo permite um número menor de mudanças de contexto \r\n" + 
 				"III - A arquitetura de micro-núcleo facilita a reconfiguração de serviço do SO pois a maioria deles reside em espaço de usuário.");
 		questaoAlternativa35.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa35.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa35.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa35.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa35.setAlternativaCorreta("c");
 		questaoAlternativa35.setAlternativasA("Apenas I");
@@ -669,7 +669,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa36.setAno(2002);
 		questaoAlternativa36.setDescricao("Considere um sistema distribuído onde cada nó precisa obter um bloqueio(lock) antes de acessar qualquer serviço no sistema. Qual das estrtégias a seguir não será eficaz para evitar impasses (deadlocks)?");
 		questaoAlternativa36.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa36.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa36.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa36.setDisciplina(EDisciplina.SISTEMAS_DISTRIBUIDOS);
 		questaoAlternativa36.setAlternativaCorreta("a");
 		questaoAlternativa36.setAlternativasA("Associar prioridades aos nós e criar filhos de prioridades para cada serviço");
@@ -694,7 +694,7 @@ public class QuestaoPoscomp2004 {
 				"onde $esq$ e $dir$ representam ligações para os filhos esquerdo e direito de um nó da árvore, respectvamente. Qual das seguintes alternativas é uma implementação correta da operação que inverte as posições dos filhos esquerdo e direito de um nó $p$ da árvore, onde $t$ é um apontador auxiliar.\r\n" + 
 				"");
 		questaoAlternativa37.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa37.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa37.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa37.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
 		questaoAlternativa37.setAlternativaCorreta("e");
 		questaoAlternativa37.setAlternativasA("t = p; \r\n" + 
@@ -739,7 +739,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"O valor de x impresso na última linha do programa é:");
 		questaoAlternativa38.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa38.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa38.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa38.setDisciplina(EDisciplina.PROGRAMACAO);
 		questaoAlternativa38.setAlternativaCorreta("e");
 		questaoAlternativa38.setAlternativasA("4");
@@ -764,7 +764,7 @@ public class QuestaoPoscomp2004 {
 				" \r\n" + 
 				"A parte que falta para completar a condição é:");
 		questaoAlternativa39.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa39.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa39.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa39.setDisciplina(EDisciplina.PROGRAMACAO);
 		questaoAlternativa39.setAlternativaCorreta("d");
 		questaoAlternativa39.setAlternativasA("while n<>0 sum:=sum + sum(n=1)");
@@ -780,7 +780,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa40.setAno(2002);
 		questaoAlternativa40.setDescricao("O menor número possível de arestas em um grafo conexo com n vértices é:");
 		questaoAlternativa40.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa40.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa40.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa40.setDisciplina(EDisciplina.GRAFOS);
 		questaoAlternativa40.setAlternativaCorreta("c");
 		questaoAlternativa40.setAlternativasA("$1$");
@@ -799,7 +799,7 @@ public class QuestaoPoscomp2004 {
 				"• Se removermos qualquer aresta de G, o grafo obtido é desconexo.\r\n" + 
 				"Então é correto afirmar que o grafo G é:");
 		questaoAlternativa41.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
-		questaoAlternativa41.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa41.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa41.setDisciplina(EDisciplina.GRAFOS);
 		questaoAlternativa41.setAlternativaCorreta("c");
 		questaoAlternativa41.setAlternativasA("$1$");
@@ -819,7 +819,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"∀g ∈ DSG, ∃j ∈ PROJ : g.PNO = j.PNO");
 		questaoAlternativa42.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa42.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa42.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa42.setDisciplina(EDisciplina.GRAFOS);
 		questaoAlternativa42.setAlternativaCorreta("c");
 		questaoAlternativa42.setAlternativasA("Uma restrição que define um estado consistente do banco de dados. ");
@@ -835,7 +835,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa43.setAno(2002);
 		questaoAlternativa43.setDescricao("Dentre as definições a seguir, ligadas ao conceito de normalização do modelo relacional, qual delas é INCORRETA?");
 		questaoAlternativa43.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa43.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa43.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa43.setDisciplina(EDisciplina.BANCO_DE_DADOS);
 		questaoAlternativa43.setAlternativaCorreta("b");
 		questaoAlternativa43.setAlternativasA("Programas aplicativos do banco de dados podem ser executados sobre visões de relações da base de dados.");
@@ -859,7 +859,7 @@ public class QuestaoPoscomp2004 {
 				"SELECT ENome FROM EMP, PROJ, DSG WHERE EMP.ENO = DSG.ENO AND PROJ.PNO = DSG.PNO AND Dur > 36");
 		
 		questaoAlternativa44.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa44.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa44.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa44.setDisciplina(EDisciplina.BANCO_DE_DADOS);
 		questaoAlternativa44.setAlternativaCorreta("e");
 		questaoAlternativa44.setAlternativasA("$\\pi_{ENome} (PROJ \\bowtie_{PNO} ( EMP \\bowtie_{ENO} \\sigma_{ Dur} > 36 (DSG)))$");
@@ -876,7 +876,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa45.setAno(2002);
 		questaoAlternativa45.setDescricao("Dentre as características do modelo relacional e do modelo de objetos em bancos de dados, qual afirmação é INCORRETA? ");
 		questaoAlternativa45.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa45.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa45.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa45.setDisciplina(EDisciplina.BANCO_DE_DADOS);
 		questaoAlternativa45.setAlternativaCorreta("a");
 		questaoAlternativa45.setAlternativasA("O relacionamento de herança é diretamente representado no modelo relacional.");
@@ -892,7 +892,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa46.setAno(2002);
 		questaoAlternativa46.setDescricao("Considere C(x) uma função que define a complexidade de um problema x; E(x) uma função que define o esforço (em termos de tempo) exigido para se resolver o problema x. Sejam dois problemas denominados p1 e p2. Assinale a alternativa correta.");
 		questaoAlternativa46.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa46.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa46.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa46.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa46.setAlternativaCorreta("a");
 		questaoAlternativa46.setAlternativasA("Se C(p1) < C(p2) então E(p1) < E(p2)");
@@ -921,7 +921,7 @@ public class QuestaoPoscomp2004 {
 				"IV) Em UML pode-se representar tão somente relacionamentos de Agregação, Associação e\r\n" + 
 				"Composição. ");
 		questaoAlternativa47.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa47.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa47.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa47.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
 		questaoAlternativa47.setAlternativaCorreta("d");
 		questaoAlternativa47.setAlternativasA("Todas as alternativas.");
@@ -937,7 +937,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa48.setAno(2002);
 		questaoAlternativa48.setDescricao("Marque a alternativa onde todos os conceitos estão corretos.");
 		questaoAlternativa48.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa48.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa48.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa48.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
 		questaoAlternativa48.setAlternativaCorreta("b");
 		questaoAlternativa48.setAlternativasA("Em um diagrama de fluxo de dados, uma entidade externa representa um produtor ou um consumidor de informação e está fora dos limites do sistema modelado; cada processo pode ser refinado, para explicitar um maior detalhamento; um DFD contém dois níveis de detalhamento; um\r\n" + 
@@ -963,7 +963,7 @@ public class QuestaoPoscomp2004 {
 				"\r\n" + 
 				"<IMAGEM = 49>");
 		questaoAlternativa49.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa49.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa49.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa49.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
 		questaoAlternativa49.setAlternativaCorreta("e");
 		questaoAlternativa49.setImagem(true);
@@ -985,7 +985,7 @@ public class QuestaoPoscomp2004 {
 				"III) formar uma base para as estimativas e justificar a aquisição de ferramentas.\r\n" + 
 				"IV) determinar se a utilização de um método traz benefícios ou não. ");
 		questaoAlternativa50.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa50.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa50.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa50.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
 		questaoAlternativa50.setAlternativaCorreta("a");
 		questaoAlternativa50.setAlternativasA("Todas as alternativas.");
@@ -1001,7 +1001,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa51.setAno(2002);
 		questaoAlternativa51.setDescricao("Histograma de uma imagem com K tons de cinza é : ");
 		questaoAlternativa51.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa51.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa51.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa51.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
 		questaoAlternativa51.setAlternativaCorreta("c");
 		questaoAlternativa51.setAlternativasA("O relacionamento de herança é diretamente representado no modelo relacional.");
@@ -1017,7 +1017,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa52.setAno(2002);
 		questaoAlternativa52.setDescricao("Filtro da mediana é:");
 		questaoAlternativa52.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa52.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa52.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa52.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
 		questaoAlternativa52.setAlternativaCorreta("b");
 		questaoAlternativa52.setAlternativasA("Indicado para detectar bordas em imagens.");
@@ -1047,7 +1047,7 @@ public class QuestaoPoscomp2004 {
 				"mesma viewport (20,30)-(300,100) corresponde a uma operação de zoom out sobre o mesmo\r\n" + 
 				"universo. ");
 		questaoAlternativa53.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa53.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa53.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa53.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
 		questaoAlternativa53.setAlternativaCorreta("b");
 		questaoAlternativa53.setAlternativasA("As alternativas I e II são verdadeiras ");
@@ -1064,7 +1064,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa54.setAno(2002);
 		questaoAlternativa54.setDescricao("Qual das seguintes condições não é necessária para a ocorrência de um deadlock?");
 		questaoAlternativa54.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa54.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa54.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa54.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa54.setAlternativaCorreta("c");
 		questaoAlternativa54.setAlternativasA("Uso mutuamente exclusivo de recursos por processos.");
@@ -1080,7 +1080,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa55.setAno(2002);
 		questaoAlternativa55.setDescricao("Starvation ocorre quando: ");
 		questaoAlternativa55.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa55.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa55.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa55.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa55.setAlternativaCorreta("a");
 		questaoAlternativa55.setAlternativasA("Pelo menos um processo é continuamente postergado e não executa. ");
@@ -1096,7 +1096,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa56.setAno(2002);
 		questaoAlternativa56.setDescricao("Quando trabalhando com sistemas baseados em trocas de mensagens, temporizações (time-outs) são utilizadas para:");
 		questaoAlternativa56.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa56.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa56.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa56.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa56.setAlternativaCorreta("b");
 		questaoAlternativa56.setAlternativasA("Limitar o número de retransmissões de uma mensagem.");
@@ -1112,7 +1112,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa57.setAno(2002);
 		questaoAlternativa57.setDescricao("Sistemas de processamento de transações, tais como sistemas de reservas aéreas, devem prover um mecanismo que garanta que cada transação não é afetada por outras transações que possam estar ocorrendo ao mesmo tempo. Transações de duas fases obedecem a um protocolo que garante essa atomicidade. Em transações de duas fases:");
 		questaoAlternativa57.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa57.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa57.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa57.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa57.setAlternativaCorreta("b");
 		questaoAlternativa57.setAlternativasA("Todas as operações de leitura ocorrem antes da primeira operação de escrita. ");
@@ -1128,7 +1128,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa58.setAno(2002);
 		questaoAlternativa58.setDescricao("Qual o significado de coerência de memórias cache em sistemas multiprocessados? ");
 		questaoAlternativa58.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa58.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa58.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa58.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
 		questaoAlternativa58.setAlternativaCorreta("a");
 		questaoAlternativa58.setAlternativasA("Caches em processadores diferentes sempre contêm o mesmo dado válido para a mesma linha de cache.");
@@ -1151,7 +1151,7 @@ public class QuestaoPoscomp2004 {
 				"Um algoritmo de busca em largura-primeiro forneceria a seguinte seqüência de estados como\r\n" + 
 				"primeira alternativa a um caminho-solução para o problema p: ");
 		questaoAlternativa59.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa59.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa59.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa59.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
 		questaoAlternativa59.setAlternativaCorreta("b");
 		questaoAlternativa59.setImagem(true);
@@ -1177,7 +1177,7 @@ public class QuestaoPoscomp2004 {
 				"Para a fórmula: $\\forall$ x (N(x) $=>$ $\\neg\\forall$y (N(y) $=>$ y $<$ x))), qual alternativa abaixo NÃO constitui\r\n" + 
 				"uma tradução possível?");
 		questaoAlternativa60.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa60.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa60.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa60.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
 		questaoAlternativa60.setAlternativaCorreta("e");
 		questaoAlternativa60.setAlternativasA("Não há um número tal que todos os números são menores do que ele.");
@@ -1199,7 +1199,7 @@ public class QuestaoPoscomp2004 {
 				"qual das seguintes sentenças em linguagem natural ela representa, considerando que ama(x,y)\r\n" + 
 				"representa que x ama y?");
 		questaoAlternativa61.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa61.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa61.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa61.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
 		questaoAlternativa61.setAlternativaCorreta("b");
 		questaoAlternativa61.setAlternativasA("Alguém ama a todos. ");
@@ -1216,7 +1216,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa62.setAno(2002);
 		questaoAlternativa62.setDescricao("Em qual das situações abaixo um sistema de Raciocínio Baseado em Casos não deve ser utilizado? ");
 		questaoAlternativa62.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa62.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa62.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa62.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
 		questaoAlternativa62.setAlternativaCorreta("e");
 		questaoAlternativa62.setAlternativasA("Quando a experiência for tão valiosa quanto o conhecimento em livros texto.");
@@ -1232,7 +1232,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa63.setAno(2002);
 		questaoAlternativa63.setDescricao("Uma integração de Sistemas Computacionais formando uma rede, tipicamente é implementada através da instalação de uma Arquitetura de Rede, que é composta de camadas e protocolos, em cada um dos elementos que compõem esta rede. Considere que estações “conversam” quando aplicações de usuários conseguem comunicar-se, sintática e semanticamente, através da Rede de Computadores. Baseados nesta premissa e em todos os conceitos associados à implementação e utilização das redes de computadores podemos afirmar como certo: ");
 		questaoAlternativa63.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa63.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa63.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa63.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
 		questaoAlternativa63.setAlternativaCorreta("c");
 		questaoAlternativa63.setAlternativasA("Computadores com arquiteturas de redes diferentes conseguem “conversar”.");
@@ -1248,7 +1248,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa64.setAno(2002);
 		questaoAlternativa64.setDescricao("Assinale a alternativa INCORRETA:");
 		questaoAlternativa64.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa64.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa64.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa64.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
 		questaoAlternativa64.setAlternativaCorreta("b");
 		questaoAlternativa64.setAlternativasA("Nos serviços orientados a conexões há a necessidade de estabelecimento de uma conexão antes da transferência dos dados.");
@@ -1264,7 +1264,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa65.setAno(2002);
 		questaoAlternativa65.setDescricao("Na criptografia com chave pública:");
 		questaoAlternativa65.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa65.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa65.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa65.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
 		questaoAlternativa65.setAlternativaCorreta("b");
 		questaoAlternativa65.setAlternativasA("O sigilo é obtido através da codificação com a chave privada do remetente e decifragem com a chave pública do destinatário.");
@@ -1280,7 +1280,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa66.setAno(2002);
 		questaoAlternativa66.setDescricao("Quanto ao TCP, é INCORRETO afirmar:");
 		questaoAlternativa66.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa66.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa66.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa66.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
 		questaoAlternativa66.setAlternativaCorreta("e");
 		questaoAlternativa66.setAlternativasA("É um protocolo do nível de transporte.");
@@ -1303,7 +1303,7 @@ public class QuestaoPoscomp2004 {
 				"$C \\rightarrow cD \\mid \\varepsilon$ \\\r\n" + 
 				"$D \\rightarrow \\varepsilon$ \\\r\n");
 		questaoAlternativa67.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa67.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa67.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa67.setDisciplina(EDisciplina.LINGUAGENS_E_PARADIGMAS_DE_PROGRAMACAO);
 		questaoAlternativa67.setAlternativaCorreta("d");
 		questaoAlternativa67.setAlternativasA("$\\left\\{d\\right\\}$");
@@ -1319,7 +1319,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa68.setAno(2002);
 		questaoAlternativa68.setDescricao("Qual das afirmações a seguir, relativas à análise sintática, está INCORRETA?");
 		questaoAlternativa68.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa68.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa68.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa68.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa68.setAlternativaCorreta("a");
 		questaoAlternativa68.setAlternativasA("As gramáticas LL podem descrever mais linguagens do que as gramáticas LR . ");
@@ -1339,7 +1339,7 @@ public class QuestaoPoscomp2004 {
 				"$E \\rightarrow T \\left\\{ E.val = T.val \\right\\}$\\\r\n" + 
 				"$T \\rightarrow digito \\left\\{ T.val = val(digito) \\right\\}$ \\");
 		questaoAlternativa69.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa69.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa69.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa69.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa69.setAlternativaCorreta("d");
 		questaoAlternativa69.setAlternativasA("1");
@@ -1355,7 +1355,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa70.setAno(2002);
 		questaoAlternativa70.setDescricao("Qual das informações a seguir NÃO é colocada no registro de ativação na chamada de funções?");
 		questaoAlternativa70.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
-		questaoAlternativa70.setProva(ETipoQuestao.POSCOMP);
+		questaoAlternativa70.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa70.setDisciplina(EDisciplina.PROGRAMACAO);
 		questaoAlternativa70.setAlternativaCorreta("b");
 		questaoAlternativa70.setAlternativasA("Endereço de retorno");
