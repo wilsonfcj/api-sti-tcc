@@ -266,7 +266,7 @@ public class SimuladoService {
 	
 	private Simulado saveSimulado(SumuladoRequest sumuladoRequest) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = questaoRepository.consultPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 5);
+		List<QuestaoAlternativa> questaoPart1 = questaoRepository.consultPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20);
 		List<QuestaoAlternativa> questaoPart2 = questaoRepository.consultPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5);
 		List<QuestaoAlternativa> questaoPart3 = questaoRepository.consultPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5);
 		questoes.addAll(questaoPart1);
