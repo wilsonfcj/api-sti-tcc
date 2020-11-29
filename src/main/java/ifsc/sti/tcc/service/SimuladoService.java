@@ -22,6 +22,7 @@ import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoMapper;
+import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoResumoMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.RespostaSimuladoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
@@ -143,6 +144,21 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<SimuladoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	public ResponseEntity<ResponseBase<List<SimuladoResponse>>> buscarSimuladoIdUsuario(long idUsuario) {
+		ResponseBase<List<SimuladoResponse>> baseResponse = new ResponseBase<>();
+		try {
+			List<SimuladoResponse> simuladoResponse = buscarSimuladoPorIdUsuario(idUsuario);
+			if(simuladoResponse == null) {
+				baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", simuladoResponse);
+			} else {
+				baseResponse = new ResponseBase<>(true, "Simulado consultado com sucesso", simuladoResponse);
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<List<SimuladoResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
 
 	public ResponseEntity<ResponseBase<RespostaSimuladoRequest>> salvarRespostaSimulado(RespostaSimuladoRequest request) {
 		ResponseBase<RespostaSimuladoRequest> baseResponse = new ResponseBase<>();
@@ -204,6 +220,12 @@ public class SimuladoService {
 	private SimuladoResponse buscarSimuladoPorId(long simuladoId) {
 		Simulado simulado = jpaRepository.findById(simuladoId);
 		SimuladoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		return simuladoResponse;
+	}
+	
+	private List<SimuladoResponse> buscarSimuladoPorIdUsuario(long usuarioId) {
+		List<Simulado> simulados = jpaRepository.findByIdUsuario(loadUsuarioById(usuarioId));
+		List<SimuladoResponse> simuladoResponse = new SimuladoResumoMapper().transform(simulados);
 		return simuladoResponse;
 	}
 	

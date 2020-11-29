@@ -84,6 +84,17 @@ public class SimuladoApi {
 		return lSimuladoService.buscarSimuladoId(id);
 	}
 	
+	@ApiOperation(value = "Busca um simulado por seu Identificador")
+	@GetMapping("/BuscarSimuladosUsuario")
+	public ResponseEntity<ResponseBase<List<SimuladoResponse>>> buscarUsuarioPorIdUsuario(@RequestParam Integer idUsuario) {
+		SimuladoService lSimuladoService = new SimuladoService
+				.Instance(simuladoRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.build();
+		return lSimuladoService.buscarSimuladoIdUsuario(idUsuario);
+	}
+	
 	@ApiOperation(value = "Salva as respostas do simulado e gera o resultado")
 	@RequestMapping(value = "/SalvarRespostaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<RespostaSimuladoRequest>> salvarRespostaSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
