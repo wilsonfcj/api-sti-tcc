@@ -1,14 +1,14 @@
 package ifsc.sti.tcc.resources.mappers.domaintoview;
 
 import ifsc.sti.tcc.modelos.simulado.Simulado;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
-public class SimuladoResumoMapper extends MapperUtil<Simulado, SimuladoResponse> {
+public class SimuladoResumoMapper extends MapperUtil<Simulado, SimuladoBaseResponse> {
 
 	@Override
-	public SimuladoResponse transform(Simulado aObject) {
-		SimuladoResponse simuladoResponse = new SimuladoResponse();
+	public SimuladoBaseResponse transform(Simulado aObject) {
+		SimuladoBaseResponse simuladoResponse = new SimuladoBaseResponse();
 		simuladoResponse.setId(aObject.getId());
 		simuladoResponse.setNome(aObject.getNome());
 		simuladoResponse.setDescricao(aObject.getDescricao());

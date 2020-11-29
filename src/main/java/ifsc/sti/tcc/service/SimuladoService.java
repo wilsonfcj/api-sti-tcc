@@ -22,13 +22,15 @@ import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoMapper;
+import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoQuestoesMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoResumoMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.RespostaSimuladoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2002;
 
@@ -79,7 +81,7 @@ public class SimuladoService {
 	}
 	
 	private Simulado loadSimuladoById(long idSimulado) {
-		return jpaRepository.findById(356);
+		return jpaRepository.findById(idSimulado);
 	}
 	
 	private Usuario loadUsuarioById(long idSimulado) {
@@ -88,6 +90,11 @@ public class SimuladoService {
 	
 	private RespostaSimulado loadRespostaSimulado(RespostaSimuladoRequest request) {
 		return respostaSimuladoRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdUsuario());
+	}
+	
+	private RespostaSimulado loadRespostaSimulado(long idSimulado, long idUsuario) {
+		RespostaSimulado resposta = respostaSimuladoRepository.consultarRespostaSimulado(idSimulado, idUsuario);
+		return resposta;
 	}
 	
 	private RespostaSimulado mapperSumulado(RespostaSimuladoRequest request) {
@@ -133,30 +140,46 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<List<QuestaoResponse>>>(baseResponse, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseBase<SimuladoResponse>> buscarSimuladoId(long id) {
-		ResponseBase<SimuladoResponse> baseResponse = new ResponseBase<>();
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarSimuladoId(long id) {
+		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
-			SimuladoResponse simuladoResponse = buscarSimuladoPorId(id);
+			SimuladoCompletoResponse simuladoResponse = buscarSimuladoPorId(id);
 			baseResponse = new ResponseBase<>(true, "Simulado consultado com sucesso", simuladoResponse);
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<SimuladoResponse>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseBase<List<SimuladoResponse>>> buscarSimuladoIdUsuario(long idUsuario) {
-		ResponseBase<List<SimuladoResponse>> baseResponse = new ResponseBase<>();
+	
+	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarQuestoesSimuladoId(long id) {
+		ResponseBase<List<QuestaoResponse>> baseResponse = new ResponseBase<>();
 		try {
-			List<SimuladoResponse> simuladoResponse = buscarSimuladoPorIdUsuario(idUsuario);
+			List<QuestaoResponse> response = buscarQuestoesSimuladoPorId(id);
+			baseResponse = new ResponseBase<>(true, "Questões consultadas com sucesso", response);
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível consultar as questões do simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<List<QuestaoResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarSimuladoIdUsuario(long idUsuario) {
+		ResponseBase<List<SimuladoBaseResponse>> baseResponse = new ResponseBase<>();
+		try {
+			List<SimuladoBaseResponse> simuladoResponse = buscarSimuladoPorIdUsuario(idUsuario);
+			for(SimuladoBaseResponse simulado : simuladoResponse) {
+				RespostaSimulado resposta = loadRespostaSimulado(simulado.getId(), idUsuario);
+				simulado.setRespondido(resposta != null);
+			}
 			if(simuladoResponse == null) {
 				baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", simuladoResponse);
 			} else {
-				baseResponse = new ResponseBase<>(true, "Simulado consultado com sucesso", simuladoResponse);
+				baseResponse = new ResponseBase<>(true, "Simulados consultados com sucesso", simuladoResponse);
 			}
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<List<SimuladoResponse>>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>>(baseResponse, HttpStatus.OK);
 	}
 	
 
@@ -167,32 +190,38 @@ public class SimuladoService {
 			if(lRespostaSimulado != null) {
 				baseResponse = new ResponseBase<>(false, "Resposta já registrada para esse usuário", null);
 			} else {
-				RespostaSimulado respostaSimulado = mapperSumulado(request);
-				respostaSimuladoRepository.save(respostaSimulado);
-				baseResponse = new ResponseBase<>(true, "Resposta registrada com sucesso", request);
+				if(loadSimuladoById(request.getIdSimulado())  == null) {
+					baseResponse = new ResponseBase<>(false, "Simulado não encontrado", null);
+				} else if(loadUsuarioById(request.getIdUsuario()) == null){
+					baseResponse = new ResponseBase<>(false, "Usuário não encontrado", null);
+				} else {
+					RespostaSimulado respostaSimulado = mapperSumulado(request);
+					respostaSimuladoRepository.save(respostaSimulado);
+					baseResponse = new ResponseBase<>(true, "Resposta registrada com sucesso", request);
+				}
 			}
 		} catch (Exception e) {
-			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
+			baseResponse = new ResponseBase<>(false, "Não foi possível salvar a resposta do simulado", null);
 		}
 		return new ResponseEntity<ResponseBase<RespostaSimuladoRequest>>(baseResponse, HttpStatus.OK);
 	}
 	
 	
-	public ResponseEntity<ResponseBase<SimuladoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
-		ResponseBase<SimuladoResponse> baseResponse = new ResponseBase<>();
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
+		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
 			RespostaSimulado repostaSimulada = respostaSimuladoRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdUsuario());
 			baseResponse = new ResponseBase<>(true, "Teste", null);
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<SimuladoResponse>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseBase<SimuladoResponse>> gerarSimulado(SumuladoRequest sumuladoRequest) {
-		ResponseBase<SimuladoResponse> baseResponse = new ResponseBase<>();
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> gerarSimulado(SumuladoRequest sumuladoRequest) {
+		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
-			SimuladoResponse simuladoResponse = null;
+			SimuladoCompletoResponse simuladoResponse = null;
 			switch (sumuladoRequest.getTipoSimulado()) {
 			case 2:
 				simuladoResponse = gerarSimuladPoscom(sumuladoRequest);
@@ -208,24 +237,30 @@ public class SimuladoService {
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<SimuladoResponse>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	private SimuladoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
 		Simulado simulado = saveSimulado(sumuladoRequest);
-		SimuladoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
 	}
 	
-	private SimuladoResponse buscarSimuladoPorId(long simuladoId) {
+	private SimuladoCompletoResponse buscarSimuladoPorId(long simuladoId) {
 		Simulado simulado = jpaRepository.findById(simuladoId);
-		SimuladoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
 	}
 	
-	private List<SimuladoResponse> buscarSimuladoPorIdUsuario(long usuarioId) {
+	private List<QuestaoResponse> buscarQuestoesSimuladoPorId(long simuladoId) {
+		Simulado simulado = jpaRepository.findById(simuladoId);
+		List<QuestaoResponse> response = new SimuladoQuestoesMapper().transform(simulado);
+		return response;
+	}
+	
+	private List<SimuladoBaseResponse> buscarSimuladoPorIdUsuario(long usuarioId) {
 		List<Simulado> simulados = jpaRepository.findByIdUsuario(loadUsuarioById(usuarioId));
-		List<SimuladoResponse> simuladoResponse = new SimuladoResumoMapper().transform(simulados);
+		List<SimuladoBaseResponse> simuladoResponse = new SimuladoResumoMapper().transform(simulados);
 		return simuladoResponse;
 	}
 	
@@ -254,13 +289,13 @@ public class SimuladoService {
 		return simulado;
 	}
 	
-	private SimuladoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
 		Simulado simulado = saveSimulado(sumuladoRequest);
-		SimuladoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
 	}
 	
-	private SimuladoResponse gerarSimuladPersonalizado(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladPersonalizado(SumuladoRequest sumuladoRequest) {
 		return null;
 	}
 }

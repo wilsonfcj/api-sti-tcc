@@ -20,7 +20,8 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
 import ifsc.sti.tcc.service.SimuladoService;
 import io.swagger.annotations.Api;
@@ -53,7 +54,7 @@ public class SimuladoApi {
     
     @ApiOperation(value = "Gera um simulado para ser respondido")
 	@RequestMapping(value = "/GerarSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<SimuladoResponse>> salvarRespostaSimulado(@RequestBody SumuladoRequest request) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> salvarRespostaSimulado(@RequestBody SumuladoRequest request) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
@@ -63,34 +64,34 @@ public class SimuladoApi {
 		return lSimuladoService.gerarSimulado(request);
 	}
 	
-//	@ApiOperation(value = "Busca a lista de usuários cadastrados")
-//	@GetMapping("/RemoverSimulado")
-//	public ResponseEntity<ResponseBase<SimuladoResponse>> gerarSimuladoPersonalizado() {
-////		UsuarioService lUsuarioService = new UsuarioService.Instance(usuarioRepository)
-////				.withDisciplinaRepository(disciplinaRepository)
-////				.withImagemRepository(imagemRepository)
-////				.withInstituicaoRepository(instituicaoRepository)
-////				.build();
-//		return null;
-//	}
-	
 	@ApiOperation(value = "Busca um simulado por seu Identificador")
 	@GetMapping("/BuscarSimuladoPorId")
-	public ResponseEntity<ResponseBase<SimuladoResponse>> buscarUsuarioPorId(@RequestParam Integer id) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarSimuladoPorId(@RequestParam Integer idSimulado) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
 				.build();
-		return lSimuladoService.buscarSimuladoId(id);
+		return lSimuladoService.buscarSimuladoId(idSimulado);
+	}
+	
+	@ApiOperation(value = "Busca as questões de um simulado por seu Identificador")
+	@GetMapping("/BuscarQuestoesSimuladoPorId")
+	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarQuestoesSimuladoPorId(@RequestParam Integer idSimulado) {
+		SimuladoService lSimuladoService = new SimuladoService
+				.Instance(simuladoRepository)
+				.withQuestaoRepository(questaoRepository)
+				.build();
+		return lSimuladoService.buscarQuestoesSimuladoId(idSimulado);
 	}
 	
 	@ApiOperation(value = "Busca um simulado por seu Identificador")
 	@GetMapping("/BuscarSimuladosUsuario")
-	public ResponseEntity<ResponseBase<List<SimuladoResponse>>> buscarUsuarioPorIdUsuario(@RequestParam Integer idUsuario) {
+	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarUsuarioPorIdUsuario(@RequestParam Integer idUsuario) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
 				.withUsuarioRepository(usuarioRepository)
+				.withRespostaSimuladoRepository(respostaSimuladoRepository)
 				.build();
 		return lSimuladoService.buscarSimuladoIdUsuario(idUsuario);
 	}
@@ -109,7 +110,7 @@ public class SimuladoApi {
 	
 	@ApiOperation(value = "Busca as respostas de um simulado")
 	@RequestMapping(value = "/BuscarRespostasSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<SimuladoResponse>> buscarRespostaSimulado(@RequestBody BuscarRespostaSimuladoRequest buscarRespostaSimuladoRequest) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(@RequestBody BuscarRespostaSimuladoRequest buscarRespostaSimuladoRequest) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
