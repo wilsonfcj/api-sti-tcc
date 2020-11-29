@@ -357,15 +357,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa18 = new QuestaoAlternativa();
 		questaoAlternativa18.setId(18l);
 		questaoAlternativa18.setAno(2002);
-		questaoAlternativa18.setDescricao("O determinante da matriz dada abaixo é\r\n" + 
-				"\r\n" + 
-				"$\\\\left(\r\n" + 
-				"\\\\begin{array}{c}2 \\\\\\\\ 2 \\\\\\\\ -1 \\\\\\\\ 2 \\\\\\\\ 3\\\\end{array} \r\n" + 
-				"\\\\begin{array}{c}7 \\\\\\\\  8 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \r\n" + 
-				"\\\\begin{array}{c}9 \\\\\\\\ 3 \\\\\\\\ 4 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \r\n" + 
-				"\\\\begin{array}{c}−1 \\\\\\\\ 1 \\\\\\\\ 3 \\\\\\\\ -1 \\\\\\\\ 0\\\\end{array} \r\n" + 
-				"\\\\begin{array}{c}1 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \r\n" + 
-				"\\\\right)$");
+		questaoAlternativa18.setDescricao("O determinante da matriz dada abaixo é $\\\\left(\\\\begin{array}{c}2 \\\\\\\\ 2 \\\\\\\\ -1 \\\\\\\\ 2 \\\\\\\\ 3\\\\end{array} \\\\begin{array}{c}7 \\\\\\\\  8 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \\\\begin{array}{c}9 \\\\\\\\ 3 \\\\\\\\ 4 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \\\\begin{array}{c}−1 \\\\\\\\ 1 \\\\\\\\ 3 \\\\\\\\ -1 \\\\\\\\ 0\\\\end{array} \\\\begin{array}{c}1 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0\\\\end{array} \\\\right)$");
 		questaoAlternativa18.setArea(EArea.MATEMATICA);
 		questaoAlternativa18.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa18.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
