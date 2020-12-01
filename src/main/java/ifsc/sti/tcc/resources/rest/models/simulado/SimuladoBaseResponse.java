@@ -1,11 +1,8 @@
 package ifsc.sti.tcc.resources.rest.models.simulado;
 
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 
 public class SimuladoBaseResponse {
 
