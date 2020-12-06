@@ -214,7 +214,7 @@ public class QuestaoPoscomp2002 {
 				"$S_2$: O cavalo estava descansado\r\n" + 
 				"$S$: O cavalo perdeu a corrida\r\n");
 		questaoAlternativa10.setAlternativasE("Nenhuma das anteriores");
-		questaoAlternativa9.setNumeroQuestao(10);
+		questaoAlternativa10.setNumeroQuestao(10);
 		
 //		---------------------------------------------------------------
 		
@@ -247,11 +247,11 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa12.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa12.setAlternativaCorreta("c");
 		
-		questaoAlternativa12.setAlternativasA("\\left (−4/5, 3/5\\right )");
-		questaoAlternativa12.setAlternativasB("\\left (3/5, 4/5\\right )");
-		questaoAlternativa12.setAlternativasC("\\left (−4/5, −3/5\\right )");
-		questaoAlternativa12.setAlternativasD("\\left (−4/5, 1/5\\right )");
-		questaoAlternativa12.setAlternativasE("\\left (−4/5, 2/5\\right )");
+		questaoAlternativa12.setAlternativasA("$\\left (−4/5, 3/5\\right )$");
+		questaoAlternativa12.setAlternativasB("$\\left (3/5, 4/5\\right )$");
+		questaoAlternativa12.setAlternativasC("$\\left (−4/5, −3/5\\right )$");
+		questaoAlternativa12.setAlternativasD("$\\left (−4/5, 1/5\\right )$");
+		questaoAlternativa12.setAlternativasE("$\\left (−4/5, 2/5\\right )$");
 		questaoAlternativa12.setNumeroQuestao(12);
 		
 //		---------------------------------------------------------------
@@ -260,7 +260,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa13 = new QuestaoAlternativa();
 		questaoAlternativa13.setId(13l);
 		questaoAlternativa13.setAno(2002);
-		questaoAlternativa13.setDescricao("<IMAGEM = 13> Se O = $\\left (0, 0, 0\\right )$ ; A = $\\left (2, 4, 1\\right )$ ; B = $\\left (3, 1, 1\\right )$ e C = $\\left (1, 3, 5\\right )$ então o volume do sólido acima é");
+		questaoAlternativa13.setDescricao("Se O = \\left (0, 0, 0\\right ) ; A = \\left (2, 4, 1\\right ) ; B = \\left (3, 1, 1\\right ) e C = \\left (1, 3, 5\\right ) então o volume do sólido abaixo é:");
 		questaoAlternativa13.setArea(EArea.MATEMATICA);
 		questaoAlternativa13.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa13.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
@@ -354,15 +354,17 @@ public class QuestaoPoscomp2002 {
 		
 //		---------------------------------------------------------------
 		
+//		TODO ADICIONAR IMAGEM
 		QuestaoAlternativa questaoAlternativa18 = new QuestaoAlternativa();
 		questaoAlternativa18.setId(18l);
 		questaoAlternativa18.setAno(2002);
-		questaoAlternativa18.setDescricao("O determinante da matriz dada abaixo é $\\\\left(\\\\begin{array}{c}2 \\\\\\\\ 2 \\\\\\\\ -1 \\\\\\\\ 2 \\\\\\\\ 3 \\\\end{array} \\\\begin{array}{c}7 \\\\\\\\  8 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0 \\\\end{array} \\\\begin{array}{c}9 \\\\\\\\ 3 \\\\\\\\ 4 \\\\\\\\ 0 \\\\\\\\ 0 \\\\end{array} \\\\begin{array}{c}−1 \\\\\\ 1 \\\\\\\\ 3 \\\\\\\\ -1 \\\\\\\\ 0 \\\\end{array}   \\\\begin{array}{c}1 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0 \\\\\\\\ 0 \\\\end{array} \\\\right)$");
+		questaoAlternativa18.setDescricao("O determinante da matriz dada abaixo é $\\left( \\begin{array}{c}2 \\\\ 2 \\\\ -1 \\\\ 2 \\\\ 3\\end{array} \\begin{array}{c}7 \\\\ 8 \\\\ 0 \\\\ 0 \\\\ 0\\end{array} \\begin{array}{c}9 \\\\ 3 \\\\ 4 \\\\ 0 \\\\ 0\\end{array} \\begin{array}{c}−1 \\\\ 1 \\\\ 3 \\\\ -1 \\\\ 0\\end{array} \\begin{array}{c}1 \\\\ 0 \\\\ 0 \\\\ 0 \\\\ 0\\end{array} \\right)$");
 		questaoAlternativa18.setArea(EArea.MATEMATICA);
 		questaoAlternativa18.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa18.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa18.setAlternativaCorreta("a");
-		
+		questaoAlternativa18.setImagem(true);
+		questaoAlternativa18.setImagemQuestao("");
 		questaoAlternativa18.setAlternativasA("96");
 		questaoAlternativa18.setAlternativasB("−96");
 		questaoAlternativa18.setAlternativasC("86");
@@ -396,11 +398,10 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa20.setId(20l);
 		questaoAlternativa20.setAno(2002);
 		questaoAlternativa20.setDescricao("Três atletas A, B e C competiram, ao pares, numa corrida de d metros. Considerando que cada atleta teve o mesmo desempenho (ou seja, a mesma velocidade) ao competir com adversários distintos, e sabendo-se que \r\n" + 
-				"• A venceu B chegando 20 metros à frente\r\n" + 
-				"• B venceu C chegando 10 metros à frente\r\n" + 
-				"• A venceu C chegando 28 metros à frente, \r\n" + 
-				"\r\n" + 
-				"podemos afirmar que a corrida tem");
+				"$\\\\newline$• A venceu B chegando 20 metros à frente" + 
+				"$\\\\newline$• B venceu C chegando 10 metros à frente" + 
+				"$\\\\newline$• A venceu C chegando 28 metros à frente," + 
+				"$\\\\newline$podemos afirmar que a corrida tem");
 		questaoAlternativa20.setArea(EArea.MATEMATICA);
 		questaoAlternativa20.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa20.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
@@ -455,11 +456,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa23 = new QuestaoAlternativa();
 		questaoAlternativa23.setId(23l);
 		questaoAlternativa23.setAno(2002);
-		questaoAlternativa23.setDescricao("Considere o circuito abaixo, implementado com duas portas NAND.\r\n" + 
-				"\r\n" + 
-				"<IMAGEM = 23> \r\n" + 
-				"\r\n" + 
-				"Qual das seguintes portas equivale a este circuito?");
+		questaoAlternativa23.setDescricao("Considere o circuito abaixo, implementado com duas portas NAND. Qual das seguintes portas equivale a este circuito?");
 		questaoAlternativa23.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa23.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa23.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
@@ -999,14 +996,11 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa49 = new QuestaoAlternativa();
 		questaoAlternativa49.setId(49l);
 		questaoAlternativa49.setAno(2002);
-		questaoAlternativa49.setDescricao("Considerando a rede de Petri abaixo, quais das alternativas são verdadeiras?\r\n" + 
-				"\r\n" + 
-				"I) O lugar A está habilitado a disparar.\r\n" + 
-				"II) Apenas a transição T1 está habilitada a disparar.\r\n" + 
-				"III) A seqüência de transições (T1, T2, T3, T2) pode ser disparada, nessa ordem.\r\n" + 
-				"IV) A transição T4 nunca poderá ser disparada. \r\n" + 
-				"\r\n" + 
-				"<IMAGEM = 49>");
+		questaoAlternativa49.setDescricao("Considerando a rede de Petri abaixo, quais das alternativas são verdadeiras?"+ 
+				"$\\\\newline$I) O lugar A está habilitado a disparar." + 
+				"$\\\\newline$II) Apenas a transição T1 está habilitada a disparar." + 
+				"$\\\\newline$III) A seqüência de transições (T1, T2, T3, T2) pode ser disparada, nessa ordem." + 
+				"$\\\\newline$IV) A transição T4 nunca poderá ser disparada.");
 		questaoAlternativa49.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa49.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa49.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
