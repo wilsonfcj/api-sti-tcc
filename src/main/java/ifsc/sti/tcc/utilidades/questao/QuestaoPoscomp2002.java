@@ -655,10 +655,9 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa34.setId(34l);
 		questaoAlternativa34.setAno(2002);
 		questaoAlternativa34.setDescricao("No que diz respeito as vantagens da arquitetura de micro-núcleo para sistemas operacionais em relação a arquiteturas de núcleo monolítico, quais das seguintes afirmações são verdadeiras? \r\n" + 
-				"\r\n" + 
-				"I - A arquitetura de micro-núcleo facilita a depuração do SO. \r\n" + 
-				"II - A arquitetura de micro-núcleo permite um número menor de mudanças de contexto \r\n" + 
-				"III - A arquitetura de micro-núcleo facilita a reconfiguração de serviço do SO pois a maioria deles reside em espaço de usuário.");
+				"$\\newline$I - A arquitetura de micro-núcleo facilita a depuração do SO. \r\n" + 
+				"$\\newline$II - A arquitetura de micro-núcleo permite um número menor de mudanças de contexto \r\n" + 
+				"$\\newline$III - A arquitetura de micro-núcleo facilita a reconfiguração de serviço do SO pois a maioria deles reside em espaço de usuário.");
 		questaoAlternativa34.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa34.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa34.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
@@ -915,17 +914,17 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa47.setId(47l);
 		questaoAlternativa47.setAno(2002);
 		questaoAlternativa47.setDescricao("Sobre a UML, quais das seguintes afirmações são verdadeiras?\r\n" + 
-				"\r\n" + 
-				"I) A UML é o método de desenvolvimento de software mais utilizado na atualidade.\r\n" + 
-				"\r\n" + 
-				"II) A UML é uma evolução das linguagens para especificação dos conceitos dos métodos de\r\n" + 
+		
+				"$\\newline$I) A UML é o método de desenvolvimento de software mais utilizado na atualidade.\r\n" + 
+	
+				"$\\newline$II) A UML é uma evolução das linguagens para especificação dos conceitos dos métodos de\r\n" + 
 				"Booch, OMT e OOSE e também de outros métodos de especificação de requisitos de\r\n" + 
 				"software orientados a objetos ou não.\r\n" + 
-				"\r\n" + 
-				"III) A UML é composta dos seguintes diagramas: Diagrama de Caso de Uso, Diagrama de\r\n" + 
+		
+				"$\\newline$III) A UML é composta dos seguintes diagramas: Diagrama de Caso de Uso, Diagrama de\r\n" + 
 				"Classes, Diagrama de Colaboração, Diagrama de Estados, entre outros.\r\n" + 
-				"\r\n" + 
-				"IV) Em UML pode-se representar tão somente relacionamentos de Agregação, Associação e\r\n" + 
+		
+				"$\\newline$IV) Em UML pode-se representar tão somente relacionamentos de Agregação, Associação e\r\n" + 
 				"Composição. ");
 		questaoAlternativa47.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa47.setProva(ETipoQuestaoProva.POSCOMP);
@@ -987,11 +986,11 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa50 = new QuestaoAlternativa();
 		questaoAlternativa50.setId(50l);
 		questaoAlternativa50.setAno(2002);
-		questaoAlternativa50.setDescricao("Quais das seguintes afirmações são verdadeiras? As Métricas de software servem para:\r\n" + 
-				"I) indicar a qualidade do produto e avaliar a produtividade.\r\n" + 
-				"II) auxiliar na melhoria do processo.\r\n" + 
-				"III) formar uma base para as estimativas e justificar a aquisição de ferramentas.\r\n" + 
-				"IV) determinar se a utilização de um método traz benefícios ou não. ");
+		questaoAlternativa50.setDescricao("Quais das seguintes afirmações são verdadeiras? As Métricas de software servem para:" + 
+				"$\\newline$I) indicar a qualidade do produto e avaliar a produtividade." + 
+				"$\\newline$II) auxiliar na melhoria do processo." + 
+				"$\\newline$III) formar uma base para as estimativas e justificar a aquisição de ferramentas." + 
+				"$\\newline$IV) determinar se a utilização de um método traz benefícios ou não.");
 		questaoAlternativa50.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa50.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa50.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
@@ -1042,19 +1041,19 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa53 = new QuestaoAlternativa();
 		questaoAlternativa53.setId(53l);
 		questaoAlternativa53.setAno(2002);
-		questaoAlternativa53.setDescricao("$\\textbf{Considere uma cena representada no sistema de referência do universo (SRU), uma\r\n" + 
+		questaoAlternativa53.setDescricao("Considere uma cena representada no sistema de referência do universo (SRU), uma\r\n" + 
 				"window definida pelo par de coordenadas (0,0)-(100,100) e uma viewport definida pelo par\r\n" + 
 				"de coordenadas (20,30)-(300,100). Considere ainda que as coordenadas que definem\r\n" + 
 				"window e viewport correspondem, respectivamente, aos limites inferior esquerdo e\r\n" + 
 				"superior direito de ambas. Analise as afirmativas abaixo levando em consideração os\r\n" + 
-				"conceitos clássicos de window e viewport e assinale a alternativa correta.}$\r\n" + 
-				"\r\n" + 
-				"I – Window e viewport estão definidas no SRU.\r\n" + 
-				"\r\n" + 
-				"II – No processo de mapeamento desta window para esta viewport haverá modificação na\r\n" + 
+				"conceitos clássicos de window e viewport e assinale a alternativa correta.}\r\n" + 
+		
+				"$\\newline$I – Window e viewport estão definidas no SRU.\r\n" + 
+	
+				"$\\newline$II – No processo de mapeamento desta window para esta viewport haverá modificação na\r\n" + 
 				"relação de aspecto.\r\n" + 
-				"\r\n" + 
-				"III – O mapeamento da window redefinida pelo par de coordenadas (0,0) – (50,50) para a\r\n" + 
+
+				"$\\newline$III – O mapeamento da window redefinida pelo par de coordenadas (0,0) – (50,50) para a\r\n" + 
 				"mesma viewport (20,30)-(300,100) corresponde a uma operação de zoom out sobre o mesmo\r\n" + 
 				"universo. ");
 		questaoAlternativa53.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
@@ -1161,12 +1160,8 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa59.setId(59l);
 		questaoAlternativa59.setAno(2002);
 		questaoAlternativa59.setDescricao("Seja a árvore binária abaixo a representação de um espaço de estados para um problema\r\n" + 
-				"p, em que o estado inicial é a, e i e f são estados finais. \r\n" + 
-				"\r\n" + 
-				"<IMAGEM = 59>\r\n" + 
-				"\r\n" + 
-				"Um algoritmo de busca em largura-primeiro forneceria a seguinte seqüência de estados como\r\n" + 
-				"primeira alternativa a um caminho-solução para o problema p: ");
+				"p, em que o estado inicial é a, e i e f são estados finais. Conforme a imagem abaixo." +
+				"Um algoritmo de busca em largura-primeiro forneceria a seguinte seqüência de estados como primeira alternativa a um caminho-solução para o problema p: ");
 		questaoAlternativa59.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa59.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa59.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
@@ -1186,14 +1181,13 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa60 = new QuestaoAlternativa();
 		questaoAlternativa60.setId(60l);
 		questaoAlternativa60.setAno(2002);
-		questaoAlternativa60.setDescricao("Sejam os seguintes predicados de uma linguagem de primeira ordem:\\ N (x) : x é número; \r\n" + 
-				"\\P (x) : x tem propriedade P;\r\n" + 
-				"\\x $<$ y : x é menor que y. \\ E sejam os símbolos: \\\r\n" + 
-				"$\\forall$: quantificador universal;\\\r\n" + 
-				"$=>$ : operador se-então;\\\r\n" + 
-				"$\\neg$ : operador de negação.\\\r\n" + 
-				"\r\n" + 
-				"Para a fórmula: $\\forall$ x (N(x) $=>$ $\\neg\\forall$y (N(y) $=>$ y $<$ x))), qual alternativa abaixo NÃO constitui\r\n" + 
+		questaoAlternativa60.setDescricao("Sejam os seguintes predicados de uma linguagem de primeira ordem: $\\newline$ N (x) : x é número; \r\n" + 
+				"$\\newline$ P (x) : x tem propriedade P;" + 
+				"$\\newline$ x $<$ y : x é menor que y. $\\newline$ E sejam os símbolos: $\\newline$" + 
+				"$\\forall$: quantificador universal;$\\newline$" + 
+				"$=>$ : operador se-então;$\\newline$" + 
+				"$\\neg$ : operador de negação.$\\newline$" +
+				"Para a fórmula: $\\forall$ x (N(x) $=>$ $\\neg\\forall$y (N(y) $=>$ y $<$ x))), qual alternativa abaixo NÃO constitui" + 
 				"uma tradução possível?");
 		questaoAlternativa60.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa60.setProva(ETipoQuestaoProva.POSCOMP);
@@ -1362,10 +1356,10 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa69 = new QuestaoAlternativa();
 		questaoAlternativa69.setId(69l);
 		questaoAlternativa69.setAno(2002);
-		questaoAlternativa69.setDescricao("Qual o valor do atributo E.val após a análise da expressão “ 4 / 2 / 2 ” para o esquema de\r\n" + 
-				"tradução a seguir? \\$E \\rightarrow T / E1 \\left\\{ E.val = T.val / E1.val\\right\\}$\\\r\n" + 
-				"$E \\rightarrow T \\left\\{ E.val = T.val \\right\\}$\\\r\n" + 
-				"$T \\rightarrow digito \\left\\{ T.val = val(digito) \\right\\}$ \\");
+		questaoAlternativa69.setDescricao("Qual o valor do atributo E.val após a análise da expressão “ 4 / 2 / 2 ” para o esquema de " + 
+				"tradução a seguir? $\\newline E \\rightarrow T / E1 \\left\\{ E.val = T.val / E1.val\\right\\} \\newline\r\n" + 
+				"E \\rightarrow T \\left\\{ E.val = T.val \\right\\} \\newline\r\n" + 
+				"T \\rightarrow digito \\left\\{ T.val = val(digito) \\right\\}$");
 		questaoAlternativa69.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa69.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa69.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
