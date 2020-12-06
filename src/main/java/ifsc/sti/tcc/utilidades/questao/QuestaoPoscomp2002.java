@@ -201,18 +201,10 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa10.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa10.setAlternativaCorreta("b");
 		
-		questaoAlternativa10.setAlternativasA("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida\r\n" + 
-				"$S_2$: O cavalo estava descansado\r\n" + 
-				"$S$: O cavalo ganhou a corrida");
-		questaoAlternativa10.setAlternativasB("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida\r\n" + 
-				"$S_2$: O cavalo ganhou a corrida\r\n" + 
-				"$S$: O cavalo estava descansado");
-		questaoAlternativa10.setAlternativasC("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida\r\n" + 
-				"$S_2$: O cavalo perdeu a corrida\r\n" + 
-				"$S$: O cavalo estava cansado");
-		questaoAlternativa10.setAlternativasD("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida\r\n" + 
-				"$S_2$: O cavalo estava descansado\r\n" + 
-				"$S$: O cavalo perdeu a corrida\r\n");
+		questaoAlternativa10.setAlternativasA("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida $\\newline S_2$: O cavalo estava descansado $\\newline S$: O cavalo ganhou a corrida");
+		questaoAlternativa10.setAlternativasB("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida $\\newline S_2$: O cavalo ganhou a corrida $\\newline S$: O cavalo estava descansado");
+		questaoAlternativa10.setAlternativasC("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida $\\newline S_2$: O cavalo perdeu a corrida $\\newline S$: O cavalo estava cansado");
+		questaoAlternativa10.setAlternativasD("$S_1$: Se o cavalo estiver cansado então ele perderá a corrida $\\newline S_2$: O cavalo estava descansado $\\newline S$: O cavalo perdeu a corrida");
 		questaoAlternativa10.setAlternativasE("Nenhuma das anteriores");
 		questaoAlternativa10.setNumeroQuestao(10);
 		
@@ -395,10 +387,10 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa20.setId(20l);
 		questaoAlternativa20.setAno(2002);
 		questaoAlternativa20.setDescricao("Três atletas A, B e C competiram, ao pares, numa corrida de d metros. Considerando que cada atleta teve o mesmo desempenho (ou seja, a mesma velocidade) ao competir com adversários distintos, e sabendo-se que \r\n" + 
-				"$\\\\newline$• A venceu B chegando 20 metros à frente" + 
-				"$\\\\newline$• B venceu C chegando 10 metros à frente" + 
-				"$\\\\newline$• A venceu C chegando 28 metros à frente," + 
-				"$\\\\newline$podemos afirmar que a corrida tem");
+				"$\\newline$• A venceu B chegando 20 metros à frente" + 
+				"$\\newline$• B venceu C chegando 10 metros à frente" + 
+				"$\\newline$• A venceu C chegando 28 metros à frente," + 
+				"$\\newline$podemos afirmar que a corrida tem");
 		questaoAlternativa20.setArea(EArea.MATEMATICA);
 		questaoAlternativa20.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa20.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
@@ -546,7 +538,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa28 = new QuestaoAlternativa();
 		questaoAlternativa28.setId(28l);
 		questaoAlternativa28.setAno(2002);
-		questaoAlternativa28.setDescricao("Considere uma tabela de espalhamento (tabela hash) com quatro posições numeradas 0, 1, 2 e 3. Se a sequencia de quadrados perfeitos $1, 4, 9, ....., i^2, ...$  for armazenada nessa tabela segundo a função $f(x) = x mod 4$, como se dará a distribuição dos elementos pelas posições da tabela, à medida que o número de entradas cresce?");
+		questaoAlternativa28.setDescricao("Considere uma tabela de espalhamento (tabela hash) com quatro posições numeradas 0, 1, 2 e 3. Se a sequencia de quadrados perfeitos $1, 4, 9, ....., i^2, ...$  for armazenada nessa tabela segundo a função $f(x) = x \\, mod \\, 4$, como se dará a distribuição dos elementos pelas posições da tabela, à medida que o número de entradas cresce?");
 		questaoAlternativa28.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa28.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa28.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
@@ -1314,14 +1306,10 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa67 = new QuestaoAlternativa();
 		questaoAlternativa67.setId(67l);
 		questaoAlternativa67.setAno(2002);
-		questaoAlternativa67.setDescricao("Para a gramática a seguir, qual o conjunto de terminais que pode aparecer como primeiro\r\n" + 
-				"terminal após o não-terminal A, em qualquer forma sentencial gerada pela gramática\r\n" + 
-				"abaixo (isto é, não necessariamente imediatamente após A), onde ε representa a sentença\r\n" + 
-				"vazia? $\\newline S \\\\rightarrow ABCDd \\newline\r\n" + 
-				"A \\\\rightarrow aA \\\\mid \\\\varepsilon \\newline\r\n" + 
-				"B \\\\rightarrow bC \\\\mid \\\\varepsilon \\newline\r\n" + 
-				"C \\\\rightarrow cD \\\\mid \\\\varepsilon \\newline\r\n" + 
-				"D \\\\rightarrow \\\\varepsilon$ ");
+		questaoAlternativa67.setDescricao("mática a seguir, qual o conjunto de terminais que pode aparecer como primeiro\r\n" + 
+				"terminal após o não-terminal A, em qualquer forma sentencial gerada pela gramática" + 
+				"abaixo (isto é, não necessariamente imediatamente após A), onde ε representa a sentença" + 
+				"vazia? $\\newline$ S $\\rightarrow$ ABCDd $\\newline$ A $\\rightarrow$ aA | ε $\\newline$ B $\\rightarrow$ bC | ε $\\newline$ C $\\rightarrow$ cD | ε $\\newline$ D $\\rightarrow$ e");
 		questaoAlternativa67.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa67.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa67.setDisciplina(EDisciplina.LINGUAGENS_E_PARADIGMAS_DE_PROGRAMACAO);
@@ -1356,10 +1344,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa69 = new QuestaoAlternativa();
 		questaoAlternativa69.setId(69l);
 		questaoAlternativa69.setAno(2002);
-		questaoAlternativa69.setDescricao("Qual o valor do atributo E.val após a análise da expressão “ 4 / 2 / 2 ” para o esquema de " + 
-				"tradução a seguir? $\\newline E \\rightarrow T / E1 \\left\\{ E.val = T.val / E1.val\\right\\} \\newline\r\n" + 
-				"E \\rightarrow T \\left\\{ E.val = T.val \\right\\} \\newline\r\n" + 
-				"T \\rightarrow digito \\left\\{ T.val = val(digito) \\right\\}$");
+		questaoAlternativa69.setDescricao("Qual o valor do atributo E.val após a análise da expressão “ 4 / 2 / 2 ” para o esquema de tradução a seguir? $\\newline$ E $\\rightarrow$ T / E1 { E.val = T.val / E1.val} $\\newline$ E $\\rightarrow$ T { E.val = T.val } $\\newline$ T $\\rightarrow$ digito { T.val = val(digito) }");
 		questaoAlternativa69.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa69.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa69.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
