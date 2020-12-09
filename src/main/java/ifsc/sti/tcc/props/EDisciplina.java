@@ -42,7 +42,8 @@ public enum EDisciplina {
     
     TEORIA_DA_COMPUTACAO(24, "TEORIA DA COMPUTAÇÃO", "Teoria da computação"),
 	INFORMATICA_E_SOCIEDADE(25, "INFORMÁTICA E SOCIEDADE", "Informática e sociedade"),
-	GRAFOS(26, "GRAFOS", "Grafos");
+	GRAFOS(26, "GRAFOS", "Grafos"),
+	CALCULO_NUMERICO(27, "CÁLCULO NUMÉRICO", "Cálculo Numérico");
 	
 	
 

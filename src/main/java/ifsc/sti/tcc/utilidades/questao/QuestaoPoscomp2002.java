@@ -75,7 +75,7 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa4.setId(4l);
 		questaoAlternativa4.setAno(2002);
 		questaoAlternativa4.setDescricao("Para cada $n ∈ N$ seja $Dn = \\left(0, 1/n\\right)$, onde $\\left(0, 1/n\\right)$ representa o intervalo aberto de\r\n" + 
-				"extremos $0 e 1/n$. O conjunto diferença $D_3 − D_{20}$ é igual a:");
+				"extremos $0 \\, e \\, 1/n$. O conjunto diferença $D_3 − D_{20}$ é igual a:");
 		questaoAlternativa4.setArea(EArea.MATEMATICA);
 		questaoAlternativa4.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa4.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
@@ -252,7 +252,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa13 = new QuestaoAlternativa();
 		questaoAlternativa13.setId(13l);
 		questaoAlternativa13.setAno(2002);
-		questaoAlternativa13.setDescricao("Se O = $\\left (0, 0, 0\\right ) ; A = \\left (2, 4, 1\\right ) ; B = \\left (3, 1, 1\\right ) e C = \\left (1, 3, 5\\right )$ então o volume do sólido abaixo é:");
+		questaoAlternativa13.setDescricao("Se O = $\\left (0, 0, 0\\right ) ; A = \\left (2, 4, 1\\right ) ; B = \\left (3, 1, 1\\right ) e \\, C = \\left (1, 3, 5\\right )$ então o volume do sólido abaixo é:");
 		questaoAlternativa13.setArea(EArea.MATEMATICA);
 		questaoAlternativa13.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa13.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
@@ -474,11 +474,11 @@ public class QuestaoPoscomp2002 {
 		questaoAlternativa24.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
 		questaoAlternativa24.setAlternativaCorreta("c");
 		questaoAlternativa24.setImagem(true);
-		questaoAlternativa24.setAlternativasA("$x + \\\\overline{y}z$");
-		questaoAlternativa24.setAlternativasB("$\\\\overline{xyz} + x\\\\overline{y}z$");
-		questaoAlternativa24.setAlternativasC("$\\\\overline{x}y + x\\\\overline{y}$");
-		questaoAlternativa24.setAlternativasD("$xy + \\\\overline{y}z + \\\\overline{z}$");
-		questaoAlternativa24.setAlternativasE("$\\\\overline{x}z + xy + \\\\overline{yz}$");
+		questaoAlternativa24.setAlternativasA("$x + \\overline{y}z$");
+		questaoAlternativa24.setAlternativasB("$\\overline{xyz} + x\\overline{y}z$");
+		questaoAlternativa24.setAlternativasC("$\\overline{x}y + x\\overline{y}$");
+		questaoAlternativa24.setAlternativasD("$xy + \\overline{y}z + \\overline{z}$");
+		questaoAlternativa24.setAlternativasE("$\\overline{x}z + xy + \\overline{yz}$");
 		questaoAlternativa24.setNumeroQuestao(24);
 		
 		QuestaoAlternativa questaoAlternativa25 = new QuestaoAlternativa();
@@ -732,8 +732,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa38 = new QuestaoAlternativa();
 		questaoAlternativa38.setId(38l);
 		questaoAlternativa38.setAno(2002);
-		questaoAlternativa38.setDescricao("A função abaixo computa a soma dos n primeiros números inteiros não negativos, conforme a imagem abaixo:" +
-				"A parte que falta para completar a condição é:");
+		questaoAlternativa38.setDescricao("A função abaixo computa a soma dos n primeiros números inteiros não negativos, conforme a imagem abaixo. A parte que falta para completar a condição é:");
 		questaoAlternativa38.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa38.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa38.setDisciplina(EDisciplina.PROGRAMACAO);
@@ -1306,7 +1305,7 @@ public class QuestaoPoscomp2002 {
 		QuestaoAlternativa questaoAlternativa67 = new QuestaoAlternativa();
 		questaoAlternativa67.setId(67l);
 		questaoAlternativa67.setAno(2002);
-		questaoAlternativa67.setDescricao("mática a seguir, qual o conjunto de terminais que pode aparecer como primeiro\r\n" + 
+		questaoAlternativa67.setDescricao("Para a gramática a seguir, qual o conjunto de terminais que pode aparecer como primeiro\r\n" + 
 				"terminal após o não-terminal A, em qualquer forma sentencial gerada pela gramática" + 
 				"abaixo (isto é, não necessariamente imediatamente após A), onde ε representa a sentença" + 
 				"vazia? $\\newline$ S $\\rightarrow$ ABCDd $\\newline$ A $\\rightarrow$ aA | ε $\\newline$ B $\\rightarrow$ bC | ε $\\newline$ C $\\rightarrow$ cD | ε $\\newline$ D $\\rightarrow$ e");
