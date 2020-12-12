@@ -1360,7 +1360,7 @@ public class QuestaoPoscomp2003 {
 		questaoAlternativa64.setAlternativasC("Um aplicativo cliente é um programa arbitrário que se torna temporariamente um cliente quando for necessário o acesso remoto a um serviço, mas também executa processamento local.");
 		questaoAlternativa64.setAlternativasD("Um aplicativo cliente pode acessar múltiplos serviços quando necessário.");
 		questaoAlternativa64.setAlternativasE("Um aplicativo servidor é um programa de propósito especial dedicado a fornecer um serviço, mas pode tratar de múltiplos clientes remotos ao mesmo tempo.");
-		questaoAlternativa64.setNumeroQuestao(64);
+		questaoAlternativa64.setNumeroQuestao(NUMEROQUESTAO);
 
 		NUMEROQUESTAO++;
 		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------

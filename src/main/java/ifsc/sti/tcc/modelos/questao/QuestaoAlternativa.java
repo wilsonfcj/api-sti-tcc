@@ -25,6 +25,8 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	private String alternativasD;
 	@Column(columnDefinition="TEXT")
 	private String alternativasE;
+
+	private Boolean alternativaImagem = false;
 	
 	private String alternativaCorreta;
 	
@@ -78,5 +80,12 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	public void setAlternativasE(String alternativasE) {
 		this.alternativasE = alternativasE;
 	}
+	public Boolean getAlternativaImagem() {
+		return alternativaImagem;
+	}
+	public void setAlternativaImagem(Boolean alternativaImagem) {
+		this.alternativaImagem = alternativaImagem;
+	}
+	
 	
 }

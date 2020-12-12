@@ -19,6 +19,9 @@ public class QuestaoAlternativaResponse extends QuestaoResponse {
 	@JsonProperty(value="AlternativasE")
 	private String alternativasE;
 	
+	@JsonProperty(value="AlternativaComImagem")
+	private Boolean alternativaImagem = false;
+	
 	public String getAlternativasA() {
 		return alternativasA;
 	}
@@ -57,5 +60,13 @@ public class QuestaoAlternativaResponse extends QuestaoResponse {
 	
 	public void setAlternativasE(String alternativasE) {
 		this.alternativasE = alternativasE;
+	}
+
+	public Boolean getAlternativaImagem() {
+		return alternativaImagem;
+	}
+
+	public void setAlternativaImagem(Boolean alternativaImagem) {
+		this.alternativaImagem = alternativaImagem;
 	}
 }

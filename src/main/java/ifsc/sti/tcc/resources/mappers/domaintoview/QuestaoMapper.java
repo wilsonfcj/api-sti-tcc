@@ -23,6 +23,7 @@ public class QuestaoMapper extends MapperUtil<Questao, QuestaoResponse> {
 			((QuestaoAlternativaResponse)objeto).setAlternativasC(((QuestaoAlternativa) aObject).getAlternativasC());
 			((QuestaoAlternativaResponse)objeto).setAlternativasD(((QuestaoAlternativa) aObject).getAlternativasD());
 			((QuestaoAlternativaResponse)objeto).setAlternativasE(((QuestaoAlternativa) aObject).getAlternativasE());
+			((QuestaoAlternativaResponse)objeto).setAlternativaImagem(((QuestaoAlternativa) aObject).getAlternativaImagem());
 		} else {
 			objeto = new QuestaoResponse();
 			objeto.setTipoQuestao(ETipoQuestao.DISCURSIVA.codigo);
