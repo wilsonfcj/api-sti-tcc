@@ -29,6 +29,9 @@ public class SumuladoRequest {
 	
 	@JsonProperty(value="TipoSimulado")
 	private Integer tipoSimulado;
+	
+	@JsonProperty(value="AnoProva")
+	private Integer anoProva;
 
 	public String getNome() {
 		return nome;
@@ -94,5 +97,11 @@ public class SumuladoRequest {
 		this.tipoSimulado = tipoSimulado;
 	}
 
-	
+	public Integer getAnoProva() {
+		return anoProva;
+	}
+
+	public void setAnoProva(Integer anoProva) {
+		this.anoProva = anoProva;
+	}
 }

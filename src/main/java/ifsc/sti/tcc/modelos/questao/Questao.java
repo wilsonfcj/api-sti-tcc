@@ -62,7 +62,7 @@ public abstract class Questao implements Serializable {
 	}
 	
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.descricao = descricao.replace("[MT]", "").replace("[FU]", "").replace("[TE]", "").trim();
 	}
 	
 	public EArea getArea() {

@@ -11,7 +11,7 @@ import ifsc.sti.tcc.props.ETipoQuestaoProva;
 
 public class QuestaoPoscomp2002 {
 	
-	public static List<Questao> registerPoscomp2002() {
+	public static List<Questao> registerPoscomp() {
 		QuestaoAlternativa questaoAlternativa1 = new QuestaoAlternativa();
 		questaoAlternativa1.setId(1l);
 		questaoAlternativa1.setAno(2002);

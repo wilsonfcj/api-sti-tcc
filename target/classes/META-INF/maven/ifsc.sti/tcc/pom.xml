@@ -70,6 +70,8 @@
 			<artifactId>nekohtml</artifactId>
 		</dependency>
 		
+		<!--  server para fazer funcionar a página inicial da API. -->
+		
 		<dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-thymeleaf</artifactId>

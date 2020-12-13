@@ -511,6 +511,9 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa24.setAlternativasD("Somente (IV)");
 		questaoAlternativa24.setAlternativasE("Todas");
 		questaoAlternativa24.setNumeroQuestao(NUMEROQUESTAO);
+		
+		NUMEROQUESTAO++;
+		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
 
 		QuestaoAlternativa questaoAlternativa25 = new QuestaoAlternativa();
 		questaoAlternativa25.setId(INICIOQUESTAO.longValue());
@@ -1414,7 +1417,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa63.setAlternativasC("3336452111");
 		questaoAlternativa63.setAlternativasD("6452111333");
 		questaoAlternativa63.setAlternativasE("2546131313");
-		questaoAlternativa63.setNumeroQuestao(63);
+		questaoAlternativa63.setNumeroQuestao(NUMEROQUESTAO);
 
 		NUMEROQUESTAO++;
 		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
@@ -1433,7 +1436,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa64.setAlternativasC("Não apresenta memória compartilhada nem relógio global.");
 		questaoAlternativa64.setAlternativasD("Possui memória secundária compartilhada e protocolos de sincronização de estado.");
 		questaoAlternativa64.setAlternativasE("Exige um ambiente de administração único e medidas especiais de segurança contra associações ilícitas.");
-		questaoAlternativa64.setNumeroQuestao(64);
+		questaoAlternativa64.setNumeroQuestao(NUMEROQUESTAO);
 
 		NUMEROQUESTAO++;
 		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------

@@ -504,6 +504,9 @@ public class QuestaoPoscomp2005 {
 		questaoAlternativa24.setAlternativasE("Todas as afirmações são falsas.");
 		questaoAlternativa24.setNumeroQuestao(NUMEROQUESTAO);
 
+		NUMEROQUESTAO++;
+		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+		
 		QuestaoAlternativa questaoAlternativa25 = new QuestaoAlternativa();
 		questaoAlternativa25.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa25.setAno(ANO);

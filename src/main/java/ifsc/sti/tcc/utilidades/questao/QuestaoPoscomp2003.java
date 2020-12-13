@@ -87,7 +87,6 @@ public class QuestaoPoscomp2003 {
 		questaoAlternativa4.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa4.setDisciplina(EDisciplina.CALCULO);
 		questaoAlternativa4.setAlternativaCorreta("c");
-
 		questaoAlternativa4.setAlternativasA("8");
 		questaoAlternativa4.setAlternativasB("7");
 		questaoAlternativa4.setAlternativasC("4");
@@ -476,6 +475,9 @@ public class QuestaoPoscomp2003 {
 		questaoAlternativa24.setAlternativasD("Diminui o tráfego de instruções e/ou dados entre memória e disco");
 		questaoAlternativa24.setAlternativasE("Permite acessos concorrentes à memória RAM");
 		questaoAlternativa24.setNumeroQuestao(NUMEROQUESTAO);
+		
+		NUMEROQUESTAO++;
+		INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
 
 		QuestaoAlternativa questaoAlternativa25 = new QuestaoAlternativa();
 		questaoAlternativa25.setId(INICIOQUESTAO.longValue());

@@ -33,6 +33,10 @@ import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2002;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2003;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2004;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2005;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2006;
 
 public class SimuladoService {
 
@@ -118,8 +122,16 @@ public class SimuladoService {
 	}
 
 	public List<Questao> saveQuestions() {
-	   List<Questao> questoes = QuestaoPoscomp2002.registerPoscomp2002();
+	   List<Questao> questoes = QuestaoPoscomp2002.registerPoscomp();
+	   List<Questao> questoes1 = QuestaoPoscomp2003.registerPoscomp();
+	   List<Questao> questoes2 = QuestaoPoscomp2004.registerPoscomp();
+	   List<Questao> questoes3 = QuestaoPoscomp2005.registerPoscomp();
+	   List<Questao> questoes4 = QuestaoPoscomp2006.registerPoscomp();
 	   questaoRepository.saveAll(questoes);
+	   questaoRepository.saveAll(questoes1);
+	   questaoRepository.saveAll(questoes2);
+	   questaoRepository.saveAll(questoes3);
+	   questaoRepository.saveAll(questoes4);
 	   return questoes;
 	}
 	
@@ -264,11 +276,17 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
+	private List<QuestaoAlternativa> getQuestao(int area, int tipoSimulado, int quantidadeQuestao, Integer ano) {
+		return ano != null ? questaoRepository.consultPoscompByAno(area, tipoSimulado, (int) ano, quantidadeQuestao) : 
+			questaoRepository.consultPoscomp(area, tipoSimulado, quantidadeQuestao); 
+	}
+	
 	private Simulado saveSimulado(SumuladoRequest sumuladoRequest) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = questaoRepository.consultPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20);
-		List<QuestaoAlternativa> questaoPart2 = questaoRepository.consultPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20);
-		List<QuestaoAlternativa> questaoPart3 = questaoRepository.consultPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30);
+		List<QuestaoAlternativa> questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, sumuladoRequest.getAnoProva());
+		List<QuestaoAlternativa> questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, sumuladoRequest.getAnoProva());
+		List<QuestaoAlternativa> questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, sumuladoRequest.getAnoProva());
+		
 		questoes.addAll(questaoPart1);
 		questoes.addAll(questaoPart2);
 		questoes.addAll(questaoPart3);

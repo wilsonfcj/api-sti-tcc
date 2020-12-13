@@ -38,7 +38,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 
 	public void setAlternativaCorreta(String alternativaCorreta) {
-		this.alternativaCorreta = alternativaCorreta;
+		this.alternativaCorreta = alternativaCorreta.toLowerCase();
 	}
 	
 	public String getAlternativasA() {
