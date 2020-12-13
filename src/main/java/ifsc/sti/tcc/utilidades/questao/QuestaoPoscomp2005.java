@@ -57,7 +57,7 @@ public class QuestaoPoscomp2005 {
 		QuestaoAlternativa questaoAlternativa3 = new QuestaoAlternativa();
 		questaoAlternativa3.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa3.setAno(ANO);
-		questaoAlternativa3.setDescricao("Considere a matriz abaixo: $\newline A = \\left(\\begin{array}{c}1 & 3 & 1 & 1 & 5 \\ -2 & -6 & 0 & 4 & -2 \\ 1 & 3 & 2 & 3 & 9\\end{array}\\right) \newline$ O posto de A, as dimensões dos dois subespaços: imagem de A e núcleo de A, e uma base para a imagem de A são, respectivamente:");
+		questaoAlternativa3.setDescricao("Considere a matriz abaixo: $\\newline$ A = $\\left(\\begin{array}{c}1 & 3 & 1 & 1 & 5 \\\\ -2 & -6 & 0 & 4 & -2 \\\\ 1 & 3 & 2 & 3 & 9\\end{array}\\right)$ $\\newline$ O posto de A, as dimensões dos dois subespaços: imagem de A e núcleo de A, e uma base para a imagem de A são, respectivamente:");
 		questaoAlternativa3.setArea(EArea.MATEMATICA);
 		questaoAlternativa3.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa3.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
