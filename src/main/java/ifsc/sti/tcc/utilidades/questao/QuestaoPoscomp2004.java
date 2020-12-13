@@ -100,8 +100,7 @@ public class QuestaoPoscomp2004 {
 		QuestaoAlternativa questaoAlternativa5 = new QuestaoAlternativa();
 		questaoAlternativa5.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa5.setAno(ANO);
-		questaoAlternativa5.setDescricao(
-				"No $ \\mathbb{R}^3$ com o produto escalar usual, tome $v = \\left(1, −1, 0\\right)$ e o subespaço S gerado por \\left\\{\\left(1, 2, 1\\right),\\left(−1, 1, −1\\right)\\right\\}$. O vetor de S mais próximo de v  é");
+		questaoAlternativa5.setDescricao("No $ \\mathbb{R}^3$ com o produto escalar usual, tome v = $(1, −1, 0) e o subespaço S gerado por {(1, 2, 1), (−1, 1, −1)}. O vetor de S mais próximo de v  é");
 		questaoAlternativa5.setArea(EArea.MATEMATICA);
 		questaoAlternativa5.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa5.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
