@@ -1426,7 +1426,7 @@ public class QuestaoPoscomp2004 {
 		questaoAlternativa64.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa64.setAno(ANO);
 		questaoAlternativa64.setDescricao("Assinale a opção que melhor completa o parágrafo abaixo: " +
-			"$\newline$ Sistemas distribuídos e computadores paralelos com múltiplos processadores fortemente acoplados possuem algumas características comuns, como a existência de vários processadores e a possibilidade de executar tarefas simultâneas, uma em cada processador, em um dado instante de tempo. Mas um sistema distribuído diferencia-se de um sistema multiprocessador fortemente acoplado principalmente porque o sistema distribuído:");
+			"$\\newline$ Sistemas distribuídos e computadores paralelos com múltiplos processadores fortemente acoplados possuem algumas características comuns, como a existência de vários processadores e a possibilidade de executar tarefas simultâneas, uma em cada processador, em um dado instante de tempo. Mas um sistema distribuído diferencia-se de um sistema multiprocessador fortemente acoplado principalmente porque o sistema distribuído:");
 		questaoAlternativa64.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa64.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa64.setDisciplina(EDisciplina.SISTEMAS_DISTRIBUIDOS);

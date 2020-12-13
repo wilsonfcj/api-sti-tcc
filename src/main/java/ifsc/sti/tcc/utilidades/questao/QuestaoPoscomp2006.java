@@ -175,7 +175,7 @@ public class QuestaoPoscomp2006 {
 		questaoAlternativa9.setDescricao("[MT] Assinale a proposição logicamente equivalente a $\\neg(p \\vee q) \\vee (\\neg p \\wedge q)$");
 		questaoAlternativa9.setArea(EArea.MATEMATICA);
 		questaoAlternativa9.setProva(ETipoQuestaoProva.POSCOMP);
-		questaoAlternativa9.setDisciplina(EDisciplina.CALCULO);
+		questaoAlternativa9.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
 		questaoAlternativa9.setAlternativaCorreta("b");
 		questaoAlternativa9.setAlternativasA("$\\neg p \\wedge (q \\vee \\neg q)$");
 		questaoAlternativa9.setAlternativasB("$\\neg p$");
@@ -344,9 +344,9 @@ public class QuestaoPoscomp2006 {
 		questaoAlternativa18.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa18.setAno(ANO);
 		questaoAlternativa18.setDescricao("Um algoritmo probabilístico A resolve problemas de dois tipos:\r\n" + 
-				"$\\newline{Problemas do tipo 1}: os quais são resolvidos corretamente com probabilidade 3/4, e correspondem a 1/3 do total de problemas.\r\n" + 
-				"$\\newline$[{Problemas do tipo 2}: os quais são resolvidos corretamente com probabilidade 1/2, e correspondem a 2/3 do total de problemas.\r\n" + 
-				"$\\newline$[[MT] ii. Verifica-se, utilizando algum método determinístico, que a resposta encontrada pelo algoritmo está realmente correta. Qual a probabilidade de que o problema resolvido seja do tipo 1?");
+				"$\\newline${Problemas do tipo 1}: os quais são resolvidos corretamente com probabilidade 3/4, e correspondem a 1/3 do total de problemas.\r\n" + 
+				"$\\newline${Problemas do tipo 2}: os quais são resolvidos corretamente com probabilidade 1/2, e correspondem a 2/3 do total de problemas.\r\n" + 
+				"$\\newline$ii. Verifica-se, utilizando algum método determinístico, que a resposta encontrada pelo algoritmo está realmente correta. Qual a probabilidade de que o problema resolvido seja do tipo 1?");
 		questaoAlternativa18.setArea(EArea.MATEMATICA);
 		questaoAlternativa18.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa18.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
@@ -404,13 +404,13 @@ public class QuestaoPoscomp2006 {
 				"(Cache de A) Cache com mapeamento direto, utilizando políticas write–through e no-write allocate (escritas não utilizam a cache)\r\n" + 
 				"(Cache de B) Cache 4–way set-associative, utilizando políticas write–back, write–allocate e LRU\r\n" + 
 				"Considere as seguintes afirmações para os sistemas A e B executando um mesmo programa típico:\r\n" + 
-				"$\\newline$[(I) O sistema A deve possuir um miss rate maior do que B\r\n" + 
-				"$\\newline$[(II) O sistema B deve possuir um hit rate menor do que A\r\n" + 
-				"$\\newline$[(III) A cache de dados de A é mais rápida do que a de B\r\n" + 
-				"$\\newline$[(IV) A cache de dados de A é mais simples de ser implementada do que a de B\r\n" + 
-				"$\\newline$[(V) Em média, uma escrita de dados no sistema A é mais rápido do que em B\r\n" + 
-				"$\\newline$[(VI) As caches de dados de A e B possuem o mesmo número de linhas\r\n" + 
-				"$\\newline$[Quais são as afirmações verdadeiras?");
+				"$\\newline$(I) O sistema A deve possuir um miss rate maior do que B\r\n" + 
+				"$\\newline$(II) O sistema B deve possuir um hit rate menor do que A\r\n" + 
+				"$\\newline$(III) A cache de dados de A é mais rápida do que a de B\r\n" + 
+				"$\\newline$(IV) A cache de dados de A é mais simples de ser implementada do que a de B\r\n" + 
+				"$\\newline$(V) Em média, uma escrita de dados no sistema A é mais rápido do que em B\r\n" + 
+				"$\\newline$(VI) As caches de dados de A e B possuem o mesmo número de linhas\r\n" + 
+				"$\\newline$Quais são as afirmações verdadeiras?");
 		questaoAlternativa21.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa21.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa21.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
@@ -676,7 +676,7 @@ public class QuestaoPoscomp2006 {
 		QuestaoAlternativa questaoAlternativa35 = new QuestaoAlternativa();
 		questaoAlternativa35.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa35.setAno(ANO);
-		questaoAlternativa35.setDescricao("[FU] Que valores são impressos quando o seguinte algoritmo, escrito em Pascal, é executado? <IMAGEM = 35>");
+		questaoAlternativa35.setDescricao("[FU] Que valores são impressos quando o seguinte algoritmo, escrito em Pascal, é executado?");
 		questaoAlternativa35.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa35.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa35.setDisciplina(EDisciplina.PROGRAMACAO);
@@ -1306,8 +1306,8 @@ public class QuestaoPoscomp2006 {
 		QuestaoAlternativa questaoAlternativa67 = new QuestaoAlternativa();
 		questaoAlternativa67.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa67.setAno(ANO);
-		questaoAlternativa67.setDescricao("[TE] Considere os seguintes parâmetros de Qualidade de Serviço (QoS) para transmissão multimídia: confiabilidade, atraso, jitter e largura de banda. Considere ainda que estes parâmetros possam ter tolerância alta (A), média (M) ou baixa(B). Qual das alternativas está abaixo da tolerância mínima da aplicação?\r\n" + 
-				"Aplicação  \\, \\, \\,   Confiabilidade   \\, \\, \\,     Atraso  \\, \\, \\,    Jitter   \\, \\, \\,     Largura de banda");
+		questaoAlternativa67.setDescricao("[TE] Considere os seguintes parâmetros de Qualidade de Serviço (QoS) para transmissão multimídia: confiabilidade, atraso, jitter e largura de banda. Considere ainda que estes parâmetros possam ter tolerância alta (A), média (M) ou baixa(B). Qual das alternativas está abaixo da tolerância mínima da aplicação? $\\newline$" + 
+				"Aplicação  $\\, \\, \\,$   Confiabilidade   $\\, \\, \\,$     Atraso  $\\, \\, \\,$    Jitter  $\\, \\, \\,$     Largura de banda");
 		questaoAlternativa67.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa67.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa67.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);

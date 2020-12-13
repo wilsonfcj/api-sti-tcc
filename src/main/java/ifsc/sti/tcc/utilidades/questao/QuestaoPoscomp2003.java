@@ -194,8 +194,7 @@ public class QuestaoPoscomp2003 {
 		QuestaoAlternativa questaoAlternativa10 = new QuestaoAlternativa();
 		questaoAlternativa10.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa10.setAno(ANO);
-		questaoAlternativa10.setDescricao("A sequência de Fibonacci (Fn) é definida recursivamente por \\ \\ $\\left\\{\\begin{matrix} F_1 & = 1 \\ \r\n" + 
-				" F_1 & = 2 \\ F_{n+1} & = f_{n} \\ + \\ f_{n-1} \\ para \\ n \\geq 2 \\end{matrix}\\right.$ \\ \\ Se $\\ lim_{n \\rightarrow + \\infty} \\frac{F_n+1}{F_n}  = L$ , podemos afirmar que");
+		questaoAlternativa10.setDescricao("A sequência de Fibonacci (Fn) é definida recursivamente por $\\newline$ $\\left\\{\\begin{matrix} F_1 & = 1 \\ F_1 & = 2 \\ F_{n+1} & = f_{n} \\ + \\ f_{n-1} \\ para \\ n \\geq 2 \\end{matrix}\\right.$ \\ \\ Se $\\ lim_{n \\rightarrow + \\infty} \\frac{F_n+1}{F_n}  = L$ , podemos afirmar que");
 		questaoAlternativa10.setArea(EArea.MATEMATICA);
 		questaoAlternativa10.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa10.setDisciplina(EDisciplina.CALCULO);
@@ -500,7 +499,7 @@ public class QuestaoPoscomp2003 {
 		QuestaoAlternativa questaoAlternativa26 = new QuestaoAlternativa();
 		questaoAlternativa26.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa26.setAno(ANO);
-		questaoAlternativa26.setDescricao("Considere o seguinte código para implementar exclusão mutuá entre dois processos i e j, conforme a figura abaixo. Em relação ao código acima, todas as afirmativas estão corretas, exceto: ");
+		questaoAlternativa26.setDescricao("Considere o seguinte código para implementar exclusão mutuá entre dois processos i e j. Em relação ao código abaixo, todas as afirmativas estão corretas, exceto: ");
 		questaoAlternativa26.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa26.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa26.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
@@ -520,11 +519,11 @@ public class QuestaoPoscomp2003 {
 		QuestaoAlternativa questaoAlternativa27 = new QuestaoAlternativa();
 		questaoAlternativa27.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa27.setAno(ANO);
-		questaoAlternativa27.setDescricao("Uma gramática C é definida por:  $G=\\left(\\left\\{x,y,z\\right\\}, \\left\\{S,14/,X,Y,Z\\right\\}, P, S\\right)$ na qual os membros de P são: $s \\rightarrow wz$" + 
-				"$\\newline w \\rightarrow xY \\newline" + 
-				"X \\rightarrow x \\mid xX \\newline" + 
-				"Y \\rightarrow y \\mid yY \\newline" + 
-				"Z \\rightarrow z \\mid zZ \\newline" + 
+		questaoAlternativa27.setDescricao("Uma gramática G é definida por: $\\newline$ $G=\\left(\\left\\{x,y,z\\right\\}, \\left\\{S,14/,X,Y,Z\\right\\}, P, S\\right)$ $\\newline$ na qual os membros de P são: $\\newline$ $S \\rightarrow WZ$" + 
+				"$ W \\rightarrow X | Y $\\newline$" + 
+				"X \\rightarrow x \\mid x | X $\\newline$" + 
+				"Y \\rightarrow y \\mid y | Y $\\newline$" + 
+				"Z \\rightarrow z \\mid z | Z $\\newline$" + 
 				"Qual das expressões regulares abaixo corresponde a esta gramática");
 		questaoAlternativa27.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa27.setProva(ETipoQuestaoProva.POSCOMP);
@@ -749,7 +748,7 @@ public class QuestaoPoscomp2003 {
 		QuestaoAlternativa questaoAlternativa36 = new QuestaoAlternativa();
 		questaoAlternativa36.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa36.setAno(ANO);
-		questaoAlternativa36.setDescricao("Para que faixa de valores da variável x o seguinte segmento de código im­prime a letra C? <IMAGEM = 36>");
+		questaoAlternativa36.setDescricao("Para que faixa de valores da variável x o seguinte segmento de código im­prime a letra C?");
 		questaoAlternativa36.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
 		questaoAlternativa36.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa36.setDisciplina(EDisciplina.PROGRAMACAO);
@@ -1108,7 +1107,7 @@ public class QuestaoPoscomp2003 {
 		questaoAlternativa52.setDescricao("As seguintes afirmações dizem respeito ao modelo de desenvolvimento em Espiral - proposto por Barry" + 
 				"Boehm na década de 70:" +
 				"$\\newline$ I. suas atividades do desenvolvimento são conduzidas por riscos;" + 
-				"$\\newline$ II. cada ciclo da espiral inclui 4 passos: $\\newline$ passo 1 - identificação dos objetivos ; passo 2 - avaliação das alternativas tendo em vista os objetivos e os riscos (incertezas, restrições) do desenvolvimento; passo 3 - desenvolvimento de estratégias (simulação, prototipagem) p/ resolver riscos; e passo 4 - planejamento do próximo passo e continuidade do processo determinada pelos riscos restantes;\r\n" + 
+				"$\\newline$ II. cada ciclo da espiral inclui 4 passos: passo 1 - identificação dos objetivos ; passo 2 - avaliação das alternativas tendo em vista os objetivos e os riscos (incertezas, restrições) do desenvolvimento; passo 3 - desenvolvimento de estratégias (simulação, prototipagem) p/ resolver riscos; e passo 4 - planejamento do próximo passo e continuidade do processo determinada pelos riscos restantes;\r\n" + 
 				"$\\newline$ III. é um modelo evolutivo em que cada passo pode ser representado por um quadrante num diagrama cartesiano: assim na dimensão radical da espiral tem-se o custo acumulado dos vários passos do desenvolvimento enquanto na dimensão angular tem-se o progresso do projeto. \r\n" + 
 				"$\\newline$ Levando-se em conta as três afirmações I, II e III acima, identifique a única alternativa válida:");
 		questaoAlternativa52.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
