@@ -723,17 +723,17 @@ public class QuestaoPoscomp2004 {
 				"Ordem A: $\\newline$\r\n" + 
 				"      se a árvore binária não for vazia, então:" + 
 				"         $\\newline$ { "+ 		  
-				"         $\\newline$ $\\tab$ visitar a raiz; " + 
-				"         $\\newline$ $\\tab$ percorrer a sub-árvore esquerda em Ordem B; " + 
-				"         $\\newline$ $\\tab$ percorrer a sub-árvore direita em Ordem B;" + 
+				"         $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ visitar a raiz; " + 
+				"         $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ percorrer a sub-árvore esquerda em Ordem B; " + 
+				"         $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ percorrer a sub-árvore direita em Ordem B;" + 
 				"         $\\newline$ } $\\newline$" + 
 				"Ordem B: $\\newline$" + 
 				"     se a árvore binária não for vazia, então: $\\newline$" + 
 				"          $\\newline${" + 
-				"          $\\newline$ $\\tab$ visitar a raiz;" + 
-				"          $\\newline$ $\\tab$ percorrer a sub-árvore direita em Ordem A;" + 
-				"          $\\newline$ $\\tab$ percorrer a sub-árvore esquerda em Ordem A;" + 
-				"          $\\newline$} $\\newline$" + 
+				"          $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ visitar a raiz;" + 
+				"          $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ percorrer a sub-árvore direita em Ordem A;" + 
+				"          $\\newline$ $\\, \\, \\, \\, \\, \\, \\,$ percorrer a sub-árvore esquerda em Ordem A;" + 
+				"          $\\newline$} $\\, \\, \\, \\, \\, \\, \\,$" + 
 				"Considere a seguinte árvore binária: O percurso da árvore binária apresentada em apresentado na figura abaixo.\r\n" + 
 				"Ordem A resulta em qual sequência de visitas?" + 
 				"");
