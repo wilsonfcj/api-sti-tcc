@@ -17,6 +17,7 @@ public abstract class RespostaQuestao {
 	private Long id;
 	private Long idQuestao;
 	private Boolean respondida;
+	private Boolean correta = false;
 
 	public Long getId() {
 		return id;
@@ -40,5 +41,13 @@ public abstract class RespostaQuestao {
 
 	public void setRespondida(Boolean respondida) {
 		this.respondida = respondida;
+	}
+
+	public Boolean getCorreta() {
+		return correta;
+	}
+
+	public void setCorreta(Boolean correta) {
+		this.correta = correta;
 	}
 }

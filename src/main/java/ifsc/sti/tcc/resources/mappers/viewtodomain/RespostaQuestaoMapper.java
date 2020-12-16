@@ -1,9 +1,15 @@
 package ifsc.sti.tcc.resources.mappers.viewtodomain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ifsc.sti.tcc.modelos.questao.Questao;
+import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaAlternativa;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaDiscursiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.props.ETipoQuestao;
+import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaQuestaoRequest;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
@@ -25,4 +31,26 @@ public class RespostaQuestaoMapper extends MapperUtil<RespostaQuestaoRequest, Re
 		return respostaSimulado;
 	}
 	
+	protected RespostaQuestao transform(RespostaQuestaoRequest aObject, QuestaoRepository questaoRepository) {
+		RespostaQuestao respostaSimulado = transform(aObject);
+		String resposta = "";
+		Questao questao = questaoRepository.findById((long) respostaSimulado.getIdQuestao());
+		if (respostaSimulado instanceof RepostaAlternativa) {
+			resposta = ((RepostaAlternativa) respostaSimulado).getAlternativasSelecionada();
+			if(((QuestaoAlternativa)questao).getAlternativaCorreta().equalsIgnoreCase(resposta)) {
+				((RepostaAlternativa) respostaSimulado).setCorreta(true);
+			}
+		} else {
+			
+		}
+		return respostaSimulado;
+	}
+	
+	public List<RespostaQuestao> transform(List<RespostaQuestaoRequest> aFromList, QuestaoRepository questaoRepository) {
+        List<RespostaQuestao> lList = new ArrayList<>();
+        for (RespostaQuestaoRequest lFrom : aFromList) {
+            lList.add(transform(lFrom, questaoRepository));
+        }
+        return lList;
+    }
 }

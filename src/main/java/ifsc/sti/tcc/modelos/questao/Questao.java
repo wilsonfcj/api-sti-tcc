@@ -105,7 +105,7 @@ public abstract class Questao implements Serializable {
 	}
 
 	public void setImagemQuestao(String imagemQuestao) {
-		this.imagemQuestao = imagemQuestao;
+		this.imagemQuestao = imagemQuestao.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 
 	public Integer getNumeroQuestao() {

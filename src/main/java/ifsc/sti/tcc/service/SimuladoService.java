@@ -282,15 +282,7 @@ public class SimuladoService {
 	}
 	
 	private Simulado saveSimulado(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, sumuladoRequest.getAnoProva());
-		List<QuestaoAlternativa> questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, sumuladoRequest.getAnoProva());
-		List<QuestaoAlternativa> questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, sumuladoRequest.getAnoProva());
-		
-		questoes.addAll(questaoPart1);
-		questoes.addAll(questaoPart2);
-		questoes.addAll(questaoPart3);
-		
+		List<Questao> questoes = gerarQuestaoPorQuantidade(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
 		Simulado simulado = new Simulado();
 		simulado.setNome(sumuladoRequest.getNome());
 		simulado.setDescricao(sumuladoRequest.getDescricao());
@@ -305,6 +297,39 @@ public class SimuladoService {
 		Simulado simuladoResponse = jpaRepository.save(simulado);
 		simulado.setId(simuladoResponse.getId());
 		return simulado;
+	}
+	
+	private List<Questao> gerarQuestaoPorQuantidade(int quantidae, int anoProva) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		List<QuestaoAlternativa> questaoPart1 = null;
+		List<QuestaoAlternativa> questaoPart2 = null;
+		List<QuestaoAlternativa> questaoPart3 = null;
+		switch(quantidae) {
+			case 50:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				break;
+			case 30:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				break;
+			case 15:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				break;
+			default:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+				break;
+		}
+		questoes.addAll(questaoPart1);
+		questoes.addAll(questaoPart2);
+		questoes.addAll(questaoPart3);
+		return questoes;
 	}
 	
 	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
