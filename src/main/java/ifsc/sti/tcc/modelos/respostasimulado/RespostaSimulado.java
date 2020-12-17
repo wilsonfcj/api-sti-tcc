@@ -1,5 +1,6 @@
 package ifsc.sti.tcc.modelos.respostasimulado;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,8 @@ public class RespostaSimulado {
     @JoinColumn(name = "id_usuario")
 	private Usuario idUsuario;
 	
+	private Date dataResposta;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_resposta_questao")
@@ -71,5 +74,13 @@ public class RespostaSimulado {
 
 	public void setIdUsuario(Usuario idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public Date getDataEntrega() {
+		return dataResposta;
+	}
+
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataResposta = dataEntrega;
 	}
 }

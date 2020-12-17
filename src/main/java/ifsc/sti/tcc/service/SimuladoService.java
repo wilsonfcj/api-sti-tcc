@@ -37,6 +37,7 @@ import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2003;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2004;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2005;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2006;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2007;
 
 public class SimuladoService {
 
@@ -102,7 +103,7 @@ public class SimuladoService {
 	}
 	
 	private RespostaSimulado mapperSumulado(RespostaSimuladoRequest request) {
-		return  new RespostaSimuladoMapper().transform(request, loadSimuladoById(request.getIdSimulado()), loadUsuarioById(request.getIdUsuario()));
+		return  new RespostaSimuladoMapper().transform(request, loadSimuladoById(request.getIdSimulado()), loadUsuarioById(request.getIdUsuario()), questaoRepository);
 	}
 	
 	public RespostaSimuladoRepository getRespostaSimuladoRepository() {
@@ -127,11 +128,13 @@ public class SimuladoService {
 	   List<Questao> questoes2 = QuestaoPoscomp2004.registerPoscomp();
 	   List<Questao> questoes3 = QuestaoPoscomp2005.registerPoscomp();
 	   List<Questao> questoes4 = QuestaoPoscomp2006.registerPoscomp();
+	   List<Questao> questoes5 = QuestaoPoscomp2007.registerPoscomp();
 	   questaoRepository.saveAll(questoes);
 	   questaoRepository.saveAll(questoes1);
 	   questaoRepository.saveAll(questoes2);
 	   questaoRepository.saveAll(questoes3);
 	   questaoRepository.saveAll(questoes4);
+	   questaoRepository.saveAll(questoes5);
 	   return questoes;
 	}
 	
@@ -209,6 +212,12 @@ public class SimuladoService {
 				} else {
 					RespostaSimulado respostaSimulado = mapperSumulado(request);
 					respostaSimuladoRepository.save(respostaSimulado);
+					
+					int erros = respostaSimuladoRepository.consultarErrosSimulado(request.getIdUsuario(), request.getIdSimulado());
+					int acertos = respostaSimuladoRepository.consultarAcertosSimulado(request.getIdUsuario(), request.getIdSimulado());
+					int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimulado(request.getIdUsuario(), request.getIdSimulado());
+					int total = respostaSimuladoRepository.consultarTotalQuestaoes(request.getIdSimulado());
+//					
 					baseResponse = new ResponseBase<>(true, "Resposta registrada com sucesso", request);
 				}
 			}

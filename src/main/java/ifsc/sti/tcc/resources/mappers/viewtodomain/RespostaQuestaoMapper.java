@@ -27,7 +27,7 @@ public class RespostaQuestaoMapper extends MapperUtil<RespostaQuestaoRequest, Re
 			((RepostaDiscursiva) respostaSimulado).setRespostaDiscursiva(aObject.getRespostaQuestao());
 		}
 		respostaSimulado.setIdQuestao(aObject.getIdQuestao());
-		respostaSimulado.setRespondida(aObject.getRespostaQuestao() != null);
+		respostaSimulado.setRespondida(aObject.getRespostaQuestao() != null || aObject.getRespostaQuestao().isEmpty());
 		return respostaSimulado;
 	}
 	
