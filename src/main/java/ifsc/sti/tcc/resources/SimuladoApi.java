@@ -20,6 +20,7 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
@@ -98,7 +99,7 @@ public class SimuladoApi {
 	
 	@ApiOperation(value = "Salva as respostas do simulado e gera o resultado")
 	@RequestMapping(value = "/SalvarRespostaSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<RespostaSimuladoRequest>> salvarRespostaSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
+	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> salvarRespostaSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)

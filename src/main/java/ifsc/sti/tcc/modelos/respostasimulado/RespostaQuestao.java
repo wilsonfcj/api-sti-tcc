@@ -16,7 +16,7 @@ public abstract class RespostaQuestao {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Long idQuestao;
-	private Boolean respondida;
+	private Boolean respondida = false;
 	private Boolean correta = false;
 
 	public Long getId() {

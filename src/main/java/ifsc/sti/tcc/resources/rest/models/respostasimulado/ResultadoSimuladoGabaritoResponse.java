@@ -1,23 +1,13 @@
 package ifsc.sti.tcc.resources.rest.models.respostasimulado;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ResultadoSimuladoResponse {
+public class ResultadoSimuladoGabaritoResponse extends ResultadoSimuladoResponse {
 	
-	@JsonProperty(value="IdSimulado")
-	Long IdSimulado;
-	
-	@JsonProperty(value="Erros")
-	Integer erros; 
-	
-	@JsonProperty(value="Acertos")
-	Integer acertos;
-	
-	@JsonProperty(value="NaoRespondidas")
-	Integer naoRespondidas;
-	
-	@JsonProperty(value="TotalQuestao")
-	Integer total;
+	@JsonProperty(value="Gabarito")
+	List<QuestaoGabaritoResponse> gabarito;
 	
 	public Integer getErros() {
 		return erros;

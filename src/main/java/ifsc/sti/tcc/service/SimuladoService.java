@@ -29,6 +29,7 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
@@ -198,8 +199,8 @@ public class SimuladoService {
 	}
 	
 
-	public ResponseEntity<ResponseBase<RespostaSimuladoRequest>> salvarRespostaSimulado(RespostaSimuladoRequest request) {
-		ResponseBase<RespostaSimuladoRequest> baseResponse = new ResponseBase<>();
+	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> salvarRespostaSimulado(RespostaSimuladoRequest request) {
+		ResponseBase<ResultadoSimuladoResponse> baseResponse = new ResponseBase<>();
 		try {
 			RespostaSimulado lRespostaSimulado = loadRespostaSimulado(request);
 			if(lRespostaSimulado != null) {
@@ -210,23 +211,32 @@ public class SimuladoService {
 				} else if(loadUsuarioById(request.getIdUsuario()) == null){
 					baseResponse = new ResponseBase<>(false, "Usuário não encontrado", null);
 				} else {
-					RespostaSimulado respostaSimulado = mapperSumulado(request);
-					respostaSimuladoRepository.save(respostaSimulado);
-					
-					int erros = respostaSimuladoRepository.consultarErrosSimulado(request.getIdUsuario(), request.getIdSimulado());
-					int acertos = respostaSimuladoRepository.consultarAcertosSimulado(request.getIdUsuario(), request.getIdSimulado());
-					int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimulado(request.getIdUsuario(), request.getIdSimulado());
-					int total = respostaSimuladoRepository.consultarTotalQuestaoes(request.getIdSimulado());
-//					
-					baseResponse = new ResponseBase<>(true, "Resposta registrada com sucesso", request);
+					ResultadoSimuladoResponse resposta = createRespostaSimuladoResponse(request);
+					baseResponse = new ResponseBase<>(true, "Resposta registrada com sucesso", resposta);
 				}
 			}
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível salvar a resposta do simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<RespostaSimuladoRequest>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<ResultadoSimuladoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	public ResultadoSimuladoResponse createRespostaSimuladoResponse(RespostaSimuladoRequest request) {
+		RespostaSimulado respostaSimulado = mapperSumulado(request);
+		respostaSimuladoRepository.save(respostaSimulado);
+		int erros = respostaSimuladoRepository.consultarErrosSimulado(request.getIdUsuario(), request.getIdSimulado());
+		int acertos = respostaSimuladoRepository.consultarAcertosSimulado(request.getIdUsuario(), request.getIdSimulado());
+		int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimulado(request.getIdUsuario(), request.getIdSimulado());
+		int total = respostaSimuladoRepository.consultarTotalQuestaoes(request.getIdSimulado());
+		
+		ResultadoSimuladoResponse resultadoSimuladoResponse = new ResultadoSimuladoResponse();
+		resultadoSimuladoResponse.setIdSimulado(request.getIdSimulado());
+		resultadoSimuladoResponse.setAcertos(acertos);
+		resultadoSimuladoResponse.setErros(erros);
+		resultadoSimuladoResponse.setNaoRespondidas(naoRespondidas);
+		resultadoSimuladoResponse.setTotal(total);
+		return resultadoSimuladoResponse;
+	}
 	
 	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
 		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
