@@ -186,7 +186,7 @@ public class QuestaoPoscomp2007 {
 		QuestaoAlternativa questaoAlternativa9 = new QuestaoAlternativa();
 		questaoAlternativa9.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa9.setAno(ANO);
-		questaoAlternativa9.setDescricao("[MT] Quatro retas do plano cartesiano identificadas por $l_1,l_2\\,\\,e\\,\\, r_1,r_2$ definem, com os eixos coordenados, triˆangulos de área $A = 6$ e satisfazem as seguintes condições:\n" +
+		questaoAlternativa9.setDescricao("[MT] Quatro retas do plano cartesiano identificadas por $l_1,l_2\\,\\,e\\,\\, r_1,r_2$ definem, com os eixos coordenados, triângulos de área $A = 6$ e satisfazem as seguintes condições:\n" +
 				"$\\newline$- $l_1 \\parallel l_2$. (retas paralelas) e $r_1 \\parallel r_2$.;\n" +
 				"$\\newline$- $l_1 \\,\\, e \\,\\, l_2$ são perpendiculares a reta $t$ definida por $4x+3y = 0$(isto é, $l_1 \\perp t\\,\\,e\\,\\, l_2 \\perp t$);\n" +
 				"$\\newline$- $r_1 \\,\\, e \\,\\, r_2$ têm coeficiente angular iguais a $m_r = \\frac{−3}{4}$.\n" +
@@ -240,16 +240,16 @@ public class QuestaoPoscomp2007 {
 						"$\\newline$- variáveis: $x, y$\n" +
 						"$\\newline$- predicados unários: $P$\n" +
 						"$\\newline$- predicados binários: $R$\n" +
-						"Considere a seguinte função de interpretação $I$ para essa linguagem, com valores no conjunto $\\mathbb{N}$. dos números naturais:\n" +
-						"$\\newlineI(a) = I(b) = 0 \n" +
-						"\\newline I(P) = \\left\\{n | n < 4\\right\\}\n" +
-						"\\newline I(R) = \\left\\{(x,y) | x < y\\right\\}\\newline$.\n" +
-						"Dadas as seguintes fórmulas:\n" +
-						"$\\newline\n" +
-						"I. P(a) \\newline\n" +
-						"II. \\forall x, y : R(x, y) \\rightarrow R(y, x)\\newline\n" +
-						"III. \\exists x : R(x, a)\n" +
-						"\\newline$.\n" +
+						"$\\newline$ Considere a seguinte função de interpretação $I$ para essa linguagem, com valores no conjunto $\\mathbb{N}$ dos números naturais:" +
+						"$\\newline I(a) = I(b) = 0" +
+						"\\newline I(P) = \\left\\{n | n < 4\\right\\}" +
+						"\\newline I(R) = \\left\\{(x,y) | x < y\\right\\} \\newline$" +
+						"Dadas as seguintes fórmulas:" +
+						"$\\newline" +
+						"I. P(a) \\newline" +
+						"II. \\forall x, y : R(x, y) \\rightarrow R(y, x) \\newline" +
+						"III. \\exists x : R(x, a)" +
+						"\\newline$" +
 						"Em relaçãoo à função de interpretação I definida acima, pode-se afirmar que é(são) VERDADEIRA(AS)");
 		questaoAlternativa11.setArea(EArea.MATEMATICA);
 		questaoAlternativa11.setProva(ETipoQuestaoProva.POSCOMP);
@@ -891,13 +891,13 @@ public class QuestaoPoscomp2007 {
 						"$\\newline$#include <stdio.h>\n" +
 						"$\\newline$int main(void)\n" +
 						"$\\newline${\n" +
-						"  $\\newline$ int n[] = {7, 8, 9};\n" +
-						"   $\\newline$int *p;\n" +
-						"  $\\newline$p = &n[0];\n" +
-						"$\\newline$ p++;\n" +
-						"$\\newline$printf(\"Valor: %d \", *p);\n" +
-						"   $\\newline$(*p)++;\n" +
-						"   $\\newline$printf(\"Valor: %d\\n\", *p);\n" +
+						"  $\\newline\\,\\,\\,\\,\\,\\,$ int n[] = {7, 8, 9};\n" +
+						"   $\\newline\\,\\,\\,\\,\\,\\,$int *p;\n" +
+						"  $\\newline\\,\\,\\,\\,\\,\\,$p = &n[0];\n" +
+						"$\\newline\\,\\,\\,\\,\\,\\,$ p++;\n" +
+						"$\\newline\\,\\,\\,\\,\\,\\,$printf(\"Valor: %d \", *p);\n" +
+						"   $\\newline\\,\\,\\,\\,\\,\\,$(*p)++;\n" +
+						"   $\\newline\\,\\,\\,\\,\\,\\,$printf(\"Valor: %d\\n\", *p);\n" +
 						"$\\newline$}\n" +
 						"$\\newline$Qual é a resposta que será impressa na tela:");
 		questaoAlternativa38.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
@@ -1122,16 +1122,16 @@ public class QuestaoPoscomp2007 {
 		questaoAlternativa47.setId(INICIOQUESTAO.longValue());
 		questaoAlternativa47.setAno(ANO);
 		questaoAlternativa47.setDescricao("[TE]\n" +
-				"Considere a gramática G abaixo, em que $\\epsilon$ representa o string nulo.\n" +
-				" $\\newline S \\rightarrow B | C | D \n" +
-				"\\newline A \\rightarrow \\epsilon \n" +
-				"\\newline B \\rightarrow d \n" +
-				"\\newline C \\rightarrow Aac | bAc \n" +
-				"\\newline D \\rightarrow Bcd | bBa $ \n" +
-				"A esse respeito, analise as seguintes afirmativas.\n" +
-				"$\\newline$I. G é SLR(1)\n" +
-				"$\\newline$II. G é LALR(1)\n" +
-				"$\\newline$III. G é LR(1)\n" +
+				"Considere a gramática G abaixo, em que $\\epsilon$ representa o string nulo." +
+				"$\\newline$ $S \\rightarrow B | C | D$" +
+				"$\\newline$ $A \\rightarrow \\epsilon$" +
+				"$\\newline$ $B \\rightarrow d$" +
+				"$\\newline$ $C \\rightarrow Aac | bAc$" +
+				"$\\newline$ $D \\rightarrow Bcd | bBa $" +
+				"$\\newline$A esse respeito, analise as seguintes afirmativas." +
+				"$\\newline$I. G é SLR(1)" +
+				"$\\newline$II. G é LALR(1)" +
+				"$\\newline$III. G é LR(1)" +
 				"$\\newline$A análise permite concluir que");
 		questaoAlternativa47.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
 		questaoAlternativa47.setProva(ETipoQuestaoProva.POSCOMP);
