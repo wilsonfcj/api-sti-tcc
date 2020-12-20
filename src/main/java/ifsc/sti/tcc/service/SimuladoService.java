@@ -30,6 +30,7 @@ import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoSimuladoGeral;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
@@ -39,6 +40,9 @@ import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2004;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2005;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2006;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2007;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2008;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2009;
+import ifsc.sti.tcc.utilidades.questaoenade.QuestaoEnade2005;
 
 public class SimuladoService {
 
@@ -130,12 +134,23 @@ public class SimuladoService {
 	   List<Questao> questoes3 = QuestaoPoscomp2005.registerPoscomp();
 	   List<Questao> questoes4 = QuestaoPoscomp2006.registerPoscomp();
 	   List<Questao> questoes5 = QuestaoPoscomp2007.registerPoscomp();
+	   List<Questao> questoes6 = QuestaoPoscomp2008.registerPoscomp();
+	   List<Questao> questoes7 = QuestaoPoscomp2009.registerPoscomp();
+	 
+	   List<Questao> questoes8 = QuestaoEnade2005.register();
+	   
 	   questaoRepository.saveAll(questoes);
 	   questaoRepository.saveAll(questoes1);
 	   questaoRepository.saveAll(questoes2);
 	   questaoRepository.saveAll(questoes3);
 	   questaoRepository.saveAll(questoes4);
 	   questaoRepository.saveAll(questoes5);
+	   questaoRepository.saveAll(questoes6);
+	   questaoRepository.saveAll(questoes7);
+	   
+//	   
+	   questaoRepository.saveAll(questoes8);
+	   
 	   return questoes;
 	}
 	
@@ -224,18 +239,45 @@ public class SimuladoService {
 	public ResultadoSimuladoResponse createRespostaSimuladoResponse(RespostaSimuladoRequest request) {
 		RespostaSimulado respostaSimulado = mapperSumulado(request);
 		respostaSimuladoRepository.save(respostaSimulado);
+		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
+		resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
+		resultado.setNome(respostaSimulado.getIdSimulado().getNome());
+		resultado.setDescricao(respostaSimulado.getIdSimulado().getDescricao());
+		resultado.setDataCriacao(respostaSimulado.getIdSimulado().getDataCriacao());
+		resultado.setDataEnvio(respostaSimulado.getDataEntrega());
+		resultado.setResultadoGeral(createResultadoGeral(request));
+		resultado.setResultadoMatematica(createResultadoPorArea(request, EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(request, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(request, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		return resultado;
+	}
+	
+	public ResultadoSimuladoGeral createResultadoGeral(RespostaSimuladoRequest request) {
 		int erros = respostaSimuladoRepository.consultarErrosSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int acertos = respostaSimuladoRepository.consultarAcertosSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int total = respostaSimuladoRepository.consultarTotalQuestaoes(request.getIdSimulado());
 		
-		ResultadoSimuladoResponse resultadoSimuladoResponse = new ResultadoSimuladoResponse();
-		resultadoSimuladoResponse.setIdSimulado(request.getIdSimulado());
-		resultadoSimuladoResponse.setAcertos(acertos);
-		resultadoSimuladoResponse.setErros(erros);
-		resultadoSimuladoResponse.setNaoRespondidas(naoRespondidas);
-		resultadoSimuladoResponse.setTotal(total);
-		return resultadoSimuladoResponse;
+		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
+	}
+	
+	public ResultadoSimuladoGeral createResultadoPorArea(RespostaSimuladoRequest request, EArea area) {
+		int erros = respostaSimuladoRepository.consultarErrosSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
+		int acertos = respostaSimuladoRepository.consultarAcertosSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
+		int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
+		int total = respostaSimuladoRepository.consultarTotalQuestaoesPorArea(request.getIdSimulado(), area.codigo);
+		
+		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
 	}
 	
 	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
@@ -272,7 +314,8 @@ public class SimuladoService {
 	}
 	
 	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
-		Simulado simulado = saveSimulado(sumuladoRequest);
+		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
 		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
 	}
@@ -300,8 +343,7 @@ public class SimuladoService {
 			questaoRepository.consultPoscomp(area, tipoSimulado, quantidadeQuestao); 
 	}
 	
-	private Simulado saveSimulado(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = gerarQuestaoPorQuantidade(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+	private Simulado saveSimulado(SumuladoRequest sumuladoRequest, List<Questao> questoes) {
 		Simulado simulado = new Simulado();
 		simulado.setNome(sumuladoRequest.getNome());
 		simulado.setDescricao(sumuladoRequest.getDescricao());
@@ -318,7 +360,7 @@ public class SimuladoService {
 		return simulado;
 	}
 	
-	private List<Questao> gerarQuestaoPorQuantidade(int quantidae, int anoProva) {
+	private List<Questao> gerarQuestaoPorQuantidadePoscomp(int quantidae, int anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
 		List<QuestaoAlternativa> questaoPart1 = null;
 		List<QuestaoAlternativa> questaoPart2 = null;
@@ -351,8 +393,43 @@ public class SimuladoService {
 		return questoes;
 	}
 	
+	
+	private List<Questao> gerarQuestaoPorQuantidadeEnade(int quantidae, int anoProva) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		List<QuestaoAlternativa> questaoPart1 = null;
+		List<QuestaoAlternativa> questaoPart2 = null;
+		List<QuestaoAlternativa> questaoPart3 = null;
+		switch(quantidae) {
+			case 30:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				break;
+			case 20:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
+				break;
+			case 15:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
+				break;
+			default:
+				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+				break;
+		}
+		questoes.addAll(questaoPart1);
+		questoes.addAll(questaoPart2);
+		questoes.addAll(questaoPart3);
+		return questoes;
+	}
+	
 	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
-		Simulado simulado = saveSimulado(sumuladoRequest);
+		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
 		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
 	}

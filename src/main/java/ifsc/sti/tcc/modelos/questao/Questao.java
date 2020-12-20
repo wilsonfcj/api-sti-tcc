@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EDisciplina;
+import ifsc.sti.tcc.props.EFormacao;
 import ifsc.sti.tcc.props.ETipoQuestaoProva;
 
 @Entity
@@ -31,6 +32,7 @@ public abstract class Questao implements Serializable {
 	private Integer area;
 	private Integer prova;
 	private Integer disciplina;
+	private Integer tipoFormcao = EFormacao.ESPECIFICA.codigo;
 	private Boolean imagem = false;
 	
 	@Column(columnDefinition="TEXT")
@@ -114,5 +116,13 @@ public abstract class Questao implements Serializable {
 
 	public void setNumeroQuestao(Integer numeroQuestao) {
 		this.numeroQuestao = numeroQuestao;
+	}
+
+	public EFormacao getTipoFormcao() {
+		return EFormacao.getEnum(tipoFormcao);
+	}
+
+	public void setTipoFormcao(EFormacao tipoFormcao) {
+		this.tipoFormcao = tipoFormcao.codigo;
 	}
 }

@@ -46,7 +46,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 	
 	public void setAlternativasA(String alternativasA) {
-		this.alternativasA = alternativasA;
+		this.alternativasA = alternativasA.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 	
 	public String getAlternativasB() {
@@ -54,7 +54,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 	
 	public void setAlternativasB(String alternativasB) {
-		this.alternativasB = alternativasB;
+		this.alternativasB = alternativasB.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 	
 	public String getAlternativasC() {
@@ -62,7 +62,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 	
 	public void setAlternativasC(String alternativasC) {
-		this.alternativasC = alternativasC;
+		this.alternativasC = alternativasC.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 	
 	public String getAlternativasD() {
@@ -70,7 +70,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 	
 	public void setAlternativasD(String alternativasD) {
-		this.alternativasD = alternativasD;
+		this.alternativasD = alternativasD.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 	
 	public String getAlternativasE() {
@@ -78,7 +78,7 @@ public class QuestaoAlternativa extends Questao implements Serializable {
 	}
 	
 	public void setAlternativasE(String alternativasE) {
-		this.alternativasE = alternativasE;
+		this.alternativasE = alternativasE.replace("data:image/png;base64,", "").replace("data:image/jpg;base64,", "");
 	}
 	public Boolean getAlternativaImagem() {
 		return alternativaImagem;

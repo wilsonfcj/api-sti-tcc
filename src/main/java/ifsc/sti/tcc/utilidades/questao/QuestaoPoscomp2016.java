@@ -12,7 +12,7 @@ import ifsc.sti.tcc.props.ETipoQuestaoProva;
 public class QuestaoPoscomp2016 {
 
 	final static Integer ANO = 2016;
-	static Integer INICIOQUESTAO = 141;
+	static Integer INICIOQUESTAO = 991;
 	static Integer NUMEROQUESTAO = 1;
 
 	public static List<Questao> registerPoscomp() {
