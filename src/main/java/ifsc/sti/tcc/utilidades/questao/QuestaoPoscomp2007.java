@@ -244,13 +244,8 @@ public class QuestaoPoscomp2007 {
 						"$\\newline I(a) = I(b) = 0" +
 						"\\newline I(P) = \\left\\{n | n < 4\\right\\}" +
 						"\\newline I(R) = \\left\\{(x,y) | x < y\\right\\} \\newline$" +
-						"Dadas as seguintes fórmulas:" +
-						"$\\newline" +
-						"I. P(a) \\newline" +
-						"II. \\forall x, y : R(x, y) \\rightarrow R(y, x) \\newline" +
-						"III. \\exists x : R(x, a)" +
-						"\\newline$" +
-						"Em relaçãoo à função de interpretação I definida acima, pode-se afirmar que é(são) VERDADEIRA(AS)");
+						"Dadas as seguintes fórmulas: $\\newline$I. P(a) $\\newline$II. $\\forall x, y : R(x, y) \\rightarrow R(y, x)$ $\\newline$III. $\\exists x : R(x, a)$ $\\newline$ Em relação à função de interpretação I definida acima, " +
+						"pode-se afirmar que é(são) VERDADEIRA(AS)");
 		questaoAlternativa11.setArea(EArea.MATEMATICA);
 		questaoAlternativa11.setProva(ETipoQuestaoProva.POSCOMP);
 		questaoAlternativa11.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
@@ -891,7 +886,7 @@ public class QuestaoPoscomp2007 {
 						"$\\newline$#include <stdio.h>\n" +
 						"$\\newline$int main(void)\n" +
 						"$\\newline${\n" +
-						"  $\\newline\\,\\,\\,\\,\\,\\,$ int n[] = {7, 8, 9};\n" +
+						"  $\\newline\\,\\,\\,\\,\\,\\,$int n[] = {7, 8, 9};\n" +
 						"   $\\newline\\,\\,\\,\\,\\,\\,$int *p;\n" +
 						"  $\\newline\\,\\,\\,\\,\\,\\,$p = &n[0];\n" +
 						"$\\newline\\,\\,\\,\\,\\,\\,$ p++;\n" +
