@@ -223,7 +223,7 @@ public class QuestaoEnade2005 {
 		questaoAlternativa11.setAno(ANO);
 		questaoAlternativa11.setDescricao("Denote por $\\langle x,y \\rangle$ o produto escalar dos vetores $x = (x_1, x_2, x_3)$ e $y = (y_1, y_2, y_3)$ em $\\mathbb{R}^3$. O lugar geométrico dado por $\\langle x,y \\rangle = r$, onde $1 = (1, 1, 1)$ e $r \\in \\mathbb{R}$ é");
 		questaoAlternativa11.setArea(EArea.MATEMATICA);
-		questaoAlternativa1.setTipoFormcao(EFormacao.ESPECIFICA);
+		questaoAlternativa11.setTipoFormcao(EFormacao.ESPECIFICA);
 		questaoAlternativa11.setProva(ETipoQuestaoProva.ENADE);
 		questaoAlternativa11.setDisciplina(EDisciplina.ALGEBRA_LINEAR_E_GEOMETRIA_ANALITICA);
 		questaoAlternativa11.setResposta("Teste para geração de questão");

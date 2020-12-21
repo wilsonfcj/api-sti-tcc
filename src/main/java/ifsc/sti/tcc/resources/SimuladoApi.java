@@ -18,7 +18,6 @@ import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
@@ -108,17 +107,5 @@ public class SimuladoApi {
 				.build();
 		return lSimuladoService.salvarRespostaSimulado(respostaSimuladoRequest);
 	}
-	
-	@ApiOperation(value = "Busca as respostas de um simulado")
-	@RequestMapping(value = "/BuscarRespostasSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(@RequestBody BuscarRespostaSimuladoRequest buscarRespostaSimuladoRequest) {
-		SimuladoService lSimuladoService = new SimuladoService
-				.Instance(simuladoRepository)
-				.withQuestaoRepository(questaoRepository)
-				.withUsuarioRepository(usuarioRepository)
-				.withRespostaSimuladoRepository(respostaSimuladoRepository)
-				.build();
-		return lSimuladoService.buscarRespostaSimulado(buscarRespostaSimuladoRequest);
-	}
-	
+
 }

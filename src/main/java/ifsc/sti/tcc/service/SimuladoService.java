@@ -11,10 +11,12 @@ import org.springframework.http.ResponseEntity;
 
 import ifsc.sti.tcc.modelos.questao.Questao;
 import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
+import ifsc.sti.tcc.modelos.questao.QuestaoDiscusiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EArea;
+import ifsc.sti.tcc.props.EFormacao;
 import ifsc.sti.tcc.props.ETipoSimulado;
 import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
@@ -27,7 +29,6 @@ import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoResumoMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.RespostaSimuladoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.BuscarRespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoSimuladoGeral;
@@ -280,16 +281,15 @@ public class SimuladoService {
 		return resultado;
 	}
 	
-	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
-		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
-		try {
-			RespostaSimulado repostaSimulada = respostaSimuladoRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdUsuario());
-			baseResponse = new ResponseBase<>(true, "Teste", null);
-		} catch (Exception e) {
-			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
-		}
-		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
-	}
+//	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
+//		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
+//		try {
+//			baseResponse = new ResponseBase<>(true, "Teste", null);
+//		} catch (Exception e) {
+//			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
+//		}
+//		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
+//	}
 	
 	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> gerarSimulado(SumuladoRequest sumuladoRequest) {
 		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
@@ -298,15 +298,16 @@ public class SimuladoService {
 			switch (sumuladoRequest.getTipoSimulado()) {
 			case 2:
 				simuladoResponse = gerarSimuladPoscom(sumuladoRequest);
+				baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
 				break;
 			case 1:
 				simuladoResponse = gerarSimuladEnade(sumuladoRequest);
+				baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
 				break;
 			default:
-				simuladoResponse = gerarSimuladPersonalizado(sumuladoRequest);
+				baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 				break;
 			}
-			baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 		}
@@ -338,9 +339,19 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
-	private List<QuestaoAlternativa> getQuestao(int area, int tipoSimulado, int quantidadeQuestao, Integer ano) {
+	private List<QuestaoAlternativa> getQuestaoPoscomp(int area, int tipoSimulado, int quantidadeQuestao, Integer ano) {
 		return ano != null ? questaoRepository.consultPoscompByAno(area, tipoSimulado, (int) ano, quantidadeQuestao) : 
 			questaoRepository.consultPoscomp(area, tipoSimulado, quantidadeQuestao); 
+	}
+	
+	private List<QuestaoAlternativa> getQuestaoAlternativaEnade(int formacao, int tipoSimulado, int quantidadeQuestao, Integer ano) {
+		return ano != null ? questaoRepository.consultEnadeByAno(formacao, tipoSimulado, (int) ano, quantidadeQuestao): 
+			questaoRepository.consultEnade(formacao, tipoSimulado, quantidadeQuestao); 
+	}
+	
+	private List<QuestaoDiscusiva> getQuestaoDiscursivaEnade(int formacao, int quantidadeQuestao, Integer ano) {
+		return ano != null ? questaoRepository.consultEnadeDiscursivaByAno(formacao, (int) ano, quantidadeQuestao) : 
+			questaoRepository.consultEnadeDiscursiva(formacao, quantidadeQuestao); 
 	}
 	
 	private Simulado saveSimulado(SumuladoRequest sumuladoRequest, List<Questao> questoes) {
@@ -360,31 +371,16 @@ public class SimuladoService {
 		return simulado;
 	}
 	
-	private List<Questao> gerarQuestaoPorQuantidadePoscomp(int quantidae, int anoProva) {
+	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer quantidae, Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
 		List<QuestaoAlternativa> questaoPart1 = null;
 		List<QuestaoAlternativa> questaoPart2 = null;
 		List<QuestaoAlternativa> questaoPart3 = null;
 		switch(quantidae) {
-			case 50:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				break;
-			case 30:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				break;
-			case 15:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				break;
 			default:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+				questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+				questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
 				break;
 		}
 		questoes.addAll(questaoPart1);
@@ -394,36 +390,24 @@ public class SimuladoService {
 	}
 	
 	
-	private List<Questao> gerarQuestaoPorQuantidadeEnade(int quantidae, int anoProva) {
+	private List<Questao> gerarQuestaoPorQuantidadeEnade(Integer quantidae, Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = null;
-		List<QuestaoAlternativa> questaoPart2 = null;
-		List<QuestaoAlternativa> questaoPart3 = null;
+		List<QuestaoDiscusiva> questaoDiscursivaGeral;
+		List<QuestaoAlternativa> questaoAssinalarGeral = null;
+		List<QuestaoDiscusiva> questaoDiscursivaEspecifica = null;
+		List<QuestaoAlternativa> questaoAssinalarEspecifica = null;
 		switch(quantidae) {
-			case 30:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 15, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				break;
-			case 20:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 10, anoProva);
-				break;
-			case 15:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 5, anoProva);
-				break;
 			default:
-				questaoPart1 = getQuestao(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart2 = getQuestao(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart3 = getQuestao(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+				questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, anoProva);
+				questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, 8, anoProva);
+				questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, anoProva);
+				questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, 27, anoProva);
 				break;
 		}
-		questoes.addAll(questaoPart1);
-		questoes.addAll(questaoPart2);
-		questoes.addAll(questaoPart3);
+		questoes.addAll(questaoDiscursivaGeral);
+		questoes.addAll(questaoAssinalarGeral);
+		questoes.addAll(questaoDiscursivaEspecifica);
+		questoes.addAll(questaoAssinalarEspecifica);
 		return questoes;
 	}
 	
@@ -434,7 +418,7 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
-	private SimuladoCompletoResponse gerarSimuladPersonalizado(SumuladoRequest sumuladoRequest) {
-		return null;
-	}
+//	private SimuladoCompletoResponse gerarSimuladPersonalizado(SumuladoRequest sumuladoRequest) {
+//		return null;
+//	}
 }
