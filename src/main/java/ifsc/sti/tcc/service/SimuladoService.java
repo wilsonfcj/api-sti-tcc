@@ -298,16 +298,25 @@ public class SimuladoService {
 			switch (sumuladoRequest.getTipoSimulado()) {
 			case 2:
 				simuladoResponse = gerarSimuladPoscom(sumuladoRequest);
-				baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
+				if(simuladoResponse != null) {
+					baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Questões não encontras para esse simulado", simuladoResponse);
+				}
 				break;
 			case 1:
 				simuladoResponse = gerarSimuladEnade(sumuladoRequest);
-				baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
+				if(simuladoResponse != null) {
+					baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Questões não encontras para esse simulado", simuladoResponse);
+				}
 				break;
 			default:
 				baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 				break;
 			}
+			
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 		}
@@ -316,6 +325,9 @@ public class SimuladoService {
 	
 	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
 		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+		if(questoes.size() == 0) {
+			return null;
+		}
 		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
 		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
@@ -363,7 +375,7 @@ public class SimuladoService {
 		simulado.setDataFimSimulado(sumuladoRequest.getDataFimSimulado());
 		simulado.setTempoMaximo(sumuladoRequest.getTempoMaximo());
 		simulado.setIdUsuario(usuarioRepository.findById((long)sumuladoRequest.getIdUsuario()));
-		simulado.setQuantidadeQuestoes(sumuladoRequest.getQuantidadeQuestoes());
+		simulado.setQuantidadeQuestoes(questoes.size());
 		simulado.setTipoSimulado(ETipoSimulado.getEnun(sumuladoRequest.getTipoSimulado()));	
 		simulado.setQuestoes(questoes);
 		Simulado simuladoResponse = jpaRepository.save(simulado);
@@ -413,6 +425,9 @@ public class SimuladoService {
 	
 	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
 		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+		if(questoes.size() == 0) {
+			return null;
+		}
 		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
 		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
 		return simuladoResponse;
