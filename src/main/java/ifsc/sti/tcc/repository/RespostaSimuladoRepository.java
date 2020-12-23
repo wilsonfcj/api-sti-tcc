@@ -20,7 +20,7 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	@Query(value = "SELECT count(*) FROM resposta_simulado as rs inner join simulado s on s.id_simulado = rs.id_simulado WHERE rs.id_usuario = ?1 and s.tipo_simulado = ?2", nativeQuery = true)
 	int consultarQtdSimuladosRespondidos(long idUsuario, int idSimulado);
 	
-	@Query(value = "SELECT * FROM resposta_simulado WHERE id_usuario = ?1 limit 5", nativeQuery = true)
+	@Query(value = "SELECT * FROM resposta_simulado WHERE id_usuario = ?1 order by data_resposta desc limit 5", nativeQuery = true)
 	List<RespostaSimulado> buscarRespostaSimulados(long idUsuario);
 	
 //	Geral
