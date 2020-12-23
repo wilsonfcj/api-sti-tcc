@@ -38,7 +38,6 @@ public class DisciplinaService   {
 			disciplinaService.setJpaRepository(jpaRepository);
 			return disciplinaService;
 		}
-		
 	}
 	
 	public List<DisciplinaResponse> consultarDisplinas(Long idUsuario) {

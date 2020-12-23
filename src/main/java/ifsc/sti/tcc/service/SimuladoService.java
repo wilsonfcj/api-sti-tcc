@@ -31,7 +31,7 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoSimuladoGeral;
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
@@ -54,6 +54,7 @@ public class SimuladoService {
 	private QuestaoRepository questaoRepository;
 	private UsuarioRepository usuarioRepository;
 	private RespostaSimuladoRepository respostaSimuladoRepository;
+	ResultadoService service;
 
 	public static class Instance extends BaseService<SimuladoRepository> implements BaseService.BaseObject<SimuladoService> {
 
@@ -148,8 +149,6 @@ public class SimuladoService {
 	   questaoRepository.saveAll(questoes5);
 	   questaoRepository.saveAll(questoes6);
 	   questaoRepository.saveAll(questoes7);
-	   
-//	   
 	   questaoRepository.saveAll(questoes8);
 	   
 	   return questoes;
@@ -237,6 +236,10 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<ResultadoSimuladoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	private void buscarResultadoSimulado(ResultadoService service) {
+		
+	}
+	
 	public ResultadoSimuladoResponse createRespostaSimuladoResponse(RespostaSimuladoRequest request) {
 		RespostaSimulado respostaSimulado = mapperSumulado(request);
 		respostaSimuladoRepository.save(respostaSimulado);
@@ -253,13 +256,13 @@ public class SimuladoService {
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoGeral(RespostaSimuladoRequest request) {
+	public ResultadoQuantitativo createResultadoGeral(RespostaSimuladoRequest request) {
 		int erros = respostaSimuladoRepository.consultarErrosSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int acertos = respostaSimuladoRepository.consultarAcertosSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimulado(request.getIdUsuario(), request.getIdSimulado());
 		int total = respostaSimuladoRepository.consultarTotalQuestaoes(request.getIdSimulado());
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -267,13 +270,13 @@ public class SimuladoService {
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoPorArea(RespostaSimuladoRequest request, EArea area) {
+	public ResultadoQuantitativo createResultadoPorArea(RespostaSimuladoRequest request, EArea area) {
 		int erros = respostaSimuladoRepository.consultarErrosSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
 		int acertos = respostaSimuladoRepository.consultarAcertosSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
 		int naoRespondidas = respostaSimuladoRepository.consultarQuantidadeNaoRespondiasSimuladoPorArea(request.getIdUsuario(), request.getIdSimulado(), area.codigo);
 		int total = respostaSimuladoRepository.consultarTotalQuestaoesPorArea(request.getIdSimulado(), area.codigo);
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);

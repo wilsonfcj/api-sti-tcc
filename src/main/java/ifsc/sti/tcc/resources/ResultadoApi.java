@@ -1,5 +1,7 @@
 package ifsc.sti.tcc.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +40,7 @@ public class ResultadoApi {
 	@Autowired
 	private RespostaSimuladoRepository respostaSimuladoRepository;
 
-    @ApiOperation(value = "Busca o resultado do usuário em um determinado simulado por Id do Usuário e o Id do Simulado")
+    @ApiOperation(value = "Busca o resultado de um simulado confomre o simulado e o id do usuário")
     @RequestMapping(value = "/BuscarResultadoSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoRequest request) {
 		ResultadoService service = new ResultadoService
@@ -49,7 +51,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimulado(request);
     }
     
-    @ApiOperation(value = "Registra questões do simulado na base de dados")
+    @ApiOperation(value = "Busca o resultado geral conforme a prova Enade, Poscomp ou Personalizada")
     @RequestMapping(value = "/BuscarResultadoGeralPorProva", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeralPorProva(@RequestBody ResultadoSimuladoProvaRequest request) {
 		ResultadoService service = new ResultadoService
@@ -57,7 +59,7 @@ public class ResultadoApi {
 				.withUsuarioRepository(usuarioRepository)
 				.withSimuladoRepository(simuladoRepository)
 				.build();
-		return service.buscarRepostaGeralProva(request);
+		return service.buscarRepostaGeralPorProvas(request);
     }
     
     @ApiOperation(value = "Registra questões do simulado na base de dados")
@@ -69,6 +71,17 @@ public class ResultadoApi {
 				.withSimuladoRepository(simuladoRepository)
 				.build();
 		return service.buscarRepostaGeralTodos(idUsuario);
+    }
+    
+    @ApiOperation(value = "Busca o resultados dos ultimos simulados de um usuário")
+    @GetMapping("/BuscarUltimosResultados")
+	public ResponseEntity<ResponseBase<List<ResultadoSimuladoResponse>>> buscarResultadoSimulado(long idUsuario) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarUltimosResultados(idUsuario);
     }
  
 }

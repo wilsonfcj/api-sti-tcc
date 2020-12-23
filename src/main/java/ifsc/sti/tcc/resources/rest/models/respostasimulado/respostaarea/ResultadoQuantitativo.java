@@ -2,7 +2,7 @@ package ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ResultadoSimuladoGeral {
+public class ResultadoQuantitativo {
 	
 	@JsonProperty(value="Erros")
 	Integer erros; 

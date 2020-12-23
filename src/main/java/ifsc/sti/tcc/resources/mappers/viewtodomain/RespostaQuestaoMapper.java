@@ -43,7 +43,13 @@ public class RespostaQuestaoMapper extends MapperUtil<RespostaQuestaoRequest, Re
 				((RepostaAlternativa) respostaSimulado).setCorreta(true);
 			}
 		} else {
-			
+//			TODO realizar a validação aqui, se a resposta está correta
+			resposta = ((RepostaDiscursiva) respostaSimulado).getRespostaDiscursiva();
+			if(!resposta.isEmpty()) {
+				((RepostaDiscursiva) respostaSimulado).setCorreta(true);
+			} else {
+				((RepostaDiscursiva) respostaSimulado).setRespondida(false);
+			}
 		}
 		return respostaSimulado;
 	}

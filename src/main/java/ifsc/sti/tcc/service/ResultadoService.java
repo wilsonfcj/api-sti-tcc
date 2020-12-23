@@ -1,5 +1,8 @@
 package ifsc.sti.tcc.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,7 +21,7 @@ import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoGeralUsuario
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoSimuladoGeral;
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoQuantitativo;
 
 public class ResultadoService {
 
@@ -138,7 +141,7 @@ public class ResultadoService {
 		return new ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarRepostaGeralProva(ResultadoSimuladoProvaRequest request) {
+	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarRepostaGeralPorProvas(ResultadoSimuladoProvaRequest request) {
 		ResponseBase<ResultadoGeralUsuarioResponse> baseResponse = new ResponseBase<>();
 		try {
 			ResultadoGeralUsuarioResponse lRespostaSimulado = buscarResultadoGeralPorTipoProva(request);
@@ -156,6 +159,38 @@ public class ResultadoService {
 		}
 		return new ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>>(baseResponse, HttpStatus.OK);
 	}
+	
+	
+	public ResponseEntity<ResponseBase<List<ResultadoSimuladoResponse>>> buscarUltimosResultados(long idUsuario) {
+		ResponseBase<List<ResultadoSimuladoResponse>> baseResponse = new ResponseBase<>();
+		try {
+			List<ResultadoSimuladoResponse> lRespostaSimulado = buscarResultadoUltimosSimulados(idUsuario);
+			if(lRespostaSimulado.isEmpty()) {
+				baseResponse = new ResponseBase<>(false, "Resultado dos simulados não encontrado", null);
+			} else {
+				if(loadUsuarioById(idUsuario) == null){
+					baseResponse = new ResponseBase<>(false, "Usuário não encontrado", null);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Resultados dos simulado obtido com sucesso", lRespostaSimulado);
+				}
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível buscar o resultado dos simulados", null);
+		}
+		return new ResponseEntity<ResponseBase<List<ResultadoSimuladoResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	
+	private List<ResultadoSimuladoResponse> buscarResultadoUltimosSimulados(long idUsuario) {
+		List<RespostaSimulado> respostas = jpaRepository.buscarRespostaSimulados(idUsuario);
+		List<ResultadoSimuladoResponse> listResponse = new ArrayList<>();
+		for(RespostaSimulado resposta : respostas) {
+			ResultadoSimuladoResponse response = buscarResultadoSimulado(resposta.getIdSimulado().getId(), resposta.getIdUsuario().getId());
+			listResponse.add(response);
+		}
+		return listResponse;
+	}
+	
 
 //	USUARIO ALUNO
 	
@@ -167,20 +202,20 @@ public class ResultadoService {
 		resultado.setDescricao(respostaSimulado.getIdSimulado().getDescricao());
 		resultado.setDataCriacao(respostaSimulado.getIdSimulado().getDataCriacao());
 		resultado.setDataEnvio(respostaSimulado.getDataEntrega());
-		resultado.setResultadoGeral(createResultadoGeral(idSimulado, idUsuario));
+		resultado.setResultadoGeral(createResultadoSimulado(idSimulado, idUsuario));
 		resultado.setResultadoMatematica(createResultadoPorArea(idSimulado, idUsuario, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(idSimulado, idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
 		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(idSimulado, idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoGeral(long idSimulado, long idUsuario) {
+	public ResultadoQuantitativo createResultadoSimulado(long idSimulado, long idUsuario) {
 		int erros = jpaRepository.consultarErrosSimulado(idUsuario,idSimulado);
 		int acertos = jpaRepository.consultarAcertosSimulado(idUsuario, idSimulado);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimulado(idUsuario, idSimulado);
 		int total = jpaRepository.consultarTotalQuestaoes(idSimulado);
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -188,13 +223,13 @@ public class ResultadoService {
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoPorArea(long idSimulado, long idUsuario, EArea area) {
+	public ResultadoQuantitativo createResultadoPorArea(long idSimulado, long idUsuario, EArea area) {
 		int erros = jpaRepository.consultarErrosSimuladoPorArea(idUsuario, idSimulado, area.codigo);
 		int acertos = jpaRepository.consultarAcertosSimuladoPorArea(idUsuario, idSimulado, area.codigo);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoPorArea(idUsuario, idSimulado, area.codigo);
 		int total = jpaRepository.consultarTotalQuestaoesPorArea(idSimulado, area.codigo);
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -210,19 +245,20 @@ public class ResultadoService {
 		resultado.setNome(usuario.getNome());
 		resultado.setIdUsuario(usuario.getId());
 		resultado.setResultadoGeral(createResultadoTodosGeral(idUsuario));
+		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(idUsuario));
 		resultado.setResultadoMatematica(createResultadoTodosPorArea(idUsuario, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorArea(idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
 		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorArea(idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoTodosGeral(long idUsuario) {
+	public ResultadoQuantitativo createResultadoTodosGeral(long idUsuario) {
 		int erros = jpaRepository.consultarErrosSimuladoTotal(idUsuario);
 		int acertos = jpaRepository.consultarAcertosSimuladoTotal(idUsuario);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoTotal(idUsuario);
 		int total = jpaRepository.consultarTotalQuestaoesRespondidas(idUsuario);
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -230,13 +266,13 @@ public class ResultadoService {
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoTodosPorArea(long idUsuario, EArea area) {
+	public ResultadoQuantitativo createResultadoTodosPorArea(long idUsuario, EArea area) {
 		int erros = jpaRepository.consultarErrosSimuladoPorAreaTotal(idUsuario, area.codigo);
 		int acertos = jpaRepository.consultarAcertosSimuladoPorAreaTotal(idUsuario, area.codigo);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoPorAreaTotal(idUsuario, area.codigo);
 		int total = jpaRepository.consultarTotalQuestaoesPorAreaTotal(idUsuario, area.codigo);
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -252,19 +288,20 @@ public class ResultadoService {
 		resultado.setNome(usuario.getNome());
 		resultado.setIdUsuario(usuario.getId());
 		resultado.setResultadoGeral(createResultadoGeralPorTipoProva(request));
+		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(request.getIdUsuario(), request.getTipoSimulado()));
 		resultado.setResultadoMatematica(createResultadoGeralPorTipoProva(request, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoGeralPorTipoProva(request, EArea.FUNDAMENTOS_DE_COMPUTACAO));
 		resultado.setResultadoTecnologiaComputacao(createResultadoGeralPorTipoProva(request, EArea.TECNOLOGIA_DA_COMPUTACAO));
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoGeralPorTipoProva(ResultadoSimuladoProvaRequest request) {
+	public ResultadoQuantitativo createResultadoGeralPorTipoProva(ResultadoSimuladoProvaRequest request) {
 		int erros = jpaRepository.consultarErrosSimuladoTotal(request.getIdUsuario(), request.getTipoSimulado());
 		int acertos = jpaRepository.consultarAcertosSimuladoTotal(request.getIdUsuario(), request.getTipoSimulado());
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoTotal(request.getIdUsuario(), request.getTipoSimulado());
 		int total = jpaRepository.consultarTotalQuestaoesRespondidas(request.getIdUsuario(), request.getTipoSimulado());
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);
@@ -272,13 +309,13 @@ public class ResultadoService {
 		return resultado;
 	}
 	
-	public ResultadoSimuladoGeral createResultadoGeralPorTipoProva(ResultadoSimuladoProvaRequest request, EArea area) {
+	public ResultadoQuantitativo createResultadoGeralPorTipoProva(ResultadoSimuladoProvaRequest request, EArea area) {
 		int erros = jpaRepository.consultarErrosSimuladoPorAreaTotal(request.getIdUsuario(), area.codigo, request.getTipoSimulado());
 		int acertos = jpaRepository.consultarAcertosSimuladoPorAreaTotal(request.getIdUsuario(), area.codigo, request.getTipoSimulado());
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoPorAreaTotal(request.getIdUsuario(), area.codigo, request.getTipoSimulado());
 		int total = jpaRepository.consultarTotalQuestaoesPorAreaTotal(request.getIdUsuario(), area.codigo, request.getTipoSimulado());
 		
-		ResultadoSimuladoGeral resultado = new ResultadoSimuladoGeral();
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
 		resultado.setErros(erros);
 		resultado.setNaoRespondidas(naoRespondidas);

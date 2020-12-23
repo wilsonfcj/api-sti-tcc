@@ -12,7 +12,16 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	List<RespostaSimulado> findById(long id);
 	
 	@Query(value = "SELECT * FROM resposta_simulado WHERE id_simulado = ?1 and id_usuario = ?2", nativeQuery = true)
-	RespostaSimulado consultarRespostaSimulado(long idSimulado, long id_usuario);
+	RespostaSimulado consultarRespostaSimulado(long idSimulado, long idUsuario);
+	
+	@Query(value = "SELECT count(*) FROM resposta_simulado WHERE id_usuario = ?1", nativeQuery = true)
+	int consultarQtdSimuladosRespondidos(long idUsuario);
+	
+	@Query(value = "SELECT count(*) FROM resposta_simulado as rs inner join simulado s on s.id_simulado = rs.id_simulado WHERE rs.id_usuario = ?1 and s.tipo_simulado = ?2", nativeQuery = true)
+	int consultarQtdSimuladosRespondidos(long idUsuario, int idSimulado);
+	
+	@Query(value = "SELECT * FROM resposta_simulado WHERE id_usuario = ?1", nativeQuery = true)
+	List<RespostaSimulado> buscarRespostaSimulados(long idUsuario);
 	
 //	Geral
 	@Query(value = "select count(*) from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao where id_usuario = ?1 and rq.correta = false and rs.id_simulado = ?2", nativeQuery = true)
