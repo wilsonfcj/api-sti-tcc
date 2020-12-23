@@ -23,6 +23,9 @@ public class ResultadoSimuladoResponse extends ResultadoSimuladoBase {
 	@JsonProperty(value="DataEnvio")
 	private Date dataEnvio;
 	
+	@JsonProperty(value="TipoSimulado")
+	private Integer tipoSimulado;
+	
 	public Long getIdSimulado() {
 		return idSimulado;
 	}
@@ -63,4 +66,12 @@ public class ResultadoSimuladoResponse extends ResultadoSimuladoBase {
 		this.dataEnvio = dataEnvio;
 	}
 
+	public Integer getTipoSimulado() {
+		return tipoSimulado;
+	}
+
+	public void setTipoSimulado(Integer tipoSimulado) {
+		this.tipoSimulado = tipoSimulado;
+	}
+	
 }

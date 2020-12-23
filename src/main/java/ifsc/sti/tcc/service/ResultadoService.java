@@ -202,6 +202,7 @@ public class ResultadoService {
 		resultado.setDescricao(respostaSimulado.getIdSimulado().getDescricao());
 		resultado.setDataCriacao(respostaSimulado.getIdSimulado().getDataCriacao());
 		resultado.setDataEnvio(respostaSimulado.getDataEntrega());
+		resultado.setTipoSimulado(respostaSimulado.getIdSimulado().getTipoSimulado().codigo);
 		resultado.setResultadoGeral(createResultadoSimulado(idSimulado, idUsuario));
 		resultado.setResultadoMatematica(createResultadoPorArea(idSimulado, idUsuario, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(idSimulado, idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
