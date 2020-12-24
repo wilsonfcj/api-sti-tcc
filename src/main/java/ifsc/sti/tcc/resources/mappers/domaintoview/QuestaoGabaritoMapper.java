@@ -47,8 +47,8 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 	public QuestaoResponse transform(Questao aObject, RespostaQuestao resposta) {
 		QuestaoResponse response = transform(aObject);
 		if(response.getTipoQuestao() == ETipoQuestao.ALTERNATIVA.codigo) {
-			((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(((RepostaAlternativa) resposta).getAlternativasSelecionada());
-			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta());
+			((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(((RepostaAlternativa) resposta).getAlternativasSelecionada().toUpperCase());
+			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta().toUpperCase());
 			((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
 		} else {
 			((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
