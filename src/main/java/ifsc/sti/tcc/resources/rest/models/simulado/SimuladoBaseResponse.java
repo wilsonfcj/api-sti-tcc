@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
+
 public class SimuladoBaseResponse {
 
 	@JsonProperty(value="Id")
@@ -38,6 +40,9 @@ public class SimuladoBaseResponse {
 	
 	@JsonProperty(value="SimuladoRespondido")
 	private Boolean respondido = false;
+	
+	@JsonProperty(value="ResultadoSimulado")
+	private ResultadoSimuladoResponse simuladoResultado;
 	
 	public Long getId() {
 		return id;
@@ -125,5 +130,13 @@ public class SimuladoBaseResponse {
 
 	public void setRespondido(Boolean respondido) {
 		this.respondido = respondido;
+	}
+
+	public ResultadoSimuladoResponse getSimuladoResultado() {
+		return simuladoResultado;
+	}
+
+	public void setSimuladoResultado(ResultadoSimuladoResponse simuladoResultado) {
+		this.simuladoResultado = simuladoResultado;
 	}
 }

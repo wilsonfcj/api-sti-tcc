@@ -54,7 +54,7 @@ public class SimuladoService {
 	private QuestaoRepository questaoRepository;
 	private UsuarioRepository usuarioRepository;
 	private RespostaSimuladoRepository respostaSimuladoRepository;
-	ResultadoService service;
+	private ResultadoService resultadoService;
 
 	public static class Instance extends BaseService<SimuladoRepository> implements BaseService.BaseObject<SimuladoService> {
 
@@ -104,10 +104,10 @@ public class SimuladoService {
 		return respostaSimuladoRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdUsuario());
 	}
 	
-	private RespostaSimulado loadRespostaSimulado(long idSimulado, long idUsuario) {
-		RespostaSimulado resposta = respostaSimuladoRepository.consultarRespostaSimulado(idSimulado, idUsuario);
-		return resposta;
-	}
+//	private RespostaSimulado loadRespostaSimulado(long idSimulado, long idUsuario) {
+//		RespostaSimulado resposta = respostaSimuladoRepository.consultarRespostaSimulado(idSimulado, idUsuario);
+//		return resposta;
+//	}
 	
 	private RespostaSimulado mapperSumulado(RespostaSimuladoRequest request) {
 		return  new RespostaSimuladoMapper().transform(request, loadSimuladoById(request.getIdSimulado()), loadUsuarioById(request.getIdUsuario()), questaoRepository);
@@ -199,8 +199,9 @@ public class SimuladoService {
 		try {
 			List<SimuladoBaseResponse> simuladoResponse = buscarSimuladoPorIdUsuario(idUsuario);
 			for(SimuladoBaseResponse simulado : simuladoResponse) {
-				RespostaSimulado resposta = loadRespostaSimulado(simulado.getId(), idUsuario);
+				ResultadoSimuladoResponse resposta = buscarResultadoSimulado(simulado.getId(), idUsuario);
 				simulado.setRespondido(resposta != null);
+				simulado.setSimuladoResultado(resposta);
 			}
 			if(simuladoResponse == null) {
 				baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", simuladoResponse);
@@ -236,8 +237,8 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<ResultadoSimuladoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	private void buscarResultadoSimulado(ResultadoService service) {
-		
+	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
+		return getResultadoService().buscarResultadoSimulado(idSimulado, idUsuario);
 	}
 	
 	public ResultadoSimuladoResponse createRespostaSimuladoResponse(RespostaSimuladoRequest request) {
@@ -282,6 +283,19 @@ public class SimuladoService {
 		resultado.setNaoRespondidas(naoRespondidas);
 		resultado.setTotal(total);
 		return resultado;
+	}
+	
+	public ResultadoService getResultadoService() {
+		if(resultadoService == null) {
+			resultadoService = new ResultadoService
+					.Instance(respostaSimuladoRepository)
+					.withUsuarioRepository(usuarioRepository)
+					.withQuestaoRepository(questaoRepository)
+					.withSimuladoRepository(jpaRepository)
+					.build();
+		}
+		
+		return resultadoService;
 	}
 	
 //	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {

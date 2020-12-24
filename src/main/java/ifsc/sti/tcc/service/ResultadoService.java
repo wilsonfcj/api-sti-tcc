@@ -194,8 +194,11 @@ public class ResultadoService {
 
 //	USUARIO ALUNO
 	
-	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
+	public ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
 		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(idSimulado, idUsuario);
+		if(respostaSimulado == null) {
+			return null;
+		}
 		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
 		resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
 		resultado.setNome(respostaSimulado.getIdSimulado().getNome());
