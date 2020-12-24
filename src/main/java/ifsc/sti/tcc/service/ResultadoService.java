@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
@@ -16,7 +17,9 @@ import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
+import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoGabaritoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoGeralUsuarioResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoRequest;
@@ -325,6 +328,28 @@ public class ResultadoService {
 		resultado.setNaoRespondidas(naoRespondidas);
 		resultado.setTotal(total);
 		return resultado;
+	}
+	
+	
+	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoUsuario(long simuladoId, long idUsuario) {
+		ResponseBase<List<QuestaoResponse>> baseResponse = new ResponseBase<>();
+		try {
+			List<QuestaoResponse> response = buscarGabaritoRespostaUsuario(simuladoId, idUsuario);
+			baseResponse = new ResponseBase<>(true, "Questões consultadas com sucesso", response);
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível consultar as questões do simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<List<QuestaoResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	private List<QuestaoResponse> buscarGabaritoRespostaUsuario(long simuladoId, long idUsuario) {
+		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(simuladoId, idUsuario);
+		List<QuestaoResponse> gabarito = new ArrayList<>();
+		for(RespostaQuestao respostaQ : respostaSimulado.getRespostas()) { 
+			QuestaoResponse questao = new QuestaoGabaritoMapper().transform(questaoRepository.findById((long) respostaQ.getIdQuestao()), respostaQ);
+			gabarito.add(questao);
+		}
+		return gabarito;
 	}
 	
 }

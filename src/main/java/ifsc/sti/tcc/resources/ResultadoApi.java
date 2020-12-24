@@ -16,6 +16,7 @@ import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoGeralUsuarioResponse;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoRequest;
@@ -85,9 +86,15 @@ public class ResultadoApi {
     }
     
     @ApiOperation(value = "Busca o gabarito do simulado com  as respostas do usuário")
-    @RequestMapping(value = "/BuscarResultadoGabaritoPorProva", method = RequestMethod.POST)
-    public ResponseEntity<ResponseBase<Void>> buscarGabaritoProva(@RequestBody ResultadoSimuladoRequest request) {
-    	return null;
+    @RequestMapping(value = "/BuscarGabaritoPorSimulado", method = RequestMethod.POST)
+    public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoProva(@RequestBody ResultadoSimuladoRequest request) {
+    	ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+    	return service.buscarGabaritoUsuario(request.getIdSimulado(), request.getIdUsuario());
     }
  
 }
