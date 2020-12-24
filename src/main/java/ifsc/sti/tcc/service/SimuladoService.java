@@ -43,6 +43,7 @@ import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2006;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2007;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2008;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2009;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2010;
 import ifsc.sti.tcc.utilidades.questaoenade.QuestaoEnade2005;
 
 public class SimuladoService {
@@ -138,8 +139,9 @@ public class SimuladoService {
 	   List<Questao> questoes5 = QuestaoPoscomp2007.registerPoscomp();
 	   List<Questao> questoes6 = QuestaoPoscomp2008.registerPoscomp();
 	   List<Questao> questoes7 = QuestaoPoscomp2009.registerPoscomp();
+	   List<Questao> questoes8 = QuestaoPoscomp2010.registerPoscomp();
 	 
-	   List<Questao> questoes8 = QuestaoEnade2005.register();
+	   List<Questao> questoes9 = QuestaoEnade2005.register();
 	   
 	   questaoRepository.saveAll(questoes);
 	   questaoRepository.saveAll(questoes1);
@@ -150,6 +152,7 @@ public class SimuladoService {
 	   questaoRepository.saveAll(questoes6);
 	   questaoRepository.saveAll(questoes7);
 	   questaoRepository.saveAll(questoes8);
+	   questaoRepository.saveAll(questoes9);
 	   
 	   return questoes;
 	}
