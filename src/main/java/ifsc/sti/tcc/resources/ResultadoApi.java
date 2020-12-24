@@ -84,8 +84,8 @@ public class ResultadoApi {
 		return service.buscarUltimosResultados(idUsuario);
     }
     
-    @ApiOperation(value = "Busca o gabarito do simulado com as respostas do usuário")
-    @RequestMapping(value = "/BuscarResultadoGeralPorProva", method = RequestMethod.POST)
+    @ApiOperation(value = "Busca o gabarito do simulado com  as respostas do usuário")
+    @RequestMapping(value = "/BuscarResultadoGabaritoPorProva", method = RequestMethod.POST)
     public ResponseEntity<ResponseBase<Void>> buscarGabaritoProva(@RequestBody ResultadoSimuladoRequest request) {
     	return null;
     }
