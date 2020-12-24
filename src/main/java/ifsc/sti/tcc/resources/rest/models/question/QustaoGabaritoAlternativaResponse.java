@@ -9,6 +9,9 @@ public class QustaoGabaritoAlternativaResponse extends QuestaoAlternativaRespons
 	
 	@JsonProperty(value="RespostaUsuario")
 	private String respostaUsuario;
+	
+	@JsonProperty(value="Correta")
+	private Boolean isCorreta;
 
 	public String getRespostaCorreta() {
 		return respostaCorreta;
@@ -24,5 +27,15 @@ public class QustaoGabaritoAlternativaResponse extends QuestaoAlternativaRespons
 
 	public void setRespostaUsuario(String respostaUsuario) {
 		this.respostaUsuario = respostaUsuario;
+	}
+
+	public Boolean getIsCorreta() {
+		return isCorreta;
+	}
+
+	public void isCorreta(Boolean isCorreta) {
+		this.isCorreta = isCorreta;
 	} 
+	
+	
 }

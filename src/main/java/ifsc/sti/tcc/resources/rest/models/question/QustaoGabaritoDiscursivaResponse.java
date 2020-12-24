@@ -6,6 +6,9 @@ public class QustaoGabaritoDiscursivaResponse extends QuestaoResponse {
 	
 	@JsonProperty(value="RespostaUsuario")
 	private String respostaUsuario;
+	
+	@JsonProperty(value="Correta")
+	private Boolean isCorreta;
 
 	public String getRespostaUsuario() {
 		return respostaUsuario;
@@ -13,5 +16,13 @@ public class QustaoGabaritoDiscursivaResponse extends QuestaoResponse {
 
 	public void setRespostaUsuario(String respostaUsuario) {
 		this.respostaUsuario = respostaUsuario;
+	} 
+	
+	public Boolean getIsCorreta() {
+		return isCorreta;
+	}
+
+	public void isCorreta(Boolean isCorreta) {
+		this.isCorreta = isCorreta;
 	} 
 }

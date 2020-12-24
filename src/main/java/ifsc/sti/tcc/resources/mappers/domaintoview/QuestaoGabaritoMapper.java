@@ -9,7 +9,6 @@ import ifsc.sti.tcc.modelos.respostasimulado.RepostaAlternativa;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaDiscursiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.props.ETipoQuestao;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoAlternativaResponse;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.question.QustaoGabaritoAlternativaResponse;
 import ifsc.sti.tcc.resources.rest.models.question.QustaoGabaritoDiscursivaResponse;
@@ -50,8 +49,10 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 		if(response.getTipoQuestao() == ETipoQuestao.ALTERNATIVA.codigo) {
 			((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(((RepostaAlternativa) resposta).getAlternativasSelecionada());
 			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta());
+			((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
 		} else {
-			((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());
+			((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
+			((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());
 		}
 		return response;
 	}
