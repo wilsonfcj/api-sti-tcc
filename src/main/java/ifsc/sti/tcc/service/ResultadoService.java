@@ -1,7 +1,10 @@
 package ifsc.sti.tcc.service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +16,7 @@ import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EArea;
+import ifsc.sti.tcc.props.EDisciplina;
 import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
@@ -24,6 +28,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioRespons
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 
 public class ResultadoService {
@@ -198,6 +203,7 @@ public class ResultadoService {
 	
 	public ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
 		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(idSimulado, idUsuario);
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(idUsuario,  idSimulado);
 		if(respostaSimulado == null) {
 			return null;
 		}
@@ -212,6 +218,8 @@ public class ResultadoService {
 		resultado.setResultadoMatematica(createResultadoPorArea(idSimulado, idUsuario, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(idSimulado, idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
 		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(idSimulado, idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		resultado.setDisciplinas(disciplinas);
+		
 		return resultado;
 	}
 	
@@ -351,8 +359,102 @@ public class ResultadoService {
 		return gabarito;
 	}
 	
-//	private void getDisciplinasBy {
-//		List<Object[]> teste = jpaRepository.teste();
-//	}
+	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinas(long idUsuario) {
+		ResponseBase<List<ResultadoDisciplinaQuantitativo>> baseResponse = new ResponseBase<>();
+		try {
+			List<ResultadoDisciplinaQuantitativo> response = getDisciplinasResultado(idUsuario);
+			baseResponse = new ResponseBase<>(true, "Resultado disciplinas buscados com sucesso", response);
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível buscar os resultados das disciplinas", null);
+		}
+		return new ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>>(baseResponse, HttpStatus.OK);
+	}
 	
+	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinas(long idUsuario, long idSimulado) {
+		ResponseBase<List<ResultadoDisciplinaQuantitativo>> baseResponse = new ResponseBase<>();
+		try {
+			List<ResultadoDisciplinaQuantitativo> response = getDisciplinasResultado(idUsuario, idSimulado);
+			baseResponse = new ResponseBase<>(true, "Resultado disciplinas buscados com sucesso", response);
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível buscar os resultados das disciplinas", null);
+		}
+		return new ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>>(baseResponse, HttpStatus.OK);
+	}
+	
+	private List<ResultadoDisciplinaQuantitativo> getDisciplinasResultado(long idUsuario) {
+		List<Object[]> disciplinas = jpaRepository.disciplinaSimulado(idUsuario);
+		List<Object[]> erros = jpaRepository.resultadoDisciplinaSimuladoErro(idUsuario);
+		List<Object[]> acertos = jpaRepository.resultadoDisciplinaSimuladoAcerto(idUsuario);
+		List<Object[]> naoRespondidas = jpaRepository.resultadoDisciplinaSimuladoNaoRespondida(idUsuario);
+		
+		HashMap<Integer, ResultadoDisciplinaQuantitativo> values = new HashMap<Integer, ResultadoDisciplinaQuantitativo>();
+		for (Object[] disciplina : disciplinas) {
+			ResultadoDisciplinaQuantitativo resultado = new ResultadoDisciplinaQuantitativo();
+			Integer id = (Integer) disciplina[1];
+			BigInteger qtd = (BigInteger) disciplina[0];
+			resultado.setDisciplina(id);
+			resultado.setTotal(qtd.intValue());
+			resultado.setNomeDisciplina(EDisciplina.getEnum(id).descricao);
+			values.put(id, resultado);
+		}
+		addErros(erros, values);
+		addAcertos(acertos, values);
+		addNaoRespondidas(naoRespondidas, values);
+		return criarResultadoDisciplinas(values);
+	}
+	
+	private List<ResultadoDisciplinaQuantitativo> getDisciplinasResultado(long idUsuario, long idSimulado) {
+		List<Object[]> disciplinas = jpaRepository.disciplinaSimulado(idUsuario, idSimulado);
+		List<Object[]> erros = jpaRepository.resultadoDisciplinaSimuladoErro(idUsuario,  idSimulado);
+		List<Object[]> acertos = jpaRepository.resultadoDisciplinaSimuladoAcerto(idUsuario,  idSimulado);
+		List<Object[]> naoRespondidas = jpaRepository.resultadoDisciplinaSimuladoNaoRespondida(idUsuario,  idSimulado);
+		
+		HashMap<Integer, ResultadoDisciplinaQuantitativo> values = new HashMap<Integer, ResultadoDisciplinaQuantitativo>();
+		for (Object[] disciplina : disciplinas) {
+			ResultadoDisciplinaQuantitativo resultado = new ResultadoDisciplinaQuantitativo();
+			Integer id = (Integer) disciplina[1];
+			BigInteger qtd = (BigInteger) disciplina[0];
+			resultado.setDisciplina(id);
+			resultado.setTotal(qtd.intValue());
+			resultado.setNomeDisciplina(EDisciplina.getEnum(id).descricao);
+			values.put(id, resultado);
+		}
+		addErros(erros, values);
+		addAcertos(acertos, values);
+		addNaoRespondidas(naoRespondidas, values);
+		return criarResultadoDisciplinas(values);
+	}
+	
+	private void addErros(List<Object[]> erros, HashMap<Integer, ResultadoDisciplinaQuantitativo> values) {
+		for(Object[] disciplina : erros) {
+			Integer id = (Integer) disciplina[1];
+			BigInteger qtd = (BigInteger) disciplina[0];
+			values.get(id).addErros(qtd.intValue());
+		}
+	}
+	
+	private void addAcertos(List<Object[]> erros, HashMap<Integer, ResultadoDisciplinaQuantitativo> values) {
+		for(Object[] disciplina : erros) {
+			Integer id = (Integer) disciplina[1];
+			BigInteger qtd = (BigInteger) disciplina[0];
+			values.get(id).addAcertos(qtd.intValue());
+		}
+	}
+	
+	private void addNaoRespondidas(List<Object[]> erros, HashMap<Integer, ResultadoDisciplinaQuantitativo> values) {
+		for(Object[] disciplina : erros) {
+			Integer id = (Integer) disciplina[1];
+			BigInteger qtd = (BigInteger) disciplina[0];
+			values.get(id).addNaoRespondidas(qtd.intValue());
+		}
+	}
+	
+	private List<ResultadoDisciplinaQuantitativo> criarResultadoDisciplinas(HashMap<Integer, ResultadoDisciplinaQuantitativo> values) {
+		List<ResultadoDisciplinaQuantitativo> disciplina = new ArrayList<ResultadoDisciplinaQuantitativo>();
+		for(Map.Entry<Integer, ResultadoDisciplinaQuantitativo> entry : values.entrySet()) {
+		    ResultadoDisciplinaQuantitativo value = entry.getValue();
+		    disciplina.add(value);
+		}
+		return disciplina;
+	}
 }

@@ -21,6 +21,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioRespons
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.service.ResultadoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -96,4 +97,26 @@ public class ResultadoApi {
     	return service.buscarGabaritoUsuario(request.getIdSimulado(), request.getIdUsuario());
     }
  
+    @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
+    @GetMapping("/BuscarDesemepnhoDisciplinas")
+	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinas(long idUsuario) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarDesempenhoDisciplinas(idUsuario);
+    }
+    
+    @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
+    @RequestMapping(value = "/BuscarDesemepnhoDisciplinasSimulado", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinasSimulado(@RequestBody ResultadoSimuladoRequest request) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarDesempenhoDisciplinas(request.getIdUsuario(), request.getIdSimulado());
+    }
+    
 }
