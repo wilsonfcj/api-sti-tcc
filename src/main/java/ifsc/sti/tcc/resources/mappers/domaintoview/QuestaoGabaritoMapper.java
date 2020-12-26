@@ -51,7 +51,7 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta().toUpperCase());
 			((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
 		} else {
-			((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
+			((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
 			((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());
 		}
 		return response;
