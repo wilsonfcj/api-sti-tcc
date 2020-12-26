@@ -10,7 +10,7 @@ import ifsc.sti.tcc.modelos.respostasimulado.RepostaDiscursiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.props.ETipoQuestao;
 import ifsc.sti.tcc.repository.QuestaoRepository;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.RespostaQuestaoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.RespostaQuestaoRequest;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class RespostaQuestaoMapper extends MapperUtil<RespostaQuestaoRequest, RespostaQuestao> {

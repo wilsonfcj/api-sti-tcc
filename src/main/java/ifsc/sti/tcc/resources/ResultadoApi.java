@@ -31,7 +31,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "API REST STI Resultado")
 public class ResultadoApi {
 	
-	@SuppressWarnings("unused")
 	@Autowired
 	private QuestaoRepository questaoRepository;
 	@Autowired
