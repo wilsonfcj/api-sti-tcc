@@ -1,10 +1,10 @@
-package ifsc.sti.tcc.resources.rest.models.respostasimulado;
+package ifsc.sti.tcc.resources.rest.models.resultado;
 
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoSimuladoBase;
+import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoSimuladoBase;
 
 public class ResultadoSimuladoResponse extends ResultadoSimuladoBase {
 	

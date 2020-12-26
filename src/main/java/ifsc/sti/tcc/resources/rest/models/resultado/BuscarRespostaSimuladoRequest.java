@@ -1,4 +1,4 @@
-package ifsc.sti.tcc.resources.rest.models.respostasimulado;
+package ifsc.sti.tcc.resources.rest.models.resultado;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

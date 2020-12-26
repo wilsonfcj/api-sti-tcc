@@ -49,9 +49,6 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	@Query(value = "select count(*) from simulado as s inner join simulado_questoes as sq ON sq.simulado_id_simulado = s.id_simulado inner join questao as q on q.id_questao = sq.questoes_id_questao where s.id_simulado = ?1 and q.area = ?2", nativeQuery = true)
 	int consultarTotalQuestaoesPorArea(long idSimulado, int area);
 	
-	
-	
-	
 //	Geral Total
 	@Query(value = "select count(*) from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao where id_usuario = ?1 and rq.correta = false", nativeQuery = true)
 	int consultarErrosSimuladoTotal(long idUsuario);
@@ -79,8 +76,6 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	int consultarTotalQuestaoesPorAreaTotal(long idUsuario, int area);
 	
 	
-	
-	
 //	Geral Total Tipo Prova
 	@Query(value = "select count(*) from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join simulado as s on s.id_simulado = rs.id_simulado where rs.id_usuario = ?1 and rq.correta = false and s.tipo_simulado = ?2", nativeQuery = true)
 	int consultarErrosSimuladoTotal(long idUsuario, int tipoProva);
@@ -106,6 +101,7 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	
 	@Query(value = "select count(*) from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao inner join simulado as s on s.id_simulado = rs.id_simulado where rs.id_usuario = ?1 and q.area = ?2 and s.tipo_simulado = ?3", nativeQuery = true)
 	int consultarTotalQuestaoesPorAreaTotal(long idUsuario, int area, int tipoProva);
-	
 
+	@Query(value = "select count(*) as valor, q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao where id_usuario = 3 and rs.id_simulado = 398 group by q.disciplina", nativeQuery = true)
+	List<Object[]> teste();
 }

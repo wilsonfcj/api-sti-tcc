@@ -18,7 +18,7 @@ import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;

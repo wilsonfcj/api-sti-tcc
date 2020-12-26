@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
 
 public class SimuladoBaseResponse {
 

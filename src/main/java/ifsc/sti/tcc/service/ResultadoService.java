@@ -20,11 +20,11 @@ import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoGabaritoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoGeralUsuarioResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoProvaRequest;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoQuantitativo;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 
 public class ResultadoService {
 
@@ -32,7 +32,6 @@ public class ResultadoService {
 	private static Logger logger = LoggerFactory.getLogger(ResultadoService.class);
 
 	private RespostaSimuladoRepository jpaRepository;
-	@SuppressWarnings("unused")
 	private QuestaoRepository questaoRepository;
 	private UsuarioRepository usuarioRepository;
 	private SimuladoRepository simuladoRepository;
@@ -351,5 +350,9 @@ public class ResultadoService {
 		}
 		return gabarito;
 	}
+	
+//	private void getDisciplinasBy {
+//		List<Object[]> teste = jpaRepository.teste();
+//	}
 	
 }

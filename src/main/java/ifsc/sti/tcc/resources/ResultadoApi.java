@@ -17,10 +17,10 @@ import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoGeralUsuarioResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoProvaRequest;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.service.ResultadoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,7 +43,7 @@ public class ResultadoApi {
     @ApiOperation(value = "Busca o resultado de um simulado confomre o simulado e o id do usuário")
     @RequestMapping(value = "/BuscarResultadoSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoRequest request) {
-		ResultadoService service = new ResultadoService
+    	ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)
 				.withUsuarioRepository(usuarioRepository)
 				.withSimuladoRepository(simuladoRepository)

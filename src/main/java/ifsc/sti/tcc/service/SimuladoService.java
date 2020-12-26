@@ -29,8 +29,8 @@ import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoResumoMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.RespostaSimuladoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.respostasimulado.respostaarea.ResultadoQuantitativo;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
@@ -104,11 +104,6 @@ public class SimuladoService {
 	private RespostaSimulado loadRespostaSimulado(RespostaSimuladoRequest request) {
 		return respostaSimuladoRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdUsuario());
 	}
-	
-//	private RespostaSimulado loadRespostaSimulado(long idSimulado, long idUsuario) {
-//		RespostaSimulado resposta = respostaSimuladoRepository.consultarRespostaSimulado(idSimulado, idUsuario);
-//		return resposta;
-//	}
 	
 	private RespostaSimulado mapperSumulado(RespostaSimuladoRequest request) {
 		return  new RespostaSimuladoMapper().transform(request, loadSimuladoById(request.getIdSimulado()), loadUsuarioById(request.getIdUsuario()), questaoRepository);
@@ -301,16 +296,6 @@ public class SimuladoService {
 		return resultadoService;
 	}
 	
-//	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarRespostaSimulado(BuscarRespostaSimuladoRequest request) {
-//		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
-//		try {
-//			baseResponse = new ResponseBase<>(true, "Teste", null);
-//		} catch (Exception e) {
-//			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
-//		}
-//		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
-//	}
-	
 	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> gerarSimulado(SumuladoRequest sumuladoRequest) {
 		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
@@ -366,7 +351,7 @@ public class SimuladoService {
 	}
 	
 	private List<SimuladoBaseResponse> buscarSimuladoPorIdUsuario(long usuarioId) {
-		List<Simulado> simulados = jpaRepository.findByIdUsuario(loadUsuarioById(usuarioId));
+		List<Simulado> simulados = jpaRepository.buscarSimuladosPorId(usuarioId);
 		List<SimuladoBaseResponse> simuladoResponse = new SimuladoResumoMapper().transform(simulados);
 		return simuladoResponse;
 	}
