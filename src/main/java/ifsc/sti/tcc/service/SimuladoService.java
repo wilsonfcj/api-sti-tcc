@@ -317,6 +317,14 @@ public class SimuladoService {
 					baseResponse = new ResponseBase<>(true, "Questões não encontras para esse simulado", simuladoResponse);
 				}
 				break;
+			case 0:
+				simuladoResponse = gerarSimuladoPersonalizado(sumuladoRequest);
+				if(simuladoResponse != null) {
+					baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Questões não encontras para esse simulado", simuladoResponse);
+				}
+				break;
 			default:
 				baseResponse = new ResponseBase<>(false, "Não foi possível gerar o simulado", null);
 				break;
@@ -329,7 +337,7 @@ public class SimuladoService {
 	}
 	
 	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
+		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getAnoProva());
 		if(questoes.size() == 0) {
 			return null;
 		}
@@ -388,18 +396,11 @@ public class SimuladoService {
 		return simulado;
 	}
 	
-	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer quantidae, Integer anoProva) {
+	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = null;
-		List<QuestaoAlternativa> questaoPart2 = null;
-		List<QuestaoAlternativa> questaoPart3 = null;
-		switch(quantidae) {
-			default:
-				questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-				questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
-				break;
-		}
+		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
 		questoes.addAll(questaoPart1);
 		questoes.addAll(questaoPart2);
 		questoes.addAll(questaoPart3);
@@ -407,20 +408,14 @@ public class SimuladoService {
 	}
 	
 	
-	private List<Questao> gerarQuestaoPorQuantidadeEnade(Integer quantidae, Integer anoProva) {
+	private List<Questao> gerarQuestaoPorQuantidadeEnade(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoDiscusiva> questaoDiscursivaGeral;
-		List<QuestaoAlternativa> questaoAssinalarGeral = null;
-		List<QuestaoDiscusiva> questaoDiscursivaEspecifica = null;
-		List<QuestaoAlternativa> questaoAssinalarEspecifica = null;
-		switch(quantidae) {
-			default:
-				questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, anoProva);
-				questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, 8, anoProva);
-				questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, anoProva);
-				questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, 27, anoProva);
-				break;
-		}
+	
+		List<QuestaoDiscusiva> questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, anoProva);
+		List<QuestaoAlternativa> questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, 8, anoProva);
+		List<QuestaoDiscusiva> questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, anoProva);
+		List<QuestaoAlternativa> questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, 27, anoProva);
+	
 		questoes.addAll(questaoDiscursivaGeral);
 		questoes.addAll(questaoAssinalarGeral);
 		questoes.addAll(questaoDiscursivaEspecifica);
@@ -429,8 +424,8 @@ public class SimuladoService {
 	}
 	
 	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getQuantidadeQuestoes(), sumuladoRequest.getAnoProva());
-		if(questoes.size() == 0) {
+		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getAnoProva());
+		if(questoes.isEmpty()) {
 			return null;
 		}
 		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
@@ -438,7 +433,125 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
-//	private SimuladoCompletoResponse gerarSimuladPersonalizado(SumuladoRequest sumuladoRequest) {
-//		return null;
-//	}
+	private SimuladoCompletoResponse gerarSimuladoPersonalizado(SumuladoRequest sumuladoRequest) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		List<Questao> questoesEnade = gerarQuestaoEnadePersonalizada(sumuladoRequest);
+		List<Questao> questoesPoscomp = gerarQuestaoPoscompPersonalizada(sumuladoRequest);
+		
+		questoes.addAll(questoesEnade);
+		questoes.addAll(questoesPoscomp);
+		if(questoes.isEmpty()) {
+			return null;
+		}
+		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
+		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		return simuladoResponse;
+	}
+	
+	private List<Questao> gerarQuestaoPoscompPersonalizada(SumuladoRequest sumuladoRequest) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		if(sumuladoRequest.getSumuladoConfigPoscomp() != null) {
+			if(sumuladoRequest.getSumuladoConfigPoscomp().getQtdMatematica() > 0) {
+				List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 
+						sumuladoRequest.getSumuladoConfigPoscomp().getQtdMatematica(),
+						sumuladoRequest.getAnoProva());
+				questoes.addAll(questaoPart1);
+			}
+			
+			if(sumuladoRequest.getSumuladoConfigPoscomp().getQtdFundamentos() > 0) {
+				List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, 
+						ETipoSimulado.POSCOMP.codigo, sumuladoRequest.getSumuladoConfigPoscomp().getQtdFundamentos(),
+						sumuladoRequest.getAnoProva());
+				questoes.addAll(questaoPart2);
+			}
+			
+			if(sumuladoRequest.getSumuladoConfigPoscomp().getQtdTecnologia() > 0) {
+				List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo,
+						ETipoSimulado.POSCOMP.codigo, sumuladoRequest.getSumuladoConfigPoscomp().getQtdTecnologia(),
+						sumuladoRequest.getAnoProva());
+				questoes.addAll(questaoPart3);
+			}
+		}
+		return questoes;
+	}
+	
+	private List<Questao> gerarQuestaoEnadePersonalizada(SumuladoRequest sumuladoRequest) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		if(sumuladoRequest.getSumuladoConfigEnade() != null) {
+			int formacaoGeral = sumuladoRequest.getSumuladoConfigEnade().getQtdFormacaoGeral();
+			questoes.addAll(criarQuestaoEnadeGeral(formacaoGeral, sumuladoRequest.getAnoProva()));
+			
+			int formacaoEspecifica = sumuladoRequest.getSumuladoConfigEnade().getQtdFormacaoEspecifica();
+			questoes.addAll(criarQuestaoEnadeEspecifica(formacaoEspecifica, sumuladoRequest.getAnoProva()));
+		}
+		return questoes;
+	}
+	
+	private List<Questao> criarQuestaoEnadeGeral(Integer qtd, Integer ano) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		if(qtd > 0) {
+			List<QuestaoDiscusiva> questaoDiscursivaGeral = new ArrayList<>();
+			List<QuestaoAlternativa> questaoAssinalarGeral = new ArrayList<>();;
+			switch (qtd) {
+				case 1:
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd, ano);
+					break;
+				case 2:
+					questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 1, ano);
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 1, ano);
+					break;
+				case 3:
+					questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 1, ano);
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 1, ano);
+					break;
+				case 4:
+					questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 1, ano);
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 1, ano);
+					break;
+				default:
+					questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, ano);
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 3, ano);
+					break;
+			}
+			questoes.addAll(questaoDiscursivaGeral);
+			questoes.addAll(questaoAssinalarGeral);
+		}
+		return questoes;
+	}
+	
+	private List<Questao> criarQuestaoEnadeEspecifica(int qtd, Integer ano) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		if(qtd > 0) {
+			List<QuestaoDiscusiva> questaoDiscursivaEspecifica = new ArrayList<QuestaoDiscusiva>();
+			List<QuestaoAlternativa> questaoAssinalarEspecifica = new ArrayList<QuestaoAlternativa>();
+			switch (qtd) {
+				case 1:
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd, ano);
+					break;
+				case 2:
+					questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 1, ano);
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd - 1, ano);
+					break;
+				case 3:
+					questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 1, ano);
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd - 1, ano);
+					break;
+				case 4:
+					questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 2, ano);
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd - 2, ano);
+					break;
+				case 5:
+					questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 2, ano);
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd - 2, ano);
+					break;
+				default:
+					questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, ano);
+					questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, qtd - 3, ano);
+					break;
+			}
+			questoes.addAll(questaoDiscursivaEspecifica);
+			questoes.addAll(questaoAssinalarEspecifica);
+		}
+		return questoes;
+	}
 }

@@ -23,15 +23,18 @@ public class SumuladoRequest {
 	
 	@JsonProperty(value="IdUsuario")
 	private Long idUsuario;
-	
-	@JsonProperty(value="QuantidadeQuestoes")
-	private Integer quantidadeQuestoes;
-	
+		
 	@JsonProperty(value="TipoSimulado")
 	private Integer tipoSimulado;
 	
 	@JsonProperty(value="AnoProva")
 	private Integer anoProva;
+	
+	@JsonProperty(value="ConfiguracaoPoscomp")
+	SumuladoPoscompRequest sumuladoConfigPoscomp;
+	
+	@JsonProperty(value="ConfiguracaoEnade")
+	SumuladoEnadeRequest sumuladoConfigEnade;
 
 	public String getNome() {
 		return nome;
@@ -81,14 +84,6 @@ public class SumuladoRequest {
 		this.idUsuario = idUsuario;
 	}
 
-	public Integer getQuantidadeQuestoes() {
-		return quantidadeQuestoes;
-	}
-
-	public void setQuantidadeQuestoes(Integer quantidadeQuestoes) {
-		this.quantidadeQuestoes = quantidadeQuestoes;
-	}
-
 	public Integer getTipoSimulado() {
 		return tipoSimulado;
 	}
@@ -103,5 +98,21 @@ public class SumuladoRequest {
 
 	public void setAnoProva(Integer anoProva) {
 		this.anoProva = anoProva;
+	}
+
+	public SumuladoPoscompRequest getSumuladoConfigPoscomp() {
+		return sumuladoConfigPoscomp;
+	}
+
+	public void setSumuladoConfigPoscomp(SumuladoPoscompRequest sumuladoConfigPoscomp) {
+		this.sumuladoConfigPoscomp = sumuladoConfigPoscomp;
+	}
+
+	public SumuladoEnadeRequest getSumuladoConfigEnade() {
+		return sumuladoConfigEnade;
+	}
+
+	public void setSumuladoConfigEnade(SumuladoEnadeRequest sumuladoConfigEnade) {
+		this.sumuladoConfigEnade = sumuladoConfigEnade;
 	}
 }
