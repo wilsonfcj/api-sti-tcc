@@ -14,6 +14,7 @@ import ifsc.sti.tcc.props.ETipoQuestaoProva;
 
 @Entity
 @Table(name = "questao")
+
 public abstract class Questao implements Serializable {
 
 	/**
@@ -28,6 +29,7 @@ public abstract class Questao implements Serializable {
 	
 	@Column(columnDefinition="TEXT")
 	private String descricao;
+	
 	
 	private Integer area;
 	private Integer prova;

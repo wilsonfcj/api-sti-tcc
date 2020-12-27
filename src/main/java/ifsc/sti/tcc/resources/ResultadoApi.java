@@ -109,7 +109,7 @@ public class ResultadoApi {
     }
     
     @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
-    @RequestMapping(value = "/BuscarDesemepnhoDisciplinasSimulado", method = RequestMethod.POST)
+    @RequestMapping(value = "/BuscarDesempenhoDisciplinasSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinasSimulado(@RequestBody ResultadoSimuladoRequest request) {
 		ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)
