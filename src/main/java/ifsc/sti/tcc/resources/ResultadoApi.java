@@ -98,7 +98,7 @@ public class ResultadoApi {
     }
  
     @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
-    @GetMapping("/BuscarDesemepnhoDisciplinas")
+    @GetMapping("/BuscarDesempenhoDisciplinas")
 	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinas(long idUsuario) {
 		ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)
