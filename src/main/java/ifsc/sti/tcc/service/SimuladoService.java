@@ -181,15 +181,15 @@ public class SimuladoService {
 	}
 	
 	
-	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarQuestoesSimuladoId(long id) {
-		ResponseBase<List<QuestaoResponse>> baseResponse = new ResponseBase<>();
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarQuestoesSimuladoId(long id) {
+		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
-			List<QuestaoResponse> response = buscarQuestoesSimuladoPorId(id);
+			SimuladoCompletoResponse response = buscarQuestoesSimuladoPorId(id);
 			baseResponse = new ResponseBase<>(true, "Questões consultadas com sucesso", response);
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível consultar as questões do simulado", null);
 		}
-		return new ResponseEntity<ResponseBase<List<QuestaoResponse>>>(baseResponse, HttpStatus.OK);
+		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
 	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarSimuladoIdUsuario(long idUsuario) {
@@ -352,9 +352,9 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
-	private List<QuestaoResponse> buscarQuestoesSimuladoPorId(long simuladoId) {
+	private SimuladoCompletoResponse buscarQuestoesSimuladoPorId(long simuladoId) {
 		Simulado simulado = jpaRepository.findById(simuladoId);
-		List<QuestaoResponse> response = new SimuladoQuestoesMapper().transform(simulado);
+		SimuladoCompletoResponse response = new SimuladoMapper().transform(simulado); //new SimuladoQuestoesMapper().transform(simulado);
 		return response;
 	}
 	

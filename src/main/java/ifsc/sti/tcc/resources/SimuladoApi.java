@@ -76,7 +76,7 @@ public class SimuladoApi {
 	
 	@ApiOperation(value = "Busca as questões de um simulado por seu Identificador")
 	@GetMapping("/BuscarQuestoesSimuladoPorId")
-	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarQuestoesSimuladoPorId(@RequestParam Integer idSimulado) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> buscarQuestoesSimuladoPorId(@RequestParam Integer idSimulado) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)

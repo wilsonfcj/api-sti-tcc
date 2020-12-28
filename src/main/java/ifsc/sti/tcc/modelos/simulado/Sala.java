@@ -1,98 +1,51 @@
 package ifsc.sti.tcc.modelos.simulado;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import ifsc.sti.tcc.modelos.usuario.Usuario;
+
+//@Entity
+//@Table(name = "sala")
 public class Sala {
-	
+//	
+//	@Id
+//	@Column(name = "id_simulado")
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private String nome;
-	private String descricao;
+	
 	private String senha;
+	
+	private String descricao;
+	
 	private Date dataCriacao;
-	private Date dataTermino;
-	private Integer IdSimulado;
-	private Integer idProfessor;
+	
+	private Usuario usuario;
+	
 	private Integer qtdParticipantes;
-	private String urlCompartilhamento;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@OnDelete(action = OnDeleteAction.CASCADE)
+//    @JoinColumn(name = "id_simulado")
+	private List<Simulado> simulados;
 	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
-	public String getDescricao() {
-		return descricao;
-	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	public Date getDataCriacao() {
-		return dataCriacao;
-	}
-	
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-	
-	public Date getDataTermino() {
-		return dataTermino;
-	}
-	
-	public void setDataTermino(Date dataTermino) {
-		this.dataTermino = dataTermino;
-	}
-	
-	public Integer getIdSimulado() {
-		return IdSimulado;
-	}
-	
-	public void setIdSimulado(Integer idSimulado) {
-		IdSimulado = idSimulado;
-	}
-	
-	public Integer getIdProfessor() {
-		return idProfessor;
-	}
-	
-	public void setIdProfessor(Integer idProfessor) {
-		this.idProfessor = idProfessor;
-	}
-	
-	public Integer getQtdParticipantes() {
-		return qtdParticipantes;
-	}
-	
-	public void setQtdParticipantes(Integer qtdParticipantes) {
-		this.qtdParticipantes = qtdParticipantes;
-	}
-	
-	public String getUrlCompartilhamento() {
-		return urlCompartilhamento;
-	}
-	
-	public void setUrlCompartilhamento(String urlCompartilhamento) {
-		this.urlCompartilhamento = urlCompartilhamento;
-	}
-	
-	
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@OnDelete(action = OnDeleteAction.CASCADE)
+//    @JoinColumn(name = "id_aluno")
+	private List<Usuario> alunos;
 }
