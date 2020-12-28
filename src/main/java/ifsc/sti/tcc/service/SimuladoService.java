@@ -322,7 +322,7 @@ public class SimuladoService {
 				if(simuladoResponse != null) {
 					baseResponse = new ResponseBase<>(true, "Simulado gerado com sucesso", simuladoResponse);
 				} else {
-					baseResponse = new ResponseBase<>(true, "Questões não encontras para esse simulado", simuladoResponse);
+					baseResponse = new ResponseBase<>(true, "Quantidade de questão não informada para esse simulado", simuladoResponse);
 				}
 				break;
 			default:
@@ -510,7 +510,7 @@ public class SimuladoService {
 					break;
 				default:
 					questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, ano);
-					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 3, ano);
+					questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, qtd - 2, ano);
 					break;
 			}
 			questoes.addAll(questaoDiscursivaGeral);
