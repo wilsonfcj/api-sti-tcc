@@ -171,11 +171,7 @@ public class SalaService {
 				baseResponse = new ResponseBase<>(false, "Usuário não econtrado", null);
 			} else {
 				List<SalaResponse> salasResponse = loadSalas(usuario);
-				if(salasResponse.isEmpty()) {
-					baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", null);
-				} else {
-					baseResponse = new ResponseBase<>(true, "Salas consultas com sucesso", salasResponse);
-				}
+				baseResponse = new ResponseBase<>(true, "Salas consultas com sucesso", salasResponse);
 			}
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível buscar as salas de simulados", null);

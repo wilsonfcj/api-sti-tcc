@@ -108,14 +108,4 @@ public class SalaApi {
     }
 
 
-//    @ApiOperation(value = "Registra questões do simulado na base de dados")
-//   	@GetMapping("/BuscarSalaPorCodigo")
-//   	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarSalaPorCodigo() {
-//   		SimuladoService lSimuladoService = new SimuladoService
-//   				.Instance(simuladoRepository)
-//   				.withQuestaoRepository(questaoRepository)
-//   				.build();
-//   		return null; // lSimuladoService.salvarTodasQuestoes();
-//    }
-
 }

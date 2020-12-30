@@ -7,6 +7,7 @@ import ifsc.sti.tcc.modelos.simulado.Sala;
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.resources.rest.models.sala.ProfessorResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.SalaProfessorResponse;
 import ifsc.sti.tcc.resources.rest.models.sala.SalaResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
@@ -17,7 +18,7 @@ public class SalaResponseMapper extends  MapperUtil<Sala, SalaResponse> {
 		SalaResponse sala = new SalaResponse();
 		sala.setId(aObject.getId());
 		sala.setNome(aObject.getNome());
-		sala.setSenha(aObject.getSenha());
+		
 		sala.setProfessor(new ProfessorResponse(aObject.getUsuario().getId(),
 				aObject.getUsuario().getNome()));
 		sala.setDescricao(aObject.getDescricao());
@@ -34,10 +35,15 @@ public class SalaResponseMapper extends  MapperUtil<Sala, SalaResponse> {
 		if(usuario instanceof Aluno) {
 			if(aObject.getAlunos().contains(usuario))
 				sala.setParticipando(true);
+			return sala;
 		} else {
-			sala.setParticipando(true);
+			SalaProfessorResponse salaProfessorResponse;
+			salaProfessorResponse = (SalaProfessorResponse) sala;
+			salaProfessorResponse.setSenha(aObject.getSenha());
+			salaProfessorResponse.setParticipando(true);
+			return sala;
 		}
-		return sala;
+		
 	}
 	
 
