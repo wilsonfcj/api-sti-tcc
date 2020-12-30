@@ -12,8 +12,9 @@ public interface SalaRepository extends JpaRepository<Sala, Long> {
 	
 	Sala findById(long id);
 	
-	List<Sala> findByUsuario(Usuario usuario);
+	@Query(value = "select * from sala where id_usuario = ?1 order by data_criacao desc", nativeQuery = true)
+	List<Sala> buscarSalasPorUsuario(long usuario);
 	
-	@Query(value = "select * from sala where id_instituicao = ?1", nativeQuery = true)
+	@Query(value = "select * from sala where id_instituicao = ?1 order by data_criacao desc", nativeQuery = true)
 	List<Sala> buscarSalasPorInstituicao(Long idInstituicao);
 }
