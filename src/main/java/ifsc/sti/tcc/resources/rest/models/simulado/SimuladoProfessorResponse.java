@@ -4,7 +4,15 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SumuladoRequest {
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+
+public class SimuladoProfessorResponse {
+
+	@JsonProperty(value="Id")
+	private Long id;
+	
+	@JsonProperty(value="idSala")
+	private Long idSala;
 	
 	@JsonProperty(value="Nome")
 	private String nome;
@@ -15,6 +23,9 @@ public class SumuladoRequest {
 	@JsonProperty(value="DataInicio")
 	private Date dataInicio;
 	
+	@JsonProperty(value="dataCriacao")
+	private Date dataCriacao;
+	
 	@JsonProperty(value="DataFimSimulado")
 	private Date dataFimSimulado;
 	
@@ -23,107 +34,111 @@ public class SumuladoRequest {
 	
 	@JsonProperty(value="IdUsuario")
 	private Long idUsuario;
-		
+	
+	@JsonProperty(value="QuantidadeQuestoes")
+	private Integer quantidadeQuestoes;
+	
 	@JsonProperty(value="TipoSimulado")
 	private Integer tipoSimulado;
 	
-	@JsonProperty(value="AnoProva")
-	private Integer anoProva;
+	@JsonProperty(value="ResultadoSimulado")
+	private ResultadoSimuladoResponse simuladoResultado;
 	
-	@JsonProperty(value="ConfiguracaoPoscomp")
-	SumuladoPoscompRequest sumuladoConfigPoscomp;
+	public Long getId() {
+		return id;
+	}
 	
-	@JsonProperty(value="ConfiguracaoEnade")
-	SumuladoEnadeRequest sumuladoConfigEnade;
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
-	@JsonProperty(value="IdSala")
-	Integer idSala;
-
 	public String getNome() {
 		return nome;
 	}
-
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
 	public String getDescricao() {
 		return descricao;
 	}
-
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
 	public Date getDataInicio() {
 		return dataInicio;
 	}
-
+	
 	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-
+	
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+	
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+	
 	public Date getDataFimSimulado() {
 		return dataFimSimulado;
 	}
-
+	
 	public void setDataFimSimulado(Date dataFimSimulado) {
 		this.dataFimSimulado = dataFimSimulado;
 	}
-
+	
 	public Long getTempoMaximo() {
 		return tempoMaximo;
 	}
-
+	
 	public void setTempoMaximo(Long tempoMaximo) {
 		this.tempoMaximo = tempoMaximo;
 	}
-
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
-
+	
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
+	
+	public Integer getQuantidadeQuestoes() {
+		return quantidadeQuestoes;
+	}
+	
+	public void setQuantidadeQuestoes(Integer quantidadeQuestoes) {
+		this.quantidadeQuestoes = quantidadeQuestoes;
+	}
+	
 	public Integer getTipoSimulado() {
 		return tipoSimulado;
 	}
-
+	
 	public void setTipoSimulado(Integer tipoSimulado) {
 		this.tipoSimulado = tipoSimulado;
 	}
 
-	public Integer getAnoProva() {
-		return anoProva;
+	public ResultadoSimuladoResponse getSimuladoResultado() {
+		return simuladoResultado;
 	}
 
-	public void setAnoProva(Integer anoProva) {
-		this.anoProva = anoProva;
+	public void setSimuladoResultado(ResultadoSimuladoResponse simuladoResultado) {
+		this.simuladoResultado = simuladoResultado;
 	}
 
-	public SumuladoPoscompRequest getSumuladoConfigPoscomp() {
-		return sumuladoConfigPoscomp;
-	}
-
-	public void setSumuladoConfigPoscomp(SumuladoPoscompRequest sumuladoConfigPoscomp) {
-		this.sumuladoConfigPoscomp = sumuladoConfigPoscomp;
-	}
-
-	public SumuladoEnadeRequest getSumuladoConfigEnade() {
-		return sumuladoConfigEnade;
-	}
-
-	public void setSumuladoConfigEnade(SumuladoEnadeRequest sumuladoConfigEnade) {
-		this.sumuladoConfigEnade = sumuladoConfigEnade;
-	}
-
-	public Integer getIdSala() {
+	public Long getIdSala() {
 		return idSala;
 	}
 
-	public void setIdSala(Integer idSala) {
+	public void setIdSala(Long idSala) {
 		this.idSala = idSala;
 	}
+	
+	
 }

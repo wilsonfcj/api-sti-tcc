@@ -13,18 +13,21 @@ import ifsc.sti.tcc.modelos.questao.Questao;
 import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
 import ifsc.sti.tcc.modelos.questao.QuestaoDiscusiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
+import ifsc.sti.tcc.modelos.simulado.Sala;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
+import ifsc.sti.tcc.modelos.usuario.Aluno;
+import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EFormacao;
 import ifsc.sti.tcc.props.ETipoSimulado;
 import ifsc.sti.tcc.repository.QuestaoRepository;
 import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
+import ifsc.sti.tcc.repository.SalaRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoMapper;
-import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoQuestoesMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SimuladoResumoMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.RespostaSimuladoMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
@@ -56,6 +59,9 @@ public class SimuladoService {
 	private UsuarioRepository usuarioRepository;
 	private RespostaSimuladoRepository respostaSimuladoRepository;
 	private ResultadoService resultadoService;
+	private SalaRepository salaRepository;
+
+	private List<SimuladoBaseResponse> simuladoResponse;
 
 	public static class Instance extends BaseService<SimuladoRepository> implements BaseService.BaseObject<SimuladoService> {
 
@@ -66,6 +72,7 @@ public class SimuladoService {
 		private QuestaoRepository questaoRepository;
 		private UsuarioRepository usuarioRepository;
 		private RespostaSimuladoRepository respostaSimuladoRepository;
+		private SalaRepository salaRepository;
 		
 		public Instance withQuestaoRepository(QuestaoRepository repository) {
 			this.questaoRepository = repository;
@@ -82,10 +89,16 @@ public class SimuladoService {
 			return this;
 		}
 		
+		public Instance withSalaRepository(SalaRepository salaRepository) {
+			this.salaRepository = salaRepository;
+			return this;
+		}
+		
 		@Override
 		public SimuladoService build() {
 			SimuladoService service = new SimuladoService();
 			service.setJpaRepository(jpaRepository);
+			service.setSalaRepository(salaRepository);
 			service.setQuestaoRepository(questaoRepository);
 			service.setUsuarioRepository(usuarioRepository);
 			service.setRespostaSimuladoRepository(respostaSimuladoRepository);
@@ -97,6 +110,10 @@ public class SimuladoService {
 		return jpaRepository.findById(idSimulado);
 	}
 	
+	public void setSalaRepository(SalaRepository salaRepository) {
+		this.salaRepository = salaRepository;
+	}
+
 	private Usuario loadUsuarioById(long idSimulado) {
 		return usuarioRepository.findById(idSimulado);
 	}
@@ -192,6 +209,42 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	
+	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarSimuladoIdSala(long idUsuario, long idSala) {
+		ResponseBase<List<SimuladoBaseResponse>> baseResponse = new ResponseBase<>();
+		try {
+			Usuario usuario = loadUsuarioById(idUsuario);
+			if(usuario == null) {
+				baseResponse = new ResponseBase<>(false, "Usuário não econtrado", null);
+			} else {
+				simuladoResponse = buscarSimuladoPorIdSala(idSala);
+				if(simuladoResponse != null) {
+					if(usuario instanceof Professor) {
+						for(SimuladoBaseResponse simulado : simuladoResponse) {
+							List<ResultadoSimuladoResponse> resposta = buscarResultadoSimulado(simulado.getId());
+							if(resposta != null) {
+								simulado.setRespondido(true);
+								simulado.setQuantidadeResposta(resposta.size());
+							}
+						}
+					} else {
+						for(SimuladoBaseResponse simulado : simuladoResponse) {
+							ResultadoSimuladoResponse resposta = buscarResultadoSimulado(simulado.getId(), idUsuario);
+							simulado.setRespondido(resposta != null);
+							simulado.setSimuladoResultado(resposta);
+						}
+					}
+					baseResponse = new ResponseBase<>(true, "Simulados consultados com sucesso", simuladoResponse);
+				} else {
+					baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", simuladoResponse);
+				}
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível consultar o simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>>(baseResponse, HttpStatus.OK);
+	}
+	
 	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarSimuladoIdUsuario(long idUsuario) {
 		ResponseBase<List<SimuladoBaseResponse>> baseResponse = new ResponseBase<>();
 		try {
@@ -237,6 +290,10 @@ public class SimuladoService {
 	
 	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
 		return getResultadoService().buscarResultadoSimulado(idSimulado, idUsuario);
+	}
+	
+	private List<ResultadoSimuladoResponse> buscarResultadoSimulado(long idSimulado) {
+		return getResultadoService().buscarResultadoSimulado(idSimulado);
 	}
 	
 	public ResultadoSimuladoResponse createRespostaSimuladoResponse(RespostaSimuladoRequest request) {
@@ -336,14 +393,43 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
+	private SimuladoCompletoResponse saveSimuladoResponse(SumuladoRequest sumuladoRequest, List<Questao> questoes) {
+		Sala sala = null;
+		if(sumuladoRequest.getIdSala() != null) {
+			sala = salaRepository.findById((long) sumuladoRequest.getIdSala());
+		}
+		Simulado simulado = saveSimulado(sumuladoRequest, questoes, sala);
+		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+		return simuladoResponse;
+	}
+	
+	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
+		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getAnoProva());
+		if(questoes.isEmpty()) {
+			return null;
+		}
+		return saveSimuladoResponse(sumuladoRequest, questoes);
+	}
+	
 	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
 		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getAnoProva());
 		if(questoes.size() == 0) {
 			return null;
 		}
-		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
-		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
-		return simuladoResponse;
+		return saveSimuladoResponse(sumuladoRequest, questoes);
+	}
+	
+	private SimuladoCompletoResponse gerarSimuladoPersonalizado(SumuladoRequest sumuladoRequest) {
+		List<Questao> questoes = new ArrayList<Questao>();
+		List<Questao> questoesEnade = gerarQuestaoEnadePersonalizada(sumuladoRequest);
+		List<Questao> questoesPoscomp = gerarQuestaoPoscompPersonalizada(sumuladoRequest);
+		
+		questoes.addAll(questoesEnade);
+		questoes.addAll(questoesPoscomp);
+		if(questoes.isEmpty()) {
+			return null;
+		}
+		return saveSimuladoResponse(sumuladoRequest, questoes);
 	}
 	
 	private SimuladoCompletoResponse buscarSimuladoPorId(long simuladoId) {
@@ -364,6 +450,12 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
+	private List<SimuladoBaseResponse> buscarSimuladoPorIdSala(long idSimulado) {
+		List<Simulado> simulados = jpaRepository.buscarSimuladosPorIdSala(idSimulado);
+		List<SimuladoBaseResponse> simuladoResponse = new SimuladoResumoMapper().transform(simulados);
+		return simuladoResponse;
+	}
+	
 	private List<QuestaoAlternativa> getQuestaoPoscomp(int area, int tipoSimulado, int quantidadeQuestao, Integer ano) {
 		return ano != null ? questaoRepository.consultPoscompByAno(area, tipoSimulado, (int) ano, quantidadeQuestao) : 
 			questaoRepository.consultPoscomp(area, tipoSimulado, quantidadeQuestao); 
@@ -379,7 +471,7 @@ public class SimuladoService {
 			questaoRepository.consultEnadeDiscursiva(formacao, quantidadeQuestao); 
 	}
 	
-	private Simulado saveSimulado(SumuladoRequest sumuladoRequest, List<Questao> questoes) {
+	private Simulado saveSimulado(SumuladoRequest sumuladoRequest, List<Questao> questoes, Sala  sala) {
 		Simulado simulado = new Simulado();
 		simulado.setNome(sumuladoRequest.getNome());
 		simulado.setDescricao(sumuladoRequest.getDescricao());
@@ -391,6 +483,7 @@ public class SimuladoService {
 		simulado.setQuantidadeQuestoes(questoes.size());
 		simulado.setTipoSimulado(ETipoSimulado.getEnun(sumuladoRequest.getTipoSimulado()));	
 		simulado.setQuestoes(questoes);
+		simulado.setSala(sala);
 		Simulado simuladoResponse = jpaRepository.save(simulado);
 		simulado.setId(simuladoResponse.getId());
 		return simulado;
@@ -398,9 +491,9 @@ public class SimuladoService {
 	
 	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
+		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
+		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
 		questoes.addAll(questaoPart1);
 		questoes.addAll(questaoPart2);
 		questoes.addAll(questaoPart3);
@@ -421,31 +514,6 @@ public class SimuladoService {
 		questoes.addAll(questaoDiscursivaEspecifica);
 		questoes.addAll(questaoAssinalarEspecifica);
 		return questoes;
-	}
-	
-	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getAnoProva());
-		if(questoes.isEmpty()) {
-			return null;
-		}
-		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
-		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
-		return simuladoResponse;
-	}
-	
-	private SimuladoCompletoResponse gerarSimuladoPersonalizado(SumuladoRequest sumuladoRequest) {
-		List<Questao> questoes = new ArrayList<Questao>();
-		List<Questao> questoesEnade = gerarQuestaoEnadePersonalizada(sumuladoRequest);
-		List<Questao> questoesPoscomp = gerarQuestaoPoscompPersonalizada(sumuladoRequest);
-		
-		questoes.addAll(questoesEnade);
-		questoes.addAll(questoesPoscomp);
-		if(questoes.isEmpty()) {
-			return null;
-		}
-		Simulado simulado = saveSimulado(sumuladoRequest, questoes);
-		SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
-		return simuladoResponse;
 	}
 	
 	private List<Questao> gerarQuestaoPoscompPersonalizada(SumuladoRequest sumuladoRequest) {

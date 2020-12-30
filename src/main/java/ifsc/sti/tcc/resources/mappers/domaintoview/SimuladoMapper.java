@@ -18,6 +18,10 @@ public class SimuladoMapper extends MapperUtil<Simulado, SimuladoCompletoRespons
 		simuladoResponse.setTempoMaximo(aObject.getTempoMaximo());
 		simuladoResponse.setIdUsuario(aObject.getIdUsuario().getId());
 		simuladoResponse.setQuantidadeQuestoes(aObject.getQuantidadeQuestoes());
+		if(aObject.getSala() != null) {
+			simuladoResponse.setIdSala(aObject.getSala().getId());
+		}
+		simuladoResponse.setIdSala(aObject.getSala().getId());
 		simuladoResponse.setTipoSimulado(aObject.getTipoSimulado().codigo);
 		simuladoResponse.setQuestoes(new QuestaoMapper().transform(aObject.getQuestoes()));
 		return simuladoResponse;

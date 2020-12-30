@@ -14,6 +14,9 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	@Query(value = "SELECT * FROM resposta_simulado WHERE id_simulado = ?1 and id_usuario = ?2", nativeQuery = true)
 	RespostaSimulado consultarRespostaSimulado(long idSimulado, long idUsuario);
 	
+	@Query(value = "SELECT * FROM resposta_simulado WHERE id_simulado = ?1", nativeQuery = true)
+	List<RespostaSimulado> consultarRespostaSimulado(long idSimulado);
+	
 	@Query(value = "SELECT count(*) FROM resposta_simulado WHERE id_usuario = ?1", nativeQuery = true)
 	int consultarQtdSimuladosRespondidos(long idUsuario);
 	

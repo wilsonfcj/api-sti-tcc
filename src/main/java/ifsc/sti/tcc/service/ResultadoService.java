@@ -201,6 +201,36 @@ public class ResultadoService {
 
 //	USUARIO ALUNO
 	
+	private ResultadoSimuladoResponse convertSimuladoToSimuladoResponse(RespostaSimulado respostaSimulado) {
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(respostaSimulado.getIdUsuario().getId(), respostaSimulado.getIdUsuario().getId());
+		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
+		resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
+		resultado.setNome(respostaSimulado.getIdSimulado().getNome());
+		resultado.setDescricao(respostaSimulado.getIdSimulado().getDescricao());
+		resultado.setDataCriacao(respostaSimulado.getIdSimulado().getDataCriacao());
+		resultado.setDataEnvio(respostaSimulado.getDataEntrega());
+		resultado.setTipoSimulado(respostaSimulado.getIdSimulado().getTipoSimulado().codigo);
+		resultado.setResultadoGeral(createResultadoSimulado(respostaSimulado.getIdSimulado().getId(), respostaSimulado.getIdUsuario().getId()));
+		resultado.setResultadoMatematica(createResultadoPorArea(respostaSimulado.getIdSimulado().getId(), respostaSimulado.getIdUsuario().getId(), EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(respostaSimulado.getIdSimulado().getId(), respostaSimulado.getIdUsuario().getId(), EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(respostaSimulado.getIdSimulado().getId(), respostaSimulado.getIdUsuario().getId(), EArea.TECNOLOGIA_DA_COMPUTACAO));
+		resultado.setDisciplinas(disciplinas);
+		return resultado;
+	}
+	
+	public List<ResultadoSimuladoResponse> buscarResultadoSimulado(long idSimulado) {
+		List<RespostaSimulado> respostasSimulado = jpaRepository.consultarRespostaSimulado(idSimulado);
+		if(respostasSimulado == null) {
+			return null;
+		}
+		
+		List<ResultadoSimuladoResponse> response = new ArrayList<ResultadoSimuladoResponse>();
+		for(RespostaSimulado respostaSimulado :  respostasSimulado) {
+			response.add(convertSimuladoToSimuladoResponse(respostaSimulado));
+		}
+		return response;
+	}
+	
 	public ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
 		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(idSimulado, idUsuario);
 		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(idUsuario,  idSimulado);

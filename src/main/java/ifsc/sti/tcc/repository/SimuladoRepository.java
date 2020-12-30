@@ -14,4 +14,6 @@ public interface SimuladoRepository extends JpaRepository<Simulado, Long> {
 	@Query(value = "select * from simulado where id_usuario = ?1 order by data_criacao desc", nativeQuery = true)
 	List<Simulado> buscarSimuladosPorId(long idUsuario);
 	
+	@Query(value = "select * from simulado where id_sala = ?1 order by data_criacao desc", nativeQuery = true)
+	List<Simulado> buscarSimuladosPorIdSala(long idSala);
 }

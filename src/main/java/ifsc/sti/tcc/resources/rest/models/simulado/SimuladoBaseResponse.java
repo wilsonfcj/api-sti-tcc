@@ -11,6 +11,9 @@ public class SimuladoBaseResponse {
 	@JsonProperty(value="Id")
 	private Long id;
 	
+	@JsonProperty(value="idSala")
+	private Long idSala;
+	
 	@JsonProperty(value="Nome")
 	private String nome;
 	
@@ -43,6 +46,9 @@ public class SimuladoBaseResponse {
 	
 	@JsonProperty(value="ResultadoSimulado")
 	private ResultadoSimuladoResponse simuladoResultado;
+	
+	@JsonProperty(value="QuantidadeResposta")
+	private Integer quantidadeResposta = 0;
 	
 	public Long getId() {
 		return id;
@@ -138,5 +144,21 @@ public class SimuladoBaseResponse {
 
 	public void setSimuladoResultado(ResultadoSimuladoResponse simuladoResultado) {
 		this.simuladoResultado = simuladoResultado;
+	}
+
+	public Long getIdSala() {
+		return idSala;
+	}
+
+	public void setIdSala(Long idSala) {
+		this.idSala = idSala;
+	}
+
+	public Integer getQuantidadeResposta() {
+		return quantidadeResposta;
+	}
+
+	public void setQuantidadeResposta(Integer quantidadeResposta) {
+		this.quantidadeResposta = quantidadeResposta;
 	}
 }

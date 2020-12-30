@@ -51,6 +51,10 @@ public class Simulado {
     @JoinColumn(name = "id_simulado")
 	private List<Questao> questoes;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_sala")
+	private Sala sala;
+	
 	public Long getId() {
 		return id;
 	}
@@ -138,9 +142,16 @@ public class Simulado {
 	public void setQuestoes(List<Questao> questoes) {
 		this.questoes = questoes;
 	}
-	
-	
-	
-	
-	
+
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	public void setTipoSimulado(Integer tipoSimulado) {
+		this.tipoSimulado = tipoSimulado;
+	}
 }
