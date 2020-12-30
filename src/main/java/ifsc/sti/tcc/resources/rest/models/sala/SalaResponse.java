@@ -29,6 +29,9 @@ public class SalaResponse {
 	
 	@JsonProperty(value="DataCriacao")
 	private Date dataCriacao;
+	
+	@JsonProperty(value="Participando")
+	private Boolean participando = false;
 
 	public String getNome() {
 		return nome;
@@ -93,6 +96,12 @@ public class SalaResponse {
 	public void setProfessor(ProfessorResponse professor) {
 		this.professor = professor;
 	}
-	
-	
+
+	public Boolean getParticipando() {
+		return participando;
+	}
+
+	public void setParticipando(Boolean participando) {
+		this.participando = participando;
+	}
 }

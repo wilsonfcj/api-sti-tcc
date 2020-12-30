@@ -21,6 +21,7 @@ import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SalaResponseMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.SalaMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.sala.ParticiparSalaRequest;
 import ifsc.sti.tcc.resources.rest.models.sala.SalaRequest;
 import ifsc.sti.tcc.resources.rest.models.sala.SalaResponse;
 
@@ -132,7 +133,7 @@ public class SalaService {
 		} else {
 			salas = jpaRepository.buscarSalasPorInstituicao(usuario.getInstituicao());
 		}
-		List<SalaResponse> salasResponse = new SalaResponseMapper().transform(salas);
+		List<SalaResponse> salasResponse = new SalaResponseMapper().transform(salas, usuario);
 		return salasResponse;
 	}
 
@@ -173,7 +174,7 @@ public class SalaService {
 				if(salasResponse.isEmpty()) {
 					baseResponse = new ResponseBase<>(false, "Nenhum simulado encontrado", null);
 				} else {
-					baseResponse = new ResponseBase<>(false, "Salas consultas com sucesso", salasResponse);
+					baseResponse = new ResponseBase<>(true, "Salas consultas com sucesso", salasResponse);
 				}
 			}
 		} catch (Exception e) {
@@ -181,5 +182,31 @@ public class SalaService {
 		}
 		return new ResponseEntity<ResponseBase<List<SalaResponse>>>(baseResponse, HttpStatus.OK);
 	}
+	
+	
 
+//	public ResponseEntity<ResponseBase<SalaResponse>> participarSala(ParticiparSalaRequest request) {
+//		ResponseBase<SalaResponse> baseResponse = new ResponseBase<>();
+//		try {
+//			if(request.getNome().isEmpty()) {
+//				baseResponse = new ResponseBase<>(false, "Informe o nome da sala", null);
+//			} else {
+//				Usuario usuario = loadUsuario(request.getIdProfessor());
+//				Instituicao instituicao = loadInstituicao(usuario.getInstituicao());
+//				if(usuario != null && usuario instanceof Professor) {
+//					Sala sala =  new SalaMapper().transform(request);
+//					sala.setUsuario(usuario);
+//					sala.setInstituicao(instituicao);
+//					Sala salaResponse = jpaRepository.save(sala);
+//					baseResponse = new ResponseBase<>(true, "Sala registrada com sucesso", new SalaResponseMapper().transform(salaResponse));
+//				} else {
+//					baseResponse = new ResponseBase<>(false, "Para criar uma sala de simulado é necessário ser um professor", null);
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			baseResponse = new ResponseBase<>(false, "Não foi possível criar a sala para simulados", null);
+//		}
+//		return new ResponseEntity<ResponseBase<SalaResponse>>(baseResponse, HttpStatus.OK);
+//	}
 }
