@@ -30,20 +30,35 @@ public class SalaResponseMapper extends  MapperUtil<Sala, SalaResponse> {
 		return sala;
 	}
 	
+
+	public SalaProfessorResponse transformP(Sala aObject) {
+		SalaProfessorResponse sala = new SalaProfessorResponse();
+		sala.setId(aObject.getId());
+		sala.setNome(aObject.getNome());
+		
+		sala.setProfessor(new ProfessorResponse(aObject.getUsuario().getId(),
+				aObject.getUsuario().getNome()));
+		sala.setDescricao(aObject.getDescricao());
+		sala.setDataCriacao(aObject.getDataCriacao());
+		sala.setMaxParticipantes(aObject.getMaxParticipantes());
+		if(aObject.getAlunos() != null) {
+			sala.setQtdParticipantes(aObject.getAlunos().size());
+		}
+		return sala;
+	}
+	
 	public SalaResponse transform(Sala aObject, Usuario usuario) {
-		SalaResponse sala = transform(aObject);
 		if(usuario instanceof Aluno) {
+			SalaResponse sala = transform(aObject);
 			if(aObject.getAlunos().contains(usuario))
 				sala.setParticipando(true);
 			return sala;
 		} else {
-			SalaProfessorResponse salaProfessorResponse;
-			salaProfessorResponse = (SalaProfessorResponse) sala;
+			SalaProfessorResponse salaProfessorResponse = transformP(aObject);
 			salaProfessorResponse.setSenha(aObject.getSenha());
 			salaProfessorResponse.setParticipando(true);
-			return sala;
+			return salaProfessorResponse;
 		}
-		
 	}
 	
 

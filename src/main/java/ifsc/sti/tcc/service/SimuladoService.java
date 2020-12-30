@@ -15,7 +15,6 @@ import ifsc.sti.tcc.modelos.questao.QuestaoDiscusiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Sala;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
-import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EArea;

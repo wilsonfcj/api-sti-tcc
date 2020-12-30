@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jboss.jandex.TypeTarget.Usage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
+import ifsc.sti.tcc.modelos.usuario.Professor;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.EArea;
 import ifsc.sti.tcc.props.EDisciplina;
@@ -332,6 +334,7 @@ public class ResultadoService {
 		resultado.setNome(usuario.getNome());
 		resultado.setIdUsuario(usuario.getId());
 		resultado.setResultadoGeral(createResultadoGeralPorTipoProva(request));
+		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(request.getIdUsuario(), request.getTipoSimulado()));
 		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(request.getIdUsuario(), request.getTipoSimulado()));
 		resultado.setResultadoMatematica(createResultadoGeralPorTipoProva(request, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoGeralPorTipoProva(request, EArea.FUNDAMENTOS_DE_COMPUTACAO));

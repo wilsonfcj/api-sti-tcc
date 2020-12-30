@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import ifsc.sti.tcc.modelos.simulado.Sala;
-import ifsc.sti.tcc.modelos.usuario.Usuario;
 
 public interface SalaRepository extends JpaRepository<Sala, Long> {
 	
