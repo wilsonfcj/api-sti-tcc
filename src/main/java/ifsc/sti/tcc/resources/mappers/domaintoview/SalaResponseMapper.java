@@ -23,7 +23,9 @@ public class SalaResponseMapper extends  MapperUtil<Sala, SalaResponse> {
 		sala.setDescricao(aObject.getDescricao());
 		sala.setDataCriacao(aObject.getDataCriacao());
 		sala.setMaxParticipantes(aObject.getMaxParticipantes());
-		sala.setQtdParticipantes(aObject.getAlunos().size());
+		if(aObject.getAlunos() != null) {
+			sala.setQtdParticipantes(aObject.getAlunos().size());
+		}
 		return sala;
 	}
 	
