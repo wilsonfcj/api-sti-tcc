@@ -129,9 +129,9 @@ public class SalaService {
 	public List<SalaResponse> loadSalas(Usuario usuario) {
 		List<Sala> salas = new ArrayList<Sala>();
 		if(usuario instanceof Professor) {
-			salas = jpaRepository.buscarSalasPorUsuario(usuario);
+			salas = jpaRepository.buscarSalasPorUsuario(usuario.getId());
 		} else {
-			salas = jpaRepository.buscarSalasPorInstituicao(usuario.getInstituicao());
+			salas = jpaRepository.buscarSalasPorInstituicao(usuario.getId());
 		}
 		List<SalaResponse> salasResponse = new SalaResponseMapper().transform(salas, usuario);
 		return salasResponse;
