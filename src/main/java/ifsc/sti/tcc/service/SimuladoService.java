@@ -46,6 +46,7 @@ import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2007;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2008;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2009;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2010;
+import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2011;
 import ifsc.sti.tcc.utilidades.questaoenade.QuestaoEnade2005;
 
 public class SimuladoService {
@@ -61,6 +62,8 @@ public class SimuladoService {
 	private SalaRepository salaRepository;
 
 	private List<SimuladoBaseResponse> simuladoResponse;
+	
+	private final int UPDATE_VALUES = 9;
 
 	public static class Instance extends BaseService<SimuladoRepository> implements BaseService.BaseObject<SimuladoService> {
 
@@ -151,20 +154,27 @@ public class SimuladoService {
 	   List<Questao> questoes6 = QuestaoPoscomp2008.registerPoscomp();
 	   List<Questao> questoes7 = QuestaoPoscomp2009.registerPoscomp();
 	   List<Questao> questoes8 = QuestaoPoscomp2010.registerPoscomp();
-	 
-	   List<Questao> questoes9 = QuestaoEnade2005.register();
+	   List<Questao> questoes9 = QuestaoPoscomp2011.registerPoscomp();
+	   List<Questao> questoes10 = QuestaoEnade2005.register();
 	   
-	   questaoRepository.saveAll(questoes);
-	   questaoRepository.saveAll(questoes1);
-	   questaoRepository.saveAll(questoes2);
-	   questaoRepository.saveAll(questoes3);
-	   questaoRepository.saveAll(questoes4);
-	   questaoRepository.saveAll(questoes5);
-	   questaoRepository.saveAll(questoes6);
-	   questaoRepository.saveAll(questoes7);
-	   questaoRepository.saveAll(questoes8);
-	   questaoRepository.saveAll(questoes9);
-	   
+	   switch (UPDATE_VALUES) {
+		case 9:
+			questaoRepository.saveAll(questoes9);
+			break;
+		default:
+			questaoRepository.saveAll(questoes);
+			questaoRepository.saveAll(questoes1);
+			questaoRepository.saveAll(questoes2);
+			questaoRepository.saveAll(questoes3);
+			questaoRepository.saveAll(questoes4);
+			questaoRepository.saveAll(questoes5);
+			questaoRepository.saveAll(questoes6);
+			questaoRepository.saveAll(questoes7);
+			questaoRepository.saveAll(questoes8);
+			questaoRepository.saveAll(questoes9);
+			questaoRepository.saveAll(questoes10);
+			break;
+		}
 	   return questoes;
 	}
 	
