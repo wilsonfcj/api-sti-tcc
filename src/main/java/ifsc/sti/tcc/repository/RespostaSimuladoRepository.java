@@ -120,6 +120,20 @@ public interface RespostaSimuladoRepository extends JpaRepository<RespostaSimula
 	List<Object[]> resultadoDisciplinaSimuladoNaoRespondida(long idUsuario, long idSimulado);
 	
 	
+//	Simulado
+	@Query(value = "select count(*), q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao where id_usuario = ?1 and rs.id_simulado = ?2 group by q.disciplina", nativeQuery = true)
+	List<Object[]> disciplinaSimuladoPorUsuario(long idUsuario, long idSimulado);
+	
+	@Query(value = "select count(*), q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao where id_usuario = ?1 and rq.correta = false and rq.respondida and rs.id_simulado = ?2 group by q.disciplina", nativeQuery = true)
+	List<Object[]> resultadoDisciplinaSimuladoErroPorUsuario(long idUsuario, long idSimulado);
+	
+	@Query(value = "select count(*) as valor, q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao where id_usuario = ?1 and rq.correta and rs.id_simulado = ?2 group by q.disciplina", nativeQuery = true)
+	List<Object[]> resultadoDisciplinaSimuladoAcertoPorUsuario(long idUsuario, long idSimulado);
+	
+	@Query(value = "select count(*) as valor, q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao where id_usuario = ?1 and rq.respondida = false and rs.id_simulado = ?2 group by q.disciplina", nativeQuery = true)
+	List<Object[]> resultadoDisciplinaSimuladoNaoRespondidaPorUsuario(long idUsuario, long idSimulado);
+	
+	
 //	GEral
 	@Query(value = "select count(*), q.disciplina from resposta_simulado_respostas as rsp inner join resposta_simulado rs on rs.id_resposta_simulado = rsp.resposta_simulado_id_resposta_simulado inner join resposta_questao as rq on rq.id_resposta_questao = rsp.respostas_id_resposta_questao inner join questao as q on q.id_questao = rq.id_questao inner join simulado s on s.id_simulado = rs.id_simulado where s.id_usuario = ?1 group by q.disciplina", nativeQuery = true)
 	List<Object[]> disciplinaSimulado(long idUsuario);

@@ -21,6 +21,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioRespons
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.service.ResultadoService;
 import io.swagger.annotations.Api;
@@ -50,6 +51,17 @@ public class ResultadoApi {
 				.withSimuladoRepository(simuladoRepository)
 				.build();
 		return service.buscarRepostaSimulado(request);
+    }
+    
+    @ApiOperation(value = "Busca as respostadas de todos os simulados")
+    @RequestMapping(value = "/BuscarResultadosSimulado", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>> buscarResultadosSimulado(@RequestBody ResultadoSimuladoRequest request) {
+    	ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarRepostaSimuladoPorSala(request);
     }
     
     @ApiOperation(value = "Busca o resultado geral conforme a prova Enade, Poscomp ou Personalizada")
@@ -85,7 +97,7 @@ public class ResultadoApi {
 		return service.buscarUltimosResultados(idUsuario);
     }
     
-    @ApiOperation(value = "Busca o gabarito do simulado com  as respostas do usuário")
+    @ApiOperation(value = "Busca o gabarito do simulado com  as respostas de usuário")
     @RequestMapping(value = "/BuscarGabaritoPorSimulado", method = RequestMethod.POST)
     public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoProva(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
@@ -95,6 +107,18 @@ public class ResultadoApi {
 				.withSimuladoRepository(simuladoRepository)
 				.build();
     	return service.buscarGabaritoUsuario(request.getIdSimulado(), request.getIdUsuario());
+    }
+    
+    @ApiOperation(value = "Busca o gabarito de simulado com as questões corretas")
+    @RequestMapping(value = "/BuscarGabaritoSimulado", method = RequestMethod.POST)
+    public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoSimulado(@RequestBody ResultadoSimuladoRequest request) {
+    	ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+    	return service.buscarGabaritoSimulado(request.getIdSimulado(), request.getIdUsuario());
     }
  
     @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
