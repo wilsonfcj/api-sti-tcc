@@ -482,7 +482,8 @@ public class SimuladoService {
 		simulado.setQuantidadeQuestoes(questoes.size());
 		simulado.setTipoSimulado(ETipoSimulado.getEnun(sumuladoRequest.getTipoSimulado()));	
 		simulado.setQuestoes(questoes);
-		simulado.setSala(sala);
+		if(sala != null)
+			simulado.setSala(sala);
 		Simulado simuladoResponse = jpaRepository.save(simulado);
 		simulado.setId(simuladoResponse.getId());
 		return simulado;
