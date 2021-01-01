@@ -6,9 +6,9 @@ import java.util.List;
 import ifsc.sti.tcc.modelos.simulado.Sala;
 import ifsc.sti.tcc.modelos.usuario.Aluno;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
-import ifsc.sti.tcc.resources.rest.models.sala.ProfessorResponse;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaProfessorResponse;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.response.ProfessorResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.response.SalaProfessorResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.response.SalaResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class SalaResponseMapper extends  MapperUtil<Sala, SalaResponse> {

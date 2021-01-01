@@ -16,15 +16,15 @@ import ifsc.sti.tcc.repository.RespostaSimuladoRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaCompletoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoProvaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralUsuarioResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaCompletoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaResponse;
 import ifsc.sti.tcc.service.ResultadoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -91,6 +91,17 @@ public class ResultadoApi {
     
     @ApiOperation(value = "Busca as metricas gerais de um usuário")
     @GetMapping("/BuscarResultadoGeral")
+	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarRepostaGeralTodos(idUsuario);
+    }
+    
+    @ApiOperation(value = "Busca as metricas gerais de um usuário")
+    @GetMapping("/BuscarResultadoGeralSimulado")
 	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
 		ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)

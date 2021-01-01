@@ -25,16 +25,16 @@ import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoGabaritoMapper;
 import ifsc.sti.tcc.resources.mappers.domaintoview.QuestaoRespostaMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaCompletoResponse;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaRequest;
-import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoProvaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralUsuarioResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaCompletoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaResponse;
 
 public class ResultadoService {
 
@@ -179,8 +179,6 @@ public class ResultadoService {
 		return new ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>>(baseResponse, HttpStatus.OK);
 	}
 	
-	
-	
 	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarRepostaGeralTodos(long idUsuario) {
 		ResponseBase<ResultadoGeralUsuarioResponse> baseResponse = new ResponseBase<>();
 		try {
@@ -250,11 +248,9 @@ public class ResultadoService {
 		return listResponse;
 	}
 	
-
 //	USUARIO ALUNO
-	
 	private ResultadoSimuladoResponse convertSimuladoToSimuladoResponse(RespostaSimulado respostaSimulado) {
-		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(respostaSimulado.getIdUsuario().getId(), respostaSimulado.getIdUsuario().getId());
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(respostaSimulado.getIdUsuario().getId(), respostaSimulado.getIdSimulado().getId());
 		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
 		resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
 		resultado.setNome(respostaSimulado.getIdSimulado().getNome());
@@ -283,6 +279,7 @@ public class ResultadoService {
 		return response;
 	}
 	
+//	Para Alunos
 	public List<ResultadoSimuladoSalaResponse> buscarResultadosSimulado(long idSimulado) {
 		List<ResultadoSimuladoSalaResponse> respostas = new ArrayList<ResultadoSimuladoSalaResponse>();
 		List<RespostaSimulado> respostasSimulado = jpaRepository.consultarRespostaSimulado(idSimulado);
@@ -324,7 +321,7 @@ public class ResultadoService {
 	
 	public ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
 		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(idSimulado, idUsuario);
-		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(idUsuario,  idSimulado);
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(idUsuario, idSimulado);
 		if(respostaSimulado == null) {
 			return null;
 		}
@@ -375,6 +372,19 @@ public class ResultadoService {
 // 	TODOS
 	
 	private ResultadoGeralUsuarioResponse buscarResultadoTodosSimulado(long idUsuario) {
+		Usuario usuario = loadUsuarioById(idUsuario);
+		ResultadoGeralUsuarioResponse resultado = new ResultadoGeralUsuarioResponse();
+		resultado.setNome(usuario.getNome());
+		resultado.setIdUsuario(usuario.getId());
+		resultado.setResultadoGeral(createResultadoTodosGeral(idUsuario));
+		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(idUsuario));
+		resultado.setResultadoMatematica(createResultadoTodosPorArea(idUsuario, EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorArea(idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorArea(idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		return resultado;
+	}
+	
+	private ResultadoResultadoSimuladoGeral buscarResultadoSimuladoGeral(long idUsuario) {
 		Usuario usuario = loadUsuarioById(idUsuario);
 		ResultadoGeralUsuarioResponse resultado = new ResultadoGeralUsuarioResponse();
 		resultado.setNome(usuario.getNome());
@@ -518,7 +528,12 @@ public class ResultadoService {
 	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinas(long idUsuario, long idSimulado) {
 		ResponseBase<List<ResultadoDisciplinaQuantitativo>> baseResponse = new ResponseBase<>();
 		try {
-			List<ResultadoDisciplinaQuantitativo> response = getDisciplinasResultado(idUsuario, idSimulado);
+			List<ResultadoDisciplinaQuantitativo> response;
+			if(loadUsuarioById(idUsuario) instanceof Aluno) {
+				response = getDisciplinasResultadoPorUsuario(idUsuario, idSimulado);
+			} else {
+				response = getDisciplinasResultado(idUsuario, idSimulado);
+			}
 			baseResponse = new ResponseBase<>(true, "Resultado disciplinas buscados com sucesso", response);
 		} catch (Exception e) {
 			baseResponse = new ResponseBase<>(false, "Não foi possível buscar os resultados das disciplinas", null);

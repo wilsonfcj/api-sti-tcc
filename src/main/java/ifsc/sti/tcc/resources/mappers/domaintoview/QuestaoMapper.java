@@ -6,8 +6,8 @@ import java.util.List;
 import ifsc.sti.tcc.modelos.questao.Questao;
 import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
 import ifsc.sti.tcc.props.ETipoQuestao;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoAlternativaResponse;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoAlternativaResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class QuestaoMapper extends MapperUtil<Questao, QuestaoResponse> {

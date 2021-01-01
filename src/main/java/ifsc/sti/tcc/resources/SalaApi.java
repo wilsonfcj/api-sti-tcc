@@ -18,13 +18,11 @@ import ifsc.sti.tcc.repository.SalaRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.sala.ParticiparSalaRequest;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaRequest;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaResponse;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.request.ParticiparSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.sala.request.SalaRequest;
+import ifsc.sti.tcc.resources.rest.models.sala.response.SalaResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoBaseResponse;
 import ifsc.sti.tcc.service.SalaService;
-import ifsc.sti.tcc.service.SimuladoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -93,25 +91,30 @@ public class SalaApi {
 		return lSalaService.participarSala(request);
     }
     
-    @ApiOperation(value = "Registra questões do simulado na base de dados")
-	@GetMapping("/BuscarAlunosParticipantes")
-	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarAlunosParticipantes() {
-		SimuladoService lSimuladoService = new SimuladoService
-				.Instance(simuladoRepository)
-				.withQuestaoRepository(questaoRepository)
-				.build();
-		return null; // lSimuladoService.salvarTodasQuestoes();
-    }
+//    @ApiOperation(value = "Deleta uma sala de simulado por seu id")
+//    @RequestMapping(value = "/DeletarSalaDeSimulado", method = RequestMethod.POST)
+// 	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> deletarSalaDeSimulado(@RequestBody SimuladoSalaRequest request) {
+//    	SalaService lSalaService = new SalaService
+//				.Instance(salaRepository)
+//				.withQuestaoRepository(questaoRepository)
+//				.withUsuarioRepository(usuarioRepository)
+//				.withSimuladoRepository(simuladoRepository)
+//				.withInstituicaoRepository(instituicaoRepository)
+//				.withRespostaSimuladoRepository(respostaSimuladoRepository)
+//				.build();
+// 		return lSalaService.deletarSala(request);
+//  }
+//    
     
-    @ApiOperation(value = "Registra questões do simulado na base de dados")
-   	@GetMapping("/BuscarSalaPorCodigo")
-   	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarSalaPorCodigo() {
-   		SimuladoService lSimuladoService = new SimuladoService
-   				.Instance(simuladoRepository)
-   				.withQuestaoRepository(questaoRepository)
-   				.build();
-   		return null; // lSimuladoService.salvarTodasQuestoes();
-    }
+//    @ApiOperation(value = "Registra questões do simulado na base de dados")
+//   	@GetMapping("/BuscarSalaPorCodigo")
+//   	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarSalaPorCodigo() {
+//   		SimuladoService lSimuladoService = new SimuladoService
+//   				.Instance(simuladoRepository)
+//   				.withQuestaoRepository(questaoRepository)
+//   				.build();
+//   		return null; // lSimuladoService.salvarTodasQuestoes();
+//    }
 
 
 }

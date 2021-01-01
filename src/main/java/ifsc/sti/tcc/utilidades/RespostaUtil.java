@@ -6,8 +6,8 @@ import java.util.List;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.props.ETipoQuestao;
-import ifsc.sti.tcc.resources.rest.models.simulado.RespostaQuestaoRequest;
-import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaQuestaoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaSimuladoRequest;
 
 public class RespostaUtil {
 

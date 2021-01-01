@@ -8,7 +8,7 @@ import ifsc.sti.tcc.modelos.respostasimulado.RespostaSimulado;
 import ifsc.sti.tcc.modelos.simulado.Simulado;
 import ifsc.sti.tcc.modelos.usuario.Usuario;
 import ifsc.sti.tcc.repository.QuestaoRepository;
-import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaSimuladoRequest;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class RespostaSimuladoMapper extends MapperUtil<RespostaSimuladoRequest, RespostaSimulado> {

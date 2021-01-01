@@ -1,7 +1,7 @@
 package ifsc.sti.tcc.resources.mappers.domaintoview;
 
 import ifsc.sti.tcc.modelos.simulado.Simulado;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoCompletoResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class SimuladoMapper extends MapperUtil<Simulado, SimuladoCompletoResponse> {

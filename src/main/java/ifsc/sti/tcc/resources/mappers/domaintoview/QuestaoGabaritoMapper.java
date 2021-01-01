@@ -9,9 +9,9 @@ import ifsc.sti.tcc.modelos.respostasimulado.RepostaAlternativa;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaDiscursiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
 import ifsc.sti.tcc.props.ETipoQuestao;
-import ifsc.sti.tcc.resources.rest.models.question.QuestaoResponse;
-import ifsc.sti.tcc.resources.rest.models.question.QustaoGabaritoAlternativaResponse;
-import ifsc.sti.tcc.resources.rest.models.question.QustaoGabaritoDiscursivaResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QustaoGabaritoAlternativaResponse;
+import ifsc.sti.tcc.resources.rest.models.question.response.QustaoGabaritoDiscursivaResponse;
 import ifsc.sti.tcc.utilidades.mappers.MapperUtil;
 
 public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> {

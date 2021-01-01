@@ -21,10 +21,11 @@ import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.mappers.domaintoview.SalaResponseMapper;
 import ifsc.sti.tcc.resources.mappers.viewtodomain.SalaMapper;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
-import ifsc.sti.tcc.resources.rest.models.sala.ParticiparSalaRequest;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaRequest;
-import ifsc.sti.tcc.resources.rest.models.sala.SalaResponse;
-import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
+import ifsc.sti.tcc.resources.rest.models.sala.request.ParticiparSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.sala.request.SalaRequest;
+import ifsc.sti.tcc.resources.rest.models.sala.response.SalaResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoBaseResponse;
 
 public class SalaService {
 
@@ -195,6 +196,39 @@ public class SalaService {
 		return new ResponseEntity<ResponseBase<List<SalaResponse>>>(baseResponse, HttpStatus.OK);
 	}
 	
+	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> deletarSala(SimuladoSalaRequest request) {
+		ResponseBase<List<SimuladoBaseResponse>> baseResponse = new ResponseBase<>();
+		try {
+//			if (request.getSenha() == null || request.getSenha().isEmpty()) {	
+//				baseResponse = new ResponseBase<>(false, "Informe a senha para participar da sala", null);
+//			} else {
+//				Sala sala = jpaRepository.findById((long) request.getIdSala());
+//				Usuario usuario = loadUsuario(request.getIdUsuario());
+//				if(usuario instanceof Professor) {
+//					baseResponse = new ResponseBase<>(false, "Apenas alunos podem participar da sala de simulado", null);
+//				} else if (sala.getAlunos().contains(usuario)) {
+//					return simuladoService.buscarSimuladoIdSala(usuario.getId(), sala.getId());
+//				} else if (sala.getInstituicao().getId() != usuario.getInstituicao()) {
+//					baseResponse = new ResponseBase<>(false, "Você não pertence a está instituição", null);
+//				} else {
+//					if((sala.getAlunos().size() + 1) > sala.getMaxParticipantes()) {
+//						baseResponse = new ResponseBase<>(false, "Não foi possível entrar na sala de simulado, pois quantidade máxima de participantes foi excedida", null);
+//					} else {
+//						if(sala.getSenha().equals(request.getSenha())) {
+//							sala.getAlunos().add(usuario);
+//							jpaRepository.save(sala);
+//							return simuladoService.buscarSimuladoIdSala(usuario.getId(), sala.getId());
+//						} else {
+//							baseResponse = new ResponseBase<>(false, "Senha inválida, informa a senha correta para continuar", null);
+//						}
+//					}
+//				}
+//			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível criar a sala para simulados", null);
+		}
+		return new ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>>(baseResponse, HttpStatus.OK);
+	}
 	
 
 	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> participarSala(ParticiparSalaRequest request) {
