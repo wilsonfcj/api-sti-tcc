@@ -384,18 +384,18 @@ public class ResultadoService {
 		return resultado;
 	}
 	
-	private ResultadoResultadoSimuladoGeral buscarResultadoSimuladoGeral(long idUsuario) {
-		Usuario usuario = loadUsuarioById(idUsuario);
-		ResultadoGeralUsuarioResponse resultado = new ResultadoGeralUsuarioResponse();
-		resultado.setNome(usuario.getNome());
-		resultado.setIdUsuario(usuario.getId());
-		resultado.setResultadoGeral(createResultadoTodosGeral(idUsuario));
-		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(idUsuario));
-		resultado.setResultadoMatematica(createResultadoTodosPorArea(idUsuario, EArea.MATEMATICA));
-		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorArea(idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
-		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorArea(idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
-		return resultado;
-	}
+//	private ResultadoResultadoSimuladoGeral buscarResultadoSimuladoGeral(long idUsuario) {
+//		Usuario usuario = loadUsuarioById(idUsuario);
+//		ResultadoGeralUsuarioResponse resultado = new ResultadoGeralUsuarioResponse();
+//		resultado.setNome(usuario.getNome());
+//		resultado.setIdUsuario(usuario.getId());
+//		resultado.setResultadoGeral(createResultadoTodosGeral(idUsuario));
+//		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(idUsuario));
+//		resultado.setResultadoMatematica(createResultadoTodosPorArea(idUsuario, EArea.MATEMATICA));
+//		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorArea(idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+//		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorArea(idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
+//		return resultado;
+//	}
 	
 	public ResultadoQuantitativo createResultadoTodosGeral(long idUsuario) {
 		int erros = jpaRepository.consultarErrosSimuladoTotal(idUsuario);
