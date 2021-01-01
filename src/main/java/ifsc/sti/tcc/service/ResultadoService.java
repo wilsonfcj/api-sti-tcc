@@ -30,6 +30,8 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioRespons
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaCompletoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
@@ -107,6 +109,32 @@ public class ResultadoService {
 	
 	public void setJpaRepository(RespostaSimuladoRepository jpaRepository) {
 		this.jpaRepository = jpaRepository;
+	}
+	
+	
+	public ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>> buscarRepostaSimulado(ResultadoSimuladoSalaRequest request) {
+		ResponseBase<ResultadoSimuladoSalaCompletoResponse> baseResponse = new ResponseBase<>();
+		try {
+			
+			Usuario professor = loadUsuarioById(request.getIdProfessor());
+			ResultadoSimuladoSalaCompletoResponse lRespostaSimulado = buscarResultadoSimulado(request);
+			if(lRespostaSimulado == null) {
+				baseResponse = new ResponseBase<>(false, "Resultado simulado não encontrado", null);
+			} else {
+				if(loadSimuladoById(request.getIdSimulado())  == null) {
+					baseResponse = new ResponseBase<>(false, "Simulado não encontrado", null);
+				} else if(loadUsuarioById(request.getIdAluno()) == null){
+					baseResponse = new ResponseBase<>(false, "Aluno não encontrado", null);
+				} else if(professor instanceof Aluno){
+					baseResponse = new ResponseBase<>(false, "Para realizar essa consulta é necessário ser professor", null);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Resultado simulado obtido com sucesso", lRespostaSimulado);
+				}
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível buscar o resultado do simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
 	
@@ -262,6 +290,7 @@ public class ResultadoService {
 		for(RespostaSimulado respostaSimulado: respostasSimulado) {
 			ResultadoSimuladoSalaResponse resultado = new ResultadoSimuladoSalaResponse();
 			resultado.setIdUsuario(respostaSimulado.getIdUsuario().getId());
+			resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
 			resultado.setNome(respostaSimulado.getIdUsuario().getNome());
 			resultado.setDataEnvio(respostaSimulado.getDataEntrega());
 			resultado.setTipoSimulado(respostaSimulado.getIdSimulado().getTipoSimulado().codigo);
@@ -269,11 +298,28 @@ public class ResultadoService {
 			resultado.setResultadoMatematica(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.MATEMATICA));
 			resultado.setResultadoFundamentoComputacao(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.FUNDAMENTOS_DE_COMPUTACAO));
 			resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.TECNOLOGIA_DA_COMPUTACAO));
-			List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(respostaSimulado.getIdUsuario().getId(),  idSimulado);
-			resultado.setDisciplinas(disciplinas);
+//			List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(respostaSimulado.getIdUsuario().getId(),  idSimulado);
+//			resultado.setDisciplinas(disciplinas);
 			respostas.add(resultado);
 		}
 		return respostas;
+	}
+	
+	private ResultadoSimuladoSalaCompletoResponse buscarResultadoSimulado(ResultadoSimuladoSalaRequest request) {
+		RespostaSimulado respostaSimulado = jpaRepository.consultarRespostaSimulado(request.getIdSimulado(), request.getIdAluno());
+		ResultadoSimuladoSalaCompletoResponse resultado = new ResultadoSimuladoSalaCompletoResponse();
+		resultado.setIdUsuario(respostaSimulado.getIdUsuario().getId());
+		resultado.setIdSimulado(respostaSimulado.getIdSimulado().getId());
+		resultado.setNome(respostaSimulado.getIdUsuario().getNome());
+		resultado.setDataEnvio(respostaSimulado.getDataEntrega());
+		resultado.setTipoSimulado(respostaSimulado.getIdSimulado().getTipoSimulado().codigo);
+		resultado.setResultadoGeral(createResultadoSimulado(request.getIdSimulado(), request.getIdAluno()));
+		resultado.setResultadoMatematica(createResultadoPorArea(request.getIdSimulado(), request.getIdAluno(), EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(request.getIdSimulado(), request.getIdAluno(), EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(request.getIdSimulado(), request.getIdAluno(), EArea.TECNOLOGIA_DA_COMPUTACAO));
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(request.getIdAluno(),  request.getIdSimulado());
+		resultado.setDisciplinas(disciplinas);
+		return resultado;
 	}
 	
 	public ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {

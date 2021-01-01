@@ -21,6 +21,8 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoGeralUsuarioRespons
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaCompletoResponse;
+import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoSalaResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuantitativo;
 import ifsc.sti.tcc.service.ResultadoService;
@@ -53,8 +55,8 @@ public class ResultadoApi {
 		return service.buscarRepostaSimulado(request);
     }
     
-    @ApiOperation(value = "Busca as respostadas de todos os simulados")
-    @RequestMapping(value = "/BuscarResultadosSimulado", method = RequestMethod.POST)
+    @ApiOperation(value = "Busca as respostadas de um determinado simulado")
+    @RequestMapping(value = "/BuscarResultadosSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>> buscarResultadosSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)
@@ -63,6 +65,18 @@ public class ResultadoApi {
 				.build();
 		return service.buscarRepostaSimuladoPorSala(request);
     }
+    
+    @ApiOperation(value = "Busca o resultado de um simulado confomre o simulado e o id do usuário")
+    @RequestMapping(value = "/BuscarResultadoSalaSimulado", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoSalaRequest request) {
+    	ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarRepostaSimulado(request);
+    }
+    
     
     @ApiOperation(value = "Busca o resultado geral conforme a prova Enade, Poscomp ou Personalizada")
     @RequestMapping(value = "/BuscarResultadoGeralPorProva", method = RequestMethod.POST)
