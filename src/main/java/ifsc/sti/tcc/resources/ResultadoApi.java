@@ -55,7 +55,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimulado(request);
     }
     
-    @ApiOperation(value = "Busca as respostadas de um determinado simulado")
+    @ApiOperation(value = "[*NOVO] Busca as respostadas de um determinado simulado")
     @RequestMapping(value = "/BuscarResultadosSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>> buscarResultadosSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
@@ -66,7 +66,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimuladoPorSala(request);
     }
     
-    @ApiOperation(value = "Busca o resultado de um simulado confomre o simulado e o id do usuário")
+    @ApiOperation(value = "[*NOVO] Busca o resultado de um simulado confomre o simulado e o id do usuário")
     @RequestMapping(value = "/BuscarResultadoSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoSalaRequest request) {
     	ResultadoService service = new ResultadoService
@@ -89,7 +89,7 @@ public class ResultadoApi {
 		return service.buscarRepostaGeralPorProvas(request);
     }
     
-    @ApiOperation(value = "Registra questões do simulado na base de dados")
+    @ApiOperation(value = "Busca as metricas gerais de um usuário")
     @GetMapping("/BuscarResultadoGeral")
 	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
 		ResultadoService service = new ResultadoService
@@ -123,8 +123,8 @@ public class ResultadoApi {
     	return service.buscarGabaritoUsuario(request.getIdSimulado(), request.getIdUsuario());
     }
     
-    @ApiOperation(value = "Busca o gabarito de simulado com as questões corretas")
-    @RequestMapping(value = "/BuscarGabaritoSimulado", method = RequestMethod.POST)
+    @ApiOperation(value = "[*NOVO] Busca o gabarito de simulado com as questões corretas, sem a resposta do usuário")
+    @RequestMapping(value = "/BuscarGabaritoSemResposta", method = RequestMethod.POST)
     public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
 				.Instance(respostaSimuladoRepository)
