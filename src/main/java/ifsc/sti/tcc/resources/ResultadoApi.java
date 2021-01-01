@@ -100,16 +100,16 @@ public class ResultadoApi {
 		return service.buscarRepostaGeralTodos(idUsuario);
     }
     
-    @ApiOperation(value = "Busca as metricas gerais de um usuário")
-    @GetMapping("/BuscarResultadoGeralSimulado")
-	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
-		ResultadoService service = new ResultadoService
-				.Instance(respostaSimuladoRepository)
-				.withUsuarioRepository(usuarioRepository)
-				.withSimuladoRepository(simuladoRepository)
-				.build();
-		return service.buscarRepostaGeralTodos(idUsuario);
-    }
+//    @ApiOperation(value = "Busca as metricas gerais de um usuário")
+//    @GetMapping("/BuscarResultadoGeralSimulado")
+//	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
+//		ResultadoService service = new ResultadoService
+//				.Instance(respostaSimuladoRepository)
+//				.withUsuarioRepository(usuarioRepository)
+//				.withSimuladoRepository(simuladoRepository)
+//				.build();
+//		return service.buscarRepostaGeralTodos(idUsuario);
+//    }
     
     @ApiOperation(value = "Busca o resultados dos ultimos simulados de um usuário")
     @GetMapping("/BuscarUltimosResultados")
@@ -157,15 +157,15 @@ public class ResultadoApi {
 		return service.buscarDesempenhoDisciplinas(idUsuario);
     }
     
-//    @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
-//    @RequestMapping(value = "/BuscarDesempenhoDisciplinasSimulado", method = RequestMethod.POST)
-//	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinasSimulado(@RequestBody ResultadoSimuladoRequest request) {
-//		ResultadoService service = new ResultadoService
-//				.Instance(respostaSimuladoRepository)
-//				.withUsuarioRepository(usuarioRepository)
-//				.withSimuladoRepository(simuladoRepository)
-//				.build();
-//		return service.buscarDesempenhoDisciplinas(request.getIdUsuario(), request.getIdSimulado());
-//    }
+    @ApiOperation(value = "Busca o desempenho das discplinas de um simulado")
+    @RequestMapping(value = "/BuscarDesempenhoDisciplinasSimulado", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<List<ResultadoDisciplinaQuantitativo>>> buscarDesempenhoDisciplinasSimulado(@RequestBody ResultadoSimuladoRequest request) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarDesempenhoDisciplinas(request.getIdUsuario(), request.getIdSimulado());
+    }
     
 }
