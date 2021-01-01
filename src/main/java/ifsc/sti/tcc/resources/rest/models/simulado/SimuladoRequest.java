@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SumuladoRequest {
+public class SimuladoRequest {
 	
 	@JsonProperty(value="Nome")
 	private String nome;
@@ -31,10 +31,10 @@ public class SumuladoRequest {
 	private Integer anoProva;
 	
 	@JsonProperty(value="ConfiguracaoPoscomp")
-	SumuladoPoscompRequest sumuladoConfigPoscomp;
+	SimuladoPoscompRequest sumuladoConfigPoscomp;
 	
 	@JsonProperty(value="ConfiguracaoEnade")
-	SumuladoEnadeRequest sumuladoConfigEnade;
+	SimuladoEnadeRequest sumuladoConfigEnade;
 	
 	@JsonProperty(value="IdSala")
 	Integer idSala;
@@ -103,19 +103,19 @@ public class SumuladoRequest {
 		this.anoProva = anoProva;
 	}
 
-	public SumuladoPoscompRequest getSumuladoConfigPoscomp() {
+	public SimuladoPoscompRequest getSumuladoConfigPoscomp() {
 		return sumuladoConfigPoscomp;
 	}
 
-	public void setSumuladoConfigPoscomp(SumuladoPoscompRequest sumuladoConfigPoscomp) {
+	public void setSumuladoConfigPoscomp(SimuladoPoscompRequest sumuladoConfigPoscomp) {
 		this.sumuladoConfigPoscomp = sumuladoConfigPoscomp;
 	}
 
-	public SumuladoEnadeRequest getSumuladoConfigEnade() {
+	public SimuladoEnadeRequest getSumuladoConfigEnade() {
 		return sumuladoConfigEnade;
 	}
 
-	public void setSumuladoConfigEnade(SumuladoEnadeRequest sumuladoConfigEnade) {
+	public void setSumuladoConfigEnade(SimuladoEnadeRequest sumuladoConfigEnade) {
 		this.sumuladoConfigEnade = sumuladoConfigEnade;
 	}
 

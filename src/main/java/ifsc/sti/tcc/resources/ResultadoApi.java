@@ -55,7 +55,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimulado(request);
     }
     
-    @ApiOperation(value = "[*NOVO] Busca as respostadas de um determinado simulado")
+    @ApiOperation(value = "[*NOVO] Busca todas as respostadas de um determinado simulado, ou seja, varias respostas de alunos")
     @RequestMapping(value = "/BuscarResultadosSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>> buscarResultadosSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
@@ -66,7 +66,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimuladoPorSala(request);
     }
     
-    @ApiOperation(value = "[*NOVO] Busca o resultado de um simulado confomre o simulado e o id do usuário")
+    @ApiOperation(value = "[*NOVO] Busca o resultado de um simulado conforme o simulado e o id do usuário")
     @RequestMapping(value = "/BuscarResultadoSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoSalaRequest request) {
     	ResultadoService service = new ResultadoService

@@ -2,7 +2,7 @@ package ifsc.sti.tcc.resources.rest.models.simulado;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SumuladoEnadeRequest {
+public class SimuladoEnadeRequest {
 	
 	@JsonProperty(value="QtdFormacaoGeral")
 	private int qtdFormacaoGeral;

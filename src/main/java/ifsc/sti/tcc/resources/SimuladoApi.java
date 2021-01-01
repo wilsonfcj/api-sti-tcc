@@ -23,8 +23,8 @@ import ifsc.sti.tcc.resources.rest.models.resultado.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
-import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
-import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoSalaRequest;
 import ifsc.sti.tcc.service.SimuladoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,7 +58,7 @@ public class SimuladoApi {
     
     @ApiOperation(value = "Gera um simulado para ser respondido")
 	@RequestMapping(value = "/GerarSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> salvarRespostaSimulado(@RequestBody SumuladoRequest request) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> salvarRespostaSimulado(@RequestBody SimuladoRequest request) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
@@ -106,7 +106,7 @@ public class SimuladoApi {
 	
 	@ApiOperation(value = "Busca um simulado por seu Identificador")
 	@RequestMapping(value = "/BuscarSimuladosPorSala", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarUsuarioPorIdUsuario(@RequestBody SumuladoSalaRequest sumuladoSalaRequest) {
+	public ResponseEntity<ResponseBase<List<SimuladoBaseResponse>>> buscarUsuarioPorIdUsuario(@RequestBody SimuladoSalaRequest sumuladoSalaRequest) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
@@ -120,6 +120,20 @@ public class SimuladoApi {
 	@ApiOperation(value = "Salva as respostas do simulado e gera o resultado")
 	@RequestMapping(value = "/SalvarRespostaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> salvarRespostaSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
+		SimuladoService lSimuladoService = new SimuladoService
+				.Instance(simuladoRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSalaRepository(salaRepository)
+				.withRespostaSimuladoRepository(respostaSimuladoRepository)
+				.build();
+		return lSimuladoService.salvarRespostaSimulado(respostaSimuladoRequest);
+	}
+	
+	
+	@ApiOperation(value = "Remove o simulado por seu id")
+	@RequestMapping(value = "/DeletarSimulado", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> deletarSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)

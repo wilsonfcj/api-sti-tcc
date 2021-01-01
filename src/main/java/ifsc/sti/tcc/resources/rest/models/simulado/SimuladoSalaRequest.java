@@ -2,7 +2,7 @@ package ifsc.sti.tcc.resources.rest.models.simulado;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SumuladoSalaRequest {
+public class SimuladoSalaRequest {
 	
 	@JsonProperty(value="IdSala")
 	private Long idSala;

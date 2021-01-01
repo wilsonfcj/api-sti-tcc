@@ -36,7 +36,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.simulado.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoCompletoResponse;
-import ifsc.sti.tcc.resources.rest.models.simulado.SumuladoRequest;
+import ifsc.sti.tcc.resources.rest.models.simulado.SimuladoRequest;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2002;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2003;
 import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2004;
@@ -362,7 +362,7 @@ public class SimuladoService {
 		return resultadoService;
 	}
 	
-	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> gerarSimulado(SumuladoRequest sumuladoRequest) {
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> gerarSimulado(SimuladoRequest sumuladoRequest) {
 		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
 		try {
 			SimuladoCompletoResponse simuladoResponse = null;
@@ -402,7 +402,7 @@ public class SimuladoService {
 		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
-	private SimuladoCompletoResponse saveSimuladoResponse(SumuladoRequest sumuladoRequest, List<Questao> questoes) {
+	private SimuladoCompletoResponse saveSimuladoResponse(SimuladoRequest sumuladoRequest, List<Questao> questoes) {
 		Sala sala = null;
 		if(sumuladoRequest.getIdSala() != null) {
 			sala = salaRepository.findById((long) sumuladoRequest.getIdSala());
@@ -412,7 +412,7 @@ public class SimuladoService {
 		return simuladoResponse;
 	}
 	
-	private SimuladoCompletoResponse gerarSimuladEnade(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladEnade(SimuladoRequest sumuladoRequest) {
 		List<Questao> questoes = gerarQuestaoPorQuantidadeEnade(sumuladoRequest.getAnoProva());
 		if(questoes.isEmpty()) {
 			return null;
@@ -420,7 +420,7 @@ public class SimuladoService {
 		return saveSimuladoResponse(sumuladoRequest, questoes);
 	}
 	
-	private SimuladoCompletoResponse gerarSimuladPoscom(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladPoscom(SimuladoRequest sumuladoRequest) {
 		List<Questao> questoes = gerarQuestaoPorQuantidadePoscomp(sumuladoRequest.getAnoProva());
 		if(questoes.size() == 0) {
 			return null;
@@ -428,7 +428,7 @@ public class SimuladoService {
 		return saveSimuladoResponse(sumuladoRequest, questoes);
 	}
 	
-	private SimuladoCompletoResponse gerarSimuladoPersonalizado(SumuladoRequest sumuladoRequest) {
+	private SimuladoCompletoResponse gerarSimuladoPersonalizado(SimuladoRequest sumuladoRequest) {
 		List<Questao> questoes = new ArrayList<Questao>();
 		List<Questao> questoesEnade = gerarQuestaoEnadePersonalizada(sumuladoRequest);
 		List<Questao> questoesPoscomp = gerarQuestaoPoscompPersonalizada(sumuladoRequest);
@@ -480,7 +480,7 @@ public class SimuladoService {
 			questaoRepository.consultEnadeDiscursiva(formacao, quantidadeQuestao); 
 	}
 	
-	private Simulado saveSimulado(SumuladoRequest sumuladoRequest, List<Questao> questoes, Sala  sala) {
+	private Simulado saveSimulado(SimuladoRequest sumuladoRequest, List<Questao> questoes, Sala  sala) {
 		Simulado simulado = new Simulado();
 		simulado.setNome(sumuladoRequest.getNome());
 		simulado.setDescricao(sumuladoRequest.getDescricao());
@@ -526,7 +526,7 @@ public class SimuladoService {
 		return questoes;
 	}
 	
-	private List<Questao> gerarQuestaoPoscompPersonalizada(SumuladoRequest sumuladoRequest) {
+	private List<Questao> gerarQuestaoPoscompPersonalizada(SimuladoRequest sumuladoRequest) {
 		List<Questao> questoes = new ArrayList<Questao>();
 		if(sumuladoRequest.getSumuladoConfigPoscomp() != null) {
 			if(sumuladoRequest.getSumuladoConfigPoscomp().getQtdMatematica() > 0) {
@@ -553,7 +553,7 @@ public class SimuladoService {
 		return questoes;
 	}
 	
-	private List<Questao> gerarQuestaoEnadePersonalizada(SumuladoRequest sumuladoRequest) {
+	private List<Questao> gerarQuestaoEnadePersonalizada(SimuladoRequest sumuladoRequest) {
 		List<Questao> questoes = new ArrayList<Questao>();
 		if(sumuladoRequest.getSumuladoConfigEnade() != null) {
 			int formacaoGeral = sumuladoRequest.getSumuladoConfigEnade().getQtdFormacaoGeral();
