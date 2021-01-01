@@ -39,7 +39,7 @@ public class QuestaoRespostaMapper extends MapperUtil<Questao, QuestaoResponse> 
 		objeto.setImagem(aObject.getImagem());
 		objeto.setImagemQuestao(aObject.getImagemQuestao());
 		objeto.setNumeroQuestao(aObject.getNumeroQuestao());
-		((QustaoGabaritoAlternativaResponse)objeto).isCorreta(true);
+
 		return objeto;
 	}
 	
