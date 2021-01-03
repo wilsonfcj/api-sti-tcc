@@ -57,7 +57,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimulado(request);
     }
     
-    @ApiOperation(value = "[*NOVO] Busca todas as respostadas de um determinado simulado, ou seja, varias respostas de alunos")
+    @ApiOperation(value = "Busca todas as respostadas de um determinado simulado, ou seja, varias respostas de alunos")
     @RequestMapping(value = "/BuscarResultadosSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<List<ResultadoSimuladoSalaResponse>>> buscarResultadosSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
@@ -68,7 +68,7 @@ public class ResultadoApi {
 		return service.buscarRepostaSimuladoPorSala(request);
     }
     
-    @ApiOperation(value = "[*NOVO] Busca o resultado de um simulado conforme o simulado e o id do usuário")
+    @ApiOperation(value = "Busca o resultado de um simulado conforme o simulado e o id do usuário")
     @RequestMapping(value = "/BuscarResultadoSalaSimulado", method = RequestMethod.POST)
 	public ResponseEntity<ResponseBase<ResultadoSimuladoSalaCompletoResponse>> buscarResultadoSimulado(@RequestBody ResultadoSimuladoSalaRequest request) {
     	ResultadoService service = new ResultadoService
@@ -136,7 +136,7 @@ public class ResultadoApi {
     	return service.buscarGabaritoUsuario(request.getIdSimulado(), request.getIdUsuario());
     }
     
-    @ApiOperation(value = "[*NOVO] Busca o gabarito de simulado com as questões corretas, sem a resposta do usuário")
+    @ApiOperation(value = "Busca o gabarito de simulado com as questões corretas, sem a resposta do usuário")
     @RequestMapping(value = "/BuscarGabaritoSemResposta", method = RequestMethod.POST)
     public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarGabaritoSimulado(@RequestBody ResultadoSimuladoRequest request) {
     	ResultadoService service = new ResultadoService
