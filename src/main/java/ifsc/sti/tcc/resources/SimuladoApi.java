@@ -20,6 +20,7 @@ import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.DeletarSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoSalaRequest;
@@ -130,10 +131,9 @@ public class SimuladoApi {
 		return lSimuladoService.salvarRespostaSimulado(respostaSimuladoRequest);
 	}
 	
-	
 	@ApiOperation(value = "Remove o simulado por seu id")
-	@RequestMapping(value = "/DeletarSimulado", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<ResultadoSimuladoResponse>> deletarSimulado(@RequestBody RespostaSimuladoRequest respostaSimuladoRequest) {
+	@RequestMapping(value = "/DeletarSimulado", method = RequestMethod.DELETE)
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> deletarSimulado(@RequestBody DeletarSimuladoRequest respostaSimuladoRequest) {
 		SimuladoService lSimuladoService = new SimuladoService
 				.Instance(simuladoRepository)
 				.withQuestaoRepository(questaoRepository)
@@ -141,7 +141,7 @@ public class SimuladoApi {
 				.withSalaRepository(salaRepository)
 				.withRespostaSimuladoRepository(respostaSimuladoRepository)
 				.build();
-		return lSimuladoService.salvarRespostaSimulado(respostaSimuladoRequest);
+		return lSimuladoService.deletarSimulado(respostaSimuladoRequest);
 	}
 
 }

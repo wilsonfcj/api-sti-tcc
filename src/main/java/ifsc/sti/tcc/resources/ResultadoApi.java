@@ -21,10 +21,12 @@ import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoDisciplinaQuan
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralSalaResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralUsuarioResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoSalaRequest;
 import ifsc.sti.tcc.service.ResultadoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -166,6 +168,18 @@ public class ResultadoApi {
 				.withSimuladoRepository(simuladoRepository)
 				.build();
 		return service.buscarDesempenhoDisciplinas(request.getIdUsuario(), request.getIdSimulado());
+    }
+    
+    @ApiOperation(value = "[*NOVO] Busca as metricas conforme as salas dos usuários")
+    @RequestMapping(value = "/BuscarResultadoGeralPorSala", method = RequestMethod.POST)
+	public ResponseEntity<ResponseBase<ResultadoGeralSalaResponse>> buscarResultadoGeral(@RequestBody SimuladoSalaRequest request) {
+		ResultadoService service = new ResultadoService
+				.Instance(respostaSimuladoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.build();
+		return service.buscarRepostaGeralPorSala(request.getIdUsuario(), request.getIdSala());
     }
     
 }

@@ -31,6 +31,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoProvaRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.resultado.request.ResultadoSimuladoSalaRequest;
+import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralSalaResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralUsuarioResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaCompletoResponse;
@@ -196,6 +197,26 @@ public class ResultadoService {
 			baseResponse = new ResponseBase<>(false, "Não foi possível buscar o resultado do simulado", null);
 		}
 		return new ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>>(baseResponse, HttpStatus.OK);
+	}
+	
+	
+	public ResponseEntity<ResponseBase<ResultadoGeralSalaResponse>> buscarRepostaGeralPorSala(long idUsuario, long idSala) {
+		ResponseBase<ResultadoGeralSalaResponse> baseResponse = new ResponseBase<>();
+		try {
+			ResultadoGeralSalaResponse lRespostaSimulado = buscarResultadoTodosSimulado(idUsuario, idSala);
+			if(lRespostaSimulado == null) {
+				baseResponse = new ResponseBase<>(false, "Resultado simulado não encontrado", null);
+			} else {
+				if(loadUsuarioById(idUsuario) == null){
+					baseResponse = new ResponseBase<>(false, "Usuário não encontrado", null);
+				} else {
+					baseResponse = new ResponseBase<>(true, "Resultados dos simulado obtido com sucesso", lRespostaSimulado);
+				}
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível buscar o resultado do simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<ResultadoGeralSalaResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
 	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarRepostaGeralPorProvas(ResultadoSimuladoProvaRequest request) {
@@ -384,19 +405,37 @@ public class ResultadoService {
 		return resultado;
 	}
 	
-//	private ResultadoResultadoSimuladoGeral buscarResultadoSimuladoGeral(long idUsuario) {
-//		Usuario usuario = loadUsuarioById(idUsuario);
-//		ResultadoGeralUsuarioResponse resultado = new ResultadoGeralUsuarioResponse();
-//		resultado.setNome(usuario.getNome());
-//		resultado.setIdUsuario(usuario.getId());
-//		resultado.setResultadoGeral(createResultadoTodosGeral(idUsuario));
-//		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(idUsuario));
-//		resultado.setResultadoMatematica(createResultadoTodosPorArea(idUsuario, EArea.MATEMATICA));
-//		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorArea(idUsuario, EArea.FUNDAMENTOS_DE_COMPUTACAO));
-//		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorArea(idUsuario, EArea.TECNOLOGIA_DA_COMPUTACAO));
-//		return resultado;
-//	}
+	private ResultadoGeralSalaResponse buscarResultadoTodosSimulado(long idUsuario, long idSala) {
+		Usuario usuario = loadUsuarioById(idUsuario);
+		ResultadoGeralSalaResponse resultado = new ResultadoGeralSalaResponse();
+		resultado.setNome(usuario.getNome());
+		resultado.setIdUsuario(usuario.getId());
+		resultado.setResultadoGeral(createResultadoTodosGeralSala(idUsuario, idSala));
+		resultado.setQuantidadeSimulados(simuladoRepository.buscarSimuladosPorIdSala(idSala).size());
+		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidosSala(idSala));
+		resultado.setResultadoMatematica(createResultadoTodosPorAreaPorSala(idUsuario, idSala, EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoTodosPorAreaPorSala(idUsuario, idSala, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoTodosPorAreaPorSala(idUsuario, idSala, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorSala(idUsuario,  idSala);
+		resultado.setDisciplinas(disciplinas);
+		return resultado;
+	}
 	
+	public ResultadoQuantitativo createResultadoTodosGeralSala(long idUsuario, long idSala) {
+		int erros = jpaRepository.consultarErrosSimuladoTotalSala(idSala);
+		int acertos = jpaRepository.consultarAcertosSimuladoTotalSala(idSala);
+		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoTotalSala(idSala);
+		int total = jpaRepository.consultarTotalQuestaoesRespondidasSala(idSala);
+		
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
+	}
+	
+
 	public ResultadoQuantitativo createResultadoTodosGeral(long idUsuario) {
 		int erros = jpaRepository.consultarErrosSimuladoTotal(idUsuario);
 		int acertos = jpaRepository.consultarAcertosSimuladoTotal(idUsuario);
@@ -425,6 +464,20 @@ public class ResultadoService {
 		return resultado;
 	}
 	
+	public ResultadoQuantitativo createResultadoTodosPorAreaPorSala(long idUsuario, long idSala, EArea area) {
+		int erros = jpaRepository.consultarErroSalaPorArea(idSala, area.codigo);
+		int acertos = jpaRepository.consultarAcertosSalaPorArea(idSala, area.codigo);
+		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSalaPorArea(idSala, area.codigo);
+		int total = jpaRepository.consultarTotalQuestaoesSalaPorArea(idSala, area.codigo);
+		
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
+	}
+	
 //	POR PROVA
 	
 	private ResultadoGeralUsuarioResponse buscarResultadoGeralPorTipoProva(ResultadoSimuladoProvaRequest request) {
@@ -433,7 +486,6 @@ public class ResultadoService {
 		resultado.setNome(usuario.getNome());
 		resultado.setIdUsuario(usuario.getId());
 		resultado.setResultadoGeral(createResultadoGeralPorTipoProva(request));
-		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(request.getIdUsuario(), request.getTipoSimulado()));
 		resultado.setSimuladosRespondidos(jpaRepository.consultarQtdSimuladosRespondidos(request.getIdUsuario(), request.getTipoSimulado()));
 		resultado.setResultadoMatematica(createResultadoGeralPorTipoProva(request, EArea.MATEMATICA));
 		resultado.setResultadoFundamentoComputacao(createResultadoGeralPorTipoProva(request, EArea.FUNDAMENTOS_DE_COMPUTACAO));
@@ -578,6 +630,14 @@ public class ResultadoService {
 		addAcertos(acertos, values);
 		addNaoRespondidas(naoRespondidas, values);
 		return criarResultadoDisciplinas(values);
+	}
+	
+	private List<ResultadoDisciplinaQuantitativo> getDisciplinasResultadoPorSala(long idUsuario, long idSala) {
+		List<Object[]> disciplinas = jpaRepository.disciplinaSala(idSala);
+		List<Object[]> erros = jpaRepository.resultadoDisciplinaSalaErro(idSala);
+		List<Object[]> acertos = jpaRepository.resultadoDisciplinaSalaAcerto(idSala);
+		List<Object[]> naoRespondidas = jpaRepository.resultadoDisciplinaSalaNaoRespondida(idSala);
+		return gerarResultadoDisciplinas(disciplinas, erros, acertos, naoRespondidas);
 	}
 	
 	private List<ResultadoDisciplinaQuantitativo> getDisciplinasResultadoPorUsuario(long idUsuario, long idSimulado) {

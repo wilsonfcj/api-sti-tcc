@@ -12,7 +12,7 @@ public class ResultadoGeralUsuarioResponse extends ResultadoSimuladoBase {
 	@JsonProperty(value="Nome")
 	private String nome;
 	
-	@JsonProperty(value="SimuladosRespondidos")
+	@JsonProperty(value="RespostasEnviadas")
 	private Integer simuladosRespondidos;
 	
 	public String getNome() {

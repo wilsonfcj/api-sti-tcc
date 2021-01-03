@@ -33,6 +33,7 @@ import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.question.response.QuestaoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.base.ResultadoQuantitativo;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.request.DeletarSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaSimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoBaseResponse;
@@ -295,6 +296,33 @@ public class SimuladoService {
 			baseResponse = new ResponseBase<>(false, "Não foi possível salvar a resposta do simulado", null);
 		}
 		return new ResponseEntity<ResponseBase<ResultadoSimuladoResponse>>(baseResponse, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseBase<SimuladoCompletoResponse>> deletarSimulado(DeletarSimuladoRequest request) {
+		ResponseBase<SimuladoCompletoResponse> baseResponse = new ResponseBase<>();
+		try {
+			Usuario usuario = loadUsuarioById(request.getIdUsuario());
+			Simulado simulado = loadSimuladoById(request.getIdSimulado());
+			if(usuario == null) {
+				baseResponse = new ResponseBase<>(false, "Usuário não econtrado", null);
+			} else if(simulado == null) {
+				baseResponse = new ResponseBase<>(false, "Simulado não econtrado", null);
+			} else if(usuario.getId() != simulado.getIdUsuario().getId()) {
+				baseResponse = new ResponseBase<>(false, "Esse simulado não pertence ao seu usuário", null);
+			} else {
+				jpaRepository.deleteSimuladoById(request.getIdSimulado());
+				Simulado simulado2 = loadSimuladoById(request.getIdSimulado());
+				if(simulado2 != null) {
+					SimuladoCompletoResponse simuladoResponse = new SimuladoMapper().transform(simulado);
+					baseResponse = new ResponseBase<>(true, "Simulado removido com sucesso", simuladoResponse);
+				} else {
+					baseResponse = new ResponseBase<>(false, "Não foi possível remover o simulado", null);
+				}
+			}
+		} catch (Exception e) {
+			baseResponse = new ResponseBase<>(false, "Não foi possível remover a sala de simulado", null);
+		}
+		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
 	}
 	
 	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {

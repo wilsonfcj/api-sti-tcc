@@ -18,6 +18,7 @@ import ifsc.sti.tcc.repository.SalaRepository;
 import ifsc.sti.tcc.repository.SimuladoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
+import ifsc.sti.tcc.resources.rest.models.sala.request.DeletarSalaRequest;
 import ifsc.sti.tcc.resources.rest.models.sala.request.ParticiparSalaRequest;
 import ifsc.sti.tcc.resources.rest.models.sala.request.SalaRequest;
 import ifsc.sti.tcc.resources.rest.models.sala.response.SalaResponse;
@@ -116,5 +117,19 @@ public class SalaApi {
 //   		return null; // lSimuladoService.salvarTodasQuestoes();
 //    }
 
+    
+    @ApiOperation(value = "Remove o simulado por seu id")
+	@RequestMapping(value = "/DeletarSala", method = RequestMethod.DELETE)
+	public ResponseEntity<ResponseBase<SalaResponse>> deletarSimulado(@RequestBody DeletarSalaRequest request) {
+    	SalaService salaService = new SalaService
+    			.Instance(salaRepository)
+				.withQuestaoRepository(questaoRepository)
+				.withUsuarioRepository(usuarioRepository)
+				.withSimuladoRepository(simuladoRepository)
+				.withInstituicaoRepository(instituicaoRepository)
+				.withRespostaSimuladoRepository(respostaSimuladoRepository)
+				.build();
+		return salaService.deletarSala(request);
+	}
 
 }
