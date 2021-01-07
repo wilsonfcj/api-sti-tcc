@@ -102,17 +102,6 @@ public class ResultadoApi {
 		return service.buscarRepostaGeralTodos(idUsuario);
     }
     
-//    @ApiOperation(value = "Busca as metricas gerais de um usuário")
-//    @GetMapping("/BuscarResultadoGeralSimulado")
-//	public ResponseEntity<ResponseBase<ResultadoGeralUsuarioResponse>> buscarResultadoGeral(long idUsuario) {
-//		ResultadoService service = new ResultadoService
-//				.Instance(respostaSimuladoRepository)
-//				.withUsuarioRepository(usuarioRepository)
-//				.withSimuladoRepository(simuladoRepository)
-//				.build();
-//		return service.buscarRepostaGeralTodos(idUsuario);
-//    }
-    
     @ApiOperation(value = "Busca o resultados dos ultimos simulados de um usuário")
     @GetMapping("/BuscarUltimosResultados")
 	public ResponseEntity<ResponseBase<List<ResultadoSimuladoResponse>>> buscarResultadoSimulado(long idUsuario) {
