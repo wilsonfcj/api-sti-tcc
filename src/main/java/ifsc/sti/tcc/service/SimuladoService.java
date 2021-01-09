@@ -530,9 +530,9 @@ public class SimuladoService {
 	
 	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
-		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
-		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 3, anoProva);
+		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
 		questoes.addAll(questaoPart1);
 		questoes.addAll(questaoPart2);
 		questoes.addAll(questaoPart3);

@@ -92,32 +92,6 @@ public class SalaApi {
 		return lSalaService.participarSala(request);
     }
     
-//    @ApiOperation(value = "Deleta uma sala de simulado por seu id")
-//    @RequestMapping(value = "/DeletarSalaDeSimulado", method = RequestMethod.POST)
-// 	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> deletarSalaDeSimulado(@RequestBody SimuladoSalaRequest request) {
-//    	SalaService lSalaService = new SalaService
-//				.Instance(salaRepository)
-//				.withQuestaoRepository(questaoRepository)
-//				.withUsuarioRepository(usuarioRepository)
-//				.withSimuladoRepository(simuladoRepository)
-//				.withInstituicaoRepository(instituicaoRepository)
-//				.withRespostaSimuladoRepository(respostaSimuladoRepository)
-//				.build();
-// 		return lSalaService.deletarSala(request);
-//  }
-//    
-    
-//    @ApiOperation(value = "Registra questões do simulado na base de dados")
-//   	@GetMapping("/BuscarSalaPorCodigo")
-//   	public ResponseEntity<ResponseBase<List<QuestaoResponse>>> buscarSalaPorCodigo() {
-//   		SimuladoService lSimuladoService = new SimuladoService
-//   				.Instance(simuladoRepository)
-//   				.withQuestaoRepository(questaoRepository)
-//   				.build();
-//   		return null; // lSimuladoService.salvarTodasQuestoes();
-//    }
-
-    
     @ApiOperation(value = "Remove o simulado por seu id")
 	@RequestMapping(value = "/DeletarSala", method = RequestMethod.DELETE)
 	public ResponseEntity<ResponseBase<SalaResponse>> deletarSimulado(@RequestBody DeletarSalaRequest request) {
