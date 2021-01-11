@@ -28,7 +28,7 @@ public class UsuarioRequest {
 	private String senha;
 
 	public String getCpf() {
-		return cpf;
+		return cpf.replace(".", "").replace("-", "");
 	}
 
 	public void setCpf(String cpf) {
@@ -60,7 +60,7 @@ public class UsuarioRequest {
 	}
 
 	public String getFone() {
-		return fone;
+		return fone.replace("(", "").replace(")", "").replace("-", "").trim();
 	}
 
 	public void setFone(String fone) {
