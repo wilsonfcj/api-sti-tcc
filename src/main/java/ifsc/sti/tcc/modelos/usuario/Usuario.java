@@ -33,7 +33,6 @@ public class Usuario implements Serializable {
 	private String senha;
 	private Long instituicao;
 	private Boolean ativo;
-//	private Imagem imagemPerfil;
 	
 	public Long getId() {
 		return id;

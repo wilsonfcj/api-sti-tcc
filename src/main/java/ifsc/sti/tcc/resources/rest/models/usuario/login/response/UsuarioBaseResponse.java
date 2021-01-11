@@ -4,9 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import ifsc.sti.tcc.resources.rest.models.instituicao.response.InstituicaoUserResponse;
-
-public abstract class UsuarioBaseResponse {
+public class UsuarioBaseResponse {
 	
 	@JsonProperty(value="IdUsuario")
 	private Long id;
@@ -25,15 +23,6 @@ public abstract class UsuarioBaseResponse {
 	
 	@JsonProperty(value="Telefone")
 	private String fone;
-	
-	@JsonProperty(value="Instituicao")
-	private InstituicaoUserResponse instituicao;
-	
-	@JsonProperty(value="ImagemUsuario")
-	private String imagemPerfil;
-	
-	@JsonProperty(value="TipoUsuario")
-	private Integer perfilUsuario;
 	
 	public Long getId() {
 		return id;
@@ -81,29 +70,5 @@ public abstract class UsuarioBaseResponse {
 	
 	public void setFone(String fone) {
 		this.fone = fone;
-	}
-	
-	public InstituicaoUserResponse getInstituicao() {
-		return instituicao;
-	}
-	
-	public void setInstituicao(InstituicaoUserResponse instituicao) {
-		this.instituicao = instituicao;
-	}
-	
-	public String getImagemPerfil() {
-		return imagemPerfil;
-	}
-	
-	public void setImagemPerfil(String imagemPerfil) {
-		this.imagemPerfil = imagemPerfil;
-	}
-
-	public Integer getPerfilUsuario() {
-		return perfilUsuario;
-	}
-
-	public void setPerfilUsuario(Integer perfilUsuario) {
-		this.perfilUsuario = perfilUsuario;
 	}
 }
