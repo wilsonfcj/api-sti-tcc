@@ -1,7 +1,6 @@
 package ifsc.sti.tcc.resources.rest.models.usuario.cadastro;
 
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

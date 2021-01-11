@@ -11,11 +11,10 @@ public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 		Usuario usuario = new Usuario();
 		usuario.setCpf(aObject.getCpf());
 		usuario.setEmail(aObject.getEmail());
-		usuario.setFone(aObject.getFone());
+		usuario.setFone(aObject.getFone().replace("(", "").replace(")", "").replace("-", "").trim());
 		usuario.setNascimento(aObject.getNascimento());
 		usuario.setNome(aObject.getNome());
 		usuario.setSenha(aObject.getSenha());
-		usuario.setInstituicao(aObject.getInstituicao());
 		return usuario;
 	}
 
@@ -23,7 +22,7 @@ public class AlterarMapper extends MapperUpdateUtil<UsuarioRequest, Usuario> {
 	public Usuario transform(Usuario aObject, UsuarioRequest aObject2) {
 		aObject.setNome(aObject2.getNome());
 		aObject.setEmail(aObject2.getEmail());
-		aObject.setFone(aObject2.getFone());
+		aObject.setFone(aObject2.getFone().replace("(", "").replace(")", "").replace("-", "").trim());
 		aObject.setNascimento(aObject2.getNascimento());
 		aObject.setSenha(aObject2.getSenha());
 		return aObject;

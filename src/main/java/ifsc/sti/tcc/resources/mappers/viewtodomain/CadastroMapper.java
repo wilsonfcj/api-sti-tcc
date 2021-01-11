@@ -16,7 +16,6 @@ public class CadastroMapper extends MapperUtil<UsuarioRequest, Usuario> {
 		usuario.setNascimento(aObject.getNascimento());
 		usuario.setNome(aObject.getNome());
 		usuario.setSenha(aObject.getSenha());
-		usuario.setInstituicao(aObject.getInstituicao());
 		return usuario;
 	}
 
