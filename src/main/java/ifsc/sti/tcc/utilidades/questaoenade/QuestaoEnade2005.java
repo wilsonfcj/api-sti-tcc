@@ -361,8 +361,8 @@ public class QuestaoEnade2005 {
         questaoAlternativa15.setAlternativasA("$O(n^{2})$");
         questaoAlternativa15.setAlternativasB("$O(n^{2n})$");
         questaoAlternativa15.setAlternativasC("$O(2^{n})$");
-        questaoAlternativa15.setAlternativasD("$O(log\\\\,\\\\,n \\\\times log\\\\,\\\\,n)$");
-        questaoAlternativa15.setAlternativasE("$O(n \\\\times log\\\\,\\\\,n)$");
+        questaoAlternativa15.setAlternativasD("$O(log\\,\\,n \\times log\\,\\,n)$");
+        questaoAlternativa15.setAlternativasE("$O(n \\times log\\,\\,n)$");
         questaoAlternativa15.setNumeroQuestao(NUMEROQUESTAO);
 
         NUMEROQUESTAO++;
@@ -441,9 +441,9 @@ public class QuestaoEnade2005 {
         questaoAlternativa19.setId(INICIOQUESTAO.longValue());
         questaoAlternativa19.setAno(ANO);
         questaoAlternativa19.setDescricao("Julgue os itens seguintes.\n" +
-                "$\\newline$I $(\\\\forall x\\\\,\\\\,P(x))\\\\vee(\\\\forall x\\\\,\\\\neg P(x))$ é uma sentença válida porque existe uma interpretação que a torna verdadeira.\n" +
-                "$\\newline$II A frase “Se um carro é mais caro que todos os carros nacionais, ele deve ser alemão” pode ser traduzida pela seguinte sentença: $\\\\forall x\\\\,\\\\, carro(x)\\\\wedge \\\\forall y[carro(y)\\\\wedge fabricado(y,Brasil)\\\\wedge (preco(x) > preco(y)) \\\\Rightarrow fabricado(x, Alemanha).$\n" +
-                "$\\newline$III A frase “Existe um aluno que gosta de todas as disciplinas difíceis” pode ser traduzida por: $\\\\exists x \\\\,\\\\, aluno(x) \\\\wedge \\\\forall y[ disciplina(y) \\\\wedge dificil(y) \\\\wedge gosta(x,y).$\n" +
+                "$\\newline$I $(\\forall x\\,\\,P(x))\\vee(\\forall x\\,\\neg P(x))$ é uma sentença válida porque existe uma interpretação que a torna verdadeira.\n" +
+                "$\\newline$II A frase “Se um carro é mais caro que todos os carros nacionais, ele deve ser alemão” pode ser traduzida pela seguinte sentença: $\\forall x\\,\\, carro(x)\\wedge \\forall y[carro(y)\\wedge fabricado(y,Brasil)\\wedge (preco(x) > preco(y)) \\Rightarrow fabricado(x, Alemanha).$\n" +
+                "$\\newline$III A frase “Existe um aluno que gosta de todas as disciplinas difíceis” pode ser traduzida por: $\\exists x \\,\\, aluno(x) \\wedge \\forall y[ disciplina(y) \\wedge dificil(y) \\wedge gosta(x,y).$\n" +
                 "$\\newline$Assinale a opção correta.");
         questaoAlternativa19.setArea(EArea.MATEMATICA);
         questaoAlternativa19.setTipoFormcao(EFormacao.ESPECIFICA);
@@ -849,7 +849,7 @@ public class QuestaoEnade2005 {
         QuestaoAlternativa questaoAlternativa36 = new QuestaoAlternativa();
         questaoAlternativa36.setId(INICIOQUESTAO.longValue());
         questaoAlternativa36.setAno(ANO);
-        questaoAlternativa36.setDescricao("João, ao tentar consertar o módulo eletrônico de um carrinho de brinquedos, levantou as características de um pequeno circuito digital incluso no módulo. Verificou que o circuito tinha dois bits de entrada, $x_{0}\\\\,\\\\,e\\\\,\\\\,x_{1}$, e um bit de saída. Os bits $x_{0}\\\\,\\\\,e\\\\,\\\\,x_{1}$ eram utilizados para representar valores de inteiros de 0 a 3($x_{0}$ , o bit menos significativo e $x_{1}$, o bit mais significativo). Após testes, João verificou que a saída do circuito é 0 para todos os valores de entrada, exceto para o valor 2.\n" +
+        questaoAlternativa36.setDescricao("João, ao tentar consertar o módulo eletrônico de um carrinho de brinquedos, levantou as características de um pequeno circuito digital incluso no módulo. Verificou que o circuito tinha dois bits de entrada, $x_{0}\\,\\,e\\,\\,x_{1}$, e um bit de saída. Os bits $x_{0}\\,\\,e\\,\\,x_{1}$ eram utilizados para representar valores de inteiros de 0 a 3($x_{0}$ , o bit menos significativo e $x_{1}$, o bit mais significativo). Após testes, João verificou que a saída do circuito é 0 para todos os valores de entrada, exceto para o valor 2.\n" +
                 "Qual das expressões a seguir representa adequadamente o circuito analisado por João?");
         questaoAlternativa36.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa36.setTipoFormcao(EFormacao.ESPECIFICA);
@@ -857,11 +857,11 @@ public class QuestaoEnade2005 {
         questaoAlternativa36.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
         questaoAlternativa36.setAlternativaCorreta("c");
 
-        questaoAlternativa36.setAlternativasA("$x_{0}\\\\,\\\\,and(not\\\\,\\\\,x_{1})$");
-        questaoAlternativa36.setAlternativasB("$(not\\\\,\\\\,x_{0})\\\\,or\\\\,(not\\\\,\\\\,x_{1})$");
-        questaoAlternativa36.setAlternativasC("$(not\\\\,\\\\,x_{0})\\\\,\\\\,and\\\\,\\\\,x_{1}$");
-        questaoAlternativa36.setAlternativasD("$x_{0}\\\\,\\\\,and\\\\,\\\\,x_{1}$");
-        questaoAlternativa36.setAlternativasE("$x_{0}\\\\,\\\\,or\\\\,\\\\,(not\\\\,\\\\,x_{1})$");
+        questaoAlternativa36.setAlternativasA("$x_{0}\\,\\,and(not\\,\\,x_{1})$");
+        questaoAlternativa36.setAlternativasB("$(not\\,\\,x_{0})\\,or\\,(not\\,\\,x_{1})$");
+        questaoAlternativa36.setAlternativasC("$(not\\,\\,x_{0})\\,\\,and\\,\\,x_{1}$");
+        questaoAlternativa36.setAlternativasD("$x_{0}\\,\\,and\\,\\,x_{1}$");
+        questaoAlternativa36.setAlternativasE("$x_{0}\\,\\,or\\,\\,(not\\,\\,x_{1})$");
         questaoAlternativa36.setNumeroQuestao(NUMEROQUESTAO);
 
         NUMEROQUESTAO++;
@@ -1164,11 +1164,11 @@ public class QuestaoEnade2005 {
         questaoAlternativa49.setDisciplina(EDisciplina.MATEMÁTICA_DISCRETA);
         questaoAlternativa49.setAlternativaCorreta("c");
 
-        questaoAlternativa49.setAlternativasA("$A(14,4) \\\\times A(14,3).$");
-        questaoAlternativa49.setAlternativasB("$A(14,4) \\\\times C(14,3).$");
-        questaoAlternativa49.setAlternativasC("$C(14,4) \\\\times A(10,3).$");
-        questaoAlternativa49.setAlternativasD("$C(10,3) \\\\times A(14,4).$");
-        questaoAlternativa49.setAlternativasE("$C(14,4) \\\\times C(10,3).$");
+        questaoAlternativa49.setAlternativasA("$A(14,4) \\times A(14,3).$");
+        questaoAlternativa49.setAlternativasB("$A(14,4) \\times C(14,3).$");
+        questaoAlternativa49.setAlternativasC("$C(14,4) \\times A(10,3).$");
+        questaoAlternativa49.setAlternativasD("$C(10,3) \\times A(14,4).$");
+        questaoAlternativa49.setAlternativasE("$C(14,4) \\times C(10,3).$");
         questaoAlternativa49.setNumeroQuestao(NUMEROQUESTAO);
 
         NUMEROQUESTAO++;
@@ -1197,7 +1197,950 @@ public class QuestaoEnade2005 {
         questaoAlternativa50.setAlternativasE("IV e V.");
         questaoAlternativa50.setNumeroQuestao(NUMEROQUESTAO);
 
-        //FIXME terminar as ultimas questoes, faltam 35
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa51 = new QuestaoAlternativa();
+        questaoAlternativa51.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa51.setAno(ANO);
+        questaoAlternativa51.setDescricao("No famoso jogo da Torre de Hanoi, é dada uma torre com discos de raios diferentes, empilhados por tamanho decrescente em um dos três pinos dados, como ilustra a figura acima. O objetivo do jogo é transportar-se toda a torre para um dos outros pinos, de acordo com as seguintes regras: apenas um disco pode ser deslocado por vez, e, em todo instante, todos os discos precisam estar em um dos três pinos; além disso, em nenhum momento, um disco pode ser colocado\n" +
+                "sobre um disco de raio menor que o dele; é claro que o terceiro pino pode ser usado como local temporário para os discos.\n" +
+                "Imaginando que se tenha uma situação em que a torre inicial tenha um conjunto de 5 discos, qual o número mínimo de movimentações de discos que deverão ser realizadas para se atingir o objetivo do jogo?");
+        questaoAlternativa51.setArea(EArea.MATEMATICA);
+        questaoAlternativa51.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa51.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa51.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
+        questaoAlternativa51.setAlternativaCorreta("c");
+        questaoAlternativa51.setImagem(true);
+        questaoAlternativa51.setAlternativasA("");
+        questaoAlternativa51.setAlternativasB("");
+        questaoAlternativa51.setAlternativasC("");
+        questaoAlternativa51.setAlternativasD("");
+        questaoAlternativa51.setAlternativasE("");
+        questaoAlternativa51.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa51.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa52 = new QuestaoAlternativa();
+        questaoAlternativa52.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa52.setAno(ANO);
+        questaoAlternativa52.setDescricao("O método de alocação de espaço de disco utilizado para armazenamento de informações em um sistema de arquivos determina o desempenho desse sistema. Com relação a esse assunto, julgue os itens seguintes.\n" +
+                "$\\newline$I A alocação contígua é um método adequado para sistemas em que inserções e remoções de arquivos são freqüentes.\n" +
+                "$\\newline$II Na alocação indexada, o tamanho máximo de um arquivo depende do número de bits utilizados para representar um índice e do tamanho dos blocos de índices.\n" +
+                "$\\newline$III Na alocação encadeada, o tamanho máximo de um arquivo depende do tamanho dos blocos de dados.\n" +
+                "$\\newline$Assinale a opção correta");
+        questaoAlternativa52.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa52.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa52.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa52.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
+        questaoAlternativa52.setAlternativaCorreta("a");
+
+        questaoAlternativa52.setAlternativasA("Apenas um item está certo.\n");
+        questaoAlternativa52.setAlternativasB("Apenas os itens I e II estão certos.");
+        questaoAlternativa52.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa52.setAlternativasD("Apenas os itens II e III estão certos.\n");
+        questaoAlternativa52.setAlternativasE("Todos os itens estão certos.");
+        questaoAlternativa52.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa53 = new QuestaoAlternativa();
+        questaoAlternativa53.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa53.setAno(ANO);
+        questaoAlternativa53.setDescricao("O problema do buffer limitado de tamanho N é um problema clássico de sincronização de processos: um grupo de processos utiliza um buffer de tamanho N para armazenar temporariamente itens produzidos; processos produtores produzem os itens, um a um, e os armazenam no buffer; processos consumidores retiram os itens do buffer, um a um, para processamento. O problema do buffer limitado de tamanho N pode ser resolvido com a utilização de semáforos, que são mecanismos de software para controle de concorrência entre processos. Duas operações são definidas para um semáforo s: wait(s) e signal(s).\n" +
+                "Considere o problema do buffer limitado de tamanho N cujos pseudocódigos dos processos produtor e consumidor estão mostrados na tabela abaixo. Pode-se resolver esse problema com a utilização dos semáforos mutex, cheio e vazio, inicializados, respectivamente, com 1, 0 e N.\n" +
+                "A partir dessas informações, para que o problema do buffer limitado de tamanho N cujos pseudocódigos foram apresentados possa ser resolvido a partir do uso dos semáforos mutex, cheio e vazio, é necessário que comando_a, comando_b, comando_c, comando_d, comando_e, comando_f, comando_g e comando_h correspondam, respectivamente, às operações");
+        questaoAlternativa53.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa53.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa53.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa53.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
+        questaoAlternativa53.setAlternativaCorreta("a");
+        questaoAlternativa53.setImagem(true);
+        questaoAlternativa53.setAlternativasA("wait(vazio), wait(mutex), signal(mutex), signal(cheio), wait(cheio), wait(mutex), signal(mutex) e signal(vazio).");
+        questaoAlternativa53.setAlternativasB("wait(cheio), wait(mutex), signal(mutex),\n" +
+                "signal(vazio), wait(vazio), signal(mutex),\n" +
+                "signal(mutex) e wait(cheio).\n");
+        questaoAlternativa53.setAlternativasC("wait(mutex), wait(vazio), signal(cheio),\n" +
+                "signal(mutex), wait(mutex), wait(vazio),\n" +
+                "signal(cheio) e signal(mutex).");
+        questaoAlternativa53.setAlternativasD("wait(mutex), wait(vazio), signal(cheio),\n" +
+                "signal(mutex), wait(mutex), wait(cheio),\n" +
+                "signal(vazio) e signal(mutex).");
+        questaoAlternativa53.setAlternativasE("wait(vazio), signal(mutex), signal(cheio),\n" +
+                "wait(mutex), wait(cheio), signal(mutex),\n" +
+                "signal(vazio) e signal(mutex).");
+        questaoAlternativa53.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa53.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa54 = new QuestaoAlternativa();
+        questaoAlternativa54.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa54.setAno(ANO);
+        questaoAlternativa54.setDescricao("Considere que, durante a análise de um problema de programação, tenha sido obtida a seguinte fórmula recursiva que descreve a solução para o problema.\n" +
+                "$\\newline$ $C(i,j) = \\begin{cases} 0 & se\\,\\,\\,i = 0 \\,\\, ou \\,\\, j=0\\\\ 1 +C(i-1,j-1) & se\\,\\,\\,0<i\\leq M,0<j\\leq N\\,\\,e\\,\\,i=j \\\\ max\\left\\{ C(i,j-1),C(i-1,j)\\right\\} & se\\,\\,\\,0<i\\leq M,0<j\\leq N\\,\\,e\\,\\,i\\neq j \\end{cases}$ $\\newline$ Qual a complexidade da solução encontrada?");
+        questaoAlternativa54.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa54.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa54.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa54.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
+        questaoAlternativa54.setAlternativaCorreta("b");
+
+        questaoAlternativa54.setAlternativasA("$O(n \\times log\\,\\,n)$");
+        questaoAlternativa54.setAlternativasB("$O(n^{2})$");
+        questaoAlternativa54.setAlternativasC("$O(n^{2} \\times log\\,\\,n)$");
+        questaoAlternativa54.setAlternativasD("$O(2^{n})$");
+        questaoAlternativa54.setAlternativasE("$O(n^{3})$");
+        questaoAlternativa54.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoDiscusiva questaoDiscusiva55 = new QuestaoDiscusiva();
+        questaoDiscusiva55.setId(INICIOQUESTAO.longValue());
+        questaoDiscusiva55.setAno(ANO);
+        questaoDiscusiva55.setDescricao("O grande desejo de todos os desenvolvedores de programas é utilizar quantidades ilimitadas de memória que, por sua vez, seja extremamente rápida. Infelizmente, isso não corresponde à realidade, como tenta representar a figura abaixo, que descreve uma hierarquia de memória: para cada elemento, estão indicados os tamanhos típicos disponíveis para armazenamento de informação e o tempo típico de acesso à informação armazenada." +
+                "Como pode ser visto no diagrama abaixo, registradores do processador e memória cache operam com tempos distintos, o mesmo ocorrendo com a memória principal com relação à memória cache, e com a memória secundária com relação à memória principal.\n" +
+                "Considerando as informações acima apresentadas, responda às seguintes perguntas.\n" +
+                "a) Que características um programa deve ter para que o uso de memória cache seja muito vantajoso?\n" +
+                "b) Se registradores do processador e a memória cache operassem com os mesmos tempos de acesso, ainda haveria vantagem em se utilizar a memória cache? E se a memória cache e a memória principal operassem com os mesmos tempos de acesso, ainda haveria vantagem em se utilizar a memória cache? Justifique suas respostas.");
+        questaoDiscusiva55.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoDiscusiva55.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoDiscusiva55.setProva(ETipoQuestaoProva.ENADE);
+        questaoDiscusiva55.setDisciplina(EDisciplina.ARQUITETURA_E_ORGANIZACAO_DE_COMPUTADORES);
+        questaoDiscusiva55.setResposta("a) O programa deve ter trechos pequenos que sejam executados várias vezes, e os dados devem estar\n" +
+                "localizados próximos uns dos outros OU dados e instruções devem ter localidade espacial (próximos\n" +
+                "uns dos outros) e localidade temporal (serem usados várias vezes em um certo instante de tempo).\n" +
+                "b) Se cache e processador operassem com os mesmos tempos, ainda assim seria vantajoso utilizar\n" +
+                "cache, porque o seu objetivo é justamente fornecer dados e instruções na velocidade do processador,\n" +
+                "\n" +
+                "simulando uma memória principal rápida. Se cache e memória operassem com os mesmos tempos, não\n" +
+                "haveria mais razão para se usar o cache, quer estivessem no cache ou na memória principal.\n" +
+                "Muitas são as formas de respostas diferentes que indicariam que os estudantes compreenderam a\n" +
+                "questão e a responderam de forma adequada.\n" +
+                "No item ‘a’ era necessário que o estudante demonstrasse a compreensão de que o cache é um\n" +
+                "hardware de armazenamento de dados menor do que a memória principal. Assim sendo, para tornar o uso\n" +
+                "do cache mais vantajoso, é conveniente que os dados e instruções mais utilizados fiquem sempre no cache,\n" +
+                "evitando acessos à memória principal, que tem velocidade de acesso mais lenta, embora seja maior.\n" +
+                "Partindo dessas informações, existem várias formas de indicar este tipo de comportamento.\n" +
+                "Nesse item, foram atribuídos três níveis de pontuação (0, 1 e 2). A pontuação 0 corresponde aos\n" +
+                "casos em que houve fuga total ao tema. Também obtiveram pontuação 0 no item aqueles estudantes que\n" +
+                "demonstraram claramente não terem entendido o que foi solicitado ou que deram respostas totalmente\n" +
+                "erradas.\n" +
+                "A pontuação 1 foi atribuída aos estudantes que responderam apenas um dos quesitos para a\n" +
+                "utilização vantajosa do cache, ou seja, os que responderam apenas localidade temporal ou apenas\n" +
+                "localidade espacial ou outra resposta que tenha evidenciado apenas um destes conceitos.\n" +
+                "A pontuação máxima foi atribuída aos estudantes que responderam dois ou mais conceitos que\n" +
+                "evidenciaram os princípios de localidade temporal e espacial.\n" +
+                "No item b, houve a divisão em dois subitens pontuados separadamente:\n" +
+                "(i) o subitem b1 avalia o conhecimento acerca da vantagem e da desvantagem do cache em relação ao\n" +
+                "processador. Os registradores do processador são de acesso mais rápido do que as informações no cache,\n" +
+                "mas podem armazenar poucos dados. Assim, mesmo com a mesma velocidade de acesso, existe a\n" +
+                "vantagem do espaço de armazenamento extra. O estudante deveria mostrar de alguma forma o\n" +
+                "entendimento deste conceito. Nesse subitem, existem três níveis de pontuação (0, 1 e 2), distribuídos da\n" +
+                "seguinte forma: a pontuação 0 corresponde aos estudantes que não apresentaram nenhuma evidência de\n" +
+                "domínio de quaisquer dos conteúdos avaliados; a pontuação 1 foi atribuída aos estudantes que\n" +
+                "demonstraram claramente que entenderam a vantagem da utilização da memória cache e foi concedida\n" +
+                "pontuação 2 àqueles que apresentaram a vantagem do uso de espaço de armazenamento do cache com\n" +
+                "justificativa adequada, relacionando as características de tamanho e tempo de acesso.\n" +
+                "(ii) o subitem b2 avalia se o estudante compreende a principal vantagem da memória cache e os seus\n" +
+                "mecanismos de velocidade de acesso. Se esta é igual à da memória principal, o cache torna-se\n" +
+                "desnecessário, pois é, em geral, muito menor do que a memória principal. Nesse subitem foram\n" +
+                "contemplados três níveis de pontuação (0, 1 e 2), assim distribuídos: a pontuação 0 corresponde aos\n" +
+                "estudantes que não apresentaram evidência de domínio dos conteúdos avaliados neste subitem; a\n" +
+                "pontuação 1 foi concedida àqueles que apresentaram evidências de compreensão da principal utilidade do\n" +
+                "cache e de seus mecanismos de tempo de acesso e a foi atribuída a pontuação máxima aos que\n" +
+                "demonstraram o reconhecimento da vantagem do tempo de acesso da memória cache e foram capazes de\n" +
+                "relacionar justificativas adequadas na resolução deste subitem.\n" +
+                "O critério de pontuação para os subitens b1 e b2 foi modificado em relação àquele originalmente\n" +
+                "estabelecido. O total de pontos foi modificado de 3 para 2, embora o valor total dos subitens tenha\n" +
+                "continuado o mesmo. Essa mudança foi necessária para tornar o critério de correção mais justo, de forma a\n" +
+                "diminuir a possibilidade de interpretações destoantes entre os membros da banca.");
+        questaoDiscusiva55.setImagem(true);
+        questaoDiscusiva55.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoDiscusiva55.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa56 = new QuestaoAlternativa();
+        questaoAlternativa56.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa56.setAno(ANO);
+        questaoAlternativa56.setDescricao("Considere um sistema bancário simplificado e uma transação T1, que, por meio das 6 operações apresentadas na tabela abaixo, transfere R$ 100,00 da conta X para a conta Y. A partir dessas informações, julgue os itens que se seguem." +
+                "$\\newline$I Se, durante a execução de T1, ocorrer uma falha depois da operação 3 e antes da operação 6, e o sistema de banco de dados restabelecer o valor original de X, estará garantida a atomicidade de T1.\n" +
+                "$\\newline$II Se ocorrer uma falha de sistema após a transação T1 ser completada com sucesso, mas, ao ser reiniciado o sistema, o usuário que a tiver disparado for notificado da transferência de fundos e o sistema de banco de dados reconstruir as atualizações feitas pela transação, estará garantida a durabilidade de T1.\n" +
+                "$\\newline$III Se outra transação, T2, que estiver sendo executada simultaneamente a T1, tentar executar a operação escrita(Y) depois de T1 ter executado a operação 4 e ainda não ter executado a operação 6, e o sistema de banco de dados impedir essa escrita, estará garantida a consistência de T1.\n" +
+                "$\\newline$Assinale a opção correta.\n");
+        questaoAlternativa56.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa56.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa56.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa56.setDisciplina(EDisciplina.BANCO_DE_DADOS);
+        questaoAlternativa56.setAlternativaCorreta("b");
+        questaoAlternativa56.setImagem(true);
+        questaoAlternativa56.setAlternativasA("Apenas um item está certo.\n");
+        questaoAlternativa56.setAlternativasB("Apenas os itens I e II estão certos.\n");
+        questaoAlternativa56.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa56.setAlternativasD("Apenas os itens II e III estão certos.\n");
+        questaoAlternativa56.setAlternativasE("Todos os itens estão certos.\n");
+        questaoAlternativa56.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa56.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa57 = new QuestaoAlternativa();
+        questaoAlternativa57.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa57.setAno(ANO);
+        questaoAlternativa57.setDescricao("A escolha de uma boa representação de conhecimento é tarefa fundamental na resolução de problemas que envolvem inteligência artificial. Acerca desse assunto, assinale a opção correta.\n");
+        questaoAlternativa57.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa57.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa57.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa57.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
+        questaoAlternativa57.setAlternativaCorreta("b");
+
+        questaoAlternativa57.setAlternativasA("O encadeamento regressivo, por utilizar busca em largura para resolução de conflitos, é menos usado que o progressivo.");
+        questaoAlternativa57.setAlternativasB("O encadeamento progressivo utiliza busca gulosa para fazer a comparação entre os fatos armazenados na memória de trabalho do sistema e os antecedentes das regras a disparar.");
+        questaoAlternativa57.setAlternativasC("As redes semânticas, mecanismo mais expressivo que a lógica de primeira ordem, foram desenvolvidas para se superar uma dificuldade dos sistemas embasados em lógica\n" +
+                "de representar categorias.");
+        questaoAlternativa57.setAlternativasD("A representação de conhecimento frames é uma boa\n" +
+                "alternativa para esse tipo de problema, por incluir, além de\n" +
+                "um mecanismo de inferência semanticamente bem definido,\n" +
+                "mecanismos de encapsulamento e componentes, comuns ao\n" +
+                "paradigma orientado a objeto.");
+        questaoAlternativa57.setAlternativasE("Tanto redes semânticas quanto frames representam\n" +
+                "facilmente conhecimento estrutural, comportamental e\n" +
+                "procedural.");
+        questaoAlternativa57.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa58 = new QuestaoAlternativa();
+        questaoAlternativa58.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa58.setAno(ANO);
+        questaoAlternativa58.setDescricao("Uma forma de analisar e comparar o desempenho de algoritmos de busca heurística é utilizar um problema bem conhecido como referência. Um exemplo desse tipo de problema é o cálculo de rotas entre diferentes cidades. No grafo ilustrado abaixo, cada nó representa uma cidade distinta, e cada ramo, uma rodovia que interliga as cidades representadas pelos nós que ele une, cujo peso indica a distância, em km, entre essas cidades pela rodovia.\n" +
+                "$\\newline$Suponha que se deseje encontrar a melhor rota entre as cidades A e M, indicadas nesse grafo. Considere, ainda, os valores indicados na tabela abaixo como distância em linha reta, em km, de cada cidade para a cidade M.\n" +
+                "$\\newline$A partir dessas informações, julgue os itens seguintes, relativos a algoritmos de busca.\n" +
+                "$\\newline$I Utilizando-se o algoritmo A*, a rota ente A e M encontrada no problema acima é ACDFLM e o custo do caminho é 56,18.\n" +
+                "$\\newline$II Utilizando-se a busca gulosa, a rota encontrada no problema acima é ACDFLM.\n" +
+                "$\\newline$III Para utilizar algoritmos de busca heurística, deve-se definir uma heurística que superestime o custo da solução.\n" +
+                "$\\newline$IV O A* é um algoritmo ótimo e completo quando heurísticas admissíveis são utilizadas.\n" +
+                "$\\newline$V No simulated annealing, é possível haver movimentos para um estado com avaliação pior do que a do estado corrente, dependendo da temperatura do processo e da probabilidade de escolha.\n" +
+                "$\\newline$Estão certos apenas os itens ");
+        questaoAlternativa58.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa58.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa58.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa58.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
+        questaoAlternativa58.setAlternativaCorreta("b");
+        questaoAlternativa58.setImagem(true);
+        questaoAlternativa58.setAlternativasA("I, II e III.");
+        questaoAlternativa58.setAlternativasB("I, IV e V.");
+        questaoAlternativa58.setAlternativasC("I, III, e V.");
+        questaoAlternativa58.setAlternativasD("II, III, e IV.");
+        questaoAlternativa58.setAlternativasE("II, IV e V.");
+        //WARNING essa questão possui duas imagens, acredito que temos que unir as duas em uam só
+        questaoAlternativa58.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa58.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa59 = new QuestaoAlternativa();
+        questaoAlternativa59.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa59.setAno(ANO);
+        questaoAlternativa59.setDescricao("Considere o seguinte esquema relacional para o banco de dados de um grande banco com cobertura nacional.\n" +
+                "$\\newline$AGENCIAS($\\underline{NOME\\_AGENCIA}$, CIDADE_AGENCIA, FUNDOS);\n" +
+                "$\\newline$CONTAS(NOME_AGENCIA, $\\underline{NUMERO\\_CONTA}$, SALDO) NOME_AGENCIA REFERENCIA AGENCIAS;\n" +
+                "$\\newline$CLIENTES($\\underline{NOME\\_CLIENTE}$, CIDADE_NASCIMENTO, NUMERO_CONTA) NUMERO_CONTA REFERENCIA CONTAS;\n" +
+                "$\\newline$Considere, ainda, que os atributos sublinhados correspondam às chaves primárias das respectivas relações e, após as definições das relações CONTAS e CLIENTES, sejam descritas as regras de integridade referenciais. Suponha que o banco de dados armazene informações de 500 agências, de 1.000.000 de contas e de 1.500.000 clientes, sendo que 200.000 contas são de agências da cidade de São Paulo e 100.000 clientes nasceram em Recife. Considere, finalmente, que esse sistema de banco de dados tenha um otimizador de consultas embasado em heurísticas e que se precise realizar a seguinte consulta.\n" +
+                "$\\newline$SELECT *\n" +
+                "FROM AGENCIAS, CONTAS, CLIENTES\n" +
+                "$\\newline$WHERE CONTAS.NOME_AGENCIA = AGENCIAS.NOME_AGENCIA\n" +
+                "$\\newline$ AND CLIENTES.NUMERO_CONTA = CONTAS.NUMERO_CONTA\n" +
+                "$\\newline$ AND CIDADE_AGENCIA = ‘SAO PAULO’\n" +
+                "$\\newline$ AND CIDADE_NASCIMENTO = ‘RECIFE’\n" +
+                "$\\newline$ AND SALDO > 1000;\n" +
+                "$\\newline$A partir dessas informações e considerando $| \\times |$ o operador de junção natural e $\\sigma$ o operador de seleção, assinale a opção que apresenta o melhor plano de avaliação de consultas para a consulta apresentada acima.");
+        questaoAlternativa59.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa59.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa59.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa59.setDisciplina(EDisciplina.BANCO_DE_DADOS);
+        questaoAlternativa59.setAlternativaCorreta("c");
+        questaoAlternativa59.setAlternativaImagem(true);
+        questaoAlternativa59.setAlternativasA("COLOCAR IMAGEM ALTERNATIVA");
+        questaoAlternativa59.setAlternativasB("COLOCAR IMAGEM ALTERNATIVA");
+        questaoAlternativa59.setAlternativasC("COLOCAR IMAGEM ALTERNATIVA");
+        questaoAlternativa59.setAlternativasD("COLOCAR IMAGEM ALTERNATIVA");
+        questaoAlternativa59.setAlternativasE("COLOCAR IMAGEM ALTERNATIVA");
+        questaoAlternativa59.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa60 = new QuestaoAlternativa();
+        questaoAlternativa60.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa60.setAno(ANO);
+        questaoAlternativa60.setDescricao("Considere o circuito combinacional ilustrado abaixo, que apresenta a, b e c como sinais de entrada e s como sinal de saída. A equação booleana mínima que descreve a função desse circuito é igual a");
+        questaoAlternativa60.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa60.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa60.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa60.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
+        questaoAlternativa60.setAlternativaCorreta("a");
+        questaoAlternativa60.setImagem(true);
+        questaoAlternativa60.setAlternativasA("s = a or not(b) or c.\n");
+        questaoAlternativa60.setAlternativasB("s = a and not(b) and c.\n");
+        questaoAlternativa60.setAlternativasC("s = not(a) or b or not(c).");
+        questaoAlternativa60.setAlternativasD("s = not(a) and b and not(c).");
+        questaoAlternativa60.setAlternativasE("s = (not(a) and b) or c.\n");
+        questaoAlternativa60.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa60.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa61 = new QuestaoAlternativa();
+        questaoAlternativa61.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa61.setAno(ANO);
+        questaoAlternativa61.setDescricao("Considere o volume de visualização e os objetos identificados como 1, 2 e 3 na figura abaixo. Considere, ainda, que todos os objetos têm o mesmo tamanho, que o objeto 1 está localizado fora do volume de visualização e que os objetos 2 e 3 estão dentro dele. A partir desses dados, no que concerne à execução do pipeline de visualização na situação acima representada, é correto inferir que\n" +
+                "$\\newline$I o objeto 1 está na linha de visão do observador, mas não aparece na imagem final.\n" +
+                "$\\newline$II é suficiente, para a determinação das faces visíveis, realizar o recorte contra o volume canônico.\n" +
+                "$\\newline$III a remoção de faces traseiras (back face culling) utiliza informação de posição e orientação do observador.\n" +
+                "$\\newline$IV o processo de visualização garante que os objetos 2 e 3 sejam totalmente visíveis na imagem final.\n" +
+                "$\\newline$Estão certos apenas os itens");
+        questaoAlternativa61.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa61.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa61.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa61.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
+        questaoAlternativa61.setAlternativaCorreta("b");
+        questaoAlternativa61.setImagem(true);
+        questaoAlternativa61.setAlternativasA("I e II.");
+        questaoAlternativa61.setAlternativasB("I e III.\n");
+        questaoAlternativa61.setAlternativasC("II e III.\n");
+        questaoAlternativa61.setAlternativasD("III e IV.");
+        questaoAlternativa61.setAlternativasE("III e IV.");
+        questaoAlternativa61.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa61.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa62 = new QuestaoAlternativa();
+        questaoAlternativa62.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa62.setAno(ANO);
+        questaoAlternativa62.setDescricao("Considere que um colega seu tenha ganhado uma máquina fotográfica digital e tenha tirado a foto identificada por I abaixo. Na sequência, a partir da imagem I, considere que ele tenha gerado a imagem II abaixo. Nessa situação, o processamento realizado sobre a imagem I que melhor explica a geração da imagem II envolve a aplicação de");
+        questaoAlternativa62.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa62.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa62.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa62.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
+        questaoAlternativa62.setAlternativaCorreta("d");
+        questaoAlternativa62.setImagem(true);
+        questaoAlternativa62.setAlternativasA("filtro passa-baixas.");
+        questaoAlternativa62.setAlternativasB("quantizador.\n");
+        questaoAlternativa62.setAlternativasC("reamostragem.\n");
+        questaoAlternativa62.setAlternativasD("filtro passa-altas");
+        questaoAlternativa62.setAlternativasE("compressão.");
+        questaoAlternativa62.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa62.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa63 = new QuestaoAlternativa();
+        questaoAlternativa63.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa63.setAno(ANO);
+        questaoAlternativa63.setDescricao("");
+        questaoAlternativa63.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa63.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa63.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa63.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
+        questaoAlternativa63.setAlternativaCorreta("e");
+        questaoAlternativa63.setImagem(true);
+        questaoAlternativa63.setAlternativaImagem(true);
+        questaoAlternativa63.setAlternativasA("COLOCAR ALTERNATIVA IMAGEM");
+        questaoAlternativa63.setAlternativasB("COLOCAR ALTERNATIVA IMAGEM");
+        questaoAlternativa63.setAlternativasC("COLOCAR ALTERNATIVA IMAGEM");
+        questaoAlternativa63.setAlternativasD("COLOCAR ALTERNATIVA IMAGEM");
+        questaoAlternativa63.setAlternativasE("COLOCAR ALTERNATIVA IMAGEM");
+        questaoAlternativa63.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa63.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa64 = new QuestaoAlternativa();
+        questaoAlternativa64.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa64.setAno(ANO);
+        questaoAlternativa64.setDescricao("Considere a necessidade de se implementar um componente de software que realiza cálculos de expressões matemáticas simples para as operações básicas (soma, subtração, multiplicação, divisão e exponenciação). O software reproduz na tela do computador a entrada, os resultados parciais e o resultado final da expressão e, ainda, trata os operadores de exponenciação, multiplicação e divisão com precedência sobre os operadores de soma e subtração. Para obter o referido software, é correto que o projetista\n" +
+                "$\\newline$I defina uma cadeia de caracteres para armazenar e imprimir toda a expressão de entrada.\n" +
+                "$\\newline$II defina uma gramática regular para identificar as expressões aritméticas válidas.\n" +
+                "$\\newline$III defina um reconhecedor de linguagem regular com autômato finito determinístico.\n" +
+                "$\\newline$IV especifique a ordem de precedência dos operadores com uma notação de gramática livre de contexto.\n" +
+                "$\\newline$Estão certos apenas os itens");
+        questaoAlternativa64.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa64.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa64.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa64.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
+        questaoAlternativa64.setAlternativaCorreta("d");
+
+        questaoAlternativa64.setAlternativasA("I e II.");
+        questaoAlternativa64.setAlternativasB("III e IV.");
+        questaoAlternativa64.setAlternativasC("I, II e IV.");
+        questaoAlternativa64.setAlternativasD("I, III e IV");
+        questaoAlternativa64.setAlternativasE("II, III e IV.");
+        questaoAlternativa64.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa65 = new QuestaoAlternativa();
+        questaoAlternativa65.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa65.setAno(ANO);
+        questaoAlternativa65.setDescricao("A análise de complexidade provê critérios para a classificação de problemas com base na computabilidade de suas soluções, utilizando-se a máquina de Turing como modelo referencial e possibilitando o agrupamento de problemas em classes. Nesse contexto, julgue os itens a seguir.\n" +
+                "$\\newline$I É possível demonstrar que P $\\subseteq$ NP e NP $\\subseteq$ P.\n" +
+                "$\\newline$II É possível demonstrar que se P $\\neq$ NP, então\n" +
+                "P $\\cap$ NP-Completo = $\\varnothing$.\n" +
+                "$\\newline$III Se um problema Q é NP-difícil e Q $\\in$ NP, então Q é\n" +
+                "NP-completo.\n" +
+                "$\\newline$IV O problema da satisfatibilidade de uma fórmula booleana F (uma fórmula é satisfatível, se é verdadeira em algum modelo) foi provado ser NP-difícil e NP-Completo.\n" +
+                "$\\newline$V Encontrar o caminho mais curto entre dois vértices dados em um grafo de N vértices e M arestas não é um problema da classe P.\n" +
+                "$\\newline$Estão certos apenas os itens");
+        questaoAlternativa65.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa65.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa65.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa65.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
+        questaoAlternativa65.setAlternativaCorreta("b");
+
+        questaoAlternativa65.setAlternativasA("I, III e IV.");
+        questaoAlternativa65.setAlternativasB("II, III, e IV.");
+        questaoAlternativa65.setAlternativasC("III, IV e V.");
+        questaoAlternativa65.setAlternativasD("I, II, III, e IV.");
+        questaoAlternativa65.setAlternativasE("II, III, IV e V.");
+        questaoAlternativa65.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa66 = new QuestaoAlternativa();
+        questaoAlternativa66.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa66.setAno(ANO);
+        questaoAlternativa66.setDescricao("Considere que, em uma empresa que desenvolve aplicações distribuídas, tenha sido elaborado um manual destinado ao treinamento de empregados e que o responsável por elaborar o manual tenha cometido alguns erros. Analise os seguintes trechos do referido manual.\n" +
+                "$\\newline$I Uma aplicação que usa o User Datagram Protocol (UDP) para transporte dos dados pode ter de tratar os problemas decorrentes de perdas de mensagens, mensagens recebidas fora de ordem e duplicações de mensagens.\n" +
+                "$\\newline$II Um mecanismo de chamada a procedimento remoto (remote procedure call) ou de invocação a método remoto (remote method invocation) possibilita que programas chamem procedimentos ou métodos em diferentes computadores e que se abstraiam de todos os detalhes relacionados à distribuição.\n" +
+                "$\\newline$III Em um sistema de comunicação embasado na chamada a procedimento remoto ou na invocação de método remoto, os serviços remotos são definidos por meio de interfaces. Uma interface é tipicamente processada por um compilador que gera códigos (stubs), que, nos clientes, se fazem passar pelos códigos remotos que são chamados.\n" +
+                "$\\newline$IV Sistemas de chamada a procedimentos remotos ou de invocação a métodos remotos tipicamente implementam as semânticas at-most-once ou at-least-once, pois é mais difícil implementar a semântica exactly-once, segundo a qual quem chama o procedimento sabe que ele é executado exatamente uma vez.\n" +
+                "$\\newline$Estão certos apenas os trechos");
+        questaoAlternativa66.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa66.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa66.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa66.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa66.setAlternativaCorreta("d");
+
+        questaoAlternativa66.setAlternativasA("I e II.\n");
+        questaoAlternativa66.setAlternativasB("III e IV.");
+        questaoAlternativa66.setAlternativasC("I, II e III.");
+        questaoAlternativa66.setAlternativasD("I, III e IV.\n");
+        questaoAlternativa66.setAlternativasE("II, III e IV.");
+        questaoAlternativa66.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa67 = new QuestaoAlternativa();
+        questaoAlternativa67.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa67.setAno(ANO);
+        questaoAlternativa67.setDescricao("A redução da pirataria de software no Brasil e no mundo é resultado de esforços advindos da iniciativa privada e das entidades representativas do setor. Um estudo objetivando mensurar o índice de pirataria no mundo e os benefícios de sua redução apresentou os gráficos abaixo, obtidos de uma amostra de 57 países, incluindo-se o Brasil.\n" +
+                "Com base nas informações apresentadas, é correto afirmar que I a taxa de redução do índice de pirataria de software no mundo manteve-se constante ano após ano no período mostrado.\n" +
+                "$\\newline$II o Brasil reduziu em torno de 25% seu índice de pirataria de software, comparando os anos de 1994 e 2002.\n" +
+                "$\\newline$III o Brasil foi, entre os países mostrados, o que apresentou a maior redução do índice de pirataria no período estudado.\n" +
+                "$\\newline$IV países com maior participação do setor de TI no PIB apresentam, normalmente, menores índices de pirataria.\n" +
+                "$\\newline$V o Brasil apresentou aumento de faturamento no período de 2000 a 2002, apesar do aumento de pirataria.\n" +
+                "$\\newline$Estão certos apenas os itens");
+        questaoAlternativa67.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa67.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa67.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa67.setDisciplina(EDisciplina.INFORMATICA_E_SOCIEDADE);
+        questaoAlternativa67.setAlternativaCorreta("c");
+        questaoAlternativa67.setImagem(true);
+        questaoAlternativa67.setAlternativasA("I e II.");
+        questaoAlternativa67.setAlternativasB("I e III.\n");
+        questaoAlternativa67.setAlternativasC("II e IV.");
+        questaoAlternativa67.setAlternativasD("III e V.");
+        questaoAlternativa67.setAlternativasE("IV e V.");
+        questaoAlternativa67.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa67.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa68 = new QuestaoAlternativa();
+        questaoAlternativa68.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa68.setAno(ANO);
+        questaoAlternativa68.setDescricao("Suponha que uma empresa esteja projetando um protocolo de transporte orientado a conexão. Suponha, ainda, que os projetistas tenham pouca experiência e que alguns requisitos originalmente listados não sejam típicos de um protocolo de transporte orientado a conexão. A seguir, apresenta-se a lista dos requisitos propostos pela equipe de projetistas.\n" +
+                "$\\newline$I O protocolo deve controlar a transmissão por meio de mecanismo de janela deslizante (sliding window). Vários pacotes poderão ser enviados antes de a origem aguardar uma confirmação de recepção. O número máximo de pacotes transmitidos antes de uma confirmação ser recebida será variável, o que possibilitará o controle do fluxo dos dados.\n" +
+                "$\\newline$II O protocolo deve rotear os pacotes entre redes interligadas. O roteamento deve ser realizado a partir das informações em tabelas de roteamento. Em uma tabela de roteamento, cada entrada deve conter o endereço de um destino e o endereço da próxima máquina para a qual os pacotes devem ser enviados, de modo a serem encaminhados para o destino.\n" +
+                "$\\newline$III Uma comunicação passará por três fases: estabelecimento da conexão, transferência dos dados e término da conexão. O protocolo manterá informações sobre uma conexão em uma estrutura de dados. Uma instância dessa estrutura será alocada quando uma conexão for estabelecida e será liberada quando a conexão for terminada.\n" +
+                "$\\newline$IV O protocolo deve calcular dinamicamente o tempo (timeout) que a origem de um pacote deve aguardar até retransmitir a informação caso a recepção não seja confirmada, possibilitando que atrasos variáveis sejam acomodados. Isso deverá ser feito por meio de um algoritmo de retransmissão adaptativo que periodicamente ajuste o timeout.\n" +
+                "$\\newline$Para um protocolo de transporte orientado a conexão, são adequados apenas os requisitos");
+        questaoAlternativa68.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa68.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa68.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa68.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa68.setAlternativaCorreta("d");
+
+        questaoAlternativa68.setAlternativasA("I e II.");
+        questaoAlternativa68.setAlternativasB("I e IV.");
+        questaoAlternativa68.setAlternativasC("II e III.\n");
+        questaoAlternativa68.setAlternativasD("I, III e IV");
+        questaoAlternativa68.setAlternativasE("II, III e IV.");
+        questaoAlternativa68.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa69 = new QuestaoAlternativa();
+        questaoAlternativa69.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa69.setAno(ANO);
+        questaoAlternativa69.setDescricao("A partir dessas informações apresentadas na imagem abaixo, julgue os itens a seguir, relativos à rede da referida empresa, considerando o seu correto funcionamento.\n" +
+                "$\\newline$I É correto utilizar a máscara 255.255.0.0 para segmentar a rede.\n" +
+                "$\\newline$II Os endereços de E1 a E9 podem ser endereços na rede 10.0.0.0.\n" +
+                "$\\newline$III Os endereços E2, E4, E5 e E7 devem estar em uma mesma sub-rede.\n" +
+                "$\\newline$IV O endereço E10 deve ser um endereço na rede 164.41.0.0.\n" +
+                "$\\newline$V O firewall deve traduzir entre os endereços na rede 10.0.0.0 e os endereços na rede 164.41.0.0.\n" +
+                "$\\newline$VI Os pacotes X.25 são transferidos dentro de pacotes IP.\n" +
+                "$\\newline$VII Não devem ter sido atribuídos endereços X.25 aos roteadores 1, 2, 3 e 4.\n" +
+                "$\\newline$VIII A rota default nas tabelas de roteamento dos roteadores 1, 3 e 4 é o endereço E4.\n" +
+                "$\\newline$IX A rota default na tabela de roteamento do roteador 2 é o endereço E10.\n" +
+                "$\\newline$X Os endereços na rede 10.0.0.0 são visíveis pelas máquinas que estiverem na Internet.\n" +
+                "$\\newline$Estão certos apenas os itens");
+        questaoAlternativa69.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa69.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa69.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa69.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa69.setAlternativaCorreta("b");
+        questaoAlternativa69.setImagem(true);
+        questaoAlternativa69.setAlternativasA("I, II, III, V, VIII e X.");
+        questaoAlternativa69.setAlternativasB("I, II, III, IV, V e VIII.\n");
+        questaoAlternativa69.setAlternativasC("II, IV, V, VIII, IX e X.");
+        questaoAlternativa69.setAlternativasD("III, V, VI, VII, VIII e IX.");
+        questaoAlternativa69.setAlternativasE("III, IV, V, VII, VIII e IX.");
+        questaoAlternativa69.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa69.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa70 = new QuestaoAlternativa();
+        questaoAlternativa70.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa70.setAno(ANO);
+        questaoAlternativa70.setDescricao("Anulada");
+        questaoAlternativa70.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa70.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa70.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa70.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
+        questaoAlternativa70.setAlternativaCorreta("*");
+
+        questaoAlternativa70.setAlternativasA("Anulada");
+        questaoAlternativa70.setAlternativasB("Anulada");
+        questaoAlternativa70.setAlternativasC("Anulada");
+        questaoAlternativa70.setAlternativasD("Anulada");
+        questaoAlternativa70.setAlternativasE("Anulada");
+        questaoAlternativa70.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa71 = new QuestaoAlternativa();
+        questaoAlternativa71.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa71.setAno(ANO);
+        questaoAlternativa71.setDescricao("Sistemas operacionais de tempo real são utilizados em controle de processos automatizados, em que o tempo de resposta a determinados eventos é um fator crítico. Com relação a esse assunto, julgue os itens seguintes.\n" +
+                "$\\newline$I Sistemas de tempo real estritos (hard real-time) não utilizam dispositivos de memória secundária (como discos), pois estes não oferecem garantia de término das operações dentro de uma quantidade máxima de tempo.\n" +
+                "$\\newline$II Um sistema operacional de propósito geral pode ser modificado para ser de tempo real atribuindo-se prioridades fixas para cada um dos processos.\n" +
+                "$\\newline$III O escalonamento mais utilizado por sistemas operacionais de tempo real é o shortest-job-first (tarefa mais curta primeiro).\n" +
+                "$\\newline$Assinale a opção correta.");
+        questaoAlternativa71.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa71.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa71.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa71.setDisciplina(EDisciplina.SISTEMAS_OPERACIONAIS);
+        questaoAlternativa71.setAlternativaCorreta("a");
+
+        questaoAlternativa71.setAlternativasA("Apenas um item está certo.\n");
+        questaoAlternativa71.setAlternativasB("Apenas os itens I e II estão certos.");
+        questaoAlternativa71.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa71.setAlternativasD("Apenas os itens II e III estão certos.\n");
+        questaoAlternativa71.setAlternativasE("Todos os itens estão certos.\n");
+        questaoAlternativa71.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa72 = new QuestaoAlternativa();
+        questaoAlternativa72.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa72.setAno(ANO);
+        questaoAlternativa72.setDescricao("A execução de duas transações, $T_{i}$ e $T_{j}$ , em um banco de dados, é serializável se produz o mesmo resultado para a execução serial de qualquer intercalação de operações dessas transações($T_{i}$ seguida de $T_{j}$ ou $T_{j}$ seguida de $T_{i}$). O uso de bloqueios (locks) é uma maneira de se garantir que transações concorrentes sejam serializáveis. A tabela acima mostra informações relativas a três transações, $T_{1}$, $T_{2}$ e $T_{3}$ , que operam sobre dois dados compartilhados, A e B, e utilizam bloqueios para controle de concorrência. Com relação às transações $T_{1}$, $T_{2}$ e $T_{3}$, julgue os itens seguintes.\n" +
+                "$\\newline$I O conjunto (T , T ) não é serializável, e há o perigo de\n" +
+                "ocorrer deadlock durante a execução concorrente dessas\n" +
+                "transações.\n" +
+                "$\\newline$II O conjunto ($T_{1},T_{2}$) não é serializável, mas não há o perigo de ocorrer deadlock durante a execução concorrente dessas transações.\n" +
+                "$\\newline$III O conjunto ($T_{2},T_{3}$) é serializável, e não há o perigo de ocorrer deadlock durante a execução concorrente dessas transações.\n" +
+                "$\\newline$Assinale a opção correta.");
+        questaoAlternativa72.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa72.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa72.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa72.setDisciplina(EDisciplina.BANCO_DE_DADOS);
+        questaoAlternativa72.setAlternativaCorreta("d");
+        questaoAlternativa72.setImagem(true);
+        questaoAlternativa72.setAlternativasA("Apenas um item está certo.\n");
+        questaoAlternativa72.setAlternativasB("Apenas os itens I e II estão certos.");
+        questaoAlternativa72.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa72.setAlternativasD("Apenas os itens II e III estão certos.\n");
+        questaoAlternativa72.setAlternativasE("Todos os itens estão certos.\n");
+        questaoAlternativa72.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa72.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa73 = new QuestaoAlternativa();
+        questaoAlternativa73.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa73.setAno(ANO);
+        questaoAlternativa73.setDescricao("Considere o seguinte script SQL de criação de um banco de dados.\n" +
+                "$\\newline$CREATE TABLE PECAS (CODIGO NUMERIC(5) NOT NULL,\n" +
+                "$\\newline$ DESCRICAO VARCHAR(20) NOT NULL,\n" +
+                "$\\newline$ ESTOQUE NUMERIC(5) NOT NULL,\n" +
+                "$\\newline$ PRIMARY KEY(CODIGO));\n" +
+                "$\\newline$CREATE TABLE FORNECEDORES\n" +
+                "$\\newline$(COD_FORN NUMERIC(3) NOT NULL,\n" +
+                "$\\newline$ NOME VARCHAR(30) NOT NULL,\n" +
+                "$\\newline$ PRIMARY KEY(COD_FORN));\n" +
+                "$\\newline$CREATE TABLE FORNECIMENTOS\n" +
+                "$\\newline$(COD_PECA NUMERIC(5) NOT NULL,\n" +
+                "$\\newline$ COD_FORN NUMERIC(3) NOT NULL,\n" +
+                "$\\newline$ QUANTIDADE NUMERIC(4) NOT NULL,\n" +
+                "$\\newline$ PRIMARY KEY(COD_PECA, COD_FORN),\n" +
+                "$\\newline$ FOREIGN KEY (COD_PECA) REFERENCES PECAS,\n" +
+                "$\\newline$ FOREIGN KEY (COD_FORN) REFERENCES\n" +
+                "$\\newline$ FORNECEDORES);\n" +
+                "$\\newline$A partir desse script, assinale a opção que apresenta comando SQL que permite obter uma lista que contenha o nome de cada fornecedor que tenha fornecido alguma peça, o código da peça fornecida, a descrição dessa peça e a  uantidade fornecida da referida peça.");
+        questaoAlternativa73.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa73.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa73.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa73.setDisciplina(EDisciplina.BANCO_DE_DADOS);
+        questaoAlternativa73.setAlternativaCorreta("d");
+
+        questaoAlternativa73.setAlternativasA("SELECT * FROM PECAS, FORNECEDORES, FORNECIMENTOS;");
+        questaoAlternativa73.setAlternativasB("SELECT * FROM PECAS, FORNECEDORES,\n" +
+                "FORNECIMENTOS WHERE PECAS.CODIGO =\n" +
+                "FORNECIMENTOS.COD_PECA AND\n" +
+                "FORNECEDORES.COD_FORN =\n" +
+                "FORNECIMENTOS.COD_FORN;");
+        questaoAlternativa73.setAlternativasC("SELECT NOME, CODIGO, DESCRICAO, QUANTIDADE\n" +
+                "FROM PECAS, FORNECEDORES, FORNECIMENTOS;\n");
+        questaoAlternativa73.setAlternativasD("SELECT NOME, CODIGO, DESCRICAO, QUANTIDADE FROM PECAS, FORNECEDORES, FORNECIMENTOS WHERE PECAS.CODIGO = FORNECIMENTOS.COD_PECA AND FORNECEDORES.COD_FORN =\n" +
+                "FORNECIMENTOS.COD_FORN;");
+        questaoAlternativa73.setAlternativasE("SELECT DISTINCT NOME, CODIGO, DESCRICAO,\n" +
+                "QUANTIDADE\n" +
+                "FROM PECAS, FORNECEDORES, FORNECIMENTOS\n" +
+                "WHERE CODIGO = COD_PECA;\n");
+        questaoAlternativa73.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa74 = new QuestaoAlternativa();
+        questaoAlternativa74.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa74.setAno(ANO);
+        questaoAlternativa74.setDescricao("No que diz respeito às redes neurais, assinale a opção correta.\n");
+        questaoAlternativa74.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa74.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa74.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa74.setDisciplina(EDisciplina.INTELIGENCIA_ARTIFICIAL);
+        questaoAlternativa74.setAlternativaCorreta("d");
+
+        questaoAlternativa74.setAlternativasA("O treinamento de uma rede neural tem tempo determinado de\n" +
+                "execução.");
+        questaoAlternativa74.setAlternativasB("Não há problemas em realizar o teste de desempenho de uma rede neural com o mesmo conjunto de dados usado para o treinamento.");
+        questaoAlternativa74.setAlternativasC("O número de pesos de uma rede neural não influencia a rapidez com que ela processa dados.");
+        questaoAlternativa74.setAlternativasD("O aprendizado supervisionado é o paradigma de treinamento mais utilizado para desenvolver aplicações de redes neurais para classificação e predição.");
+        questaoAlternativa74.setAlternativasE("O número de camadas ocultas de uma rede de alimentação direta é inversamente proporcional ao aumento do espaço de hipóteses que ela pode representar.");
+        questaoAlternativa74.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa75 = new QuestaoAlternativa();
+        questaoAlternativa75.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa75.setAno(ANO);
+        questaoAlternativa75.setDescricao("Um engenheiro de uma companhia fabricante de memórias semicondutoras estudou o comportamento do custo em função do número de bits da fabricação de um chip de memória RAM com determinada tecnologia. Ele chegou à conclusão de que, considerando-se a evolução tecnológica, o custo C(x), expresso em determinada unidade monetária, de um chip de memória RAM com x bits, na data de conclusão do processo de fabricação, seria determinado pela equação $\\\\C(x)= \\frac{25 \\times 10^{-3}}{1.024}\\left[x^{2} - (2.048 \\times 10^{6})x + 2(1.024 \\times 10^{6})^{2}\\right].\\\\$ \n" +
+                "Considerando-se que o modelo desenvolvido pelo engenheiro esteja correto, caso a empresa decida pelo chip de menor custo, ela deverá optar por um chip com memória de capacidade de ");
+        questaoAlternativa75.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa75.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa75.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa75.setDisciplina(EDisciplina.ARQUITETURA_E_ORGANIZACAO_DE_COMPUTADORES);
+        questaoAlternativa75.setAlternativaCorreta("c");
+
+        questaoAlternativa75.setAlternativasA("256 megabits.");
+        questaoAlternativa75.setAlternativasB("512 megabits.");
+        questaoAlternativa75.setAlternativasC("1.024 megabits.");
+        questaoAlternativa75.setAlternativasD("2.048 megabits.\n");
+        questaoAlternativa75.setAlternativasE("4.096 megabits.");
+        questaoAlternativa75.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa76 = new QuestaoAlternativa();
+        questaoAlternativa76.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa76.setAno(ANO);
+        questaoAlternativa76.setDescricao("O termo imagem designa uma função intensidade luminosa bidimensional f, em que um valor de intensidade é associado a coordenadas espaciais (x, y). Uma imagem digital é obtida pela digitalização das coordenadas espaciais por meio de um processo conhecido como amostragem da imagem. Dessa forma, uma imagem contínua monocromática f(x, y) é aproximada por amostras igualmente espaçadas, arranjadas na forma de uma matriz N $\\times$ M, em que cada\n" +
+                "elemento é um va min max lor inteiro g. O intervalo [$G_{min},G_{max}$], do menor ao maior valor de intensidade g, é denom min inado escala de cinza. Normalmente, $G_{min}$ = 0 corresponde a preto, e $G_{max}$ = G corresponde ao branco.\n" +
+                "Considerando os conceitos apresentados acima, assinale a opção correta.");
+        questaoAlternativa76.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa76.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa76.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa76.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
+        questaoAlternativa76.setAlternativaCorreta("c");
+
+        questaoAlternativa76.setAlternativasA("O processo de digitalização da imagem requer que as\n" +
+                "dimensões N e M da matriz mencionada acima sejam\n" +
+                "múltiplas do número de tons de cinza na imagem.");
+        questaoAlternativa76.setAlternativasB("Para imagens binárias, se L for o número de tons de cinza representáveis, e L = $2^{k}$ , então k = 2.");
+        questaoAlternativa76.setAlternativasC("Os métodos para realce de imagens que operam no domínio espacial fazem uso do conceito de vizinhança de pixel.");
+        questaoAlternativa76.setAlternativasD("Métodos de filtragem normalmente usam máscaras para impedir a transformação dos níveis de cinza dos pixels da imagem. ");
+        questaoAlternativa76.setAlternativasE("Limiarização é um tipo de processamento de imagens que amplia o número de níveis de cinza da imagem.");
+        questaoAlternativa76.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa77 = new QuestaoAlternativa();
+        questaoAlternativa77.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa77.setAno(ANO);
+        questaoAlternativa77.setDescricao("Observe a situação representada abaixo, em que o triângulo identificado por A sofre transformações geométricas que o levam para a situação identificada por A’. Considerando-se dx e dy parâmetros de translação e s, parâmetro fator de escala, então o triângulo A’ pode ser obtido a partir da aplicação da seguinte sequência de transformações aos vértices do triângulo A:");
+        questaoAlternativa77.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa77.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa77.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa77.setDisciplina(EDisciplina.COMPUTACAO_GRAFICA);
+        questaoAlternativa77.setAlternativaCorreta("e");
+        questaoAlternativa77.setImagem(true);
+        questaoAlternativa77.setAlternativasA("rotação em torno do ponto ($x_{c}, y_{c}$); escala com fator uniforme\n" +
+                "s = 2.");
+        questaoAlternativa77.setAlternativasB("rotação em torno do ponto ($x_{c}, y_{c}$); escala com fator uniforme s = 0,5.");
+        questaoAlternativa77.setAlternativasC("rotação em torno do ponto ($x'_{c}, y'_{c}$); escala com fator uniforme s = 0,5; translação com parâmetros de deslocamento dx = $-x_{c}$ e dy = $-y_{c}$.");
+        questaoAlternativa77.setAlternativasD("escala com fator uniforme s = 0,5; translação com parâmetros de deslocamento dx = $x'_{c}$ e dy = $y'_{c}$; rotação em torno do ponto ($x_{c}, y_{c}$).");
+        questaoAlternativa77.setAlternativasE("translação com parâmetros de deslocamento dx = $-x_{c}$ e dy = $-y_{c}$; rotação em torno do ponto ($x_{c}, y_{c}$); translação com parâmetros de deslocamento dx = $x_{c}$ e dy = $y_{c}$ ; escala com fator uniforme s = 0,5.");
+        questaoAlternativa77.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa77.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa78 = new QuestaoAlternativa();
+        questaoAlternativa78.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa78.setAno(ANO);
+        questaoAlternativa78.setDescricao("Dispositivos Lógicos Programáveis (DLP, ou PLD — programmable logic devices) são muito utilizados hoje em dia para o projeto de circuitos digitais especiais. Com relação a esse assunto, julgue os itens a seguir.\n" +
+                "$\\newline$I Como um PLA (programmable logic array) somente implementa equações booleanas descritas na forma de soma de termosproduto, e não implementa portas lógicas multinível, então nem todas as funções booleanas podem ser implementadas em um PLA.\n" +
+                "$\\newline$II Em uma PROM (programmable ROM), o arranjo de portas AND é fixo, e somente o arranjo de portas OR pode ser programado; em um PAL (programmable array logic), o arranjo de portas OR é fixo, e somente o array de portas AND é programável; e, em um PLA (programmable logic array), tanto o arranjo de portas AND como o de portas OR são programáveis.\n" +
+                "$\\newline$III Um circuito digital implementado por meio de um dispositivo lógico programável ocupa mais área e consome mais potência do que um circuito integrado dedicado, mas, em compensação, ele pode operar em freqüências maiores, pois seus transistores e portas lógicas são projetados de forma a otimizar o chaveamento de estados.\n" +
+                "$\\newline$Assinale a opção correta.");
+        questaoAlternativa78.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa78.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa78.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa78.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
+        questaoAlternativa78.setAlternativaCorreta("a");
+
+        questaoAlternativa78.setAlternativasA("Apenas o item II está certo.");
+        questaoAlternativa78.setAlternativasB("Apenas o item III está certo.");
+        questaoAlternativa78.setAlternativasC("Apenas os itens I e II estão certos.");
+        questaoAlternativa78.setAlternativasD("Apenas os itens I e III estão certos.");
+        questaoAlternativa78.setAlternativasE("Apenas os itens II e III estão certos.");
+        questaoAlternativa78.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa79 = new QuestaoAlternativa();
+        questaoAlternativa79.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa79.setAno(ANO);
+        questaoAlternativa79.setDescricao("$\\newline$xpto( [ ], R, R ).\n" +
+                "$\\newline$xpto( [H | T1], Y, [H | T2] ) :- xpto( T1, Y, T2 ).\n" +
+                "$\\newline$zpto( X, [X|Y] ).\n" +
+                "$\\newline$zpto( X, [Y|Z] ) :- zpto( X, Z ).\n" +
+                "$\\newline$Com relação aos predicados escritos em Prolog acima, julgue os itens a seguir.\n" +
+                "$\\newline$I A execução de xpto([1,2,3],[ ], F) conclui com sucesso instanciando F para [1,2,3].\n" +
+                "$\\newline$II A execução de zpto(5,[1,2,3] ) conclui sem sucesso.\n" +
+                "$\\newline$III A execução de zpto(X,[1,2,3]) conclui com sucesso, instanciando X para 1.\n" +
+                "$\\newline$Assinale a opção correta.");
+        questaoAlternativa79.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa79.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa79.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa79.setDisciplina(EDisciplina.PROGRAMACAO);
+        questaoAlternativa79.setAlternativaCorreta("e");
+
+        questaoAlternativa79.setAlternativasA("Apenas um item está certo.\n");
+        questaoAlternativa79.setAlternativasB("Apenas os itens I e II estão certos.");
+        questaoAlternativa79.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa79.setAlternativasD("Apenas os itens II e III estão certos.\n");
+        questaoAlternativa79.setAlternativasE("Todos os itens estão certos.");
+        questaoAlternativa79.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa80 = new QuestaoAlternativa();
+        questaoAlternativa80.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa80.setAno(ANO);
+        questaoAlternativa80.setDescricao("Que cadeia é reconhecida pelo autômato representado pelo diagrama de estados abaixo?");
+        questaoAlternativa80.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
+        questaoAlternativa80.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa80.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa80.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
+        questaoAlternativa80.setAlternativaCorreta("b");
+        questaoAlternativa80.setImagem(true);
+        questaoAlternativa80.setAlternativasA("101010");
+        questaoAlternativa80.setAlternativasB("111011000");
+        questaoAlternativa80.setAlternativasC("11111000");
+        questaoAlternativa80.setAlternativasD("10100");
+        questaoAlternativa80.setAlternativasE("00110011");
+        questaoAlternativa80.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa80.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa81 = new QuestaoAlternativa();
+        questaoAlternativa81.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa81.setAno(ANO);
+        questaoAlternativa81.setDescricao("O estudo de dimensionamento e de desempenho de redes de comunicação é uma ciência que usa constantemente os resultados da teoria de filas. Nesse tipo de análise, é comum a adoção de modelos de filas M/M/1 para a análise de enlaces de roteadores e comutadores. Nesse tipo de modelo, a chegada de pacotes para transmissão e a transmissão deles são processos de Poisson. Assim, as características da fila que se forma em cada enlace podem ser determinadas em função da taxa de chegada (tempo médio decorrido entre a chegada de pacotes sucessivos encaminhados para transmissão pelo enlace) e da taxa de serviço (tempo médio para transmissão de um pacote). Acerca do modelo M/M/1 aplicado ao estudo de capacidade e desempenho de enlaces de redes, por comutação de pacotes, assinale a opção correta.");
+        questaoAlternativa81.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa81.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa81.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa81.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa81.setAlternativaCorreta("a");
+
+        questaoAlternativa81.setAlternativasA("Caso a taxa de chegada seja maior que a taxa de serviço (taxa de saída), conclui-se que o enlace está subdimensionado e haverá perda de pacotes.");
+        questaoAlternativa81.setAlternativasB("A taxa de serviço é independente do tamanho do pacote.");
+        questaoAlternativa81.setAlternativasC("Em um roteador com múltiplos enlaces, a taxa de chegada para cada enlace é igual ao somatório das capacidades de todos os enlaces dividido pelo número de enlaces do roteador.");
+        questaoAlternativa81.setAlternativasD("O modelo M/M/1 apresenta instabilidade numérica sempre que a taxa de chegada for próxima de zero.");
+        questaoAlternativa81.setAlternativasE("Quando a taxa de chegada é menor que a taxa de serviço, pode-se esperar que o número médio de pacotes na fila seja igual a zero.");
+        questaoAlternativa81.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa82 = new QuestaoAlternativa();
+        questaoAlternativa82.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa82.setAno(ANO);
+        questaoAlternativa82.setDescricao("Considere que, em uma rede WLAN, a função de densidade de probabilidade (PDF) de erro de bit na transmissão entre um computador conectado à rede e o pon erro to de acesso (access point) — $p_{erro}$(d) — seja dada pela função cujo gráfico está mostrado abaixo, em que $d\\geq 0$ é a distância entre o ponto de acesso e o computador.\n" +
+                "$\\newline$Considerando essas informações, julgue os itens a seguir.\n" +
+                "$\\newline$I A probabilidade de erro de bit na transmissão no caso de o computador estar localizado à distância $d_{0}$ é dada por $\\int_{0}^{d_{0}} P_{erro}(S)ds $.\n" +
+                "$\\newline$II Sabendo-se que a média da distribuição correspondente à PDF acima mencionada é igual a x, conclui-se que é de 0,5 a probabilidade de erro de bit na transmissão no caso de o computador estar localizado à distância d = x.\n" +
+                "$\\newline$III Supondo-se que o sistema de transmissão seja binário, as informações apresentadas são suficientes para se concluir que a probabilidade de erro dado que foi enviado um bit 1 é igual à probabilidade de erro dado que foi enviado um bit 0.\n" +
+                "$\\newline$Assinale a opção correta.");
+        questaoAlternativa82.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa82.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa82.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa82.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa82.setAlternativaCorreta("b");
+        questaoAlternativa82.setImagem(true);
+        questaoAlternativa82.setAlternativasA("Apenas um item está certo.");
+        questaoAlternativa82.setAlternativasB("Apenas os itens I e II estão certos.\n");
+        questaoAlternativa82.setAlternativasC("Apenas os itens I e III estão certos.");
+        questaoAlternativa82.setAlternativasD("Apenas os itens II e III estão certos.");
+        questaoAlternativa82.setAlternativasE("Todos os itens estão certos.");
+        questaoAlternativa82.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa82.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa83 = new QuestaoAlternativa();
+        questaoAlternativa83.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa83.setAno(ANO);
+        questaoAlternativa83.setDescricao("Com relação à tecnologia bluetooth, que possibilita a comunicação sem fios entre dispositivos, assinale a opção correta");
+        questaoAlternativa83.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa83.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa83.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa83.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa83.setAlternativaCorreta("b");
+
+        questaoAlternativa83.setAlternativasA("Essa tecnologia utiliza a transmissão em enlace via rádio na banda de freqüência VHF.");
+        questaoAlternativa83.setAlternativasB("Essa tecnologia possibilita a transmissão de voz e dados a curtas distâncias.");
+        questaoAlternativa83.setAlternativasC("Um dispositivo pode assumir, simultaneamente, o papel de mestre e de escravo em uma mesma piconet que utiliza essa tecnologia.");
+        questaoAlternativa83.setAlternativasD("Uma piconet pode ser formada por até 255 mestres e 255 escravos.");
+        questaoAlternativa83.setAlternativasE("Um dispositivo pode participar, simultaneamente, de duas piconets, desde que ele seja mestre em ambas.");
+        questaoAlternativa83.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoAlternativa questaoAlternativa84 = new QuestaoAlternativa();
+        questaoAlternativa84.setId(INICIOQUESTAO.longValue());
+        questaoAlternativa84.setAno(ANO);
+        questaoAlternativa84.setDescricao("Considere que uma empresa esteja projetando um protocolo da camada de rede. Considere, ainda, que a equipe de projeto tenha proposto o seguinte conjunto de requisitos.\n" +
+                "$\\newline$I O protocolo deve prover um serviço de comunicação não-orientado a conexão e sem garantia da entrega. O protocolo não é responsável por ordenar os datagramas que, embora recebidos com sucesso, estejam fora da ordem em que foram transmitidos.\n" +
+                "$\\newline$II Os datagramas devem conter, além dos endereços de rede das máquinas, números que identifiquem as entidades nas máquinas de\n" +
+                "origem e destino para distinguirem as entidades nas máquinas envolvidas em uma comunicação.\n" +
+                "$\\newline$III O protocolo deve evitar que as aplicações tenham de definir os formatos usados para representar os dados nas máquinas. Na\n" +
+                "transmissão, o protocolo deve converter os dados de um formato específico de máquina para um formato independente de máquina.\n" +
+                "Na recepção, deve converter de um formato independente de máquina para um formato específico de máquina.\n" +
+                "$\\newline$IV O protocolo poderá fragmentar um datagrama na origem e remontá-lo no destino, para que dados sejam transmitidos por meio de\n" +
+                "redes cujas camadas físicas tenham tamanhos variados para as unidades máximas de transferência (maximum transfer unit).\n" +
+                "$\\newline$V O protocolo deve implementar o controle de acesso ao meio de transmissão. Antes de transmitir, deve aguardar o meio de\n" +
+                "transmissão ficar livre. Se outras máquinas tentarem transmitir ao mesmo tempo, ele deve enviar um sinal para garantir que as\n" +
+                "máquinas detectem a colisão. Em seguida, deve aguardar e novamente tentar transmitir.\n" +
+                "$\\newline$Entre os requisitos propostos pela equipe de projeto, estão adequados para um um protocolo da camada de rede os requisitos");
+        questaoAlternativa84.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoAlternativa84.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoAlternativa84.setProva(ETipoQuestaoProva.ENADE);
+        questaoAlternativa84.setDisciplina(EDisciplina.REDES_DE_COMPUTADORES);
+        questaoAlternativa84.setAlternativaCorreta("a");
+
+        questaoAlternativa84.setAlternativasA("I, II e IV.");
+        questaoAlternativa84.setAlternativasB("I, III e V.");
+        questaoAlternativa84.setAlternativasC("I, IV e V. ");
+        questaoAlternativa84.setAlternativasD(" II, III e IV.");
+        questaoAlternativa84.setAlternativasE("II, IV e V.");
+        questaoAlternativa84.setNumeroQuestao(NUMEROQUESTAO);
+
+        NUMEROQUESTAO++;
+        INICIOQUESTAO++; //		----------------------------------------------------------- //		-----------------------------------------------------------
+
+        QuestaoDiscusiva questaoDiscusiva85 = new QuestaoDiscusiva();
+        questaoDiscusiva85.setId(INICIOQUESTAO.longValue());
+        questaoDiscusiva85.setAno(ANO);
+        questaoDiscusiva85.setDescricao("Em sistemas distribuídos, é necessário, muitas vezes, resolver problemas decorrentes do fato de diferentes plataformas poderem adotar diferentes formas para representar os dados.\n" +
+                "A respeito de sistemas distribuídos heterogêneos, faça o que se pede a seguir.\n" +
+                "$\\newline$a) Apresente exemplos das diferenças nas formas de representação dos dados que podem causar problemas em sistemas distribuídos.\n" +
+                "$\\newline$b) Explique o que é eXternal Data Representation (XDR) e como uma biblioteca XDR pode ser usada em chamadas a procedimentos remotos.");
+        questaoDiscusiva85.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
+        questaoDiscusiva85.setTipoFormcao(EFormacao.ESPECIFICA);
+        questaoDiscusiva85.setProva(ETipoQuestaoProva.ENADE);
+        questaoDiscusiva85.setDisciplina(EDisciplina.SISTEMAS_DISTRIBUIDOS);
+        questaoDiscusiva85.setResposta("Item a: nesse item, foram atribuídos três níveis de pontuação (0, 1 e 2). A pontuação máxima (5,0 pontos)\n" +
+                "foi atribuída aos estudantes que fizeram corretamente a apresentação das diferenças nas formas de\n" +
+                "representação dos dados.\n" +
+                "Esperava-se que o estudante mencionasse a existência de diferenças nas representações dos tipos de\n" +
+                "dados nas diversas arquiteturas de computadores, por exemplo, relacionadas a: ordem dos bytes,\n" +
+                "tamanho de inteiros, representações dos números ponto-flutuantes, cadeias de caracteres (strings ).\n" +
+                "$\\newline$Item b: nesse item, houve a divisão em dois subitens pontuados separadamente:\n" +
+                "$\\newline$(i) o subitem b1 avalia se o estudante sabe o que é XDR. Para a descrição correta da definição de XDR foi\n" +
+                "atribuída nota máxima (2,0 pontos).\n" +
+                "Resposta esperada:\n" +
+                "ß O eXternal Data Representation (XDR) é um formato padronizado para a representação de dados.\n" +
+                "\n" +
+                "$\\newline$(ii) o subitem b2 avalia se o estudante sabe como uma biblioteca XDR pode ser utilizada em chamadas a\n" +
+                "procedimentos remotos. Para a descrição correta da utilização da bibliot eca XDR foi atribuída nota\n" +
+                "máxima (3,0 pontos).\n" +
+                "Resposta esperada:\n" +
+                "ß Uma biblioteca XDR converte formatos específicos em formato padronizado.\n" +
+                "ß A chamada a procedimentos remotos usa uma biblioteca XDR para resolver problemas resultantes\n" +
+                "de diferentes formatos de representação.");
+
+        questaoAlternativa60.setNumeroQuestao(NUMEROQUESTAO);
 
         List<Questao> questoes = new ArrayList<>();
         questoes.add(questaoAlternativa1);
@@ -1250,7 +2193,41 @@ public class QuestaoEnade2005 {
         questoes.add(questaoAlternativa48);
         questoes.add(questaoAlternativa49);
         questoes.add(questaoAlternativa50);
-
+        questoes.add(questaoAlternativa51);
+        questoes.add(questaoAlternativa52);
+        questoes.add(questaoAlternativa53);
+        questoes.add(questaoAlternativa54);
+        questoes.add(questaoDiscusiva55);
+        questoes.add(questaoAlternativa56);
+        questoes.add(questaoAlternativa57);
+        questoes.add(questaoAlternativa58);
+        questoes.add(questaoAlternativa59);
+        questoes.add(questaoAlternativa60);
+        questoes.add(questaoAlternativa61);
+        questoes.add(questaoAlternativa62);
+        questoes.add(questaoAlternativa63);
+        questoes.add(questaoAlternativa64);
+        questoes.add(questaoAlternativa65);
+        questoes.add(questaoAlternativa66);
+        questoes.add(questaoAlternativa67);
+        questoes.add(questaoAlternativa68);
+        questoes.add(questaoAlternativa69);
+        questoes.add(questaoAlternativa70);
+        questoes.add(questaoAlternativa71);
+        questoes.add(questaoAlternativa72);
+        questoes.add(questaoAlternativa73);
+        questoes.add(questaoAlternativa74);
+        questoes.add(questaoAlternativa75);
+        questoes.add(questaoAlternativa76);
+        questoes.add(questaoAlternativa77);
+        questoes.add(questaoAlternativa78);
+        questoes.add(questaoAlternativa79);
+        questoes.add(questaoAlternativa80);
+        questoes.add(questaoAlternativa81);
+        questoes.add(questaoAlternativa82);
+        questoes.add(questaoAlternativa83);
+        questoes.add(questaoAlternativa84);
+        questoes.add(questaoDiscusiva85);
 
         return questoes;
     }
