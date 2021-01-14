@@ -14,7 +14,7 @@ import ifsc.sti.tcc.props.ETipoQuestaoProva;
 public class QuestaoEnade2005 {
 
     final static Integer ANO = 2005;
-    static Integer INICIOQUESTAO = 1286;
+    static Integer INICIOQUESTAO = 1271;
     static Integer NUMEROQUESTAO = 1;
 
     public static List<Questao> register() {

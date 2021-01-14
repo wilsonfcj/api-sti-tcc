@@ -14,7 +14,7 @@ import java.util.List;
 public class QuestaoEnade2011 {
 
     final static Integer ANO = 2011;
-    static Integer INICIOQUESTAO = 1286; //FIXME corrigir o numero de inicio da questao
+    static Integer INICIOQUESTAO = 1356;
     static Integer NUMEROQUESTAO = 1;
 
     public static List<Questao> register() {
