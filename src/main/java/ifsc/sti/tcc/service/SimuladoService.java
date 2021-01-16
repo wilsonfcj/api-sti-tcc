@@ -251,10 +251,13 @@ public class SimuladoService {
 							if(resposta != null) {
 								simulado.setRespondido(true);
 								simulado.setQuantidadeResposta(resposta.size());
+								ResultadoSimuladoResponse respostaTotal = buscarResultadoSimulado(simulado, idUsuario);
+								simulado.setSimuladoResultado(respostaTotal);
 							}
 						}
 					} else {
 						for(SimuladoBaseResponse simulado : simuladoResponse) {
+
 							ResultadoSimuladoResponse resposta = buscarResultadoSimulado(simulado.getId(), idUsuario);
 							simulado.setRespondido(resposta != null);
 							simulado.setSimuladoResultado(resposta);
@@ -339,6 +342,11 @@ public class SimuladoService {
 			baseResponse = new ResponseBase<>(false, "Não foi possível remover a sala de simulado", null);
 		}
 		return new ResponseEntity<ResponseBase<SimuladoCompletoResponse>>(baseResponse, HttpStatus.OK);
+	}
+
+
+	private ResultadoSimuladoResponse buscarResultadoSimulado(SimuladoBaseResponse simulado, long idUsuario) {
+		return getResultadoService().convertSimuladoToSimuladoResponse(simulado, idUsuario);
 	}
 	
 	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {

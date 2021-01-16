@@ -36,6 +36,7 @@ import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoGeralUsuar
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaCompletoResponse;
 import ifsc.sti.tcc.resources.rest.models.resultado.response.ResultadoSimuladoSalaResponse;
+import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoBaseResponse;
 
 public class ResultadoService {
 
@@ -267,6 +268,25 @@ public class ResultadoService {
 			listResponse.add(response);
 		}
 		return listResponse;
+	}
+	
+
+
+	public ResultadoSimuladoResponse convertSimuladoToSimuladoResponse(SimuladoBaseResponse simulado, Long idUser) {
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(idUser, simulado.getId());
+		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
+		resultado.setIdSimulado(simulado.getId());
+		resultado.setNome(simulado.getNome());
+		resultado.setDescricao(simulado.getDescricao());
+		resultado.setDataCriacao(simulado.getDataCriacao());
+//		resultado.setDataEnvio(simulado.getDataEntrega());
+		resultado.setTipoSimulado(simulado.getTipoSimulado());
+		resultado.setResultadoGeral(createResultadoSimulado(simulado.getId(), idUser));
+		resultado.setResultadoMatematica(createResultadoPorArea(simulado.getId(), idUser, EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoPorArea(simulado.getId(), idUser, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(simulado.getId(), idUser, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		resultado.setDisciplinas(disciplinas);
+		return resultado;
 	}
 	
 //	USUARIO ALUNO
