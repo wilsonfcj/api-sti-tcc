@@ -401,7 +401,7 @@ public class ResultadoService {
 	}
 	
 	public ResultadoQuantitativo createResultadoSimuladoProfessor(long idSimulado, long idUsuario) {
-		int erros = jpaRepository.consultarErrosSimuladoProfessor(idUsuario,idSimulado);
+		int erros = jpaRepository.consultarErrosSimuladoProfessor(idUsuario, idSimulado);
 		int acertos = jpaRepository.consultarAcertosSimuladoProfessor(idUsuario, idSimulado);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoProfessor(idUsuario, idSimulado);
 		int total = jpaRepository.consultarTotalQuestaoesProfessor(idSimulado);
