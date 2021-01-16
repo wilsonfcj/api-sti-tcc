@@ -270,6 +270,24 @@ public class ResultadoService {
 		return listResponse;
 	}
 	
+	
+	public ResultadoSimuladoResponse convertSimuladoToSimuladoProfessorResponse(SimuladoBaseResponse simulado, Long idUser) {
+		List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultado(idUser, simulado.getId());
+		ResultadoSimuladoResponse resultado = new ResultadoSimuladoResponse();
+		resultado.setIdSimulado(simulado.getId());
+		resultado.setNome(simulado.getNome());
+		resultado.setDescricao(simulado.getDescricao());
+		resultado.setDataCriacao(simulado.getDataCriacao());
+//		resultado.setDataEnvio(simulado.getDataEntrega());
+		resultado.setTipoSimulado(simulado.getTipoSimulado());
+		resultado.setResultadoGeral(createResultadoSimuladoProfessor(simulado.getId(), idUser));
+		resultado.setResultadoMatematica(createResultadoPorAreaProfessor(simulado.getId(), idUser, EArea.MATEMATICA));
+		resultado.setResultadoFundamentoComputacao(createResultadoPorAreaProfessor(simulado.getId(), idUser, EArea.FUNDAMENTOS_DE_COMPUTACAO));
+		resultado.setResultadoTecnologiaComputacao(createResultadoPorAreaProfessor(simulado.getId(), idUser, EArea.TECNOLOGIA_DA_COMPUTACAO));
+		resultado.setDisciplinas(disciplinas);
+		return resultado;
+	}
+	
 
 
 	public ResultadoSimuladoResponse convertSimuladoToSimuladoResponse(SimuladoBaseResponse simulado, Long idUser) {
@@ -382,6 +400,20 @@ public class ResultadoService {
 		return resultado;
 	}
 	
+	public ResultadoQuantitativo createResultadoSimuladoProfessor(long idSimulado, long idUsuario) {
+		int erros = jpaRepository.consultarErrosSimuladoProfessor(idUsuario,idSimulado);
+		int acertos = jpaRepository.consultarAcertosSimuladoProfessor(idUsuario, idSimulado);
+		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoProfessor(idUsuario, idSimulado);
+		int total = jpaRepository.consultarTotalQuestaoesProfessor(idSimulado);
+		
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
+	}
+	
 	public ResultadoQuantitativo createResultadoSimulado(long idSimulado, long idUsuario) {
 		int erros = jpaRepository.consultarErrosSimulado(idUsuario,idSimulado);
 		int acertos = jpaRepository.consultarAcertosSimulado(idUsuario, idSimulado);
@@ -401,6 +433,20 @@ public class ResultadoService {
 		int acertos = jpaRepository.consultarAcertosSimuladoPorArea(idUsuario, idSimulado, area.codigo);
 		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoPorArea(idUsuario, idSimulado, area.codigo);
 		int total = jpaRepository.consultarTotalQuestaoesPorArea(idSimulado, area.codigo);
+		
+		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
+		resultado.setAcertos(acertos);
+		resultado.setErros(erros);
+		resultado.setNaoRespondidas(naoRespondidas);
+		resultado.setTotal(total);
+		return resultado;
+	}
+	
+	public ResultadoQuantitativo createResultadoPorAreaProfessor(long idSimulado, long idUsuario, EArea area) {
+		int erros = jpaRepository.consultarErrosSimuladoPorAreaProfessor(idUsuario, idSimulado, area.codigo);
+		int acertos = jpaRepository.consultarAcertosSimuladoPorAreaProfessor(idUsuario, idSimulado, area.codigo);
+		int naoRespondidas = jpaRepository.consultarQuantidadeNaoRespondiasSimuladoPorAreaProfessor(idUsuario, idSimulado, area.codigo);
+		int total = jpaRepository.consultarTotalQuestaoesPorAreaProfessor(idSimulado, area.codigo);
 		
 		ResultadoQuantitativo resultado = new ResultadoQuantitativo();
 		resultado.setAcertos(acertos);
