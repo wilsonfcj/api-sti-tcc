@@ -346,7 +346,7 @@ public class SimuladoService {
 
 
 	private ResultadoSimuladoResponse buscarResultadoSimulado(SimuladoBaseResponse simulado, long idUsuario) {
-		return getResultadoService().convertSimuladoToSimuladoResponse(simulado, idUsuario);
+		return getResultadoService().convertSimuladoToSimuladoProfessorResponse(simulado, idUsuario);
 	}
 	
 	private ResultadoSimuladoResponse buscarResultadoSimulado(long idSimulado, long idUsuario) {
