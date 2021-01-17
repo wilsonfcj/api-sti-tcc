@@ -5,7 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +23,11 @@ import ifsc.sti.tcc.repository.InstituicaoRepository;
 import ifsc.sti.tcc.repository.UsuarioRepository;
 import ifsc.sti.tcc.resources.rest.ResponseBase;
 import ifsc.sti.tcc.resources.rest.models.usuario.cadastro.UsuarioRequest;
+import ifsc.sti.tcc.resources.rest.models.usuario.login.request.EmailRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.request.LoginRequest;
 import ifsc.sti.tcc.resources.rest.models.usuario.login.response.UsuarioBaseResponse;
 import ifsc.sti.tcc.service.UsuarioService;
+import ifsc.sti.tcc.utilidades.EmailServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -32,6 +37,8 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "API REST STI Usuario")
 public class UsuarioApi {
 	
+	@Autowired
+    private JavaMailSender emailSender;
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	@Autowired
@@ -106,4 +113,21 @@ public class UsuarioApi {
 				.build();
 		return lUsuarioService.alterar(usuarioRequest);
 	}
+	
+	@ApiOperation(value = "Altera as informações do usuários")
+	@RequestMapping(value = "/EnviarEmail", method = RequestMethod.PUT)
+	public ResponseEntity<ResponseBase<Boolean>> enviarEmail(@RequestBody @Valid EmailRequest emailRequest) {
+		ResponseBase<Boolean> baseResponse = new ResponseBase<>();
+		try {
+			sendEmail(emailRequest.getAssunto(), emailRequest.getMensagem());
+			baseResponse = new ResponseBase<Boolean>(false, "Email enviado com sucesso.", null);
+		} catch (Exception ex) {
+			baseResponse = new ResponseBase<Boolean>(false, "Não foi possível enviar o email.", null);
+		}
+		return new ResponseEntity<ResponseBase<Boolean>>(baseResponse, HttpStatus.OK);
+	}
+	
+    void sendEmail(String title, String msm) {
+    	new EmailServiceImpl().sendSimpleMessage(emailSender, title, msm);
+    }
 }
