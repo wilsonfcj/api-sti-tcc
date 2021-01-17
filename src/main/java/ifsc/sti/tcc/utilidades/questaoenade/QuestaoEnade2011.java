@@ -14,7 +14,7 @@ import java.util.List;
 public class QuestaoEnade2011 {
 
     final static Integer ANO = 2011;
-    static Integer INICIOQUESTAO = 1356;
+    static Integer INICIOQUESTAO = 1436;
     static Integer NUMEROQUESTAO = 1;
 
     public static List<Questao> register() {
@@ -219,7 +219,7 @@ public class QuestaoEnade2011 {
         questaoAlternativa7.setDisciplina(EDisciplina.INFORMATICA_E_SOCIEDADE);
         questaoAlternativa7.setAlternativaCorreta("b");
 
-        questaoAlternativa7.setAlternativasB("a preservação do equilíbrio global e do valor das reservas de capital natural, o que não justifica a desaceleração do desenvolvimento econômico e político de uma sociedade.");
+        questaoAlternativa7.setAlternativasA("a preservação do equilíbrio global e do valor das reservas de capital natural, o que não justifica a desaceleração do desenvolvimento econômico e político de uma sociedade.");
         questaoAlternativa7.setAlternativasB("a redefinição de critérios e instrumentos de\n" +
                 "avaliação de custo-benefício que reflitam os efeitos\n" +
                 "socioeconômicos e os valores reais do consumo e da\n" +
@@ -253,7 +253,7 @@ public class QuestaoEnade2011 {
         questaoAlternativa8.setDisciplina(EDisciplina.INFORMATICA_E_SOCIEDADE);
         questaoAlternativa8.setAlternativaCorreta("e");
         questaoAlternativa8.setImagem(true);
-        questaoAlternativa7.setAlternativasB("I e II.");
+        questaoAlternativa7.setAlternativasA("I e II.");
         questaoAlternativa7.setAlternativasB("I e IV.");
         questaoAlternativa7.setAlternativasC("II e III.");
         questaoAlternativa7.setAlternativasD("I, III e IV.");
@@ -817,7 +817,7 @@ public class QuestaoEnade2011 {
         questaoAlternativa27.setDisciplina(EDisciplina.PROGRAMACAO);
         questaoAlternativa27.setAlternativaCorreta("e");
         questaoAlternativa27.setImagem(true);
-        questaoAlternativa27.setAlternativasB("I.");
+        questaoAlternativa27.setAlternativasA("I.");
         questaoAlternativa27.setAlternativasB("II.");
         questaoAlternativa27.setAlternativasC("I e IV.");
         questaoAlternativa27.setAlternativasD("II e III.");
@@ -841,7 +841,7 @@ public class QuestaoEnade2011 {
         questaoAlternativa28.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
         questaoAlternativa28.setAlternativaCorreta("d");
         questaoAlternativa28.setImagem(true);
-        questaoAlternativa28.setAlternativasB("156.");
+        questaoAlternativa28.setAlternativasA("156.");
         questaoAlternativa28.setAlternativasB("624.");
         questaoAlternativa28.setAlternativasC("1872.");
         questaoAlternativa28.setAlternativasD("3744.");

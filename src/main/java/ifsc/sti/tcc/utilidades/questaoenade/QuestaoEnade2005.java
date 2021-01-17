@@ -172,7 +172,7 @@ public class QuestaoEnade2005 {
         questaoAlternativa7.setAlternativaCorreta("b");
         questaoAlternativa7.setImagem(true);
         questaoAlternativa7.setAlternativaImagem(true);
-        questaoAlternativa7.setAlternativasB("COLOCAR IMAGEM ALTERNATIVA AQUI");
+        questaoAlternativa7.setAlternativasA("COLOCAR IMAGEM ALTERNATIVA AQUI");
         questaoAlternativa7.setAlternativasB("COLOCAR IMAGEM ALTERNATIVA AQUI");
         questaoAlternativa7.setAlternativasC("COLOCAR IMAGEM ALTERNATIVA AQUI");
         questaoAlternativa7.setAlternativasD("COLOCAR IMAGEM ALTERNATIVA AQUI");
