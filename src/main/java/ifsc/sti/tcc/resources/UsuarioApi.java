@@ -120,7 +120,7 @@ public class UsuarioApi {
 		ResponseBase<Boolean> baseResponse = new ResponseBase<>();
 		try {
 			sendEmail(emailRequest.getAssunto(), emailRequest.getMensagem());
-			baseResponse = new ResponseBase<Boolean>(false, "Email enviado com sucesso.", null);
+			baseResponse = new ResponseBase<Boolean>(true, "Email enviado com sucesso.", null);
 		} catch (Exception ex) {
 			baseResponse = new ResponseBase<Boolean>(false, "Não foi possível enviar o email.", null);
 		}
