@@ -116,7 +116,7 @@ public class UsuarioApi {
 	
 	@ApiOperation(value = "Altera as informações do usuários")
 	@RequestMapping(value = "/EnviarEmail", method = RequestMethod.POST)
-	public ResponseEntity<ResponseBase<Boolean>> enviarEmail(@RequestBody @Valid EmailRequest emailRequest) {
+	public ResponseEntity<ResponseBase<Boolean>> enviarEmail(@RequestBody EmailRequest emailRequest) {
 		ResponseBase<Boolean> baseResponse = new ResponseBase<>();
 		try {
 			sendEmail(emailRequest.getAssunto(), emailRequest.getMensagem());

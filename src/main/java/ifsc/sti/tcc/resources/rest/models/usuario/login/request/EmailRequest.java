@@ -2,7 +2,7 @@ package ifsc.sti.tcc.resources.rest.models.usuario.login.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class EmailRequest {
+public class EmailRequest {
 	
 	@JsonProperty(value="Assunto")
 	private String assunto;

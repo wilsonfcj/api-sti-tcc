@@ -9,7 +9,7 @@ public class EmailServiceImpl {
 	
 	public void sendSimpleMessage(JavaMailSender emailSender, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage(); 
-        message.setTo("wilsonfernandes382@gmail.com", "correiaribeirotiago@gmail.com "); 
+        message.setTo("wilsonfernandes382@gmail.com");//, "correiaribeirotiago@gmail.com "); 
         message.setSubject(subject); 
         message.setText(text);
         emailSender.send(message);
