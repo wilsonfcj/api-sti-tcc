@@ -253,12 +253,12 @@ public class QuestaoEnade2011 {
         questaoAlternativa8.setDisciplina(EDisciplina.INFORMATICA_E_SOCIEDADE);
         questaoAlternativa8.setAlternativaCorreta("e");
         questaoAlternativa8.setImagem(true);
-        questaoAlternativa7.setAlternativasA("I e II.");
-        questaoAlternativa7.setAlternativasB("I e IV.");
-        questaoAlternativa7.setAlternativasC("II e III.");
-        questaoAlternativa7.setAlternativasD("I, III e IV.");
-        questaoAlternativa7.setAlternativasE("II, III e IV.");
-        questaoAlternativa7.setImagemQuestao("COLOCAR IMAGEM AQUI");
+        questaoAlternativa8.setAlternativasA("I e II.");
+        questaoAlternativa8.setAlternativasB("I e IV.");
+        questaoAlternativa8.setAlternativasC("II e III.");
+        questaoAlternativa8.setAlternativasD("I, III e IV.");
+        questaoAlternativa8.setAlternativasE("II, III e IV.");
+        questaoAlternativa8.setImagemQuestao("COLOCAR IMAGEM AQUI");
         questaoAlternativa8.setNumeroQuestao(NUMEROQUESTAO);
 
         NUMEROQUESTAO++;
@@ -322,7 +322,7 @@ public class QuestaoEnade2011 {
         QuestaoAlternativa questaoAlternativa11 = new QuestaoAlternativa();
         questaoAlternativa11.setId(INICIOQUESTAO.longValue());
         questaoAlternativa11.setAno(ANO);
-        questaoAlternativa11.setDescricao("eja A um conjunto e seja ~ uma relação entre pares de\n" +
+        questaoAlternativa11.setDescricao("Seja A um conjunto e seja ~ uma relação entre pares de\n" +
                 "elementos de A.\n" +
                 "Diz-se que ~ é uma relação de equivalência entre pares\n" +
                 "de elementos de A se as seguintes propriedades são\n" +
@@ -621,7 +621,7 @@ public class QuestaoEnade2011 {
                 "bem como das interfaces entre os componentes.\n" +
                 "No contexto apresentado, essa equipe está realizando\n" +
                 "testes em nível de");
-        questaoAlternativa21.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa21.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa21.setArea(EArea.TECNOLOGIA_DA_COMPUTACAO);
         questaoAlternativa21.setDisciplina(EDisciplina.ENGENHARIA_DE_SOFTWARE);
         questaoAlternativa21.setProva(ETipoQuestaoProva.ENADE);
@@ -649,7 +649,7 @@ public class QuestaoEnade2011 {
                 "$\\newline$PORQUE\n" +
                 "$\\newline$Para G, vale a identidade dada pela expressão $\\sum_{v \\in V} grau(v) = 2|E| $\n" +
                 "$\\newline$Acerca dessas asserções, assinale a opção correta.");
-        questaoAlternativa22.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa22.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa22.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa22.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa22.setDisciplina(EDisciplina.GRAFOS);
@@ -688,7 +688,7 @@ public class QuestaoEnade2011 {
                 "Qual a única sequência de estruturas de dados\n" +
                 "apresentadas a seguir pode ter sido usada no cenário\n" +
                 "descrito acima?");
-        questaoAlternativa23.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa23.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa23.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa23.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa23.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
@@ -712,7 +712,7 @@ public class QuestaoEnade2011 {
                 "definidas quatro entradas – A, B, C e D – e uma saída S.\n" +
                 "A menor expressão de chaveamento representada por\n" +
                 "uma soma de produtos correspondente à saída S é");
-        questaoAlternativa24.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa24.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa24.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa24.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa24.setDisciplina(EDisciplina.ELETRONICA_DIGITAL);
@@ -734,7 +734,7 @@ public class QuestaoEnade2011 {
         questaoAlternativa25.setAno(ANO);
         questaoAlternativa25.setDescricao("Autômatos finitos possuem diversas aplicações práticas, como na detecção de sequências de caracteres em um texto. A figura abaixo apresenta um autômato que reconhece sequências sobre o alfabeto $\\sum = \\left\\{a,b,c\\right\\}$ e uma gramática livre de contexto que gera um subconjunto de $\\sum *$, em que $\\lambda$ representa o string vazio.\n" +
                 " Analisando a gramática e o autômato abaixo, conclui-se que");
-        questaoAlternativa25.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa25.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa25.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa25.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa25.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
@@ -786,7 +786,7 @@ public class QuestaoEnade2011 {
                 "relevância armazenado em um heap tem custo\n" +
                 "computacional O(1).\n" +
                 "$\\newline$Está correto apenas o que se afirma em");
-        questaoAlternativa26.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa26.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa26.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa26.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa26.setDisciplina(EDisciplina.ESTRUTURAS_DE_DADOS);
@@ -811,7 +811,7 @@ public class QuestaoEnade2011 {
                 "$\\newline$III. Template Method tem por objetivo definir o esqueleto de um algoritmo em uma operação, postergando a definição de alguns passos para subclasses.\n" +
                 "$\\newline$IV. Iterator fornece uma maneira de acessar sequencialmente os elementos de um objeto agregado sem expor sua representação subjacente.\n" +
                 "$\\newline$É correto apenas o que se afirma em");
-        questaoAlternativa27.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa27.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa27.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa27.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa27.setDisciplina(EDisciplina.PROGRAMACAO);
@@ -835,7 +835,7 @@ public class QuestaoEnade2011 {
                 "$\\newline$Os valores possíveis são: Ás, 2, 3, ..., 10, J, Q, K.\n" +
                 "$\\newline$No jogo de poker, uma das combinações de 5 cartas mais valiosas é o full house, que é formado por três cartas de mesmo valor e outras duas cartas de mesmo valor. São exemplos de full houses: i) três cartas K e duas 10 (como visto na figura) ou ii) três cartas 4 e duas Ás.\n" +
                 "$\\newline$Quantas possibilidades para full house existem em um baralho de 52 cartas?");
-        questaoAlternativa28.setTipoFormcao(EFormacao.GERAL);
+        questaoAlternativa28.setTipoFormcao(EFormacao.ESPECIFICA);
         questaoAlternativa28.setProva(ETipoQuestaoProva.ENADE);
         questaoAlternativa28.setArea(EArea.MATEMATICA);
         questaoAlternativa28.setDisciplina(EDisciplina.ESTATÍSTICA_E_PROBABILIDADE);
