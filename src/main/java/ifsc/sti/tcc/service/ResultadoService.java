@@ -356,6 +356,7 @@ public class ResultadoService {
 			resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.TECNOLOGIA_DA_COMPUTACAO));
 			List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(respostaSimulado.getIdUsuario().getId(),  idSimulado);
 			resultado.setDisciplinas(disciplinas);
+			
 			respostas.add(resultado);
 		}
 		return respostas;
