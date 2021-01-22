@@ -28,6 +28,18 @@ public class ResultadoSimuladoSalaResponse extends ResultadoSimuladoBase {
 	@JsonProperty(value="ResultadoDisciplinas")
 	private List<ResultadoDisciplinaQuantitativo> disciplinas;
 	
+	@JsonProperty(value="Teste1")
+	private Boolean teste1 = false;
+	
+	@JsonProperty(value="Teste2")
+	private Boolean teste2 = true;
+	
+	@JsonProperty(value="Teste3")
+	private Boolean teste3 = false;
+	
+	@JsonProperty(value="Teste4")
+	private Boolean teste4 = true;
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
