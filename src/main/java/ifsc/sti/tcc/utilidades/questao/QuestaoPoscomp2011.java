@@ -507,40 +507,40 @@ public class QuestaoPoscomp2011 {
         QuestaoAlternativa questaoAlternativa21 = new QuestaoAlternativa();
         questaoAlternativa21.setId(INICIOQUESTAO.longValue());
         questaoAlternativa21.setAno(ANO);
-        questaoAlternativa21.setDescricao("Considere a seguinte variante do algoritmo quicksort para ordenação de\n" +
-                "uma lista de inteiros $x_1, . . . , x_n$:\n" +
-                "\n" +
-                "\n" +
-                "$\\newline$Algoritmo $QS\\left(x_1, . . . , x_n\\right)\n" +
-                "$\\newline$Entrada: $x_1, . . . , x_n ∈ Z$.\n" +
-                "$\\newline$Saída: $x_1, . . . , x_n ∈ Z$.\n" +
-                "$\\newline$1. Se $n = 2$ e $x_1$ > $x_2$, permutar $x_1$ com $x_2$.\n" +
-                "$\\newline$2. Se $n ≤ 2$, retornar.\n" +
-                "$\\newline$3. $i \\leftarrow 2, j \\leftarrow n$,\n" +
-                "$\\newline$4. Enquanto $i < j$,\n" +
-                "$\\newline$4.1 Enquanto $x_1 ≥ x_i e i < n + 1$, incrementar i.\n" +
-                "$\\newline$4.2 Enquanto $x_1 < x_j$, decrementar $j$.\n" +
-                "$\\newline$4.3 Se $i < j$, permutar $x_i$ com $x_j$ .\n" +
-                "$\\newline$5. Permutar $x_1$ com $x_j$ .\n" +
-                "$\\newline$6. $QS(x_1, . . . , x_{j−1})$\n" +
-                "$\\newline$7. $QS(x_{j+1}, . . . , x_n)$\n" +
-                "\n" +
-                "\n" +
-                "$\\newline$Seja $Φ(x_1, ..., x_n)$ o número total de permutações de dois elementos durante a execução do algoritmo\n" +
-                "$QS$, inclusive durante as chamadas recursivas. Seja Φmax(n) o maior valor de $Φ(x_1, . . . , x_n)$ para todas as\n" +
-                "listas possíveis de comprimento $n$.\n" +
-                "Sabendo que\n" +
-                "\n" +
-                "$\\newline$$Φmax(n) = \\max\\limits_{{1\\leq j \\leq n}} Φ_{max}\\left(j -1\\right) + Φ_{max}\\left(n -1\\right) + \\min\\limits_{}\\left(j - 1, n - j\\right)+1$\n");
+        questaoAlternativa21.setDescricao("Considere a seguinte variante do algoritmo quicksort para ordenação de uma lista de inteiros $x_1, . . . , x_n$:\r\n" + 
+        		"\r\n" + 
+        		"$\\newline$ $\\textbf{Algoritmo}$ $QS\\left(x_1, . . . , x_n\\right)$\r\n" + 
+        		"$\\newline$ $\\textbf{Entrada:}$ $x_1, . . . , x_n \\epsilon Z$.\r\n" + 
+        		"$\\newline$ $\\textbf{Saída:}$ $x_1, . . . , x_n \\epsilon Z$.\r\n" + 
+        		"\r\n" + 
+        		"\r\n" + 
+        		"$\\newline$ 1. $\\textbf{Se}$ $n = 2$ e $x_1$ > $x_2$, $\\textbf{permutar}$ $x_1$ $\\textbf{com}$ $x_2$.\r\n" + 
+        		"$\\newline$ 2. $\\textbf{Se}$ $n ≤ 2$, $\\textbf{retornar}$.\r\n" + 
+        		"$\\newline$ 3. $i \\leftarrow 2, j \\leftarrow n$,\r\n" + 
+        		"$\\newline$ 4. $\\textbf{Enquanto}$ $i < j$,\r\n" + 
+        		"$\\newline$ 4.1 $\\hspace{1cm}$ $\\textbf{Enquanto}$ $x_1 ≥ x_i e i < n + 1$, $\\textbf{incrementar}$ i.\r\n" + 
+        		"$\\newline$ 4.2 $\\hspace{1cm}$ $\\textbf{Enquanto}$ $x_1 < x_j$, $\\textbf{decrementar}$ $j$.\r\n" + 
+        		"$\\newline$ 4.3 $\\hspace{1cm}$ $\\textbf{Se}$ $i < j$, $\\textbf{permutar}$ $x_i$ $\\textbf{com}$ $x_j$ .\r\n" + 
+        		"$\\newline$ 5. $\\textbf{Permutar}$ $x_1$ $\\textbf{com}$ $x_j$.\r\n" + 
+        		"$\\newline$ 6. $QS(x_1, . . . , x_{j−1})$\r\n" + 
+        		"$\\newline$ 7. $QS(x_{j+1}, . . . , x_n)$\r\n" + 
+        		"\r\n" + 
+        		"\r\n" + 
+        		"$\\newline$ $\\textbf{Seja}$ $Φ(x_1, ..., x_n)$ $\\textbf{o número total de permutações de dois elementos durante a execução do algoritmo}$\r\n" + 
+        		"$QS$, $\\textbf{inclusive durante as chamadas recursivas. Seja}$ Φmax(n) $\\textbf{o maior valor de}$ $Φ(x_1, . . . , x_n)$ $\\textbf{para todas as\r\n" + 
+        		"listas possíveis de comprimento}$ $n$.\r\n" + 
+        		"$\\newline$ $\\textbf{Sabendo que}$\r\n" + 
+        		"\r\n" + 
+        		"$\\newline$ $Φmax(n) = \\max\\limits_{{1\\leq j \\leq n}} Φ_{max}\\left(j -1\\right) + Φ_{max}\\left(n -1\\right) + \\min\\limits_{}\\left(j - 1, n - j\\right)+1$");
         questaoAlternativa21.setArea(EArea.FUNDAMENTOS_DE_COMPUTACAO);
         questaoAlternativa21.setProva(ETipoQuestaoProva.POSCOMP);
         questaoAlternativa21.setDisciplina(EDisciplina.TEORIA_DA_COMPUTACAO);
         questaoAlternativa21.setAlternativaCorreta("c");
 
         questaoAlternativa21.setAlternativasA("$Φ_{max(n)} = n - 1$.");
-        questaoAlternativa21.setAlternativasB("$Φ_{max(n)} está em o(n).$");
-        questaoAlternativa21.setAlternativasC("$Φ_{max(n)} ) está em O(n \\log(n)), mas não em O(n).$");
-        questaoAlternativa21.setAlternativasD("$Φ_{max(n)} ) está em O(n^2), mas não em O(n \\log(n)).$");
+        questaoAlternativa21.setAlternativasB("$Φ_{max(n)}$ está em $o(n).$");
+        questaoAlternativa21.setAlternativasC("$Φ_{max(n)}$ está em $O(n \\log(n))$, mas não em $O(n).$");
+        questaoAlternativa21.setAlternativasD("$Φ_{max(n)}$ está em $O(n^2)$, mas não em $O(n \\log(n)).$");
         questaoAlternativa21.setAlternativasE("$Φ_{max(n)} > O(2^n).$");
         questaoAlternativa21.setNumeroQuestao(NUMEROQUESTAO);
 
