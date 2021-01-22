@@ -354,9 +354,8 @@ public class ResultadoService {
 			resultado.setResultadoMatematica(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.MATEMATICA));
 			resultado.setResultadoFundamentoComputacao(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.FUNDAMENTOS_DE_COMPUTACAO));
 			resultado.setResultadoTecnologiaComputacao(createResultadoPorArea(idSimulado, respostaSimulado.getIdUsuario().getId(), EArea.TECNOLOGIA_DA_COMPUTACAO));
-			List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(respostaSimulado.getIdUsuario().getId(),  idSimulado);
-			resultado.setDisciplinas(disciplinas);
-			
+//			List<ResultadoDisciplinaQuantitativo> disciplinas = getDisciplinasResultadoPorUsuario(respostaSimulado.getIdUsuario().getId(),  idSimulado);
+//			resultado.setDisciplinas(disciplinas);
 			respostas.add(resultado);
 		}
 		return respostas;
