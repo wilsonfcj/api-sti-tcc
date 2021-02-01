@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ifsc.sti.tcc.utilidades.questao.*;
+import ifsc.sti.tcc.utilidades.questaoenade.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -38,21 +40,6 @@ import ifsc.sti.tcc.resources.rest.models.simulado.request.RespostaSimuladoReque
 import ifsc.sti.tcc.resources.rest.models.simulado.request.SimuladoRequest;
 import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoBaseResponse;
 import ifsc.sti.tcc.resources.rest.models.simulado.response.SimuladoCompletoResponse;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2002;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2003;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2004;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2005;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2006;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2007;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2008;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2009;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2010;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2011;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2012;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2013;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2014;
-import ifsc.sti.tcc.utilidades.questao.QuestaoPoscomp2015;
-import ifsc.sti.tcc.utilidades.questaoenade.QuestaoEnade2005;
 
 public class SimuladoService {
 
@@ -164,7 +151,18 @@ public class SimuladoService {
 	   List<Questao> questoes11 = QuestaoPoscomp2013.registerPoscomp();
 	   List<Questao> questoes12 = QuestaoPoscomp2014.registerPoscomp();
 	   List<Questao> questoes13 = QuestaoPoscomp2015.registerPoscomp();
-	   List<Questao> questoes22 = QuestaoEnade2005.register();
+
+	   List<Questao> questoes14 = QuestaoPoscomp2016.registerPoscomp();
+	   List<Questao> questoes15 = QuestaoPoscomp2017.registerPoscomp();
+	   List<Questao> questoes16 = QuestaoPoscomp2018.registerPoscomp();
+	   List<Questao> questoes17 = QuestaoPoscomp2019.registerPoscomp();
+
+	   List<Questao> questoes18 = QuestaoEnade2005.register();
+	   List<Questao> questoes19 = QuestaoEnade2008.register();
+	   List<Questao> questoes20 = QuestaoEnade2011.register();
+	   List<Questao> questoes21 = QuestaoEnade2014.register();
+	   List<Questao> questoes22 = QuestaoEnade2017.register();
+
 	   
 	   switch (UPDATE_VALUES) {
 		case 9:
@@ -177,6 +175,15 @@ public class SimuladoService {
 			questaoRepository.saveAll(questoes13);
 			break;
 		case 12:
+			questaoRepository.saveAll(questoes14);
+			questaoRepository.saveAll(questoes15);
+			questaoRepository.saveAll(questoes16);
+			questaoRepository.saveAll(questoes17);
+			questaoRepository.saveAll(questoes18);
+			questaoRepository.saveAll(questoes19);
+			questaoRepository.saveAll(questoes20);
+			questaoRepository.saveAll(questoes21);
+			questaoRepository.saveAll(questoes22);
 			break;
 		default:
 			questaoRepository.saveAll(questoes);
@@ -189,6 +196,18 @@ public class SimuladoService {
 			questaoRepository.saveAll(questoes7);
 			questaoRepository.saveAll(questoes8);
 			questaoRepository.saveAll(questoes9);
+			questaoRepository.saveAll(questoes10);
+			questaoRepository.saveAll(questoes11);
+			questaoRepository.saveAll(questoes12);
+			questaoRepository.saveAll(questoes13);
+			questaoRepository.saveAll(questoes14);
+			questaoRepository.saveAll(questoes15);
+			questaoRepository.saveAll(questoes16);
+			questaoRepository.saveAll(questoes17);
+			questaoRepository.saveAll(questoes18);
+			questaoRepository.saveAll(questoes19);
+			questaoRepository.saveAll(questoes20);
+			questaoRepository.saveAll(questoes21);
 			questaoRepository.saveAll(questoes22);
 			break;
 		}
