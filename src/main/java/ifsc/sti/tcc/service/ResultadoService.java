@@ -594,7 +594,7 @@ public class ResultadoService {
 			List<QuestaoResponse> response = buscarGabaritoRespostaUsuario(simuladoId, idUsuario);
 			baseResponse = new ResponseBase<>(true, "Questões consultadas com sucesso", response);
 		} catch (Exception e) {
-			baseResponse = new ResponseBase<>(false, "Não foi possível consultar as questões do simulado", null);
+			baseResponse = new ResponseBase<>(false, e.getMessage(), null);
 		}
 		return new ResponseEntity<ResponseBase<List<QuestaoResponse>>>(baseResponse, HttpStatus.OK);
 	}
