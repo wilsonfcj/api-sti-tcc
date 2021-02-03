@@ -46,23 +46,29 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 	
 	public QuestaoResponse transform(Questao aObject, RespostaQuestao resposta) {
 		QuestaoResponse response = transform(aObject);
-//		if(response.getTipoQuestao() == ETipoQuestao.ALTERNATIVA.codigo) {
-//			String aSelecicionada = ((RepostaAlternativa) resposta).getAlternativasSelecionada();
-//			if(aSelecicionada != null) {
-//				((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(aSelecicionada.toUpperCase());
-//			}
-//			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta().toUpperCase());
-//			((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
-//		} else {
-//			try {
-//				((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
-//				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());	
-//			} catch (Exception ex) {
-//				((QustaoGabaritoDiscursivaResponse)response).isCorreta(false);
-//				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario("Erro de casting");
-//			}
-//			
-//		}
+		if(response.getTipoQuestao() == ETipoQuestao.ALTERNATIVA.codigo) {
+			String aSelecicionada = ((RepostaAlternativa) resposta).getAlternativasSelecionada();
+			if(aSelecicionada != null) {
+				((QustaoGabaritoAlternativaResponse)response).setRespostaUsuario(aSelecicionada.toUpperCase());
+			}
+			try {
+				((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta().toUpperCase());
+				((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
+			} catch (Exception ex) {
+				((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta("Erro de casting a");
+				((QustaoGabaritoAlternativaResponse)response).isCorreta(false);
+			
+			}
+		} else {
+			try {
+				((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
+				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());	
+			} catch (Exception ex) {
+				((QustaoGabaritoDiscursivaResponse)response).isCorreta(false);
+				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario("Erro de casting b");
+			}
+			
+		}
 		return response;
 	}
 	
