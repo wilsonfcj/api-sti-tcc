@@ -157,7 +157,7 @@ public class SimuladoService {
 	   List<Questao> questoes16 = QuestaoPoscomp2018.registerPoscomp();
 	   List<Questao> questoes17 = QuestaoPoscomp2019.registerPoscomp();
 
-	   List<Questao> questoes18 = QuestaoEnade2005.register();
+//	   List<Questao> questoes18 = QuestaoEnade2005.register();
 	   List<Questao> questoes19 = QuestaoEnade2008.register();
 	   List<Questao> questoes20 = QuestaoEnade2011.register();
 	   List<Questao> questoes21 = QuestaoEnade2014.register();
@@ -179,7 +179,7 @@ public class SimuladoService {
 			questaoRepository.saveAll(questoes15);
 			questaoRepository.saveAll(questoes16);
 			questaoRepository.saveAll(questoes17);
-			questaoRepository.saveAll(questoes18);
+//			questaoRepository.saveAll(questoes18);
 			questaoRepository.saveAll(questoes19);
 			questaoRepository.saveAll(questoes20);
 			questaoRepository.saveAll(questoes21);
@@ -204,7 +204,7 @@ public class SimuladoService {
 			questaoRepository.saveAll(questoes15);
 			questaoRepository.saveAll(questoes16);
 			questaoRepository.saveAll(questoes17);
-			questaoRepository.saveAll(questoes18);
+//			questaoRepository.saveAll(questoes18);
 			questaoRepository.saveAll(questoes19);
 			questaoRepository.saveAll(questoes20);
 			questaoRepository.saveAll(questoes21);
