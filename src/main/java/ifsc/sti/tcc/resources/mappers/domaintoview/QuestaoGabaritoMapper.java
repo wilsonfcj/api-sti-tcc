@@ -54,8 +54,14 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 			((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoAlternativa) aObject).getAlternativaCorreta().toUpperCase());
 			((QustaoGabaritoAlternativaResponse)response).isCorreta(((RepostaAlternativa) resposta).getCorreta());
 		} else {
-			((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
-			((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());
+			try {
+				((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
+				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());	
+			} catch (Exception ex) {
+				((QustaoGabaritoDiscursivaResponse)response).isCorreta(false);
+				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario("Erro de casting");
+			}
+			
 		}
 		return response;
 	}
