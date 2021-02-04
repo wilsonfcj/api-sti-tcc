@@ -20,6 +20,12 @@ public interface QuestaoRepository extends JpaRepository<Questao, Long> {
   @Query(value = "SELECT * FROM questao WHERE area = ?1 and prova = ?2 and ano = ?3 and alternativa_correta <> '*' ORDER BY random() LIMIT ?4", nativeQuery = true)
   List<QuestaoAlternativa> consultPoscompByAno(int area, int prova, int ano, int limit);
   
+  @Query(value = "SELECT * FROM questao WHERE prova = ?1 and ano = ?2 and alternativa_correta <> '*' ORDER BY random() LIMIT ?3", nativeQuery = true)
+  List<QuestaoAlternativa> consultPoscompOnlyAno(int prova, int ano, int limit);
+  
+  @Query(value = "SELECT * FROM questao WHERE prova = ?1 and ano = ?2 and alternativa_correta <> '*' ORDER BY random() LIMIT ?3", nativeQuery = true)
+  List<Questao> consultPoscompOnlyAnoQ(int prova, int ano, int limit);
+  
 //Questão alternativa enade
   
   @Query(value = "SELECT * FROM questao WHERE tipo_formcao = ?1 and prova = ?2 and alternativa_correta <> '*' ORDER BY random() LIMIT ?3", nativeQuery = true)

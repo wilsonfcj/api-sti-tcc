@@ -573,12 +573,17 @@ public class SimuladoService {
 	
 	private List<Questao> gerarQuestaoPorQuantidadePoscomp(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
-		List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-		List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
-		List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
-		questoes.addAll(questaoPart1);
-		questoes.addAll(questaoPart2);
-		questoes.addAll(questaoPart3);
+		if(anoProva == null) {
+			List<QuestaoAlternativa> questaoPart1 = getQuestaoPoscomp(EArea.MATEMATICA.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+			List<QuestaoAlternativa> questaoPart2 = getQuestaoPoscomp(EArea.FUNDAMENTOS_DE_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 20, anoProva);
+			List<QuestaoAlternativa> questaoPart3 = getQuestaoPoscomp(EArea.TECNOLOGIA_DA_COMPUTACAO.codigo, ETipoSimulado.POSCOMP.codigo, 30, anoProva);
+			questoes.addAll(questaoPart1);
+			questoes.addAll(questaoPart2);
+			questoes.addAll(questaoPart3);
+		} else {
+			List<QuestaoAlternativa> questaoPart1 =  questaoRepository.consultPoscompOnlyAno(ETipoSimulado.POSCOMP.codigo, (int) anoProva, 100);
+			questoes.addAll(questaoPart1);
+		}
 		return questoes;
 	}
 	
@@ -586,15 +591,20 @@ public class SimuladoService {
 	private List<Questao> gerarQuestaoPorQuantidadeEnade(Integer anoProva) {
 		List<Questao> questoes = new ArrayList<Questao>();
 	
-		List<QuestaoDiscusiva> questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, anoProva);
-		List<QuestaoAlternativa> questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, 8, anoProva);
-		List<QuestaoDiscusiva> questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, anoProva);
-		List<QuestaoAlternativa> questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, 27, anoProva);
-	
-		questoes.addAll(questaoDiscursivaGeral);
-		questoes.addAll(questaoAssinalarGeral);
-		questoes.addAll(questaoDiscursivaEspecifica);
-		questoes.addAll(questaoAssinalarEspecifica);
+		if(anoProva == null) {
+			List<QuestaoDiscusiva> questaoDiscursivaGeral = getQuestaoDiscursivaEnade(EFormacao.GERAL.codigo, 2, anoProva);
+			List<QuestaoAlternativa> questaoAssinalarGeral = getQuestaoAlternativaEnade(EFormacao.GERAL.codigo, ETipoSimulado.ENADE.codigo, 8, anoProva);
+			List<QuestaoDiscusiva> questaoDiscursivaEspecifica = getQuestaoDiscursivaEnade(EFormacao.ESPECIFICA.codigo, 3, anoProva);
+			List<QuestaoAlternativa> questaoAssinalarEspecifica = getQuestaoAlternativaEnade(EFormacao.ESPECIFICA.codigo, ETipoSimulado.ENADE.codigo, 27, anoProva);
+		
+			questoes.addAll(questaoDiscursivaGeral);
+			questoes.addAll(questaoAssinalarGeral);
+			questoes.addAll(questaoDiscursivaEspecifica);
+			questoes.addAll(questaoAssinalarEspecifica);
+		} else {
+			List<Questao> questaoPart1 =  questaoRepository.consultPoscompOnlyAnoQ(ETipoSimulado.ENADE.codigo, (int) anoProva, 100);
+			questoes.addAll(questaoPart1);
+		}
 		return questoes;
 	}
 	
