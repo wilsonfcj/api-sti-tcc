@@ -5,6 +5,7 @@ import java.util.List;
 
 import ifsc.sti.tcc.modelos.questao.Questao;
 import ifsc.sti.tcc.modelos.questao.QuestaoAlternativa;
+import ifsc.sti.tcc.modelos.questao.QuestaoDiscusiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaAlternativa;
 import ifsc.sti.tcc.modelos.respostasimulado.RepostaDiscursiva;
 import ifsc.sti.tcc.modelos.respostasimulado.RespostaQuestao;
@@ -61,8 +62,9 @@ public class QuestaoGabaritoMapper extends MapperUtil<Questao, QuestaoResponse> 
 			}
 		} else {
 			try {
+				((QustaoGabaritoAlternativaResponse)response).setRespostaCorreta(((QuestaoDiscusiva) aObject).getResposta());
 				((QustaoGabaritoDiscursivaResponse)response).isCorreta(((RepostaDiscursiva) resposta).getCorreta());
-				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());	
+				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario(((RepostaDiscursiva) resposta).getRespostaDiscursiva());
 			} catch (Exception ex) {
 				((QustaoGabaritoDiscursivaResponse)response).isCorreta(false);
 				((QustaoGabaritoDiscursivaResponse)response).setRespostaUsuario("Erro de casting b");
