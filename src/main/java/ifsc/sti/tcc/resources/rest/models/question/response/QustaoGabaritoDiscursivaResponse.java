@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class QustaoGabaritoDiscursivaResponse extends QuestaoResponse {
 	
+	@JsonProperty(value="PossivelResposta")
+	private String possivelResposta;
+	
 	@JsonProperty(value="RespostaUsuario")
 	private String respostaUsuario;
 	
@@ -24,5 +27,15 @@ public class QustaoGabaritoDiscursivaResponse extends QuestaoResponse {
 
 	public void isCorreta(Boolean isCorreta) {
 		this.isCorreta = isCorreta;
+	}
+
+	public String getPossivelResposta() {
+		return possivelResposta;
+	}
+
+	public void setPossivelResposta(String possivelResposta) {
+		this.possivelResposta = possivelResposta;
 	} 
+	
+	
 }
