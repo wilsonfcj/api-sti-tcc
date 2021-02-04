@@ -55,7 +55,7 @@ public class SimuladoService {
 
 	private List<SimuladoBaseResponse> simuladoResponse;
 	
-	private final int UPDATE_VALUES = 12;
+	private final int UPDATE_VALUES = 13;
 
 	public static class Instance extends BaseService<SimuladoRepository> implements BaseService.BaseObject<SimuladoService> {
 
@@ -184,6 +184,23 @@ public class SimuladoService {
 			questaoRepository.saveAll(questoes20);
 			questaoRepository.saveAll(questoes21);
 			questaoRepository.saveAll(questoes22);
+			break;
+			
+		case 13:
+			questaoRepository.saveAll(questoes);
+			questaoRepository.saveAll(questoes1);
+			questaoRepository.saveAll(questoes2);
+			questaoRepository.saveAll(questoes3);
+			questaoRepository.saveAll(questoes4);
+			questaoRepository.saveAll(questoes5);
+			questaoRepository.saveAll(questoes6);
+			questaoRepository.saveAll(questoes7);
+			questaoRepository.saveAll(questoes8);
+			questaoRepository.saveAll(questoes9);
+			questaoRepository.saveAll(questoes10);
+			questaoRepository.saveAll(questoes11);
+			questaoRepository.saveAll(questoes12);
+			questaoRepository.saveAll(questoes13);
 			break;
 		default:
 			questaoRepository.saveAll(questoes);
